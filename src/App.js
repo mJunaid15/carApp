@@ -18,7 +18,7 @@ function App() {
           Learn React
           ali hassan 
 
-          hello from my side ali hassan naqvi
+           hello my self alihassannaqvi im web developer in methologik
         </a>
       </header>
     </div>
