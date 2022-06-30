@@ -2,24 +2,25 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .suzuimg img {
   width: 500px;
   height: 604px;
+  border-radius: 10px;
 }
 
 .pinkbox {
-  width: 510px;
-  height: 290px;
+  width: 570px;
+  height: 280px;
   background-color: #E2CABE;
+  border-radius: 10px;
 }
 
-
-
-
-
-
-
+.pinkbox h2 {
+  padding-left: 90px;
+  padding-top: 20px;
+}
 
 .login-form {
     width: 450px;
@@ -27,7 +28,8 @@
     margin: 0 auto;
     display: table;
     padding: 15px 30px 30px;
-    box-sizing: border-box;
+    box-sizing: border-box; 
+    color: #233D4E;
 }
 .form-group {
   float: left;
@@ -57,10 +59,10 @@
     border-radius: 25px;
     bottom: 0;
     height: 100%;
-    padding-left: 35px;
+    padding-left: 36px;
     color: #666;
 }
-.login-form .login-btn {
+.login-btn {
   background: #5A4A42;
   padding: 11px 50px;
   border-color: #5A4A42;
@@ -69,7 +71,7 @@
   font-size: 14px;
   border: 1px solid #5A4A42;
   border-radius: 10px;
-  width: 50%;
+  width: 200px;
   height: 40px;
   cursor: pointer;
   display: flex;
@@ -78,41 +80,10 @@
   text-align: center;
 }
 
-.login-form .social-icon button {
-    font-size: 20px;
-    color: white;
-    height: 50px;
-    width: 50px;
-    border-radius: 60%;
-    margin: 0px 10px;
-    border: none;
-    cursor: pointer;
-}
 .login-form button:hover{
   opacity: 0.9;
 }
 
-.login-form .seperator b {
-  width: 40px;
-  height: 40px;
-  font-size: 16px;
-  text-align: center;
-  line-height: 40px;
-  background: #fff;
-  display: inline-block;
-  border: 1px solid #e0e0e0;
-  border-radius: 50%;
-  position: relative;
-  top: -22px;
-  z-index: 1;
-}
-.login-form p {
-  float: left;
-  width: 100%;
-  text-align: center;
-  font-size: 16px;
-  margin: 0 0 10px;
-}
 @media screen and (max-width:767px) {
 .login-form {
     width: 90%;
@@ -131,3 +102,168 @@ img.avatar {
   height: 40px;
   border-radius: 50%;  
 }
+.check {
+  padding-top: 220px;
+}
+.check p {
+  font-size: 14px;
+}
+
+
+/* fontawesome */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+html {
+  font: 0.625em/1.4 "Lato", Helvetica Neue, sans;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0px;
+  line-height: 18px;
+  font-size: 14px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  text-rendering: optimizelegibility;
+  background: #ebeef0;
+}
+
+#wrapper {
+  width: 100%;
+  min-width: 950px;
+  height: 100%;
+  margin: 0px auto;
+  overflow: auto;
+}
+
+.left-section {
+  height: 100%;
+  width: 250px;
+  /* background: #31373d; */
+  float: left;
+}
+
+.right-section {
+  width: calc(100% - 250px);
+  float: right;
+}
+
+.nav {
+  /* background: #31373d; */
+  padding: 0px;
+  margin: 0px;
+  width: 250px;
+  overflow: hidden;
+  list-style: none;
+  box-shadow: none repeat scroll 0% 0% #2b3136;
+  box-sizing: border-box;
+}
+
+.menu-item {
+  text-decoration: none;
+  padding: 15px 25px;
+  width: 197px;
+  display: block;
+  font-size: 1.2em;
+  color: #000000;
+  -webkit-transition-duration: 0.15s; /* Safari */
+  transition-duration: 0.15s;
+}
+
+.ftm {
+  margin-right: 10px;
+}
+
+.fa-icon-lg {
+  font-size: 400%;
+  display: block;
+  margin: 5px 0px 30px 35px;
+}
+
+.menu-item:hover {
+  background: #F4E9E4;
+  color: #fff;
+  /* border-left: 3px solid #50b7e0; */
+}
+
+.arrow {
+  float: right;
+}
+
+#logo {
+  padding: 20px 0px 20px 20px;
+  border-bottom: 1px solid #222;
+}
+
+#top {
+  top: 0px;
+  width: 100%;
+  background: #fff;
+  padding: 15px 25px;
+  height: 50px;
+  margin-right: 0px;
+  line-height: 50px;
+}
+
+#name {
+  margin: 0px;
+    /* color: #50b7e0; */
+}
+
+#top-left {
+  float: left;
+}
+
+#top-right {
+  float: right;
+  padding-right: 55px;
+}
+
+.btn {
+  background: #fcfcfc;
+  /* color: #50b7e0; */
+  border: 1px solid #e3e3e3;
+  vertical-align: middle;
+  -moz-user-select: none;
+  border-radius: 3px;
+  text-decoration: none;
+  white-space: nowrap;
+  text-transform: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  height: 32px;
+  line-height: 30px;
+  padding: 0px 9px;
+}
+
+.btn:hover {
+  background: #f2f2f2;
+}
+
+.inner-container-left {
+  width: calc(100% - 700px);
+  margin: 25px 0px 0px 25px;
+  padding: 25px;
+  background: #fff;
+  -webkit-box-shadow: 2px 2px 8px 0px rgba(50, 50, 50, 0.26);
+  -moz-box-shadow:    2px 2px 8px 0px rgba(50, 50, 50, 0.26);
+  box-shadow:         2px 2px 8px 0px rgba(50, 50, 50, 0.26);
+  float: left;
+}
+
+.inner-container-right {
+  width: 250px;
+  /*width: calc(100% - 50px);*/
+  margin: 25px;
+  padding: 25px;
+  background: #fff;
+  -webkit-box-shadow: 2px 2px 8px 0px rgba(50, 50, 50, 0.26);
+  -moz-box-shadow:    2px 2px 8px 0px rgba(50, 50, 50, 0.26);
+  box-shadow:         2px 2px 8px 0px rgba(50, 50, 50, 0.26);
+  float: left;
+}
+
+.clear {clear: both;}
