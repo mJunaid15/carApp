@@ -6,46 +6,59 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
   Avatar,
+  Breadcrumbs,
+  Button,
+  Link,
+  Menu,
+  MenuItem,
   Stack,
   Toolbar,
 } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import NotificationsIcon from '@mui/icons-material/Notifications';
 
 const drawerWidth = 240;
 
 function ResponsiveDrawer({ InnerSection }, props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [anchorElModal, setAnchorElModal] = React.useState(null);
+  const open = Boolean(anchorElModal);
+  const handleClickModal = (event) => {
+    setAnchorElModal(event.currentTarget);
+  };
+  const handleCloseModal = () => {
+    setAnchorElModal(null);
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
+  function handleClick(event) {
+    event.preventDefault();
+    console.info('You clicked a breadcrumb.');
+  }
   const drawer = (
-    <div>
-      <Toolbar />
-      <Divider />
-      <Accordion>
+    <div className="pl-5">
+      <img src="https://picsum.photos/180/100" alt="logo" />
+      {/* <Toolbar /> */}
+      {/* <Divider /> */} 
+      <div className="mt-3 ">
+      <Accordion elevation={0} className="hover:bg-orange-300 mt-10" >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Addresses</Typography>
+          <Typography className="hover:font-bold"> <span>🎶</span> Addresses</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -54,7 +67,7 @@ function ResponsiveDrawer({ InnerSection }, props) {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion elevation={0}  className="hover:bg-orange-300">
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -69,7 +82,7 @@ function ResponsiveDrawer({ InnerSection }, props) {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion elevation={0}  className="hover:bg-orange-300">
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -84,7 +97,7 @@ function ResponsiveDrawer({ InnerSection }, props) {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion elevation={0}  className="hover:bg-orange-300">
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -100,6 +113,7 @@ function ResponsiveDrawer({ InnerSection }, props) {
         </AccordionDetails>
       </Accordion>
     </div>
+    </div>
   );
 
   const container =
@@ -114,27 +128,75 @@ function ResponsiveDrawer({ InnerSection }, props) {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
           bgcolor: "white",
+          boxShadow:'none',
+          // borderBottom:'1px solid black'
         }}
       >
-          <div style={{display:"flex", justifyContent:"end"}}>
-
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-            style={{background:"red"}}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Stack direction="row" spacing={2}>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-          <h5 className="mb-0 mt-2" style={{color:"#000"}}>User name</h5>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <Stack direction="row" spacing={1}>
+            <div className="d-flex align-items-center pl-5">
+              <div role="presentation" onClick={handleClick}>
+                <Breadcrumbs aria-label="breadcrumb">
+                  <Link underline="hover" color="inherit" href="/">
+                    Dashboard
+                  </Link>
+                  <Link
+                    underline="hover"
+                    color="inherit"
+                    href="/material-ui/getting-started/installation/"
+                  >
+                    panel
+                  </Link>
+                  <Typography color="text.primary">page</Typography>
+                </Breadcrumbs>
+              </div>
+            </div>
           </Stack>
-         
-        </Toolbar>
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: "none" } }}
+              // style={{ background: "red" }}
+            >
+              <MenuIcon />
+            </IconButton>
+
+            <Stack direction="row" spacing={1}>
+              
+              <div className="d-flex align-items-center">
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+
+                <Button
+                  style={{ textTransform: 'none' }}
+                  aria-controls={open ? 'basic-menu' : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? 'true' : undefined}
+                  onClick={handleClickModal}
+                >
+                  <h5 className="text-base text-neutral-800 mb-0 ml-3" >User name  <ExpandMoreIcon/></h5>
+
+                </Button>
+                <Menu
+                  id="basic-menu"
+                  anchorEl={anchorElModal}
+                  open={open}
+                  onClose={handleCloseModal}
+                  MenuListProps={{
+                    'aria-labelledby': 'basic-button',
+                  }}
+                >
+                  <MenuItem onClick={handleCloseModal}>Profile</MenuItem>
+                  <MenuItem onClick={handleCloseModal}>My account</MenuItem>
+                  <MenuItem onClick={handleCloseModal}>Logout</MenuItem>
+                </Menu>
+              </div>
+            </Stack>
+
+          </Toolbar>
+
         </div>
       </AppBar>
       <Box
