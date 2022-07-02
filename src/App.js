@@ -6,6 +6,8 @@ import Login from './components/login/Login';
 import Forgotpas from './components/login/Forgotpas';
 import Email from './components/login/Email';
 import Dashboard from './components/login/Dashboard';
+import Creatingcomp from './components/Creatingcomp';
+import Addresses from './components/Addresses';
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
       <Forgotpas />
       <Email />
       <Dashboard />
+      <Creatingcomp />
+      <Addresses />
     </>
   );
 };

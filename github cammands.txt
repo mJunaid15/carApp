@@ -1,0 +1,13 @@
+
+
+
+file add hojaygi github pr meri ali nam ki repo me
+git add . 
+
+
+file me koi b message deny k lye k kia kam kia hai aj.
+git commit -m "jo b tmhara msg"
+
+github pr push krne k lye.
+
+git push origin ali
