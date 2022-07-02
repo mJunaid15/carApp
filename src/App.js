@@ -8,6 +8,7 @@ import Email from './components/login/Email';
 import Dashboard from './components/login/Dashboard';
 import Creatingcomp from './components/Creatingcomp';
 import Addresses from './components/Addresses';
+import Vehicles from './components/Vehicles';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Dashboard />
       <Creatingcomp />
       <Addresses />
+      <Vehicles />
     </>
   );
 };

@@ -1,12 +1,13 @@
 import React from "react";
-import { Table } from "react-bootstrap";
 
 
-const Addresses = () => {
+
+const Vehicles = () => {
     return (
         <>
 
-            <h2 style={{ fontWeight: "bold" }}>List Of Addresses</h2>
+            <h3 style={{ fontWeight: 'bold' }}>List Of Vehicles</h3>
+
 
             <br />
             <br />
@@ -16,31 +17,31 @@ const Addresses = () => {
                 <div className="col-lg-2">
                     <div className="Title">
 
-                        <h4 style={{ fontWeight: "bold" }}>Title</h4>
+                        <h4 style={{ fontWeight: "bold" }}> License plate </h4>
 
                         <br />
 
-                        <p style={{ fontSize: "14px" }}>Ali Ahmed</p>
+                        <p style={{ fontSize: "15px" }}> License plate</p>
                         <p style={{ color: "#8E8EA1" }}>samantha@mail.com</p>
 
                         <br />
 
-                        <p style={{ fontSize: "14px" }}>Ali Ahmed</p>
+                        <p style={{ fontSize: "15px" }}> License plate</p>
                         <p style={{ color: "#8E8EA1" }}>soap@mail.com</p>
 
                         <br />
 
-                        <p style={{ fontSize: "14px" }}>Ali Ahmed</p>
+                        <p style={{ fontSize: "15px" }}> License plate</p>
                         <p style={{ color: "#8E8EA1" }}>ahmad@mail.com</p>
 
                         <br />
 
-                        <p style={{ fontSize: "14px" }}>Ali Ahmed</p>
+                        <p style={{ fontSize: "15px" }}> License plate</p>
                         <p style={{ color: "#8E8EA1" }}>hope@mail.com</p>
 
                         <br />
 
-                        <p style={{ fontSize: "14px" }}>Ali Ahmed</p>
+                        <p style={{ fontSize: "15px" }}> License plate</p>
                         <p style={{ color: "#8E8EA1" }}>nella@mail.com</p>
                     </div>
                 </div>
@@ -195,11 +196,10 @@ const Addresses = () => {
 
             </div>
 
-            <Table />
 
         </>
     );
 };
 
 
-export default Addresses;
+export default Vehicles
