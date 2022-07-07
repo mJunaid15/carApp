@@ -1,17 +1,7 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Toolbar, Typography } from '@mui/material'
-import { Box } from '@mui/system'
-import React from 'react'
-import ResponsiveDrawer from '../ResponsiveDrawer'
-const a = 4;
-const Home = () => {
-  return (
-    <>
-    <ResponsiveDrawer InnerSection={<SomeComp />} />
-    </>
-  )
-}
-
-export default Home
+import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Toolbar, Typography } from '@mui/material'
+import React from 'react';
+import { CreateBtn } from '../../Buttons';
+import AddIcon from '@mui/icons-material/Add';
 
 function createData(name, code, population, size) {
   const density = population / size;
@@ -35,32 +25,32 @@ const rows = [
   createData('Brazil', 'BR', 210147125, 8515767),
 ];
 const columns = [
-  { id: 'name', label: 'Name', minWidth: 170 },
-  { id: 'code', label: 'ISO\u00a0Code', minWidth: 100 },
+  { id: 'name', label: ' License plate ', minWidth: 170 },
+  { id: 'code', label: 'Contract', minWidth: 100 },
   {
     id: 'population',
-    label: 'Population',
+    label: 'Company',
     minWidth: 170,
     align: 'right',
     format: (value) => value.toLocaleString('en-US'),
   },
   {
     id: 'size',
-    label: 'Size\u00a0(km\u00b2)',
+    label: 'Address',
     minWidth: 170,
     align: 'right',
     format: (value) => value.toLocaleString('en-US'),
   },
   {
     id: 'density',
-    label: 'Density',
+    label: 'Action',
     minWidth: 170,
     align: 'right',
     format: (value) => value.toFixed(2),
   },
 ];
 
-const SomeComp = ()=>{
+const Vehicles = ()=>{
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const handleChangePage = (event, newPage) => {
@@ -70,11 +60,22 @@ const SomeComp = ()=>{
     setRowsPerPage(+event.target.value);
     setPage(0);
   }
+  
     return(
+      <>
       
        
         <Paper sx={{ width: '100%', overflow: 'hidden' }} className='mt-3'>
         <Toolbar />
+        <div className='flex justify-between'>
+
+          <h1 className='text-base text-bold mb-0 ml-5'>List of Vehicles</h1>
+          <div className='mr-5'>
+          <CreateBtn name='Create ' icon={<AddIcon/>} />
+          
+          </div>
+
+        </div>
 
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
@@ -123,5 +124,7 @@ const SomeComp = ()=>{
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </Paper>
+    </>
     )
 }
+export default Vehicles;
