@@ -12,10 +12,13 @@
 }
 
 .pinkbox {
-  width: 570px;
+  width: 450px;
   height: 280px;
   background-color: #E2CABE;
   border-radius: 10px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .pinkbox h2 {
@@ -166,4 +169,28 @@ img.avatar {
   font-size: 18px;
   height: 50px;
   padding: 12px;
+}
+
+
+/* ***************Bellform STYLING*************** */
+
+.form {
+  width: 307px;
+  height: 314px;
+  top: 52px;
+  left: 910px;
+}
+.form h6{
+  color: #D1AA96;
+  font-size: 12px;
+}
+
+.belltext p{
+  font-size: 14px;
+}
+
+.vl {
+  border-left: 3px solid #E2E8F0;
+  height: 30px;
+  padding-bottom: -550px;
 }

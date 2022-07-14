@@ -10,6 +10,7 @@ import Countryinput from '../components/Countryinput';
 import Cityinput from '../components/Cityinput';
 import Streetinput from '../components/Streetinput';
 import Mailinput from '../components/Mailinput';
+import Mobileinput from '../components/Mobileinput';
 
 
 
@@ -23,6 +24,8 @@ const Creatingcompany = () => {
             <div className='creating'>
                 <p>Creating Company</p>
             </div>
+
+            <hr />
 
             <div className='company'>
                 <p>Create Company</p>
@@ -146,9 +149,9 @@ const Creatingcompany = () => {
 
                     <div className='Homepage'>
 
-                        <p style={{ fontWeight: "bold", fontSize: "12px" }}>Homepage</p>
+                        <p style={{ fontWeight: "bold", fontSize: "12px" }}>Mobile</p>
 
-                        <Homeinput />
+                        <Mobileinput />
 
                     </div>
                 </div>
@@ -200,13 +203,13 @@ const Creatingcompany = () => {
                 </div>
 
                 <div className='col-lg-6'>
-                 
+
                     <div className='Mail'>
-                 
+
                         <p style={{ fontWeight: "bold", fontSize: "12px" }}>Mailbox</p>
-                 
+
                         <Mailinput />
-                 
+
                     </div>
                 </div>
 

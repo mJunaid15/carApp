@@ -109,8 +109,8 @@ const Expertsingleview = () => {
             <br />
             <br />
             <br />
-            <br/>
-            <br/>
+            <br />
+            <br />
 
             <div className="STATUS d-flex">
                 <p>Status : </p>
@@ -124,9 +124,9 @@ const Expertsingleview = () => {
                     <label class="form-check-label" for="inlineRadio2">Not Active</label>
                 </div>
             </div>
-<br/>
-<br/>
 
+            <br />
+            <br />
 
             <div className='Contactcent mt-5'>
                 <p>Contact</p>

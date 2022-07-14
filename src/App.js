@@ -7,6 +7,8 @@ import Forgotpas from './components/login/Forgotpas';
 import Email from './components/login/Email';
 import Creatingcompany from './components/Creatingcompany';
 import Expertsingleview from './components/Expertsingleview';
+import Singleview from './components/Singleview';
+import Bellform from './components/Bellform';
 
 function App() {
   return (
@@ -17,6 +19,9 @@ function App() {
       <Email />
       <Creatingcompany />
       <Expertsingleview />
+      <Singleview />
+      <Bellform />
+
     </>
   );
 };
