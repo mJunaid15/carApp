@@ -12,18 +12,27 @@
 }
 
 .pinkbox {
-  width: 450px;
+  width: 550px;
   height: 280px;
   background-color: #E2CABE;
   border-radius: 10px;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
 }
 
 .pinkbox h2 {
   padding-left: 90px;
-  padding-top: 20px;
+  padding-top: 20px; 
+}
+
+.forgotbox {
+  width: 550px;
+  height: 200px;
+  background-color: #E2CABE;
+  border-radius: 10px;
+}
+
+.forgotbox h2{
+  padding-left: 90px;
+  padding-top: 20px; 
 }
 
 .login-form {

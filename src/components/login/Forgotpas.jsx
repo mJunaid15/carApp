@@ -1,6 +1,6 @@
 import React from 'react'
 import Suzuki from '../../images/Suzuki.png';
-import Oldtimer from '../../images/Oldtimer.png';
+import LockKeyOpen from '../../images/LockKeyOpen.png';
 
 
 const Forgotpas = () => {
@@ -9,7 +9,7 @@ const Forgotpas = () => {
 
             <div className='container'>
 
-            <div className="brv" style={{marginTop:"100px"}}>
+                <div className="brv" style={{ marginTop: "100px" }}>
 
                     <div className='row'>
 
@@ -24,11 +24,15 @@ const Forgotpas = () => {
 
                         <div className='col-lg-6'>
 
-                            <div className='oldimg text-center'>
+                            <div className='oldimg'>
 
-                                <img src={Oldtimer} />
+                                <div className='lockimg text-center'>
 
-                                <div className="pinkbox">
+                                    <img src={LockKeyOpen} />
+
+                                </div>
+
+                                <div className="forgotbox">
 
                                     <h2><b>Forgot Password</b></h2>
 
@@ -42,10 +46,12 @@ const Forgotpas = () => {
                                             </div>
                                         </form>
                                     </div>
-
-                                    <button class="login-btn">Send</button>
-
                                 </div>
+
+                                <div className='primti text-start pt-4'>
+                                    <button class="login-btn">Send</button>
+                                </div>
+
                             </div>
                         </div>
                     </div>

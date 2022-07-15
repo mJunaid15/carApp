@@ -28,7 +28,7 @@ const Login = () => {
 
                             <div className='oldimg text-center'>
 
-                                <img src={Oldtimer} />
+                                <img src={Oldtimer} style={{width:"200px"}} />
 
                             </div>
 
