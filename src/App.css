@@ -1,3 +1,99 @@
+@media only screen and (max-width: 414px) {
+  .pinkbox {
+    width: 400px !important;
+    height: 280px !important;
+    background-color: #E2CABE !important;
+    border-radius: 10px !important;
+  }
+
+  .forgotbox {
+    width: 400px !important;
+    height: 220px !important;
+    background-color: #E2CABE !important;
+    border-radius: 10px !important;
+  }
+
+  .suzuimg img {
+    width: 400px !important;
+    height: 604px !important;
+    border-radius: 10px !important;
+  }
+
+}
+
+@media only screen and (max-width: 375px) {
+  .pinkbox {
+    width: 380px !important;
+    height: 280px !important;
+    background-color: #E2CABE !important;
+    border-radius: 10px !important;
+  }
+
+  .forgotbox {
+    width: 380px !important;
+    height: 220px !important;
+    background-color: #E2CABE !important;
+    border-radius: 10px !important;
+  }
+
+  .suzuimg img {
+    width: 380px !important;
+    height: 604px !important;
+    border-radius: 10px !important;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+
+  .pinkbox {
+    width: 380px !important;
+    height: 280px !important;
+    background-color: #E2CABE !important;
+    border-radius: 10px !important;
+  }
+
+  .forgotbox {
+    width: 380px !important;
+    height: 220px !important;
+    background-color: #E2CABE !important;
+    border-radius: 10px !important;
+  }
+
+  .suzuimg img {
+    width: 380px !important;
+    height: 604px !important;
+    border-radius: 10px !important;
+  }
+}
+@media only screen and (max-width: 912px) {
+  .pinkbox {
+    width: 380px !important;
+    height: 280px !important;
+    background-color: #E2CABE !important;
+    border-radius: 10px !important;
+    margin: auto;
+  }
+
+  .forgotbox {
+    width: 380px !important;
+    height: 220px !important;
+    background-color: #E2CABE !important;
+    border-radius: 10px !important;
+    margin: auto;
+  }
+
+  .suzuimg img {
+    width: 380px !important;
+    height: 604px !important;
+    border-radius: 10px !important;
+  }
+  .check {
+    margin: auto;
+  }
+}
+
+
+
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +108,7 @@
 }
 
 .pinkbox {
-  width: 550px;
+  width: 500px;
   height: 280px;
   background-color: #E2CABE;
   border-radius: 10px;
@@ -20,23 +116,23 @@
 
 .pinkbox h2 {
   padding-left: 90px;
-  padding-top: 20px; 
+  padding-top: 20px;
 }
 
 .forgotbox {
-  width: 550px;
-  height: 200px;
+  width: 500px;
+  height: 220px;
   background-color: #E2CABE;
   border-radius: 10px;
 }
 
-.forgotbox h2{
+.forgotbox h2 {
   padding-left: 90px;
-  padding-top: 20px; 
+  padding-top: 20px;
 }
 
 .login-form {
-  width: 450px;
+  width: 400px;
   border-radius: 6px;
   margin: 0 auto;
   display: table;
@@ -189,12 +285,13 @@ img.avatar {
   top: 52px;
   left: 910px;
 }
-.form h6{
+
+.form h6 {
   color: #D1AA96;
   font-size: 12px;
 }
 
-.belltext p{
+.belltext p {
   font-size: 14px;
 }
 

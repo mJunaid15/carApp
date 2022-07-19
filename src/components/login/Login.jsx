@@ -26,7 +26,7 @@ const Login = () => {
 
                         <div className="col-lg-6">
 
-                            <div className='oldimg text-center'>
+                            <div className='oldimg text-center pt-5'>
 
                                 <img src={Oldtimer} style={{width:"200px"}} />
 

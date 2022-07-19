@@ -28,7 +28,7 @@ const Email = () => {
                 <h5><b>Check Email</b></h5>
 
                 <p>Plaese check your email and click on the provided   <br />
-                  link to confirm your password. If you don’t receive email, click here to resend</p>
+                  link to confirm your password. If you don’t receive email,<span style={{color:"#3B7AD2"}}> click here to resend</span></p>
 
               <p>Back to Login</p>
 

@@ -26,7 +26,7 @@ const Forgotpas = () => {
 
                             <div className='oldimg'>
 
-                                <div className='lockimg text-center'>
+                                <div className='lockimg text-center pt-5'>
 
                                     <img src={LockKeyOpen} />
 
