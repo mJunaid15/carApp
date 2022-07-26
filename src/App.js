@@ -6,6 +6,7 @@ import Login from "./Components/SuperAdmin/Pages/Login";
 import Forgotpas from "./Components/SuperAdmin/Pages/Forgotpas";
 import Email from "./Components/SuperAdmin/Pages/Email";
 import Dashbaord from "./Components/SuperAdmin/Dashbaord";
+import { Createcompany } from "./Components/SuperAdmin/Pages/Createcompany";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/" element={<Login />} />
       <Route path="/forgot" element={<Forgotpas />} />
       <Route path="/email" element={<Email />} />
+      <Route path="/createcompany" element={<Createcompany />} />
     </Routes>
   );
 }

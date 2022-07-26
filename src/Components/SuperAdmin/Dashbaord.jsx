@@ -25,10 +25,20 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import logo from "../img/Oldtimer coach.png";
 import Addresses from "./Pages/Addresses";
 import BasicPopover from "./BasicPopover";
+import Vehicles from "./Pages/Vehicles";
+import MainDashboard from "./Pages/MainDashboard";
+import { useNavigate } from "react-router-dom";
+import Company from "./Pages/Company";
+import Usermanagment from "./Pages/Usermanagment";
+import Fdm from "./Pages/Fdm";
+import Setting from "./Pages/Setting";
+import { Createcompany } from "./Pages/Createcompany";
 
 const drawerWidth = 240;
 
 function Dashbaord(props) {
+  const navigate = useNavigate();
+
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [anchorElModal, setAnchorElModal] = React.useState(null);
@@ -38,6 +48,7 @@ function Dashbaord(props) {
   };
   const handleCloseModal = () => {
     setAnchorElModal(null);
+    navigate(`/`);
   };
 
   const handleDrawerToggle = () => {
@@ -173,25 +184,48 @@ function Dashbaord(props) {
           // borderBottom:'1px solid black'
         }}
       >
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <Stack direction="row" spacing={1}>
-            <div className="d-flex align-items-center pl-5">
+        <div
+          className="border-b flex justify-center lg:justify-between"
+        >
+          <div className="hidden lg:block">
+            <div className="d-flex align-items-center pl-5 mt-4">
               <div role="presentation" onClick={handleClick}>
                 <Breadcrumbs aria-label="breadcrumb">
                   <Link underline="hover" color="inherit" href="/">
                     Dashboard
                   </Link>
-                 
-                 {valueTab === 1 ? <Typography color="text.primary">Company</Typography> : null}
-                 {valueTab === 2 ? <Typography color="text.primary">User management</Typography> : null}
-                 {valueTab === 3 ? <Typography color="text.primary">Vehicles Management</Typography> : null}
-                 {valueTab === 4 ? <Typography color="text.primary">File/dossier Management  </Typography> : null}
-                 {valueTab === 5 ? <Typography color="text.primary"> Address Management  </Typography> : null}
-                 {valueTab === 6 ? <Typography color="text.primary">  Settings    </Typography> : null}
+
+                  {valueTab === 1 ? (
+                    <Typography color="text.primary">Company</Typography>
+                  ) : null}
+                  {valueTab === 2 ? (
+                    <Typography color="text.primary">
+                      User management
+                    </Typography>
+                  ) : null}
+                  {valueTab === 3 ? (
+                    <Typography color="text.primary">
+                      Vehicles Management
+                    </Typography>
+                  ) : null}
+                  {valueTab === 4 ? (
+                    <Typography color="text.primary">
+                      File/dossier Management{" "}
+                    </Typography>
+                  ) : null}
+                  {valueTab === 5 ? (
+                    <Typography color="text.primary">
+                      {" "}
+                      Address Management{" "}
+                    </Typography>
+                  ) : null}
+                  {valueTab === 6 ? (
+                    <Typography color="text.primary"> Settings </Typography>
+                  ) : null}
                 </Breadcrumbs>
               </div>
             </div>
-          </Stack>
+          </div>
           <Toolbar>
             <IconButton
               color="inherit"
@@ -199,15 +233,15 @@ function Dashbaord(props) {
               edge="start"
               onClick={handleDrawerToggle}
               sx={{ mr: 2, display: { sm: "none" } }}
-              // style={{ background: "red" }}
+              style={{ background: "gray" }}
             >
               <MenuIcon />
             </IconButton>
 
             <Stack direction="row" spacing={1}>
               <div className="d-flex align-items-center">
-                <BasicPopover/>
-               
+                <BasicPopover />
+
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
 
                 <Button
@@ -280,25 +314,25 @@ function Dashbaord(props) {
 
       <div className="w-100">
         <TabPanel value={valueTab} index={0}>
-          <Addresses />
+          <MainDashboard />
         </TabPanel>
         <TabPanel value={valueTab} index={1}>
-          Item Two
+         <Company />
         </TabPanel>
         <TabPanel value={valueTab} index={2}>
-          Item Three
+          <Usermanagment />
         </TabPanel>
         <TabPanel value={valueTab} index={3}>
-          Item Four
+          <Vehicles />
         </TabPanel>
         <TabPanel value={valueTab} index={4}>
-          Item Five
+          <Fdm />
         </TabPanel>
         <TabPanel value={valueTab} index={5}>
-          Item Six
+          <Addresses />
         </TabPanel>
         <TabPanel value={valueTab} index={6}>
-          Item Seven
+          <Setting />
         </TabPanel>
       </div>
     </Box>

@@ -11,8 +11,12 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import SelectPopover from "../SelectPopover";
 import { CreateBtn } from "../../Buttons";
-import carTable from '../../img/carTable.png'
-export default function Vehicles() {
+import { useNavigate } from "react-router-dom";
+import { Createcompany } from "./Createcompany";
+
+export default function Company() {
+  const navigate = useNavigate();
+
   function createData(name, calories, fat, carbs, protein) {
     return { name, calories, fat, carbs, protein };
   }
@@ -26,13 +30,15 @@ export default function Vehicles() {
   ];
 
   return (
+    <>
+   
     <div style={{ height: 400, width: "100%" }}>
       <Toolbar />
       <div className='flex justify-between'>
 
-          <h1 className='text-base text-bold mb-0 ml-5'> List Of Vehicles</h1>
+          <h1 className='text-base text-bold mb-0 ml-5'>List of Company</h1>
           <div className='mr-5'>
-          <CreateBtn name='Create ' icon={<AddIcon/>} />
+          <CreateBtn name='Create ' icon={<AddIcon/>} onClick={()=> navigate(`/createcompany`)} />
           
           </div>
 
@@ -42,7 +48,7 @@ export default function Vehicles() {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell> License plate </TableCell>
+              <TableCell>Title</TableCell>
               <TableCell align="center">Contract</TableCell>
               <TableCell align="center">Address</TableCell>
               <TableCell align="center">Action</TableCell>
@@ -51,8 +57,8 @@ export default function Vehicles() {
           <TableBody>
             <TableRow>
               <TableCell component="th" scope="row">
-                <p className="mb-0 flex items-center"> <img src={carTable} alt="car"/> License plate</p>
-                 
+                <p className="mb-0">Company Name</p>
+                <p className="mb-0 text-slate-400">samantha@mail.com</p>
               </TableCell>
               <TableCell align="center"> +92 3123456789</TableCell>
               <TableCell align="center">
@@ -66,8 +72,8 @@ export default function Vehicles() {
             </TableRow>
             <TableRow>
               <TableCell component="th" scope="row">
-                <p className="mb-0 flex items-center"> <img src={carTable} alt="car"/> License plate</p>
-                 
+                <p className="mb-0">Company Name</p>
+                <p className="mb-0 text-slate-400">samantha@mail.com</p>
               </TableCell>
               <TableCell align="center"> +92 3123456789</TableCell>
               <TableCell align="center">
@@ -81,8 +87,8 @@ export default function Vehicles() {
             </TableRow>
             <TableRow>
               <TableCell component="th" scope="row">
-                <p className="mb-0 flex items-center"> <img src={carTable} alt="car"/> License plate</p>
-                 
+                <p className="mb-0">Company Name</p>
+                <p className="mb-0 text-slate-400">samantha@mail.com</p>
               </TableCell>
               <TableCell align="center"> +92 3123456789</TableCell>
               <TableCell align="center">
@@ -96,8 +102,8 @@ export default function Vehicles() {
             </TableRow>
             <TableRow>
               <TableCell component="th" scope="row">
-                <p className="mb-0 flex items-center"> <img src={carTable} alt="car"/> License plate</p>
-                 
+                <p className="mb-0">Company Name</p>
+                <p className="mb-0 text-slate-400">samantha@mail.com</p>
               </TableCell>
               <TableCell align="center"> +92 3123456789</TableCell>
               <TableCell align="center">
@@ -111,8 +117,8 @@ export default function Vehicles() {
             </TableRow>
             <TableRow>
               <TableCell component="th" scope="row">
-                <p className="mb-0 flex items-center"> <img src={carTable} alt="car"/> License plate</p>
-                 
+                <p className="mb-0">Company Name</p>
+                <p className="mb-0 text-slate-400">samantha@mail.com</p>
               </TableCell>
               <TableCell align="center"> +92 3123456789</TableCell>
               <TableCell align="center">
@@ -134,5 +140,6 @@ export default function Vehicles() {
       <Pagination count={10} variant="outlined" shape="rounded" />
       </div>
     </div>
+    </>
   );
 }
