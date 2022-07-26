@@ -1,14 +1,44 @@
 import { TextField } from '@mui/material'
-import React from 'react'
+import React,{useState} from 'react'
+import { Button } from "@mui/material";
+import Company from './Company';
+import { Toolbar } from "@mui/material";
+
 
 export const Createcompany = () => {
+
+    const [companyCheck, setCompanyCheck] = useState(false)
+
+
   return (
     <>
-        <hr />
+    
+        
+        {
+            companyCheck  ? <Company /> : <div >
 
-<div className='creating'>
-    <p>Creating Company</p>
+           
+<Toolbar />
+<div className='flex justify-between'>
+
+<h1 className='text-base text-bold mb-0 ml-5'>Create Company</h1>
+<div className='mr-5'>
+<Button
+      onClick={() => setCompanyCheck(!companyCheck) }
+      style={{
+        backgroundColor: "  #5A4A42",
+        color: "#fff",
+        padding: "6px 22px",
+        diplay: "flex",
+        alignItems: "center",
+      }}
+    >
+        COMPANIES
+    </Button>
 </div>
+
+</div>
+
 
 <hr />
 
@@ -210,6 +240,8 @@ export const Createcompany = () => {
     </div>
 
 </div>
+</div>
+        }
 
     </>
   )
