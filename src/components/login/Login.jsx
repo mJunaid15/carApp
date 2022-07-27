@@ -2,7 +2,6 @@ import React from 'react'
 import Suzuki from '../../images/Suzuki.png';
 import Oldtimer from '../../images/Oldtimer.png';
 
-
 const Login = () => {
     return (
         <>
@@ -18,7 +17,6 @@ const Login = () => {
                             <div className="suzuimg text-center">
 
                                 <img src={Suzuki} />
-
                             </div>
                         </div>
 

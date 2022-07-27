@@ -65,6 +65,7 @@
     border-radius: 10px !important;
   }
 }
+
 @media only screen and (max-width: 912px) {
   .pinkbox {
     width: 380px !important;
@@ -87,6 +88,7 @@
     height: 604px !important;
     border-radius: 10px !important;
   }
+
   .check {
     margin: auto;
   }
@@ -225,17 +227,12 @@ img.avatar {
   font-size: 14px;
 }
 
-
 /* fontawesome */
 [class*="fontawesome-"]:before {
   font-family: 'FontAwesome', sans-serif;
 }
 
-
-
 /* ************Creatingcompany STYLING*************** */
-
-
 
 .creating {
   font-size: 14px;
@@ -265,6 +262,24 @@ img.avatar {
   font-size: 18px;
   height: 50px;
   padding: 12px;
+}
+
+.savebtn button {
+  background-color: #5A4A42;
+  color: white;
+  border-radius: 10px;
+  width: 150px;
+  height: 50px;
+  border-color: white;
+}
+
+.Editbtn button {
+  background-color: #5A4A42;
+  color: white;
+  border-radius: 10px;
+  width: 120px;
+  height: 50px;
+  border-color: white;
 }
 
 /* ************Expertsingleview STYLING*********** */
@@ -299,4 +314,123 @@ img.avatar {
   border-left: 3px solid #E2E8F0;
   height: 30px;
   padding-bottom: -550px;
+}
+
+
+
+/* ******************Expertsingleedit styling************** */
+
+.buton button {
+  background-color: #878787;
+  color: white;
+  border-radius: 10px;
+  width: 150px;
+  height: 50px;
+  border-color: white;
+}
+
+.savebtn button {
+  background-color: #5A4A42;
+  color: white;
+  border-radius: 10px;
+  width: 150px;
+  height: 50px;
+  border-color: white;
+}
+
+
+/* ***************selectuser styling********** */
+
+.user h6 {
+  font-weight: bold;
+}
+
+.Createbtn button {
+  background-color: #878787;
+  color: white;
+  border-radius: 10px;
+  width: 150px;
+  height: 50px;
+  border-color: white;
+}
+
+/* *****************Creatingvernish Styling************* */
+
+
+.Layer h6 {
+  font-weight: bold;
+  padding-left: 20px;
+}
+
+.detil p {
+  background-color: #F4E9E4;
+  font-size: 18px;
+  height: 50px;
+  padding: 12px;
+}
+
+.trash img {
+  width: 30px;
+  height: 70px;
+  padding-top: 40px;
+}
+
+.previ button {
+  background-color: #878787;
+  color: white;
+  border-radius: 10px;
+  width: 150px;
+  height: 50px;
+  border-color: white;
+}
+
+.finibtn button {
+  background-color: #5A4A42;
+  color: white;
+  border-radius: 10px;
+  width: 150px;
+  height: 50px;
+  border-color: white;
+}
+
+.add button {
+  background-color: #5A4A42;
+  color: white;
+  border-radius: 10px;
+  width: 180px;
+  height: 40px;
+  border-color: white;
+}
+
+/* ***********Createevent Styling*********** */
+.vech h6 {
+  font-weight: bold;
+  padding-left: 20px;
+}
+
+.evdt p {
+  background-color: #F4E9E4;
+  font-size: 18px;
+  height: 50px;
+  padding: 12px;
+}
+.nextbtn button {
+  background-color: #5A4A42;
+  color: white;
+  border-radius: 10px;
+  width: 150px;
+  height: 50px;
+  border-color: white;
+}
+
+/* *********Creatingtries styling ******** */
+.tries h6{
+  font-weight: bold;
+  padding-left: 20px;
+}
+.car p {
+  background-color: #F4E9E4;
+  font-size: 18px;
+  height: 50px;
+  padding: 12px;
 }

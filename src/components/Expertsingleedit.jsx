@@ -1,4 +1,10 @@
-import React from 'react';
+import React from "react";
+import Salutioninput from '../components/Salutioninput';
+import Titleinput from '../components/Titleinput';
+import Firstinput from '../components/Firstinput';
+import Lastinput from '../components/Lastinput';
+import Birthinput from '../components/Birthinput';
+import Passinput from '../components/Passinput';
 import Smallinput from '../components/Smallinput';
 import Smallinput2 from '../components/Smallinput2';
 import Smallinput3 from '../components/Smallinput3';
@@ -10,96 +16,122 @@ import Countryinput from '../components/Countryinput';
 import Cityinput from '../components/Cityinput';
 import Streetinput from '../components/Streetinput';
 import Mailinput from '../components/Mailinput';
-import Mobileinput from '../components/Mobileinput';
 import Save from '../images/Save.png';
 
 
-
-
-const Creatingcompany = () => {
+const Expertsingleedit = () => {
     return (
         <>
 
-            <hr />
 
-            <div className='creating'>
-                <p>Creating Company</p>
-            </div>
+            <h6 style={{marginTop:"180px"}}>Expert Name</h6>
 
-            <hr />
 
-            <div className='company'>
-                <p>Create Company</p>
-            </div>
+            <div className="General mt-5">
 
-            <div className='generl'>
                 <p>General</p>
+
             </div>
 
+            <div className="row mt-5">
 
+                <div className="col-lg-6">
 
-            <div className='row mt-5'>
+                    <div className="Salution">
 
-                <div className='col-lg-6'>
+                        <p style={{ fontWeight: "bold", fontSize: "12px" }}>Salution</p>
 
-                    <div className='company'>
-
-                        <p style={{ fontWeight: "bold", fontSize: "12px" }}>Company Name</p>
-
-                        <Smallinput />
+                        <Salutioninput />
 
                     </div>
                 </div>
 
-                <div className='col-lg-6'>
+                <div className="col-lg-6">
 
-                    <div className='managing'>
+                    <div className="Title">
 
-                        <p style={{ fontWeight: "bold", fontSize: "12px" }}>Managing Director</p>
+                        <p style={{ fontWeight: "bold", fontSize: "12px" }}>Title</p>
 
-                        <Smallinput2 />
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div className='row mt-5'>
-
-                <div className='col-lg-6'>
-
-                    <div className='contact'>
-
-                        <p style={{ fontWeight: "bold", fontSize: "12px" }}>Contact person</p>
-
-                        <Smallinput />
-
-                    </div>
-                </div>
-
-                <div className='col-lg-6'>
-
-                    <div className='Commerical'>
-
-                        <p style={{ fontWeight: "bold", fontSize: "12px" }}>Commerical Register</p>
-
-                        <Smallinput3 />
-
-                    </div>
-                </div>
-
-                <div className='col-lg-6 mt-5'>
-
-                    <div className='Tax'>
-
-                        <p style={{ fontWeight: "bold", fontSize: "12px" }}>Tax number</p>
-
-                        <Smallinput4 />
+                        <Titleinput />
 
                     </div>
                 </div>
             </div>
 
+
+            <div className="row mt-5">
+
+                <div className="col-lg-6">
+
+                    <div className="First Name">
+
+                        <p style={{ fontWeight: "bold", fontSize: "12px" }}>First Name</p>
+
+                        <Firstinput />
+
+                    </div>
+                </div>
+
+                <div className="col-lg-6">
+
+                    <div className="Last Name">
+
+                        <p style={{ fontWeight: "bold", fontSize: "12px" }}>Last Name</p>
+
+                        <Lastinput />
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div className="row mt-5">
+
+                <div className="col-lg-6">
+
+                    <div className="Birthday">
+
+                        <p style={{ fontWeight: "bold", fontSize: "12px" }}>Birthday</p>
+
+                        <Birthinput />
+
+                    </div>
+                </div>
+
+                <div className="col-lg-6">
+
+                    <div className="Password">
+
+                        <p style={{ fontWeight: "bold", fontSize: "12px" }}>Password</p>
+
+                        <Passinput />
+
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <div className="STATUS d-flex">
+                <p>Status : </p>
+
+                <div class="form-check form-check-inline ps-5">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
+                    <label class="form-check-label" for="inlineRadio1">Active</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
+                    <label class="form-check-label" for="inlineRadio2">Not Active</label>
+                </div>
+            </div>
+
+            <br />
+            <br />
 
             <div className='Contactcent mt-5'>
                 <p>Contact</p>
@@ -150,9 +182,9 @@ const Creatingcompany = () => {
 
                     <div className='Homepage'>
 
-                        <p style={{ fontWeight: "bold", fontSize: "12px" }}>Mobile</p>
+                        <p style={{ fontWeight: "bold", fontSize: "12px" }}>Homepage</p>
 
-                        <Mobileinput />
+                        <Homeinput />
 
                     </div>
                 </div>
@@ -213,7 +245,9 @@ const Creatingcompany = () => {
 
                     </div>
                 </div>
+
             </div>
+
 
             <div className="row mt-5">
 
@@ -227,20 +261,18 @@ const Creatingcompany = () => {
                 </div>
 
                 <div className="col-lg-4">
-
+                   
                     <div className="savebtn">
-
+                   
                         <button> <img src={Save} /> Save </button>
-
+                   
                     </div>
                 </div>
             </div>
-
 
 
         </>
     );
 };
 
-
-export default Creatingcompany;
+export default Expertsingleedit;

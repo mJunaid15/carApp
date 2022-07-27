@@ -1,22 +1,22 @@
 import React from 'react';
-import Smallinput from '../components/Smallinput';
-import Smallinput2 from '../components/Smallinput2';
-import Smallinput3 from '../components/Smallinput3';
-import Smallinput4 from '../components/Smallinput4';
-import Emailinput from '../components/Emailinput';
-import Homeinput from '../components/Homeinput';
-import Phoneinput from '../components/Phoneinput';
-import Countryinput from '../components/Countryinput';
-import Cityinput from '../components/Cityinput';
-import Streetinput from '../components/Streetinput';
-import Mailinput from '../components/Mailinput';
-import Mobileinput from '../components/Mobileinput';
+import Smallinput from './Smallinput';
+import Smallinput2 from './Smallinput2';
+import Smallinput3 from './Smallinput3';
+import Smallinput4 from './Smallinput4';
+import Emailinput from './Emailinput';
+import Homeinput from './Homeinput';
+import Phoneinput from './Phoneinput';
+import Couninput from './Couninput';
+import Zipinput from './Zipinput';
+import Streetinput from './Streetinput';
+import Mailinput from './Mailinput';
+import Mobileinput from './Mobileinput';
 import Save from '../images/Save.png';
 
 
 
 
-const Creatingcompany = () => {
+const Singlevicompany = () => {
     return (
         <>
 
@@ -173,7 +173,7 @@ const Creatingcompany = () => {
 
                         <p style={{ fontWeight: "bold", fontSize: "12px" }}>Country</p>
 
-                        <Countryinput />
+                        <Couninput />
 
                     </div>
                 </div>
@@ -184,7 +184,7 @@ const Creatingcompany = () => {
 
                         <p style={{ fontWeight: "bold", fontSize: "12px" }}>ZIP / City</p>
 
-                        <Cityinput />
+                        <Zipinput />
 
                     </div>
                 </div>
@@ -243,4 +243,4 @@ const Creatingcompany = () => {
 };
 
 
-export default Creatingcompany;
+export default Singlevicompany;

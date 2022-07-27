@@ -9,6 +9,16 @@ import Creatingcompany from './components/Creatingcompany';
 import Expertsingleview from './components/Expertsingleview';
 import Singleview from './components/Singleview';
 import Bellform from './components/Bellform';
+import Expertsingleedit from './components/Expertsingleedit';
+import Selectuser from './components/Selectuser';
+import Singleviewcreate from './components/Singleviewcreate';
+import Selectuserexport from './components/Selectuserexport';
+import Selectuserclerk from './components/Selectuserclerk';
+import Selectusercompanyadmin from './components/Selectusercompanyadmin';
+import Creatingvarnish from './components/Vehicles/Creatingvarnish';
+import Singlevicompany from './components/Singlevicompany';
+import Createevent from './components/Vehicles/Createevent';
+import Creatingtries from './components/Vehicles/Creatingtries';
 
 function App() {
   return (
@@ -20,7 +30,18 @@ function App() {
       <Creatingcompany />
       <Expertsingleview />
       <Singleview />
+      <Singleviewcreate />
+      <Singlevicompany />
       <Bellform />
+      <Expertsingleedit />
+      <Selectuser />
+      <Selectuserexport />
+      <Selectuserclerk />
+      <Selectusercompanyadmin />
+      <Creatingvarnish />
+      <Createevent />
+      <Creatingtries />
+
 
     </>
   );
