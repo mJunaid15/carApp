@@ -3,31 +3,31 @@ import React, { useState } from "react";
 import { Button } from "@mui/material";
 import Company from "./Company";
 import { Toolbar } from "@mui/material";
+import MainDashboard from "./MainDashboard";
 
-export const Createcompany = () => {
+export const Myprofile = () => {
   const [companyCheck, setCompanyCheck] = useState(false);
 
   return (
     <>
       {companyCheck ? (
-        <Company />
+        <MainDashboard />
       ) : (
         <div>
           <Toolbar />
           <div className="flex justify-between">
-            <h1 className="text-base text-bold mb-0 ml-5">Create Company</h1>
+            {/* <h1 className="text-base text-bold mb-0 ml-5">My Profile</h1> */}
             <div className="mr-5">
               <Button
                 onClick={() => setCompanyCheck(!companyCheck)}
                 style={{
-                  backgroundColor: "  #5A4A42",
-                  color: "#fff",
+                  color: "#000",
                   padding: "6px 22px",
                   diplay: "flex",
                   alignItems: "center",
                 }}
               >
-                COMPANIES
+                Back
               </Button>
             </div>
           </div>
@@ -35,7 +35,7 @@ export const Createcompany = () => {
           <hr />
 
           <div className="company">
-            <p>Create Company</p>
+            <p>My Profile</p>
           </div>
 
           <div className="generl">

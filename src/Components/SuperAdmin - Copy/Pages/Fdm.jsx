@@ -11,11 +11,8 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import SelectPopover from "../SelectPopover";
 import { CreateBtn } from "../../Buttons";
-import carTable from '../../img/carTable.png'
-import { Createvehicle } from "./Createvehicle";
-export default function Vehicles() {
-  const [compCheck, setCompCheck] = React.useState(false);
 
+export default function Fdm() {
   function createData(name, calories, fat, carbs, protein) {
     return { name, calories, fat, carbs, protein };
   }
@@ -29,21 +26,21 @@ export default function Vehicles() {
   ];
 
   return (
-
-    <>
-     {compCheck ? (
-        <Createvehicle />
-      ) : (
-        <>
     <div style={{ height: 400, width: "100%" }}>
       <Toolbar />
       <div className='flex justify-between'>
 
-          <h1 className='text-base text-bold mb-0 ml-5'> List Of Vehicles</h1>
+          <h1 className='text-base text-bold mb-0 ml-5'>Files</h1>
           <div className='mr-5'>
-          <CreateBtn name='Create ' icon={<AddIcon/>}   onClick={() => setCompCheck(!compCheck)}/>
+          <CreateBtn name='Create New' icon={<AddIcon/>} />
           
           </div>
+
+        </div>
+
+        <div className="p-3  mt-2" style={{background: '#F4E9E4',boxShadow: 'inset 0px -1px 0px #F0F0F0'
+}}>
+          <h1 className='text-base  mb-0 ml-5'>Files</h1>
 
         </div>
 
@@ -51,88 +48,107 @@ export default function Vehicles() {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell> License plate </TableCell>
-              <TableCell align="center">Contract</TableCell>
-              <TableCell align="center">Address</TableCell>
+              <TableCell>Expert name</TableCell>
+              <TableCell>License plate</TableCell>
+
+              <TableCell>vehicles Owner</TableCell>
+              <TableCell align="center">Order Date</TableCell>
+              <TableCell align="center"> Inspection date</TableCell>
               <TableCell align="center">Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             <TableRow>
               <TableCell component="th" scope="row">
-                <p className="mb-0 flex items-center"> <img src={carTable} alt="car"/> License plate</p>
-                 
+                <p className="mb-0"> Name</p>
+                <p className="mb-0 text-slate-400">Clerk Name</p>
               </TableCell>
-              <TableCell align="center"> +92 3123456789</TableCell>
-              <TableCell align="center">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry.
+              <TableCell align="center">ABC 345</TableCell>
+              <TableCell align="center">Owner Name
+              </TableCell>
+              <TableCell align="center">22/May/2022
+              </TableCell>
+              <TableCell align="center">22/May/2022
               </TableCell>
               <TableCell align="center  ">
                 
                 <SelectPopover />
               </TableCell>
             </TableRow>
+          
+
             <TableRow>
               <TableCell component="th" scope="row">
-                <p className="mb-0 flex items-center"> <img src={carTable} alt="car"/> License plate</p>
-                 
+                <p className="mb-0"> Name</p>
+                <p className="mb-0 text-slate-400">Clerk Name</p>
               </TableCell>
-              <TableCell align="center"> +92 3123456789</TableCell>
-              <TableCell align="center">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry.
+              <TableCell align="center">ABC 345</TableCell>
+              <TableCell align="center">Owner Name
+              </TableCell>
+              <TableCell align="center">22/May/2022
+              </TableCell>
+              <TableCell align="center">22/May/2022
               </TableCell>
               <TableCell align="center  ">
                 
                 <SelectPopover />
               </TableCell>
             </TableRow>
+
             <TableRow>
               <TableCell component="th" scope="row">
-                <p className="mb-0 flex items-center"> <img src={carTable} alt="car"/> License plate</p>
-                 
+                <p className="mb-0"> Name</p>
+                <p className="mb-0 text-slate-400">Clerk Name</p>
               </TableCell>
-              <TableCell align="center"> +92 3123456789</TableCell>
-              <TableCell align="center">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry.
+              <TableCell align="center">ABC 345</TableCell>
+              <TableCell align="center">Owner Name
+              </TableCell>
+              <TableCell align="center">22/May/2022
+              </TableCell>
+              <TableCell align="center">22/May/2022
               </TableCell>
               <TableCell align="center  ">
                 
                 <SelectPopover />
               </TableCell>
             </TableRow>
+
             <TableRow>
               <TableCell component="th" scope="row">
-                <p className="mb-0 flex items-center"> <img src={carTable} alt="car"/> License plate</p>
-                 
+                <p className="mb-0"> Name</p>
+                <p className="mb-0 text-slate-400">Clerk Name</p>
               </TableCell>
-              <TableCell align="center"> +92 3123456789</TableCell>
-              <TableCell align="center">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry.
+              <TableCell align="center">ABC 345</TableCell>
+              <TableCell align="center">Owner Name
+              </TableCell>
+              <TableCell align="center">22/May/2022
+              </TableCell>
+              <TableCell align="center">22/May/2022
               </TableCell>
               <TableCell align="center  ">
                 
                 <SelectPopover />
               </TableCell>
             </TableRow>
+
             <TableRow>
               <TableCell component="th" scope="row">
-                <p className="mb-0 flex items-center"> <img src={carTable} alt="car"/> License plate</p>
-                 
+                <p className="mb-0"> Name</p>
+                <p className="mb-0 text-slate-400">Clerk Name</p>
               </TableCell>
-              <TableCell align="center"> +92 3123456789</TableCell>
-              <TableCell align="center">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry.
+              <TableCell align="center">ABC 345</TableCell>
+              <TableCell align="center">Owner Name
+              </TableCell>
+              <TableCell align="center">22/May/2022
+              </TableCell>
+              <TableCell align="center">22/May/2022
               </TableCell>
               <TableCell align="center  ">
                 
                 <SelectPopover />
               </TableCell>
             </TableRow>
+            
             
 
             
@@ -143,8 +159,5 @@ export default function Vehicles() {
       <Pagination count={10} variant="outlined" shape="rounded" />
       </div>
     </div>
-    </>
-      )}
-    </>
   );
 }

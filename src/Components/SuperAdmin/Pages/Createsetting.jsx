@@ -3,14 +3,15 @@ import React, { useState } from "react";
 import { Button } from "@mui/material";
 import Company from "./Company";
 import { Toolbar } from "@mui/material";
+import Setting from "./Setting";
 
-export const Createcompany = () => {
+export const Createsetting = () => {
   const [companyCheck, setCompanyCheck] = useState(false);
 
   return (
     <>
       {companyCheck ? (
-        <Company />
+        <Setting />
       ) : (
         <div>
           <Toolbar />
@@ -27,7 +28,7 @@ export const Createcompany = () => {
                   alignItems: "center",
                 }}
               >
-                COMPANIES
+                Setting
               </Button>
             </div>
           </div>
@@ -35,7 +36,7 @@ export const Createcompany = () => {
           <hr />
 
           <div className="company">
-            <p>Create Company</p>
+            <p>Create Setting</p>
           </div>
 
           <div className="generl">
