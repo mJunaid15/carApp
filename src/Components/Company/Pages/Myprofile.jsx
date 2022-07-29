@@ -46,63 +46,29 @@ export const Myprofile = () => {
             <div className="col-lg-6">
               <div className="company">
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Company Name
+                Email
                 </p>
 
-                <TextField fullWidth label="Company name" id="0317258963" />
+                <TextField fullWidth label="Email" id="0317258963" />
               </div>
             </div>
 
             <div className="col-lg-6">
               <div className="managing">
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Managing Director
+                Company Admin Name
                 </p>
 
                 <TextField
                   fullWidth
-                  label="Enter your position"
+                  label="Company Admin Name"
                   id="0317258963"
                 />
               </div>
             </div>
           </div>
 
-          <div className="row mt-5">
-            <div className="col-lg-6">
-              <div className="contact">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Contact person
-                </p>
-
-                <TextField fullWidth label="Enter your name" id="0317258963" />
-              </div>
-            </div>
-
-            <div className="col-lg-6">
-              <div className="Commerical">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Commerical Register
-                </p>
-
-                <TextField fullWidth label="Enter your tax" id="0317258963" />
-              </div>
-            </div>
-
-            <div className="col-lg-6 mt-5">
-              <div className="Tax">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Tax number
-                </p>
-
-                <TextField
-                  fullWidth
-                  label="Enter your company"
-                  id="0317258963"
-                />
-              </div>
-            </div>
-          </div>
+      
 
           <div className="Contactcent mt-5">
             <p>Contact</p>
@@ -119,7 +85,7 @@ export const Myprofile = () => {
 
             <div className="col-lg-6">
               <div className="Homepage">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Homepage</p>
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Website</p>
 
                 <TextField fullWidth label="http:/" id="0317258963" />
               </div>

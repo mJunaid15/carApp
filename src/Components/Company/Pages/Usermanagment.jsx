@@ -52,8 +52,8 @@ export default function Usermanagment() {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Title</TableCell>
-              <TableCell align="center">Contract</TableCell>
+              <TableCell>Expert Name</TableCell>
+              <TableCell align="center">Contact</TableCell>
               <TableCell align="center">Address</TableCell>
               <TableCell align="center">Action</TableCell>
             </TableRow>

@@ -73,6 +73,14 @@ const Login = () => {
                   >
                     Login
                   </button>
+                  <button
+                    class="mt-4"
+                    onClick={() => {
+                        navigate(`/dashboard/company`);
+                    }}
+                  >
+                    Company routes
+                  </button>
               </div>
             </div>
           </div>
