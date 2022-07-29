@@ -52,7 +52,7 @@ export default function Vehicles() {
           <TableHead>
             <TableRow>
               <TableCell> License plate </TableCell>
-              <TableCell align="center">Contract</TableCell>
+              <TableCell align="center">Contact</TableCell>
               <TableCell align="center">Address</TableCell>
               <TableCell align="center">Action</TableCell>
             </TableRow>

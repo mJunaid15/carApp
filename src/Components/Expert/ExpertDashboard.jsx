@@ -36,7 +36,7 @@ import { Createcompany } from "./Pages/Createcompany";
 
 const drawerWidth = 240;
 
-function Dashbaord(props) {
+function ExpertDashboard(props) {
   const navigate = useNavigate();
 
   const { window } = props;
@@ -129,40 +129,28 @@ function Dashbaord(props) {
           }}
         >
           <Tab
-            label="Dashbaord"
+            label="Dashboard"
             {...a11yProps(0)}
             style={{ display: "flex", alignItems: "start" }}
           />
           <Tab
-            label="Companies"
+            label="Vehicles Management"
             {...a11yProps(1)}
             style={{ display: "flex", alignItems: "start" }}
           />
-          <Tab
-            label="User Management"
-            {...a11yProps(2)}
-            style={{ display: "flex", alignItems: "start" }}
-          />
-          <Tab
-            label="Vehicles Management"
-            {...a11yProps(3)}
-            style={{ display: "flex", alignItems: "start" }}
-          />
+          
+          
           <Tab
             label="File/dossier Management"
             {...a11yProps(4)}
             style={{ display: "flex", alignItems: "start" }}
           />
           <Tab
-            label="Address Management"
+            label="Create Mandatory"
             {...a11yProps(5)}
             style={{ display: "flex", alignItems: "start" }}
           />
-          <Tab
-            label="Settings"
-            {...a11yProps(6)}
-            style={{ display: "flex", alignItems: "start" }}
-          />
+         
         </Tabs>
       </div>
     </div>
@@ -195,33 +183,33 @@ function Dashbaord(props) {
                     Dashboard
                   </Link>
 
-                  {valueTab === 1 ? (
+                  {/* {valueTab === 1 ? (
                     <Typography color="text.primary">Company</Typography>
-                  ) : null}
-                  {valueTab === 2 ? (
+                  ) : null} */}
+                  {/* {valueTab === 2 ? (
                     <Typography color="text.primary">
                       User management
                     </Typography>
-                  ) : null}
-                  {valueTab === 3 ? (
+                  ) : null} */}
+                  {valueTab === 1 ? (
                     <Typography color="text.primary">
                       Vehicles Management
                     </Typography>
                   ) : null}
-                  {valueTab === 4 ? (
+                  {valueTab === 2 ? (
                     <Typography color="text.primary">
                       File/dossier Management{" "}
                     </Typography>
                   ) : null}
-                  {valueTab === 5 ? (
+                  {valueTab === 3 ? (
                     <Typography color="text.primary">
                       {" "}
-                      Address Management{" "}
+                      Create Mandatory{" "}
                     </Typography>
                   ) : null}
-                  {valueTab === 6 ? (
+                  {/* {valueTab === 6 ? (
                     <Typography color="text.primary"> Settings </Typography>
-                  ) : null}
+                  ) : null} */}
                 </Breadcrumbs>
               </div>
             </div>
@@ -317,15 +305,15 @@ function Dashbaord(props) {
           <MainDashboard />
         </TabPanel>
         <TabPanel value={valueTab} index={1}>
-         <Company />
+         <Vehicles />
         </TabPanel>
         <TabPanel value={valueTab} index={2}>
-          <Usermanagment />
+          <Fdm />
         </TabPanel>
         <TabPanel value={valueTab} index={3}>
-          <Vehicles />
+          < Company />
         </TabPanel>
-        <TabPanel value={valueTab} index={4}>
+        {/* <TabPanel value={valueTab} index={4}>
           <Fdm />
         </TabPanel>
         <TabPanel value={valueTab} index={5}>
@@ -333,13 +321,13 @@ function Dashbaord(props) {
         </TabPanel>
         <TabPanel value={valueTab} index={6}>
           <Setting />
-        </TabPanel>
+        </TabPanel> */}
       </div>
     </Box>
   );
 }
 
-Dashbaord.propTypes = {
+ExpertDashboard.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
@@ -347,4 +335,4 @@ Dashbaord.propTypes = {
   window: PropTypes.func,
 };
 
-export default Dashbaord;
+export default ExpertDashboard;
