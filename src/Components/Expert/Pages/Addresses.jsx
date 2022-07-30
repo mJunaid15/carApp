@@ -11,8 +11,11 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import SelectPopover from "../SelectPopover";
 import { CreateBtn } from "../../Buttons";
+import { CreateAddress } from "./CreateAddress";
 
 export default function Addresses() {
+  const [addCheck, setAddCheck] = React.useState(false);
+
   function createData(name, calories, fat, carbs, protein) {
     return { name, calories, fat, carbs, protein };
   }
@@ -26,13 +29,18 @@ export default function Addresses() {
   ];
 
   return (
-    <div style={{ height: 400, width: "100%" }}>
+    <>
+    {
+      addCheck ? (
+        <CreateAddress />
+      ) : (
+<div style={{ height: 400, width: "100%" }} className="mt-0">
       <Toolbar />
-      <div className='flex justify-between'>
+      <div className='flex justify-between mt-0'>
 
           <h1 className='text-base text-bold mb-0 ml-5'>List of Address</h1>
           <div className='mr-5'>
-          <CreateBtn name='Create ' icon={<AddIcon/>} />
+          <CreateBtn name='Create ' icon={<AddIcon/>} onClick={() => setAddCheck(!addCheck)}/>
           
           </div>
 
@@ -134,5 +142,9 @@ export default function Addresses() {
       <Pagination count={10} variant="outlined" shape="rounded" />
       </div>
     </div>
+      )
+    }
+    </>
+    
   );
 }

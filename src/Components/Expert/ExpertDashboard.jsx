@@ -33,6 +33,8 @@ import Usermanagment from "./Pages/Usermanagment";
 import Fdm from "./Pages/Fdm";
 import Setting from "./Pages/Setting";
 import { Createcompany } from "./Pages/Createcompany";
+import { Mandatory } from "./Pages/Mandatory";
+
 
 const drawerWidth = 240;
 
@@ -311,7 +313,7 @@ function ExpertDashboard(props) {
           <Fdm />
         </TabPanel>
         <TabPanel value={valueTab} index={3}>
-          < Company />
+          < Mandatory />
         </TabPanel>
         {/* <TabPanel value={valueTab} index={4}>
           <Fdm />

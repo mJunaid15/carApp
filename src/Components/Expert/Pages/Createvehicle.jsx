@@ -18,6 +18,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import { CreateBtn } from "../../Buttons";
+import Tires from '../../img/Tires.png'
+
 
 
 function TabPanel(props) {
@@ -107,6 +109,7 @@ export const Createvehicle = () => {
         index={value}
         onChangeIndex={handleChangeIndex}
       >
+        {/* Create Vehicles */}
         <TabPanel value={value} index={0} dir={theme.direction}>
 
           <div>
@@ -824,9 +827,13 @@ export const Createvehicle = () => {
         < div className="row mt-5">
             <div className="col-lg-4">
               <div className="company">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+              <p >
                   Standard Name
                 </p>
+                <p style={{fontSize: '14px'}}>
+                33 of 38 seletced
+                </p>
+                
 
                 <TextField fullWidth label="Company name" id="0317258963" />
               </div>
@@ -834,8 +841,11 @@ export const Createvehicle = () => {
 
             <div className="col-lg-4">
               <div className="managing">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                 Extras
+              <p >
+                  Extras
+                </p>
+                <p style={{fontSize: '14px'}}>
+                33 of 38 seletced
                 </p>
 
                 <TextField
@@ -849,8 +859,11 @@ export const Createvehicle = () => {
 
             <div className="col-lg-4">
               <div className="managing">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                 Extras
+              <p >
+                  Auxillary
+                </p>
+                <p style={{fontSize: '14px'}}>
+                33 of 38 seletced
                 </p>
 
                 <TextField
@@ -858,6 +871,8 @@ export const Createvehicle = () => {
                   label="Enter your position"
                   id="0317258963"
                 />
+
+            
               </div>
             </div>
           </div>
@@ -894,8 +909,190 @@ export const Createvehicle = () => {
           
           </div>
         </TabPanel>
+
+        {/* Tries */}
         <TabPanel value={value} index={2} dir={theme.direction}>
-          Item Three
+        <div>
+          <hr />
+        <div className="flex justify-between">
+            <h1 className="text-base text-bold mb-0 ml-5">Tires</h1>
+            
+            
+          </div>
+
+          <hr />
+
+          
+          
+          <div className="generl">
+            <p>Cars Tires Data</p>
+          </div>
+          <br />
+
+          <img src={Tires} alt="Tires" />
+
+        
+
+
+        < div className="row mt-5">
+            <div className="col-lg-9">
+              <div className="company">
+             
+                <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Company Name
+                </p>
+                
+
+                <TextField fullWidth label="Company name" id="0317258963" />
+              </div>
+            </div>
+
+            <div className="col-lg-3  flex justify-center items-end">
+              <div className="managing ">
+             
+              <div className=" ">
+              <Button
+                onClick={() => setCompanyCheck(!companyCheck)}
+                style={{
+                  backgroundColor: "  #5A4A42",
+                  color: "#fff",
+                  padding: "6px 22px",
+                  diplay: "flex",
+                  alignItems: "center",
+                  height: '55px'
+                }}
+              >
+                
+                Add New Field +
+              </Button>
+              </div>
+                
+              </div>
+            </div>
+
+
+         
+          </div>
+
+          < div className="row mt-5">
+            <div className="col-lg-4">
+              <div className="company">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Company Name
+                </p>
+                
+
+                <TextField fullWidth label="Company name" id="0317258963" />
+              </div>
+            </div>
+
+            <div className="col-lg-4">
+              <div className="managing">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Company Name
+                </p>
+
+                <TextField
+                  fullWidth
+                  label="Enter your position"
+                  id="0317258963"
+                />
+              </div>
+            </div>
+
+
+            <div className="col-lg-4">
+              <div className="managing">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Company Name
+                </p>
+                <TextField
+                  fullWidth
+                  label="Enter your position"
+                  id="0317258963"
+                />
+
+            
+              </div>
+            </div>
+          </div>
+         
+
+          < div className="row mt-5">
+            <div className="col-lg-4">
+              <div className="company">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Company Name
+                </p>
+                
+
+                <TextField fullWidth label="Company name" id="0317258963" />
+              </div>
+            </div>
+
+            <div className="col-lg-4">
+              <div className="managing">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Company Name
+                </p>
+
+                <TextField
+                  fullWidth
+                  label="Enter your position"
+                  id="0317258963"
+                />
+              </div>
+            </div>
+
+
+            <div className="col-lg-4">
+              <div className="managing">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Company Name
+                </p>
+                <TextField
+                  fullWidth
+                  label="Enter your position"
+                  id="0317258963"
+                />
+
+            
+              </div>
+            </div>
+          </div>
+         
+         
+
+          <div className="flex justify-between my-6">
+            
+                <CreateBtn
+                  onClick={() => setCompanyCheck(!companyCheck)}
+                  style={{
+                    color: "#000",
+                    padding: "6px 22px",
+                    diplay: "flex",
+                    alignItems: "center",
+                  }}
+                  name="Previous"
+                />
+                <div className="mr-5">
+                  <CreateBtn
+                    onClick={() => setCompanyCheck(!companyCheck)}
+                    style={{
+                      color: "#000",
+                      padding: "6px 22px",
+                      diplay: "flex",
+                      alignItems: "center",
+                    }}
+                    name="Next"
+                  />
+                </div>
+              </div>
+
+          
+
+          
+          </div>
         </TabPanel>
         
       </SwipeableViews>
