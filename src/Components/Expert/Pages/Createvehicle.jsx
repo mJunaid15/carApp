@@ -59,6 +59,14 @@ function TabPanel(props) {
 
 export const Createvehicle = () => {
 
+  const [milage, setMilage] = React.useState()
+
+  
+
+  const handleMilage = (e) => {
+    setMilage(e.target.value)
+  }
+
  
     const theme = useTheme();
     const [value, setValue] = React.useState(0);
@@ -184,14 +192,14 @@ export const Createvehicle = () => {
                 </p>
 
                 <div className="row ">
-                  <div className="col-lg-6 pr-0">
+                  <div className="col-lg-6 ">
                   <TextField
                   fullWidth
                   label="example text"
                   id="0317258963"
                 />
                   </div>
-                  <div className="col-lg-6 ps-0 ">
+                  <div className="col-lg-6  ">
                   <TextField
                   fullWidth
                   label="example text"
@@ -324,14 +332,14 @@ export const Createvehicle = () => {
                 </p>
 
                 <div className="row ">
-                  <div className="col-lg-4 pr-0">
+                  <div className="col-lg-4">
                   <TextField
                   fullWidth
                   label="example text"
                   id="0317258963"
                 />
                   </div>
-                  <div className="col-lg-4 ps-0 ">
+                  <div className="col-lg-4  ">
                   <TextField
                   fullWidth
                   label="example text"
@@ -339,7 +347,7 @@ export const Createvehicle = () => {
                 />
                   </div>
 
-                  <div className="col-lg-4 ps-0 ">
+                  <div className="col-lg-4 ">
                   <TextField
                   fullWidth
                   label="example text"
@@ -617,29 +625,26 @@ export const Createvehicle = () => {
                 <span style={{ fontWeight: "bold", fontSize: "14px" }} className='mr-2'>Milege</span>
 
                 
-                <FormControl component="fieldset" >
-      
-      <RadioGroup row aria-label="position" name="position" defaultValue="top">
-        <FormControlLabel
-          value="top"
-          control={<Radio color="primary" />}
-          label={<Typography style={{fontSize: "13px"}}>Kilometer</Typography>}
-          
-          
-        />
-        <FormControlLabel
-          value="start"
-          control={<Radio color='primary' />}
-          label={<Typography style={{fontSize: "13px"}}>Miles</Typography>}
-
-        />
-        
-        <FormControlLabel value="end" control={<Radio color="primary" />} 
-               label={<Typography style={{fontSize: "13px"}}>Hours</Typography>}
- style={{fontSize: "14px"}} />
-
-      </RadioGroup>
-                </FormControl>
+                <form className="flex items-center justify-center ">
+    <div className="radio  mr-2 p-2 ">
+      <label >
+        <input  className="mr-2"type="radio" value="Kilometer" checked={milage === 'Kilometer'} onChange={handleMilage} />  
+        Kilometer
+      </label>
+    </div>
+    <div className="radio mr-2">
+      <label  >
+      <input className="mr-2" type="radio" value="Miles" checked={milage === 'Miles'} onChange={handleMilage} />
+      Miles
+      </label>
+    </div>
+    <div className="radio">
+      <label >
+        <input className="mr-2 ml-2" type="radio" value="Hours" checked={milage === 'Hours'} onChange={handleMilage} />
+        Hours
+      </label>
+    </div>
+                </form>
               </div>
             </div>
 

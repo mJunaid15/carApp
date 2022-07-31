@@ -35,7 +35,7 @@ export default function Addresses() {
         <CreateAddress />
       ) : (
 <div style={{ height: 400, width: "100%" }} className="mt-0">
-      <Toolbar />
+      {/* <Toolbar /> */}
       <div className='flex justify-between mt-0'>
 
           <h1 className='text-base text-bold mb-0 ml-5'>List of Address</h1>

@@ -21,6 +21,7 @@ import { CreateMandVehicle } from "./CreateMandVehicle";
 import VehiclesMand from "./VehiclesMand";
 import Addresses from "./Addresses";
 import { MandDocuments } from "./MandDocuments";
+import { MandTemplate } from "./MandTemplate";
 
 
 
@@ -134,59 +135,7 @@ export const Mandatory = () => {
 
         {/* Templates */}
         <TabPanel value={value} index={3} dir={theme.direction}>
-        <div>
-        <div className="flex justify-between border-slate-400">
-            <h1 className="text-base text-bold mb-0 ml-5">Photos</h1>
-            
-          </div>
-
-          <hr />
-
-          
-          <div className="generl">
-            <p>Upload Photos</p>
-          </div>
-
-          <div className="flex items-center justify-center  p-5">
-          <div className="flex flex-col items-center justify-center  p-5 space-y-1.5 border-gray-300 border-1">
-            <CloudUploadIcon /> 
-            <p className="text-center">Drag and Drop here</p>
-            <p className="text-center">or</p>
-            <CreateBtn name="Upload" />
-
-           
-          </div>
-          </div>
-         
-          
-
-          <div className="flex justify-between my-6">
-            
-                <CreateBtn
-                  onClick={() => setFdmCheck(!fdmCheck)}
-                  style={{
-                    color: "#000",
-                    padding: "6px 22px",
-                    diplay: "flex",
-                    alignItems: "center",
-                  }}
-                  name="Cancel"
-                />
-                <div className="mr-5">
-                  <CreateBtn
-                    onClick={() => setFdmCheck(!fdmCheck)}
-                    style={{
-                      color: "#000",
-                      padding: "6px 22px",
-                      diplay: "flex",
-                      alignItems: "center",
-                    }}
-                    name="Next"
-                  />
-                  
-                </div>
-              </div>
-          </div>
+       <MandTemplate />
         </TabPanel>
 
    

@@ -37,7 +37,7 @@ export default function VehiclesMand() {
       ) : (
         <>
     <div style={{ height: 400, width: "100%" }}>
-      <Toolbar />
+      {/* <Toolbar /> */}
       <div className='flex justify-between'>
 
           <h1 className='text-base text-bold mb-0 ml-5'> List Of Vehicles</h1>
