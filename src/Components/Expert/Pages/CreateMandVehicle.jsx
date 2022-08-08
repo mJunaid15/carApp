@@ -25,7 +25,7 @@ export const CreateMandVehicle = () => {
           <hr />
 
           
-          {/* Identification */}
+         
           <div className="generl">
             <p>All Details</p>
           </div>

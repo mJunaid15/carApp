@@ -3,10 +3,7 @@ import Popover from "@mui/material/Popover";
 import Button from "@mui/material/Button";
 import threedot from "../img/3dot.png";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import delImg from "../img/del.png";
@@ -78,9 +75,7 @@ export default function SelectPopover(props) {
 
        
         >
-          <div className="flex justify-center "
-           className="lg:absolute lg:top-[-40px] lg:left-[40%] flex justify-center"
-           >
+          <div className="lg:absolute lg:top-[-40px] lg:left-[40%] flex justify-center">
             <img src={delImg} alt="del" />   
           </div>
           <div className="bg-white p-4 mt-4">

@@ -17,6 +17,7 @@ import { Createvehicle } from "./Createvehicle";
 import "./QuestionButton.css"
 import kuhl from '../../img/kuhl.png'
 import CloudUploadIcon from  "@mui/icons-material/CloudUpload";
+import { QsAns } from "./QsAns";
 
 
 
@@ -937,6 +938,8 @@ export const CreateFdm = () => {
 
 
               </div>
+
+              {/* <QsAns /> */}
 
        
 
