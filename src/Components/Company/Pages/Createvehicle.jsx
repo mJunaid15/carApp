@@ -11,6 +11,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { CreateBtn } from "../../Buttons";
 
 
 function TabPanel(props) {
@@ -278,6 +279,31 @@ export const Createvehicle = () => {
               </div>
             </div>
           </div>
+
+          <div className="flex justify-between my-6">
+                <CreateBtn
+                  onClick={() => setCompanyCheck(!companyCheck)}
+                  style={{
+                    color: "#000",
+                    padding: "6px 22px",
+                    diplay: "flex",
+                    alignItems: "center",
+                  }}
+                  name="Cancle"
+                />
+                <div className="mr-5">
+                  <CreateBtn
+                    onClick={() => setCompanyCheck(!companyCheck)}
+                    style={{
+                      color: "#000",
+                      padding: "6px 22px",
+                      diplay: "flex",
+                      alignItems: "center",
+                    }}
+                    name="Create"
+                  />
+                </div>
+              </div>
           </div>
 
         </TabPanel>
