@@ -11,6 +11,7 @@ import {Forgotpas as Compforgot} from "./Components/Company/Pages/Forgotpas";
 import {Dashbaord as Company} from "./Components/Company/Dashbaord";
 import { Createcompany } from "./Components/SuperAdmin/Pages/Createcompany";
 import ExpertDashboard from "./Components/Expert/ExpertDashboard";
+import ClerkDashboard from "./Components/Clerk/ClerkDashboard";
 
 function App() {
   return (
@@ -31,6 +32,10 @@ function App() {
       {/* Expert Routes */}
 
       <Route path="/dashboard/expert" element={<ExpertDashboard/>} />
+
+      {/* Expert Routes */}
+
+      <Route path="/dashboard/clerk" element={<ClerkDashboard/>} />
 
 
     </Routes>

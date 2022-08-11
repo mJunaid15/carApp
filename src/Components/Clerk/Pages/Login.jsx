@@ -73,30 +73,6 @@ const Login = () => {
                   >
                     Login
                   </button>
-                  <button
-                    class="m-3"
-                    onClick={() => {
-                        navigate(`/dashboard/company`);
-                    }}
-                  >
-                    Company routes
-                  </button>
-                  <button
-                    class="m-3"
-                    onClick={() => {
-                        navigate(`/dashboard/expert`);
-                    }}
-                  >
-                    Expert routes
-                  </button>
-                  <button
-                    class="m-3"
-                    onClick={() => {
-                        navigate(`/dashboard/clerk`);
-                    }}
-                  >
-                    Clerk routes
-                  </button>
               </div>
             </div>
           </div>
