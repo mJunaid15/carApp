@@ -12,8 +12,13 @@ import {Dashbaord as Company} from "./Components/Company/Dashbaord";
 import { Createcompany } from "./Components/SuperAdmin/Pages/Createcompany";
 import ExpertDashboard from "./Components/Expert/ExpertDashboard";
 import ClerkDashboard from "./Components/Clerk/ClerkDashboard";
+import AuthUser from "./Components/AuthUser";
 
 function App() {
+  // const { getToken } = AuthUser();
+  // if(!getToken()){
+  //   return <Login/>
+  // }
   return (
     <Routes>
       <Route path="/dashboard" element={<Dashbaord/>} />

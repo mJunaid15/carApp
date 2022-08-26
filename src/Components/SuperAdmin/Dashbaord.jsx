@@ -33,11 +33,14 @@ import Usermanagment from "./Pages/Usermanagment";
 import Fdm from "./Pages/Fdm";
 import Setting from "./Pages/Setting";
 import { Createcompany } from "./Pages/Createcompany";
+import AuthUser from "../AuthUser";
+import Login from "./Pages/Login";
 
-const drawerWidth = 240;
+const drawerWidth = 250;
 
 function Dashbaord(props) {
   const navigate = useNavigate();
+  const { getToken, token, logout,user } = AuthUser();
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -48,7 +51,12 @@ function Dashbaord(props) {
   };
   const handleCloseModal = () => {
     setAnchorElModal(null);
-    navigate(`/`);
+  };
+  const logoutUser = () => {
+    // eslint-disable-next-line eqeqeq
+    if (token != undefined) {
+      logout();
+    }
   };
 
   const handleDrawerToggle = () => {
@@ -171,6 +179,9 @@ function Dashbaord(props) {
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
+  if (!getToken()) {
+    return <Login />;
+  }
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -184,9 +195,7 @@ function Dashbaord(props) {
           // borderBottom:'1px solid black'
         }}
       >
-        <div
-          className="border-b flex justify-center lg:justify-between"
-        >
+        <div className="border-b flex justify-center lg:justify-between">
           <div className="hidden lg:block">
             <div className="d-flex align-items-center pl-5 mt-4">
               <div role="presentation" onClick={handleClick}>
@@ -252,7 +261,7 @@ function Dashbaord(props) {
                   onClick={handleClickModal}
                 >
                   <h5 className="text-base text-neutral-800 mb-0 ml-3">
-                    User name <ExpandMoreIcon />
+                    {user.myRole[0]} <ExpandMoreIcon />
                   </h5>
                 </Button>
                 <Menu
@@ -266,7 +275,7 @@ function Dashbaord(props) {
                 >
                   <MenuItem onClick={handleCloseModal}>Profile</MenuItem>
                   <MenuItem onClick={handleCloseModal}>My account</MenuItem>
-                  <MenuItem onClick={handleCloseModal}>Logout</MenuItem>
+                  <MenuItem onClick={logoutUser}>Logout</MenuItem>
                 </Menu>
               </div>
             </Stack>
@@ -317,7 +326,7 @@ function Dashbaord(props) {
           <MainDashboard />
         </TabPanel>
         <TabPanel value={valueTab} index={1}>
-         <Company />
+          <Company />
         </TabPanel>
         <TabPanel value={valueTab} index={2}>
           <Usermanagment />

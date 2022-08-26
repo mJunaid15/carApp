@@ -34,10 +34,13 @@ import Fdm from "./Pages/Fdm";
 import Setting from "./Pages/Setting";
 import { Createcompany } from "./Pages/Createcompany";
 import { Myprofile } from "./Pages/Myprofile";
+import AuthUser from "../AuthUser";
 
-const drawerWidth = 240;
+const drawerWidth = 250;
 
 function Dashbaord(props) {
+  const { getToken, token, logout,user } = AuthUser();
+
   const navigate = useNavigate();
   const [compCheck, setCompCheck] = React.useState(false);
 
@@ -54,6 +57,13 @@ function Dashbaord(props) {
     // navigate(`/dashboard/company`);
   };
 
+
+  const logoutUser = () => {
+    // eslint-disable-next-line eqeqeq
+    if (token != undefined) {
+      logout();
+    }
+  };
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -249,7 +259,7 @@ function Dashbaord(props) {
                   onClick={handleClickModal}
                 >
                   <h5 className="text-base text-neutral-800 mb-0 ml-3">
-                    User name <ExpandMoreIcon />
+                  {user.myRole[0]} <ExpandMoreIcon />
                   </h5>
                 </Button>
                 <Menu
@@ -265,7 +275,7 @@ function Dashbaord(props) {
                 >
                    <MenuItem  onClick={() => setCompCheck(!compCheck)} >View Profile</MenuItem>
                   <MenuItem onClick={handleCloseModal}> Password Change  </MenuItem>
-                  <MenuItem onClick={handleCloseModal}>Logout</MenuItem>
+                  <MenuItem onClick={logoutUser}>Logout</MenuItem>
                 </Menu>
               </div>
             </Stack>
