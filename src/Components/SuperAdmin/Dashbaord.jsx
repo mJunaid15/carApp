@@ -27,8 +27,8 @@ import Addresses from "./Pages/Addresses";
 import BasicPopover from "./BasicPopover";
 import Vehicles from "./Pages/Vehicles";
 import MainDashboard from "./Pages/MainDashboard";
-import { useNavigate } from "react-router-dom";
-import Company from "./Pages/Company";
+import { useNavigate , Link as Routerlink }  from "react-router-dom";
+import {Company} from "./Pages/Company";
 import Usermanagment from "./Pages/Usermanagment";
 import Fdm from "./Pages/Fdm";
 import Setting from "./Pages/Setting";
@@ -145,7 +145,10 @@ function Dashbaord(props) {
             label="Companies"
             {...a11yProps(1)}
             style={{ display: "flex", alignItems: "start" }}
-          />
+            // to='/companylist'
+            // component={Routerlink}
+          >
+            </Tab>
           <Tab
             label="User Management"
             {...a11yProps(2)}
@@ -322,11 +325,12 @@ function Dashbaord(props) {
       </Box>
 
       <div className="w-100">
-        <TabPanel value={valueTab} index={0}>
+        <TabPanel value={valueTab} index={0} >
           <MainDashboard />
         </TabPanel>
-        <TabPanel value={valueTab} index={1}>
-          <Company />
+        <TabPanel value={valueTab} index={1} >
+          <Company  />
+          
         </TabPanel>
         <TabPanel value={valueTab} index={2}>
           <Usermanagment />

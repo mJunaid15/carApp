@@ -1,6 +1,7 @@
 import { Routes, Route, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Addresses from "./Components/SuperAdmin/Pages/Addresses";
+import {Company as Companylist} from "./Components/SuperAdmin/Pages/Company";
 import Vehicles from "./Components/SuperAdmin/Pages/Vehicles";
 import Login from "./Components/SuperAdmin/Pages/Login";
 import Forgotpas from "./Components/SuperAdmin/Pages/Forgotpas";
@@ -23,6 +24,7 @@ function App() {
     <Routes>
       <Route path="/dashboard" element={<Dashbaord/>} />
       <Route path="/address" element={<Addresses />} />
+      <Route path="/companylist" element={<Companylist />} />
       <Route path="/vehicles" element={<Vehicles />} />
       <Route path="/" element={<Login />} />
       <Route path="/forgot" element={<Forgotpas />} />

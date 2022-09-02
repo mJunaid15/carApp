@@ -14,8 +14,11 @@ import SelectPopover from "../SelectPopover";
 import { CreateBtn } from "../../Buttons";
 import { useNavigate } from "react-router-dom";
 import { Createcompany } from "./Createcompany";
+ 
 
 export default function Company() {
+ 
+  
   const [compCheck, setCompCheck] = useState(false);
   const navigate = useNavigate();
 
@@ -60,6 +63,7 @@ export default function Company() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
+
                   <TableRow>
                     <TableCell component="th" scope="row">
                       <p className="mb-0">Company Name</p>

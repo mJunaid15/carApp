@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import React, { useState } from "react";
 import { Button } from "@mui/material";
-import Company from "./Company";
+import {Company} from "./Company";
 import { Toolbar } from "@mui/material";
 
 export const Createcompany = () => {

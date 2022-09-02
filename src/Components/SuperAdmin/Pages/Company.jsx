@@ -14,23 +14,47 @@ import SelectPopover from "../SelectPopover";
 import { CreateBtn } from "../../Buttons";
 import { useNavigate } from "react-router-dom";
 import { Createcompany } from "./Createcompany";
+import AuthUser from "../../AuthUser";
 
-export default function Company() {
+export function Company() {
+  const { http } = AuthUser();
+  const [companylist, setCompanylist] = useState([]);
+  
+  const fetchListCompany =() => {
+    // let response = await http.get("/company");
+    // let user = await response.data.responseMessage;
+    // setCompanylist(user);
+     // api call
+     http
+     .get("/company")
+     .then((res) => {
+        setCompanylist(res.data.responseMessage);
+     })
+     .catch((err) => {
+       console.log('error',err);
+    
+     });
+  };
+
+  console.log(typeof(companylist));
+  console.log(companylist);
+
+  React.useEffect(() => {
+ 
+    fetchListCompany();
+  }, []);
   const [compCheck, setCompCheck] = useState(false);
-  const navigate = useNavigate();
 
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
+  function createData(id, name, email, mobile, city) {
+    return {id, name, email, mobile, city };
   }
 
-  const rows = [
-    createData("Company", 159, 6.0, 24, 4.0),
-    createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-    createData("Eclair", 262, 16.0, 24, 6.0),
-    createData("Cupcake", 305, 3.7, 67, 4.3),
-    createData("Gingerbread", 356, 16.0, 49, 3.9),
-  ];
-
+  
+  // const rows = [];
+  //  companylist.forEach((item, i) => {
+  //    rows.push(createData(item.id, item.name, item.email,item.mobile, item.city));
+  // });
+  // console.log(rows);
   return (
     <>
       {compCheck ? (
@@ -49,6 +73,15 @@ export default function Company() {
                 />
               </div>
             </div>
+            <ul>
+              <p>hello</p>
+           
+              {/* {companylist?.map((row,index) => {
+                return(
+                <li key={index}>{row.name}</li>
+                )
+              })} */}
+            </ul>
             <TableContainer component={Paper}>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
@@ -60,76 +93,22 @@ export default function Company() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  <TableRow>
-                    <TableCell component="th" scope="row">
-                      <p className="mb-0">Company Name</p>
-                      <p className="mb-0 text-slate-400">samantha@mail.com</p>
-                    </TableCell>
-                    <TableCell align="center"> +92 3123456789</TableCell>
-                    <TableCell align="center">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry.
-                    </TableCell>
-                    <TableCell align="center  ">
-                      <SelectPopover />
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell component="th" scope="row">
-                      <p className="mb-0">Company Name</p>
-                      <p className="mb-0 text-slate-400">samantha@mail.com</p>
-                    </TableCell>
-                    <TableCell align="center"> +92 3123456789</TableCell>
-                    <TableCell align="center">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry.
-                    </TableCell>
-                    <TableCell align="center  ">
-                      <SelectPopover />
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell component="th" scope="row">
-                      <p className="mb-0">Company Name</p>
-                      <p className="mb-0 text-slate-400">samantha@mail.com</p>
-                    </TableCell>
-                    <TableCell align="center"> +92 3123456789</TableCell>
-                    <TableCell align="center">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry.
-                    </TableCell>
-                    <TableCell align="center  ">
-                      <SelectPopover />
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell component="th" scope="row">
-                      <p className="mb-0">Company Name</p>
-                      <p className="mb-0 text-slate-400">samantha@mail.com</p>
-                    </TableCell>
-                    <TableCell align="center"> +92 3123456789</TableCell>
-                    <TableCell align="center">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry.
-                    </TableCell>
-                    <TableCell align="center  ">
-                      <SelectPopover />
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell component="th" scope="row">
-                      <p className="mb-0">Company Name</p>
-                      <p className="mb-0 text-slate-400">samantha@mail.com</p>
-                    </TableCell>
-                    <TableCell align="center"> +92 3123456789</TableCell>
-                    <TableCell align="center">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry.
-                    </TableCell>
-                    <TableCell align="center  ">
-                      <SelectPopover />
-                    </TableCell>
-                  </TableRow>
+                  {/* {companylist.map((row) => {
+                    <TableRow key={row.id}
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+
+                    >
+                      <TableCell component="th" scope="row">
+                        <p className="mb-0">{row.name}</p>
+                        <p className="mb-0 text-slate-400">{row.email}</p>
+                      </TableCell>
+                      <TableCell align="center">{row.mobile}</TableCell>
+                      <TableCell align="center">{row.city}</TableCell>
+                      <TableCell align="center  ">
+                        <SelectPopover />
+                      </TableCell>
+                    </TableRow>;
+                  })} */}
                 </TableBody>
               </Table>
             </TableContainer>
