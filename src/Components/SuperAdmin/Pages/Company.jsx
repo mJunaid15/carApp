@@ -15,7 +15,6 @@ import { CreateBtn } from "../../Buttons";
 import { useNavigate } from "react-router-dom";
 import { Createcompany } from "./Createcompany";
 import AuthUser from "../../AuthUser";
-import { EditCompany } from "./EditCompany";
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 import axios from 'axios'
@@ -406,7 +405,7 @@ setCompanylist(res.data.responseMessage)
                             <TableCell align="center">{data.mobile}</TableCell>
                             <TableCell align="center">{data.city}</TableCell>
                             <TableCell align="center  ">
-                              <SelectPopover data={data} setState={setCompanylist} setEditIndex={setEditIndex} index={index} state={companylist} setEditCompany={setEditCompany} />
+                              <SelectPopover data={data} setState={setCompanylist} setEditIndex={setEditIndex} index={index} state={companylist}  />
                               
                             </TableCell>
     
