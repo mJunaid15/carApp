@@ -11,8 +11,15 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import delImg from "../img/del.png";
 import { CreateBtn } from "../Buttons";
+import AuthUser from "../AuthUser";
+
 
 export default function SelectPopover(props) {
+
+  const { http } = AuthUser();
+
+
+
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const [openDelete, setOpenDelete] = React.useState(false);
@@ -24,6 +31,15 @@ export default function SelectPopover(props) {
   };
 
   const handleCloseDelete = () => {
+
+    const formData = new FormData();
+    formData.append('_method', 'DELETE');
+    http.post(`/company/${props.data.id}`, formData)
+    .then((res) => {
+    props.setState( props.state.filter((item) => item.id != props.data.id) )
+    })
+    .catch(err => console.log(err.message))
+    
     setOpenDelete(false);
   };
 
@@ -55,7 +71,7 @@ export default function SelectPopover(props) {
       >
         <div className="w-[100px]">
           <Button style={{ width: "100%", color: "black" }} >Copy</Button>
-          <Button style={{ width: "100%", color: "black" }}>Edit</Button>
+          <Button onClick={ () =>  props.setEditIndex(editIndex => editIndex === props.index ? null : props.index)} style={{ width: "100%", color: "black" }}>Edit</Button>
           <Button
             style={{ width: "100%", color: "black" }}
             onClick={handleClickOpenDelete}
@@ -78,9 +94,7 @@ export default function SelectPopover(props) {
 
        
         >
-          <div className="flex justify-center "
-           className="lg:absolute lg:top-[-40px] lg:left-[40%] flex justify-center"
-           >
+          <div className="lg:absolute lg:top-[-40px] lg:left-[40%] flex justify-center">
             <img src={delImg} alt="del" />   
           </div>
           <div className="bg-white p-4 mt-4">
