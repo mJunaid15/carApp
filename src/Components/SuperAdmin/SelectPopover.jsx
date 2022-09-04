@@ -31,15 +31,16 @@ export default function SelectPopover(props) {
   };
 
   const handleCloseDelete = () => {
-
+console.log('Junaid',props.state.id);
     const formData = new FormData();
     formData.append('_method', 'DELETE');
-    http.post(`/company/${props.data.id}`, formData)
+    http.post(`/company/${props.data.id}`,formData)
     .then((res) => {
+
     props.setState( props.state.filter((item) => item.id != props.data.id) )
     })
-    .catch(err => console.log(err.message))
-    
+    .catch(err =>   alert(err))
+  
     setOpenDelete(false);
   };
 
