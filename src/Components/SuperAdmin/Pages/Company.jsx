@@ -12,7 +12,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import SelectPopover from "../SelectPopover";
 import { CreateBtn } from "../../Buttons";
-import { useNavigate } from "react-router-dom";
 import { Createcompany } from "./Createcompany";
 import AuthUser from "../../AuthUser";
 import { TextField } from "@mui/material";
@@ -24,25 +23,25 @@ import AlertTitle from '@mui/material/AlertTitle';
 
 export function Company() {
   const { http } = AuthUser();
-  const [companylist, setCompanylist] = useState();
-  const [editCompany, setEditCompany] = useState(false);
-  const [editIndex, setEditIndex]= useState(null);
-
+  const [companylist, setCompanylist] = useState([]);
+  const [editIndex, setEditIndex] = useState(null);
+  const [loading, setLoading] = useState(false);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [listPerpage, SetListperPage] = useState(5);
 
   // Fields States
-  const [name, setName] = useState('')
-  const [director, setDirector] = useState('')
-  const [person, setPerson] = useState('')
-  const [taxNumber, setTaxNumber] = useState('')
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
-  const [mobile, setMobile] = useState('')
-  const [fax, setFax] = useState('')
-  const [country, setCountry] = useState('')
-  const [city, setCity] = useState('')
-  const [streetNo, setStreetNo] = useState('')
-  const [mailbox, setMailbox] = useState('')
-
+  const [name, setName] = useState("");
+  const [director, setDirector] = useState("");
+  const [person, setPerson] = useState("");
+  const [taxNumber, setTaxNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [fax, setFax] = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+  const [streetNo, setStreetNo] = useState("");
+  const [mailbox, setMailbox] = useState("");
 
   React.useEffect(() => {
     // console.log("COMPANY USE EFFECT");
@@ -50,105 +49,126 @@ export function Company() {
     
     
   }, []);
-  
+
   const [compCheck, setCompCheck] = useState(false);
   const fetchListCompany = async () => {
     // api call
-let res = await http.get('/company')
-setCompanylist(res.data.responseMessage)
-
-
-};
+    setLoading(true);
+    let res = await http.get("/company");
+    setCompanylist(res.data.responseMessage);
+    setLoading(false);
+  };
 
   const handleEditCompany = (data) => {
     const formData = new FormData();
-    {name != "" ? 
-    formData.append('name', name)
-    : formData.append('name', data.name)
+    {
+      name != ""
+        ? formData.append("name", name)
+        : formData.append("name", data.name);
     }
-    { director != "" ?
-      formData.append('director', director)
-      :formData.append('director', data.director)
+    {
+      director != ""
+        ? formData.append("director", director)
+        : formData.append("director", data.director);
     }
-    { person != "" ?
-    formData.append('person', person)
-    :formData.append('person', data.person)
-    }
-
-    { taxNumber != "" ?
-    formData.append('tax_number', taxNumber)
-    :formData.append('tax_number', data.tax_number)
+    {
+      person != ""
+        ? formData.append("person", person)
+        : formData.append("person", data.person);
     }
 
-    { email != "" ?
-    formData.append('email', email)
-    :formData.append('email', data.email)
+    {
+      taxNumber != ""
+        ? formData.append("tax_number", taxNumber)
+        : formData.append("tax_number", data.tax_number);
     }
 
-    { phone != "" ?
-    formData.append('phone', phone)
-    :formData.append('phone', data.phone)
+    {
+      email != ""
+        ? formData.append("email", email)
+        : formData.append("email", data.email);
     }
 
-    { mobile != "" ?
-    formData.append('mobile', mobile)
-    :formData.append('mobile', data.mobile)
+    {
+      phone != ""
+        ? formData.append("phone", phone)
+        : formData.append("phone", data.phone);
     }
 
-    { fax != "" ?
-    formData.append('fax', fax)
-    :formData.append('fax', data.fax)
+    {
+      mobile != ""
+        ? formData.append("mobile", mobile)
+        : formData.append("mobile", data.mobile);
     }
 
-    { country != "" ?
-    formData.append('country', country)
-    :formData.append('country', data.country)
+    {
+      fax != ""
+        ? formData.append("fax", fax)
+        : formData.append("fax", data.fax);
     }
 
-
-    { city != "" ?
-    formData.append('city', city)
-    :formData.append('city', data.city)
+    {
+      country != ""
+        ? formData.append("country", country)
+        : formData.append("country", data.country);
     }
 
-    { streetNo != "" ?
-    formData.append('street_no', streetNo)
-    :formData.append('street_no', data.street_no)
+    {
+      city != ""
+        ? formData.append("city", city)
+        : formData.append("city", data.city);
     }
 
-    { mailbox != "" ?
-    formData.append('mailbox', mailbox)
-    :formData.append('mailbox', data.mailbox)
+    {
+      streetNo != ""
+        ? formData.append("street_no", streetNo)
+        : formData.append("street_no", data.street_no);
     }
 
-    
-    formData.append('_method', 'PUT');
-    formData.append('register', data.register)
+    {
+      mailbox != ""
+        ? formData.append("mailbox", mailbox)
+        : formData.append("mailbox", data.mailbox);
+    }
 
+    formData.append("_method", "PUT");
+    formData.append("register", data.register);
+
+    http
+      .post(`company/${data.id}`, formData)
+      .then((res) => {
+        setName("");
+        setDirector("");
+        setPerson("");
+        setTaxNumber("");
+        setEmail("");
+        setPhone("");
+        setMobile("");
+        setFax("");
+        setCountry("");
+        setCity("");
+        setStreetNo("");
+        setMailbox("");
+        fetchListCompany();
+      })
+      .catch((err) => console.log(err.message));
+  };
+
+  // pagination
+  let [page, setPage] = useState(1);
+  const PER_PAGE = 5;
+
+  const count = Math.ceil(companylist.length / PER_PAGE);
+  const _DATA = usePagination(companylist, PER_PAGE);
+
+  console.log(_DATA);
 
   
-   http.post(`company/${data.id}`, formData)
-   .then((res) => {
-    setName('')
-    setDirector('')
-    setPerson('')
-    setTaxNumber('')
-    setEmail('')
-    setPhone('')
-    setMobile('')
-    setFax('')
-    setCountry('')
-    setCity('')
-    setStreetNo('')
-    setMailbox('')
-    fetchListCompany()
 
-  
-
-   }).catch(err => console.log(err.message))
-
-  }
-
+  const paginationHandler = (e, p) => {
+    setPage(p);
+    _DATA.jump(p);
+  };
 
   return (
     <>
@@ -159,191 +179,187 @@ setCompanylist(res.data.responseMessage)
           <div style={{ height: 400, width: "100%" }}>
             <Toolbar />
             {editIndex != null ? null : (
-                
-                
-            <div className="flex justify-between">
-              <h1 className="text-base text-bold mb-0 ml-5">List of Company</h1>
-              <div className="mr-5">
-                <CreateBtn
-                  name="Create"
-                  icon={<AddIcon />}
-                  onClick={() => setCompCheck(!compCheck)}
-                />
+              <div className="flex justify-between">
+                <h1 className="text-base text-bold mb-0 ml-5">
+                  List of Company
+                </h1>
+                <div className="mr-5">
+                  <CreateBtn
+                    name="Create"
+                    icon={<AddIcon />}
+                    onClick={() => setCompCheck(!compCheck)}
+                  />
+                </div>
               </div>
-            </div>
             )}
 
             <TableContainer component={Paper}>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 {editIndex != null ? null : (
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Title</TableCell>
-                    <TableCell align="center">Contact</TableCell>
-                    <TableCell align="center">Address</TableCell>
-                    <TableCell align="center">Action</TableCell>
-                  </TableRow>
-                </TableHead>)
-                }
-                <TableBody>
-                  {companylist?.map((data, index) => {
-                     
-                    return (
-                      <>
-                      
-                      {editIndex == index ? ( 
-                        <div style={{padding: '25px'}}>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Title</TableCell>
+                      <TableCell align="center">Contact</TableCell>
+                      <TableCell align="center">Address</TableCell>
+                      <TableCell align="center">Action</TableCell>
+                    </TableRow>
+                  </TableHead>
+                )}
+                {loading ? (
+                  <Pageloader />
+                ) : (
+                  <TableBody>
+                    {_DATA.currentData().map((data, index) => {
+                      return (
+                        <>
+                          {editIndex == index ? (
+                            <div style={{ padding: "25px" }}>
                               <div className="company">
-                                  <p>Edit Company</p>
+                                <p>Edit Company</p>
+                              </div>
+
+                              <div className="row mt-5">
+                                <div className="col-lg-4">
+                                  <div className="company">
+                                    <TextField
+                                      fullWidth
+                                      label="Name"
+                                      defaultValue={data.name}
+                                      onChange={(e) => setName(e.target.value)}
+                                    />
+                                  </div>
                                 </div>
 
-                              
-                                <div className="row mt-5">
-                                  <div className="col-lg-4">
-                                    <div className="company">
-                                      
-                                      <TextField
-                                       fullWidth label='Name'
-                                        defaultValue={data.name}
-                                         onChange ={ (e) => setName(e.target.value)}
-                                         />
-                                    </div>
+                                <div className="col-lg-4">
+                                  <div className="managing">
+                                    <TextField
+                                      onChange={(e) =>
+                                        setDirector(e.target.value)
+                                      }
+                                      defaultValue={data.director}
+                                      fullWidth
+                                      label="Director"
+                                      id="0317258963"
+                                    />
                                   </div>
+                                </div>
 
-                                  <div className="col-lg-4">
-                                    <div className="managing">
-                                      
-
-                                      <TextField
-                                         onChange ={ (e) => setDirector(e.target.value)}
-
-                                        defaultValue={data.director}
-                                        fullWidth
-                                        label="Director"
-                                        id="0317258963"
-                                      />
-                                    </div>
-                                  </div>
-
-                                  <div className="col-lg-4">
-                                    <div className="managing">
-                                    
-
-                                      <TextField
-                                         onChange ={ (e) => setPerson(e.target.value)}
-
+                                <div className="col-lg-4">
+                                  <div className="managing">
+                                    <TextField
+                                      onChange={(e) =>
+                                        setPerson(e.target.value)
+                                      }
                                       defaultValue={data.person}
-                                        fullWidth
-                                        label="Person"
-                                        id="0317258963"
-                                      />
-                                    </div>
+                                      fullWidth
+                                      label="Person"
+                                      id="0317258963"
+                                    />
                                   </div>
                                 </div>
+                              </div>
 
-                                <div className="row mt-5">
-                                  <div className="col-lg-4">
-                                    <div className="company">
-                                      
-                                      <TextField 
-                                         onChange ={ (e) => setTaxNumber(e.target.value)}
-
+                              <div className="row mt-5">
+                                <div className="col-lg-4">
+                                  <div className="company">
+                                    <TextField
+                                      onChange={(e) =>
+                                        setTaxNumber(e.target.value)
+                                      }
                                       defaultValue={data.tax_number}
-                                      fullWidth label="Tax Number" id="0317258963" />
-                                    </div>
+                                      fullWidth
+                                      label="Tax Number"
+                                      id="0317258963"
+                                    />
                                   </div>
+                                </div>
 
-                                  <div className="col-lg-4">
-                                    <div className="managing">
-                                      
-
-                                      <TextField
-                                         onChange ={ (e) => setEmail(e.target.value)}
-
+                                <div className="col-lg-4">
+                                  <div className="managing">
+                                    <TextField
+                                      onChange={(e) => setEmail(e.target.value)}
                                       defaultValue={data.email}
-                                        fullWidth
-                                        label="Email"
-                                        id="0317258963"
-                                      />
-                                    </div>
+                                      fullWidth
+                                      label="Email"
+                                      id="0317258963"
+                                    />
                                   </div>
+                                </div>
 
-                                  <div className="col-lg-4">
-                                    <div className="managing">
-                                     
-                                      <TextField
-                                         onChange ={ (e) => setPhone(e.target.value)}
-
+                                <div className="col-lg-4">
+                                  <div className="managing">
+                                    <TextField
+                                      onChange={(e) => setPhone(e.target.value)}
                                       defaultValue={data.phone}
-                                        fullWidth
-                                        label="Phone"
-                                        id="0317258963"
-                                      />
-                                    </div>
+                                      fullWidth
+                                      label="Phone"
+                                      id="0317258963"
+                                    />
                                   </div>
                                 </div>
+                              </div>
 
-                                <div className="row mt-5">
-                                  <div className="col-lg-4">
-                                    <div className="company">
-                                     
-                                      <TextField 
-                                         onChange ={ (e) => setMobile(e.target.value)}
-
+                              <div className="row mt-5">
+                                <div className="col-lg-4">
+                                  <div className="company">
+                                    <TextField
+                                      onChange={(e) =>
+                                        setMobile(e.target.value)
+                                      }
                                       defaultValue={data.mobile}
-                                      fullWidth label="Mobile" id="0317258963" />
-                                    </div>
-                                  </div>
-
-                                  <div className="col-lg-4">
-                                    <div className="managing">
-                                      
-                                      <TextField
-                                         onChange ={ (e) => setFax(e.target.value)}
-
-                                      defaultValue={data.fax}
-                                        fullWidth
-                                        label="Fax"
-                                        id="0317258963"
-                                      />
-                                    </div>
-                                  </div>
-
-                                  <div className="col-lg-4">
-                                    <div className="managing">
-                                     
-
-                                      <TextField
-                                         onChange ={ (e) => setCountry(e.target.value)}
-
-                                      defaultValue={data.country}
-                                        fullWidth
-                                        label="Country"
-                                        id="0317258963"
-                                      />
-                                    </div>
+                                      fullWidth
+                                      label="Mobile"
+                                      id="0317258963"
+                                    />
                                   </div>
                                 </div>
 
-                                <div className="row mt-5">
-                                  <div className="col-lg-4">
-                                    <div className="company">
-                                     
-
-                                      <TextField 
-                                         onChange ={ (e) => setCity(e.target.value)}
-
-                                      defaultValue={data.city}
-                                      fullWidth label="City" id="0317258963" />
-                                    </div>
+                                <div className="col-lg-4">
+                                  <div className="managing">
+                                    <TextField
+                                      onChange={(e) => setFax(e.target.value)}
+                                      defaultValue={data.fax}
+                                      fullWidth
+                                      label="Fax"
+                                      id="0317258963"
+                                    />
                                   </div>
+                                </div>
 
-                                  <div className="col-lg-4">
-                                    <div className="managing">
-                                      
-                                      <TextField
-                                         onChange ={ (e) => setStreetNo(e.target.value)}
+                                <div className="col-lg-4">
+                                  <div className="managing">
+                                    <TextField
+                                      onChange={(e) =>
+                                        setCountry(e.target.value)
+                                      }
+                                      defaultValue={data.country}
+                                      fullWidth
+                                      label="Country"
+                                      id="0317258963"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
 
+                              <div className="row mt-5">
+                                <div className="col-lg-4">
+                                  <div className="company">
+                                    <TextField
+                                      onChange={(e) => setCity(e.target.value)}
+                                      defaultValue={data.city}
+                                      fullWidth
+                                      label="City"
+                                      id="0317258963"
+                                    />
+                                  </div>
+                                </div>
+
+                                <div className="col-lg-4">
+                                  <div className="managing">
+                                    <TextField
+                                      onChange={(e) =>
+                                        setStreetNo(e.target.value)
+                                      }
                                       defaultValue={data.street_no}
                                         fullWidth
                                         label="Street No."
@@ -424,10 +440,16 @@ setCompanylist(res.data.responseMessage)
                 </TableBody>
               </Table>
             </TableContainer>
-            {editIndex != null ? null : (
-            <div className="mt-3 flex justify-end">
-              <Pagination count={10} variant="outlined" shape="rounded" />
-            </div>)}
+            {editIndex != null ? null : !loading ? (
+              <div className="mt-3 flex justify-end">
+                <Pagination
+                  count={count}
+                  variant="outlined"
+                  shape="rounded"
+                  onChange={paginationHandler}
+                />
+              </div>
+            ) : null}
           </div>
         </>
       )}
