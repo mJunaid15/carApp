@@ -18,7 +18,8 @@ import AuthUser from "../../AuthUser";
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 import axios from 'axios'
-
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 
 
 export function Company() {
@@ -44,8 +45,9 @@ export function Company() {
 
 
   React.useEffect(() => {
- 
+    // console.log("COMPANY USE EFFECT");
     fetchListCompany()
+    
     
   }, []);
   
@@ -140,6 +142,8 @@ setCompanylist(res.data.responseMessage)
     setStreetNo('')
     setMailbox('')
     fetchListCompany()
+
+  
 
    }).catch(err => console.log(err.message))
 
@@ -405,8 +409,7 @@ setCompanylist(res.data.responseMessage)
                             <TableCell align="center">{data.mobile}</TableCell>
                             <TableCell align="center">{data.city}</TableCell>
                             <TableCell align="center  ">
-                              <SelectPopover data={data} setState={setCompanylist} setEditIndex={setEditIndex} index={index} state={companylist}  />
-                              
+                              <SelectPopover data={data} setState={setCompanylist} setEditIndex={setEditIndex} index={index} state={companylist}  />      
                             </TableCell>
     
                         </TableRow>  
