@@ -26,7 +26,7 @@ const AccessDenied = () => {
             backgroundColor: '#5A4A42',
             color: "white"
             
-        }} onClick={() => navigate(-2)}>Go back</button>
+        }} onClick={() => navigate(-3)}>Go back</button>
         </div>
        
     </div>
