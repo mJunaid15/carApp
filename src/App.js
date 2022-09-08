@@ -1,4 +1,5 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
+import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Addresses from "./Components/SuperAdmin/Pages/Addresses";
 import {Company as Companylist} from "./Components/SuperAdmin/Pages/Company";
@@ -14,15 +15,23 @@ import { Createcompany } from "./Components/SuperAdmin/Pages/Createcompany";
 import ExpertDashboard from "./Components/Expert/ExpertDashboard";
 import ClerkDashboard from "./Components/Clerk/ClerkDashboard";
 import AuthUser from "./Components/AuthUser";
+import ProtectedRoutes from "./ProtectedRoute";
+import AccessDenied from "./AccessDenied";
+
 
 function App() {
+
   // const { getToken } = AuthUser();
   // if(!getToken()){
   //   return <Login/>
   // }
   return (
     <Routes>
-      <Route path="/dashboard" element={<Dashbaord/>} />
+
+      <Route path="/denied" element={<AccessDenied />} />
+
+
+      <Route path="/dashboard" element={<ProtectedRoutes roleRequired="super-admin" Component ={Dashbaord} /> } />
       <Route path="/address" element={<Addresses />} />
       <Route path="/companylist" element={<Companylist />} />
       <Route path="/vehicles" element={<Vehicles />} />
@@ -33,7 +42,7 @@ function App() {
 
       {/* company dashboard routes  */}
       <Route path="/dashboard/company" element={<Complogin/>} />
-      <Route path="/company" element={<Company/>} />
+      <Route path="/company" element={<ProtectedRoutes roleRequired="company-admin" Component ={Company} />} />
       <Route path="/company/forgot" element={<Compforgot />} />
 
       {/* Expert Routes */}

@@ -13,6 +13,8 @@ import delImg from "../img/del.png";
 import { CreateBtn } from "../Buttons";
 import AuthUser from "../AuthUser";
 
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 
 export default function SelectPopover(props) {
 
@@ -21,6 +23,8 @@ export default function SelectPopover(props) {
 
 
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [deleteCheck, setDeleteCheck] = React.useState(false)
+  
 
   const [openDelete, setOpenDelete] = React.useState(false);
   const theme = useTheme();
@@ -28,18 +32,26 @@ export default function SelectPopover(props) {
 
   const handleClickOpenDelete = () => {
     setOpenDelete(true);
+    
   };
 
-  const handleCloseDelete = () => {
-console.log('Junaid',props.state.id);
+  const handleDeleteAPI = () => {
+    
+    // console.log('Junaid',props.data.id);
     const formData = new FormData();
     formData.append('_method', 'DELETE');
     http.post(`/company/${props.data.id}`,formData)
     .then((res) => {
-
+      console.log(res);
     props.setState( props.state.filter((item) => item.id != props.data.id) )
+    setOpenDelete(false);
+    
+
     })
-    .catch(err =>   alert(err))
+    .catch(err =>   console.log(err.message))
+  }
+  const handleCloseDelete = () => {
+
   
     setOpenDelete(false);
   };
@@ -83,6 +95,8 @@ console.log('Junaid',props.state.id);
       </Popover>
       {/* // dailog delete */}
 
+      
+
       <Dialog
         fullScreen={fullScreen}
         open={openDelete}
@@ -91,6 +105,8 @@ console.log('Junaid',props.state.id);
          
       
       >
+        
+        
         <DialogContent 
 
        
@@ -107,9 +123,10 @@ console.log('Junaid',props.state.id);
           </Button>
           
           <CreateBtn
-          onClick={handleCloseDelete} 
+          onClick={handleDeleteAPI} 
           name="Delete"
           />
+         
           </div>
         </DialogContent>
         

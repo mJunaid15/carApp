@@ -16,10 +16,8 @@ import { Createcompany } from "./Createcompany";
 import AuthUser from "../../AuthUser";
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
-import axios from 'axios'
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
-
+import Pageloader from "../../Pageloader";
+import usePagination from "../../Pagination";
 
 export function Company() {
   const { http } = AuthUser();
@@ -44,10 +42,7 @@ export function Company() {
   const [mailbox, setMailbox] = useState("");
 
   React.useEffect(() => {
-    // console.log("COMPANY USE EFFECT");
-    fetchListCompany()
-    
-    
+    fetchListCompany();
   }, []);
 
   const [compCheck, setCompCheck] = useState(false);
@@ -161,9 +156,7 @@ export function Company() {
   const count = Math.ceil(companylist.length / PER_PAGE);
   const _DATA = usePagination(companylist, PER_PAGE);
 
-  console.log(_DATA);
-
-  
+  // console.log(_DATA);
 
   const paginationHandler = (e, p) => {
     setPage(p);
@@ -361,83 +354,89 @@ export function Company() {
                                         setStreetNo(e.target.value)
                                       }
                                       defaultValue={data.street_no}
-                                        fullWidth
-                                        label="Street No."
-                                        id="0317258963"
-                                      />
-                                    </div>
-                                  </div>
-
-                                  <div className="col-lg-4">
-                                    <div className="managing">
-                                     
-
-                                      <TextField
-                                         onChange ={ (e) => setMailbox(e.target.value)}
-
-                                      defaultValue={data.mailbox}
-                                        fullWidth
-                                        label="Mailbox"
-                                        id="0317258963"
-                                      />
-                                    </div>
+                                      fullWidth
+                                      label="Street No."
+                                      id="0317258963"
+                                    />
                                   </div>
                                 </div>
 
-                                <div className="flex justify-between mt-5 mb -5">
-                                  <Button  className="text-black"
-                                  onClick={() => setEditIndex(null)}
-                                  >
-                                    Cancel
-                                    
-                                  </Button>
-
-
-                                  <Button  className="text-white"
-                                    style={{backgroundColor: '#5A4A42'}}
-                                    onClick={() => {
-                                     
-                                      handleEditCompany(data)
-                                      setEditIndex(null)
-                                    }}
-
-                                  >
-                                    Save
-                                    
-                                  </Button>
-                                  
+                                <div className="col-lg-4">
+                                  <div className="managing">
+                                    <TextField
+                                      onChange={(e) =>
+                                        setMailbox(e.target.value)
+                                      }
+                                      defaultValue={data.mailbox}
+                                      fullWidth
+                                      label="Mailbox"
+                                      id="0317258963"
+                                    />
                                   </div>
-          
+                                </div>
+                              </div>
 
-                        </div>
-                       ) : (
-                        <>
-                        { editIndex != null ? null : 
-                        <TableRow key={data.id}
-                           
-                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}  >
-                         
-    
-                              <TableCell component="th" scope="row">
-                              <p className="mb-0">{data.name}</p>
-                              <p className="mb-0 text-slate-400">{data.email}</p>
-                            </TableCell>
-                            <TableCell align="center">{data.mobile}</TableCell>
-                            <TableCell align="center">{data.city}</TableCell>
-                            <TableCell align="center  ">
-                              <SelectPopover data={data} setState={setCompanylist} setEditIndex={setEditIndex} index={index} state={companylist}  />      
-                            </TableCell>
-    
-                        </TableRow>  
-                         }
+                              <div className="flex justify-between mt-5 mb -5">
+                                <Button
+                                  className="text-black"
+                                  onClick={() => setEditIndex(null)}
+                                >
+                                  Cancel
+                                </Button>
+
+                                <Button
+                                  className="text-white"
+                                  style={{ backgroundColor: "#5A4A42" }}
+                                  onClick={() => {
+                                    handleEditCompany(data);
+                                    setEditIndex(null);
+                                  }}
+                                >
+                                  Save
+                                </Button>
+                              </div>
+                            </div>
+                          ) : (
+                            <>
+                              {editIndex != null ? null : (
+                                <TableRow
+                                  key={data.id}
+                                  sx={{
+                                    "&:last-child td, &:last-child th": {
+                                      border: 0,
+                                    },
+                                  }}
+                                >
+                                  <TableCell component="th" scope="row">
+                                    <p className="mb-0">{data.name}</p>
+                                    <p className="mb-0 text-slate-400">
+                                      {data.email}
+                                    </p>
+                                  </TableCell>
+                                  <TableCell align="center">
+                                    {data.mobile}
+                                  </TableCell>
+                                  <TableCell align="center">
+                                    {data.city}
+                                  </TableCell>
+                                  <TableCell align="center  ">
+                                    <SelectPopover
+                                      data={data}
+                                      setState={setCompanylist}
+                                      setEditIndex={setEditIndex}
+                                      index={index}
+                                      state={companylist}
+                                    />
+                                  </TableCell>
+                                </TableRow>
+                              )}
+                            </>
+                          )}
                         </>
-                      )}
-                    </>
-                          
-                    )
-                
-                  })}
-                </TableBody>
+                      );
+                    })}
+                  </TableBody>
+                )}
               </Table>
             </TableContainer>
             {editIndex != null ? null : !loading ? (

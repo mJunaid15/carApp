@@ -3,9 +3,78 @@ import React, { useState } from "react";
 import { Button } from "@mui/material";
 import {Company} from "./Company";
 import { Toolbar } from "@mui/material";
+import AuthUser from "../../AuthUser";
+import axios from 'axios'
 
 export const Createcompany = () => {
+
+  const { http } = AuthUser();
+
   const [companyCheck, setCompanyCheck] = useState(false);
+  
+
+  // Fields States
+  const [name, setName] = useState("");
+  const [director, setDirector] = useState("");
+  const [person, setPerson] = useState("");
+  const [taxNumber, setTaxNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [fax, setFax] = useState("");
+  const [country, setCountry] = useState("");
+  const [zipCity, setZipCity] = useState("");
+  const [streetNo, setStreetNo] = useState("");
+  const [mailbox, setMailbox] = useState("");
+
+  const [register, setRegister] = useState("");
+  const [homepage, setHomepage] = useState("");
+
+
+
+
+  // Handle Cancel Button
+
+  const handleCancel = () => {
+    console.log("Button Clicked");
+  }
+
+
+  // Handle Save 
+  const handleSave = (data) => {
+
+  
+
+    const formData = new FormData();
+
+    formData.append("name", name)
+    formData.append("director", director)
+    formData.append("person", person)
+    formData.append("tax_number", taxNumber)
+    formData.append("email", email)
+    formData.append("phone", phone)
+    formData.append("mobile", mobile)
+    formData.append("fax", fax)
+    formData.append("country", country)
+    formData.append("city", zipCity)
+    formData.append("street_no", streetNo)
+    formData.append("mailbox", mailbox)
+    formData.append("register", register)
+    formData.append("homepage", homepage)
+
+    
+
+    http.post(`/company`, formData)
+    .then((res) => {
+      console.log(res)
+      setCompanyCheck(!companyCheck)
+    }).catch(err => console.log(err.message))
+  
+    
+  };
+
+
+
 
   return (
     <>
@@ -49,7 +118,12 @@ export const Createcompany = () => {
                   Company Name
                 </p>
 
-                <TextField fullWidth label="Company name" id="0317258963" />
+                <TextField
+                
+                
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                fullWidth label="Company name" id="0317258963" />
               </div>
             </div>
 
@@ -60,6 +134,8 @@ export const Createcompany = () => {
                 </p>
 
                 <TextField
+                 value={director}
+                 onChange={(e) => setDirector(e.target.value)}
                   fullWidth
                   label="Enter your position"
                   id="0317258963"
@@ -75,7 +151,10 @@ export const Createcompany = () => {
                   Contact person
                 </p>
 
-                <TextField fullWidth label="Enter your name" id="0317258963" />
+                <TextField
+                 value={person}
+                 onChange={(e) => setPerson(e.target.value)}
+                fullWidth label="Enter your name" id="0317258963" />
               </div>
             </div>
 
@@ -85,7 +164,10 @@ export const Createcompany = () => {
                   Commerical Register
                 </p>
 
-                <TextField fullWidth label="Enter your tax" id="0317258963" />
+                <TextField
+                 value={register}
+                 onChange={(e) => setRegister(e.target.value)}
+                fullWidth label="Enter your text" id="0317258963" />
               </div>
             </div>
 
@@ -96,8 +178,10 @@ export const Createcompany = () => {
                 </p>
 
                 <TextField
+                 value={taxNumber}
+                 onChange={(e) => setTaxNumber(e.target.value)}
                   fullWidth
-                  label="Enter your company"
+                  label="Enter your tax"
                   id="0317258963"
                 />
               </div>
@@ -113,7 +197,10 @@ export const Createcompany = () => {
               <div className="E-mail">
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>E-mail</p>
 
-                <TextField fullWidth label="exam@gmail.com" id="0317258963" />
+                <TextField
+                 value={email}
+                 onChange={(e) => setEmail(e.target.value)}
+                fullWidth label="Enter email" id="0317258963" />
               </div>
             </div>
 
@@ -121,7 +208,10 @@ export const Createcompany = () => {
               <div className="Homepage">
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>Homepage</p>
 
-                <TextField fullWidth label="http:/" id="0317258963" />
+                <TextField 
+                 value={homepage}
+                 onChange={(e) => setHomepage(e.target.value)}
+                fullWidth label="http:/" id="0317258963" />
               </div>
             </div>
           </div>
@@ -133,7 +223,10 @@ export const Createcompany = () => {
                   Telephone
                 </p>
 
-                <TextField fullWidth label="0317258963" id="0317258963" />
+                <TextField
+                 value={phone}
+                 onChange={(e) => setPhone(e.target.value)}
+                fullWidth label="0317258963" id="0317258963" />
               </div>
             </div>
 
@@ -141,7 +234,22 @@ export const Createcompany = () => {
               <div className="Homepage">
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>Mobile</p>
 
-                <TextField fullWidth label="0317258963" id="0317258963" />
+                <TextField
+                 value={mobile}
+                 onChange={(e) => setMobile(e.target.value)}
+                 fullWidth label="Enter Mobile number" id="0317258963" />
+              </div>
+            </div>
+
+
+            <div className="col-lg-6 mt-5">
+              <div className="Homepage">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Fax</p>
+
+                <TextField
+                 value={fax}
+                 onChange={(e) => setFax(e.target.value)}
+                 fullWidth label="Enter Fax" id="0317258963" />
               </div>
             </div>
           </div>
@@ -155,7 +263,10 @@ export const Createcompany = () => {
               <div className="country">
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>Country</p>
 
-                <TextField fullWidth label="Country name" id="Country name" />
+                <TextField 
+                 value={country}
+                 onChange={(e) => setCountry(e.target.value)}
+                fullWidth label="Country name" id="Country name" />
               </div>
             </div>
 
@@ -165,7 +276,10 @@ export const Createcompany = () => {
                   ZIP / City
                 </p>
 
-                <TextField fullWidth label="City" id="City" />
+                <TextField
+                 value={zipCity}
+                 onChange={(e) => setZipCity(e.target.value)}
+                fullWidth label="City" id="City" />
               </div>
             </div>
           </div>
@@ -177,7 +291,11 @@ export const Createcompany = () => {
                   Street Number
                 </p>
 
-                <TextField fullWidth label="Street No*" id="Street No*" />
+                <TextField 
+               
+                 value={streetNo}
+                 onChange={(e) => setStreetNo(e.target.value)}
+                fullWidth label="Street No*" id="Street No*" />
               </div>
             </div>
 
@@ -186,6 +304,9 @@ export const Createcompany = () => {
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>Mailbox</p>
 
                 <TextField
+                
+                 value={mailbox}
+                 onChange={(e) => setMailbox(e.target.value)}
                   fullWidth
                   label="Enter your mail box"
                   id="Enter your mail box"
@@ -193,6 +314,23 @@ export const Createcompany = () => {
               </div>
             </div>
           </div>
+
+          <div className="flex justify-between mt-5 mb -5">
+                                <Button
+                                  className="text-black"
+                                  onClick={handleCancel}
+                                >
+                                  Cancel
+                                </Button>
+
+                                <Button
+                                  className="text-white"
+                                  style={{ backgroundColor: "#5A4A42" }}
+                                  onClick={handleSave}
+                                  >
+                                  Save
+                                </Button>
+                              </div>
         </div>
       )}
     </>
