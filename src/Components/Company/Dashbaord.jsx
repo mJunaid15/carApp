@@ -248,7 +248,7 @@ function Dashbaord(props) {
             <Stack direction="row" spacing={1}>
               <div className="d-flex align-items-center" >
                 <BasicPopover />
-        <button onClick={() => navigate(-1)}>Go back</button>
+        {/* <button onClick={() => navigate(-1)}>Go back</button> */}
 
 
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />

@@ -1,0 +1,10 @@
+#dropdown-basic::after{
+    display: none !important; 
+   
+ }
+
+
+.dropdown{
+    display: flex;
+    justify-content: center;
+}

@@ -3,18 +3,13 @@ import Popover from "@mui/material/Popover";
 import Button from "@mui/material/Button";
 import threedot from "../img/3dot.png";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import delImg from "../img/del.png";
 import { CreateBtn } from "../Buttons";
 import AuthUser from "../AuthUser";
 
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
 
 export default function SelectPopover(props) {
 
@@ -23,7 +18,7 @@ export default function SelectPopover(props) {
 
 
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [deleteCheck, setDeleteCheck] = React.useState(false)
+ 
   
 
   const [openDelete, setOpenDelete] = React.useState(false);
@@ -101,16 +96,11 @@ export default function SelectPopover(props) {
         fullScreen={fullScreen}
         open={openDelete}
         onClose={handleCloseDelete}
-        aria-labelledby="responsive-dialog-title"
-         
-      
+        aria-labelledby="responsive-dialog-title"   
       >
         
         
-        <DialogContent 
-
-       
-        >
+        <DialogContent >
           <div className="lg:absolute lg:top-[-40px] lg:left-[40%] flex justify-center">
             <img src={delImg} alt="del" />   
           </div>
