@@ -22,25 +22,25 @@ import {
 
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import logo from "../img/Oldtimer coach.png";
-import Addresses from "./Pages/Addresses";
-import BasicPopover from "./BasicPopover";
-import Vehicles from "./Pages/Vehicles";
-import MainDashboard from "./Pages/MainDashboard";
+import logo from "../../../img/Oldtimer coach.png";
+import Addresses from "../Address/Addresses";
+import BasicPopover from "../../BasicPopover";
+import Vehicles from "../Vehicles/Vehicles";
+import MainDashboard from "../Dashboard/MainDashboard";
 import { useNavigate , Link as Routerlink }  from "react-router-dom";
-import {Company} from "./Pages/Company";
-import Usermanagment from "./Pages/Usermanagment";
-import Fdm from "./Pages/Fdm";
-import Setting from "./Pages/Setting";
-import { Createcompany } from "./Pages/Createcompany";
-import AuthUser from "../AuthUser";
-import Login from "./Pages/Login";
+import {Company} from "../Company/Company";
+import Usermanagment from "../Usermanagement/Usermanagment";
+import Fdm from "../FDM/Fdm";
+import Setting from "../Settings/Setting";
+import { Createcompany } from "../Company/Createcompany";
+import AuthUser from "../../Auth/AuthUser";
+import Login from "../Login/Login";
 
 const drawerWidth = 250;
 
 function Dashbaord(props) {
   const navigate = useNavigate();
-  const { getToken, token, logout,user } = AuthUser();
+  const { getToken, token, logout, user } = AuthUser();
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -111,12 +111,13 @@ function Dashbaord(props) {
     console.log(valueTab);
   };
 
+
+  // side bar 
   const drawer = (
     <div className="">
       <img src={logo} alt="logo" className="img-fluid " />
-      {/* <Toolbar /> */}
-      {/* <Divider /> */}
-      <div className="mt-3 ">
+   
+      <div className="mt-3  ">
         <Tabs
           orientation="vertical"
           variant="scrollable"
@@ -140,11 +141,13 @@ function Dashbaord(props) {
         >
           <Tab
             label="Dashbaord"
+           
             {...a11yProps(0)}
             style={{ display: "flex", alignItems: "start" }}
           />
           <Tab
             label="Companies"
+           
             {...a11yProps(1)}
             style={{ display: "flex", alignItems: "start" }}
             // to='/companylist'
@@ -188,6 +191,8 @@ function Dashbaord(props) {
     return <Login />;
   }
   return (
+<div className="">
+
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar
@@ -200,7 +205,9 @@ function Dashbaord(props) {
           // borderBottom:'1px solid black'
         }}
       >
-        <div className="border-b flex justify-center lg:justify-between">
+
+        {/* header  */}
+        <div className="border-b flex justify-center lg:justify-between ">
           <div className="hidden lg:block">
             <div className="d-flex align-items-center pl-5 mt-4">
               <div role="presentation" onClick={handleClick}>
@@ -326,7 +333,7 @@ function Dashbaord(props) {
         </Drawer>
       </Box>
 
-      <div className="w-100">
+      <div className="w-100 ">
         <TabPanel value={valueTab} index={0} >
           <MainDashboard />
         </TabPanel>
@@ -351,6 +358,7 @@ function Dashbaord(props) {
         </TabPanel>
       </div>
     </Box>
+    </div>
   );
 }
 

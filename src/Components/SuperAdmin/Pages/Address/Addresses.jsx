@@ -10,20 +10,20 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { CreateBtn } from "../../Buttons";
-import AuthUser from "../../AuthUser";
-import Pageloader from "../../Pageloader";
-import usePagination from "../../Pagination";
+import { CreateBtn } from "../../../Buttons";
+import AuthUser from "../../Auth/AuthUser";
+import {Pageloader} from "../Page loader/Pageloader";
+import usePagination from "../Pagination/Pagination";
 import Button from "@mui/material/Button";
-import threedot from "../../img/3dot.png";
+import threedot from "../../../img/3dot.png";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import delImg from "../../img/del.png";
+import delImg from "../../../img/del.png";
 import { useTheme } from "@mui/material/styles";
 import { TextField } from "@mui/material";
 import Dropdown from 'react-bootstrap/Dropdown';
-import './All.css'
+import '../All.css'
 
 
 export default function Addresses() {

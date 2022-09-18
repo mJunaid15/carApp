@@ -9,8 +9,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import SelectPopover from "../SelectPopover";
-import { CreateBtn } from "../../Buttons";
+import SelectPopover from "./SelectPopover";
+import { CreateBtn } from "../../../Buttons";
 
 export default function Fdm() {
   function createData(name, calories, fat, carbs, protein) {

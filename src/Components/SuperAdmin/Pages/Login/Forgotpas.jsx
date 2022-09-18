@@ -1,9 +1,9 @@
 import React from "react";
-import Suzuki from "../../img/Suzuki.png";
-import Oldtimer from "../../img/Oldtimer.png";
-import "../SuperAdmin.css";
+import Suzuki from "../../../img/Suzuki.png";
+import Oldtimer from "../../../img/Oldtimer.png";
+import "../../SuperAdmin.css";
 import EmailIcon from "@mui/icons-material/Email";
-import LockKeyOpen from "../../img/LockKeyOpen.png";
+import LockKeyOpen from "../../../img/LockKeyOpen.png";
 import { useNavigate } from "react-router-dom";
 
 const Forgotpas = () => {

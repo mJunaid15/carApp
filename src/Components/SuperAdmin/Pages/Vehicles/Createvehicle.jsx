@@ -11,12 +11,12 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import plus from '../../img/plus.png';
-import Save from '../../img/Save.png';
-import TrashSimple from '../../img/TrashSimple.png';
-import icons from '../../img/icons.png';
-import imageee from '../../img/imageee.png';
-import Vector from '../../img/Vector.png';
+import plus from '../../../img/plus.png';
+import Save from '../../../img/Save.png';
+import TrashSimple from '../../../img/TrashSimple.png';
+import icons from '../../../img/icons.png';
+import imageee from '../../../img/imageee.png';
+import Vector from '../../../img/Vector.png';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

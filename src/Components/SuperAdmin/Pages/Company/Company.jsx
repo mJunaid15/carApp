@@ -10,14 +10,14 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import SelectPopover from "../SelectPopover";
-import { CreateBtn } from "../../Buttons";
+import SelectPopover from "../Address/SelectPopover";
+import { CreateBtn } from "../../../Buttons";
 import { Createcompany } from "./Createcompany";
-import AuthUser from "../../AuthUser";
+import AuthUser from "../../Auth/AuthUser";
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
-import Pageloader from "../../Pageloader";
-import usePagination from "../../Pagination";
+import {Pageloader} from "../Page loader/Pageloader";
+import usePagination from "../Pagination/Pagination";
 
 export function Company() {
   const { http } = AuthUser();
@@ -156,7 +156,7 @@ export function Company() {
   const count = Math.ceil(companylist.length / PER_PAGE);
   const _DATA = usePagination(companylist, PER_PAGE);
 
-  // console.log(_DATA);
+  console.log(_DATA);
 
   const paginationHandler = (e, p) => {
     setPage(p);
@@ -376,7 +376,7 @@ export function Company() {
                                 </div>
                               </div>
 
-                              <div className="flex justify-between mt-5 mb -5">
+                              <div className="flex justify-between mt-5 mb-5 ">
                                 <Button
                                   className="text-black"
                                   onClick={() => setEditIndex(null)}

@@ -9,9 +9,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import SelectPopover from "../SelectPopover";
-import { CreateBtn } from "../../Buttons";
-import carTable from '../../img/carTable.png'
+import SelectPopover from "./SelectPopover";
+import { CreateBtn } from "../../../Buttons";
+import carTable from '../../../img/carTable.png'
 import { Createvehicle } from "./Createvehicle";
 export default function Vehicles() {
   const [compCheck, setCompCheck] = React.useState(false);

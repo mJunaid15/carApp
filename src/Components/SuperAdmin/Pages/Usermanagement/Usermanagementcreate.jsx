@@ -1,43 +1,36 @@
 import { TextField } from "@mui/material";
 import React, { useState } from "react";
 import { Button } from "@mui/material";
-import Company from "./Company";
+import Usermanagment from "./Usermanagment";
 import { Toolbar } from "@mui/material";
-import Setting from "./Setting";
 
-export const Createsetting = () => {
-  const [companyCheck, setCompanyCheck] = useState(false);
-
+export const Usermanagementcreate = (props) => {
+  const [usermanagementCheck, setusermanagementCheck] = useState(false);
+console.log("create props : ",props);
   return (
     <>
-      {companyCheck ? (
-        <Setting />
+      {usermanagementCheck ? (
+        <Usermanagment />
       ) : (
         <div>
           <Toolbar />
           <div className="flex justify-between">
-            <h1 className="text-base text-bold mb-0 ml-5">Create Company</h1>
             <div className="mr-5">
               <Button
-                onClick={() => setCompanyCheck(!companyCheck)}
+                onClick={() => setusermanagementCheck(!usermanagementCheck)}
                 style={{
-                  backgroundColor: "  #5A4A42",
-                  color: "#fff",
+                  color: "#000",
                   padding: "6px 22px",
                   diplay: "flex",
                   alignItems: "center",
                 }}
               >
-                Setting
+                Back to expert
               </Button>
             </div>
           </div>
 
           <hr />
-
-          <div className="company">
-            <p>Create Setting</p>
-          </div>
 
           <div className="generl">
             <p>General</p>
@@ -47,24 +40,18 @@ export const Createsetting = () => {
             <div className="col-lg-6">
               <div className="company">
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Company Name
+                  Solution
                 </p>
 
-                <TextField fullWidth label="Company name" id="0317258963" />
+                <TextField fullWidth label="HI" id="0317258963" />
               </div>
             </div>
 
             <div className="col-lg-6">
               <div className="managing">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Managing Director
-                </p>
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Title </p>
 
-                <TextField
-                  fullWidth
-                  label="Enter your position"
-                  id="0317258963"
-                />
+                <TextField fullWidth label="Expert" id="0317258963" />
               </div>
             </div>
           </div>

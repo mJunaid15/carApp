@@ -1,25 +1,19 @@
 import * as React from "react";
 import Popover from "@mui/material/Popover";
 import Button from "@mui/material/Button";
-import threedot from "../img/3dot.png";
+import threedot from "../../../img/3dot.png";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-import delImg from "../img/del.png";
-import { CreateBtn } from "../Buttons";
-import AuthUser from "../AuthUser";
-
+import delImg from "../../../img/del.png";
+import { CreateBtn } from "../../../Buttons";
+import AuthUser from "../../Auth/AuthUser";
 
 export default function SelectPopover(props) {
-
   const { http } = AuthUser();
 
-
-
   const [anchorEl, setAnchorEl] = React.useState(null);
- 
-  
 
   const [openDelete, setOpenDelete] = React.useState(false);
   const theme = useTheme();
@@ -27,27 +21,22 @@ export default function SelectPopover(props) {
 
   const handleClickOpenDelete = () => {
     setOpenDelete(true);
-    
   };
 
   const handleDeleteAPI = () => {
-    
     // console.log('Junaid',props.data.id);
     const formData = new FormData();
-    formData.append('_method', 'DELETE');
-    http.post(`/company/${props.data.id}`,formData)
-    .then((res) => {
-      console.log(res);
-    props.setState( props.state.filter((item) => item.id != props.data.id) )
-    setOpenDelete(false);
-    
-
-    })
-    .catch(err =>   console.log(err.message))
-  }
+    formData.append("_method", "DELETE");
+    http
+      .post(`/company/${props.data.id}`, formData)
+      .then((res) => {
+        console.log(res);
+        props.setState(props.state.filter((item) => item.id != props.data.id));
+        setOpenDelete(false);
+      })
+      .catch((err) => console.log(err.message));
+  };
   const handleCloseDelete = () => {
-
-  
     setOpenDelete(false);
   };
 
@@ -78,8 +67,17 @@ export default function SelectPopover(props) {
         }}
       >
         <div className="w-[100px]">
-          <Button style={{ width: "100%", color: "black" }} >Copy</Button>
-          <Button onClick={ () =>  props.setEditIndex(editIndex => editIndex === props.index ? null : props.index)} style={{ width: "100%", color: "black" }}>Edit</Button>
+          <Button style={{ width: "100%", color: "black" }}>Copy</Button>
+          <Button
+            onClick={() =>
+              props.setEditIndex((editIndex) =>
+                editIndex === props.index ? null : props.index
+              )
+            }
+            style={{ width: "100%", color: "black" }}
+          >
+            Edit
+          </Button>
           <Button
             style={{ width: "100%", color: "black" }}
             onClick={handleClickOpenDelete}
@@ -90,36 +88,31 @@ export default function SelectPopover(props) {
       </Popover>
       {/* // dailog delete */}
 
-      
-
       <Dialog
         fullScreen={fullScreen}
         open={openDelete}
         onClose={handleCloseDelete}
-        aria-labelledby="responsive-dialog-title"   
+        aria-labelledby="responsive-dialog-title"
       >
-        
-        
-        <DialogContent >
+        <DialogContent>
           <div className="lg:absolute lg:top-[-40px] lg:left-[40%] flex justify-center">
-            <img src={delImg} alt="del" />   
+            <img src={delImg} alt="del" />
           </div>
           <div className="bg-white p-4 mt-4">
             <h1 className="text-2xl">Are You Sure To Delete This Company?</h1>
           </div>
           <div className="flex justify-center">
-          <Button autoFocus onClick={handleCloseDelete} className="text-black">
-            Cancel
-          </Button>
-          
-          <CreateBtn
-          onClick={handleDeleteAPI} 
-          name="Delete"
-          />
-         
+            <Button
+              autoFocus
+              onClick={handleCloseDelete}
+              className="text-black"
+            >
+              Cancel
+            </Button>
+
+            <CreateBtn onClick={handleDeleteAPI} name="Delete" />
           </div>
         </DialogContent>
-        
       </Dialog>
     </div>
   );

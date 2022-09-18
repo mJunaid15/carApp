@@ -34,7 +34,7 @@ import Fdm from "./Pages/Fdm";
 import Setting from "./Pages/Setting";
 import { Createcompany } from "./Pages/Createcompany";
 import { Myprofile } from "./Pages/Myprofile";
-import AuthUser from "../AuthUser";
+import AuthUser from "../SuperAdmin/Auth/AuthUser";
 
 const drawerWidth = 250;
 

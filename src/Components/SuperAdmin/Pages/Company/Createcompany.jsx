@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Button } from "@mui/material";
 import {Company} from "./Company";
 import { Toolbar } from "@mui/material";
-import AuthUser from "../../AuthUser";
+import AuthUser from "../../Auth/AuthUser";
 import axios from 'axios'
 
 export const Createcompany = () => {

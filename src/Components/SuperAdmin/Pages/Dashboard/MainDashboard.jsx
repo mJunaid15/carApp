@@ -1,8 +1,8 @@
 import React from "react";
 import { Avatar, Toolbar } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import MainTable from "../MainTable";
-import { CreateBtn } from "../../Buttons";
+import MainTable from "./MainTable";
+import { CreateBtn } from "../../../Buttons";
 
 const MainDashboard = () => {
   return (

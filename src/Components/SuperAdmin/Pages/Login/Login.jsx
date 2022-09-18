@@ -1,11 +1,11 @@
 import React from "react";
-import Suzuki from "../../img/Suzuki.png";
-import Oldtimer from "../../img/Oldtimer.png";
-import "../SuperAdmin.css";
+import Suzuki from "../../../img/Suzuki.png";
+import Oldtimer from "../../../img/Oldtimer.png";
+import "../../SuperAdmin.css";
 import LockIcon from "@mui/icons-material/Lock";
 import EmailIcon from "@mui/icons-material/Email";
 import { useNavigate, Link } from "react-router-dom";
-import AuthUser from "../../AuthUser";
+import AuthUser from "../../Auth/AuthUser";
 import { Alert, Backdrop, CircularProgress } from "@mui/material";
 
 const Login = () => {
