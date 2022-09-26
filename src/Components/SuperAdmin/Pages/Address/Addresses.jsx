@@ -228,7 +228,10 @@ export default function Addresses() {
     const count = Math.ceil(addressList.length / PER_PAGE);
     const _DATA = usePagination(addressList, PER_PAGE);
   
-
+    const paginationHandler = (e, p) => {
+      setPage(p);
+      _DATA.jump(p);
+    };
 
   return (
     <div style={{ height: 400, width: "100%" }}>
@@ -601,7 +604,12 @@ export default function Addresses() {
       </TableContainer>
       {editIndex != null ? null : (
       <div className="mt-3 flex justify-end">
-      <Pagination count={10} variant="outlined" shape="rounded" />
+       <Pagination
+                  count={count}
+                  variant="outlined"
+                  shape="rounded"
+                  onChange={paginationHandler}
+                />
       </div>)}
     </div>
   );

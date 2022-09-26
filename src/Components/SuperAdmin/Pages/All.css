@@ -3,8 +3,12 @@
    
  }
 
-
 .dropdown{
     display: flex;
     justify-content: center;
+}
+.dropdown-menu-item:active{
+    color: black ;
+    text-decoration: none;
+    background-color: lightgray;
 }

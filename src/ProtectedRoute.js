@@ -33,7 +33,7 @@ const ProtectedRoutes = (props) => {
   if (props.roleRequired) {
     return auth ? (
       props.roleRequired === role ? (
-        <Component />
+        <Component  />
       ) : (
         <Navigate to="/denied" />
       )
