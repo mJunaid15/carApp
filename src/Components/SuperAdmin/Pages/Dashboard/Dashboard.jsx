@@ -256,7 +256,7 @@ function Dashbaord(props) {
                 <FormControlLabel
                   control={<Switch onChange={handleChangeLanguage} checked={checked}
                   />}
-                  label="France"
+                  label="German"
                   style={{ color: "black" }}
                 />
               </FormGroup>
