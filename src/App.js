@@ -23,8 +23,6 @@ function App() {
     <Routes>
 
       <Route path="/denied" element={<AccessDenied />} />
-
-
       <Route path="/dashboard" element={<ProtectedRoutes roleRequired="super-admin" Component ={Dashbaord} /> } />
       <Route path="/address" render={()=> <Addresses />} />
       <Route path="/companylist" element={<Companylist />} />
