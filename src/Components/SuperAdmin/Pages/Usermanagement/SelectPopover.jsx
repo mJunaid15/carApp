@@ -21,6 +21,8 @@ export default function SelectPopover(props) {
 
   const HandlerEdit = () => {
     props.setEditIndex(props.id);
+    props.setEditItem(props);
+  
   };
   const handleClickOpenDelete = () => {
     setOpenDelete(true);

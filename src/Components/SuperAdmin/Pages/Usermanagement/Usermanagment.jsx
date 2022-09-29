@@ -23,6 +23,8 @@ export default function Usermanagment() {
   const [Userlist, setUserlist] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [editItem, setEditItem] = useState()
+  
   const fetchListCompany = async (data) => {
     // api call
     setLoading(true);
@@ -49,7 +51,7 @@ export default function Usermanagment() {
   return (
     <>
       {UserCheck || editIndex != null ? (
-        <Usermanagementcreate  editIndex={editIndex} UserCheck={UserCheck}/>
+        <Usermanagementcreate  editIndex={editIndex} UserCheck={UserCheck} editItem = {editItem} />
       ) : (
         <>
           <div style={{ height: 400, width: "100%" }}>
@@ -90,7 +92,7 @@ export default function Usermanagment() {
                       return (
                         <TableRow key={data.id}>
                           <TableCell component="th" scope="row">
-                            {index + 1}
+                            {data.id}
                           </TableCell>
                           <TableCell>
                             {data.first_name} {data.last_name}
@@ -109,7 +111,7 @@ export default function Usermanagment() {
                               state={Userlist}
                               setEditIndex={setEditIndex}
                               index={index}
-                            
+                              setEditItem ={setEditItem}
                             />
                           </TableCell>
                         </TableRow>

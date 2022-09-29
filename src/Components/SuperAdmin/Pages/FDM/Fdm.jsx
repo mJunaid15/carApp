@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
 import { Toolbar } from "@mui/material";
 import Pagination from '@mui/material/Pagination';
 import AddIcon from '@mui/icons-material/Add';
@@ -9,21 +10,84 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import SelectPopover from "./SelectPopover";
 import { CreateBtn } from "../../../Buttons";
+import AuthUser from "../../Auth/AuthUser";
+import usePagination from "../Pagination/Pagination";
+import {Pageloader} from "../Page loader/Pageloader";
+import Dropdown from 'react-bootstrap/Dropdown';
+import threedot from "../../../img/3dot.png";
+import delImg from "../../../img/del.png";
+import "../All.css"
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
+import { TextField } from "@mui/material";
+
 
 export default function Fdm() {
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
+
+  const { http } = AuthUser();
+  const [fileList , setFileList] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [itemId, setItemId] = useState();
+
+  // Api Call Function Fetch File List
+  const fetchFileList = async () => {
+    setLoading(true);
+    let res = await http.get("/file");
+    setFileList(res.data.responseMessage);
+    setLoading(false);
+  };
+
+  // Api Call in useEffect
+  useEffect(() => {
+    fetchFileList();
+  }, []);
+
+   // Popover Code
+   const [openDelete, setOpenDelete] = React.useState(false);
+
+   const theme = useTheme();
+   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
+ 
+ 
+   const handleClickOpenDelete = (id) => {
+     setItemId(id)
+     setOpenDelete(true);
+     
+   };
+   const handleCloseDelete = () => {
+     setOpenDelete(false);
+   };
+
+  // Delete Api Function
+  const handleDeleteAPI = () => {
+    const formData = new FormData();
+    formData.append('_method', 'DELETE');
+    http.post(`/file/${itemId}`,formData)
+    .then((res) => {
+      
+    setFileList( fileList.filter((item) => item.id !== itemId) )
+    setOpenDelete(false);
+    })
+    .catch(err =>   console.log(err.message))
+    
+    
   }
 
-  const rows = [
-    createData("Company", 159, 6.0, 24, 4.0),
-    createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-    createData("Eclair", 262, 16.0, 24, 6.0),
-    createData("Cupcake", 305, 3.7, 67, 4.3),
-    createData("Gingerbread", 356, 16.0, 49, 3.9),
-  ];
+  // Pagination
+  let [page, setPage] = useState(1);
+  const PER_PAGE = 5;
+
+  const count = Math.ceil(fileList.length / PER_PAGE);
+  const _DATA = usePagination(fileList, PER_PAGE);
+
+  const paginationHandler = (e, p) => {
+    setPage(p);
+    _DATA.jump(p);
+  };
 
   return (
     <div style={{ height: 400, width: "100%" }}>
@@ -48,115 +112,95 @@ export default function Fdm() {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Expert name</TableCell>
-              <TableCell>License plate</TableCell>
+              <TableCell align="center">Expert name</TableCell>
+              <TableCell align="center">License plate</TableCell>
 
-              <TableCell>vehicles Owner</TableCell>
+              <TableCell align="center">Vehicle's Owner</TableCell>
               <TableCell align="center">Order Date</TableCell>
               <TableCell align="center"> Inspection date</TableCell>
               <TableCell align="center">Action</TableCell>
             </TableRow>
           </TableHead>
+          {loading ? (
+                  <Pageloader />
+                ) : (
           <TableBody>
+            {_DATA.currentData().map((data, index) => {
+                      return (
             <TableRow>
               <TableCell component="th" scope="row">
-                <p className="mb-0"> Name</p>
-                <p className="mb-0 text-slate-400">Clerk Name</p>
+                <p className="mb-0">{data.gd_expert_name}</p>
+                <p className="mb-0 text-slate-400">{data.gd_clerk_name}</p>
               </TableCell>
-              <TableCell align="center">ABC 345</TableCell>
-              <TableCell align="center">Owner Name
+              <TableCell align="center">{data.gd_license_plate}</TableCell>
+              <TableCell align="center">{data.gd_owner_name}
               </TableCell>
-              <TableCell align="center">22/May/2022
+              <TableCell align="center">{data.gd_order_date}
               </TableCell>
-              <TableCell align="center">22/May/2022
+              <TableCell align="center">{data.gd_inspection_date}
               </TableCell>
               <TableCell align="center  ">
                 
-                <SelectPopover />
+                        {/* Dropdown */}
+                      <Dropdown className="dropdown" >
+                          <Dropdown.Toggle id="dropdown-basic" >
+                          <img src={threedot} alt="threedot" />
+                          </Dropdown.Toggle>
+                          
+                            <Dropdown.Menu>
+                            <Dropdown.Item >Copy</Dropdown.Item>
+                            <Dropdown.Item >Edit</Dropdown.Item>
+                            <Dropdown.Item onClick={ () =>  handleClickOpenDelete(data.id)}>Delete</Dropdown.Item>
+                          </Dropdown.Menu>
+                        </Dropdown>
+
+                        {/* Delete Modal */}
+                        <Dialog
+                    
+                            fullScreen={fullScreen}
+                            open={openDelete}
+                            onClose={handleCloseDelete}
+                            aria-labelledby="responsive-dialog-title"   
+                          >
+                            
+                            
+                            <DialogContent >
+                              <div className="lg:absolute lg:top-[-40px] lg:left-[40%] flex justify-center">
+                                <img src={delImg} alt="del" />   
+                              </div>
+                              <div className="bg-white p-4 mt-4">
+                                <h1 className="text-2xl">Are You Sure To Delete This Company?</h1>
+                              </div>
+                              <div className="flex justify-center">
+                              <Button autoFocus onClick={handleCloseDelete} className="text-black">
+                                Cancel
+                              </Button>
+                              
+                              <CreateBtn
+                                onClick={handleDeleteAPI} 
+                                name="Delete"
+                                />
+                            
+                              </div>
+                            </DialogContent>
+                            
+                      </Dialog>
               </TableCell>
             </TableRow>
-          
-
-            <TableRow>
-              <TableCell component="th" scope="row">
-                <p className="mb-0"> Name</p>
-                <p className="mb-0 text-slate-400">Clerk Name</p>
-              </TableCell>
-              <TableCell align="center">ABC 345</TableCell>
-              <TableCell align="center">Owner Name
-              </TableCell>
-              <TableCell align="center">22/May/2022
-              </TableCell>
-              <TableCell align="center">22/May/2022
-              </TableCell>
-              <TableCell align="center  ">
-                
-                <SelectPopover />
-              </TableCell>
-            </TableRow>
-
-            <TableRow>
-              <TableCell component="th" scope="row">
-                <p className="mb-0"> Name</p>
-                <p className="mb-0 text-slate-400">Clerk Name</p>
-              </TableCell>
-              <TableCell align="center">ABC 345</TableCell>
-              <TableCell align="center">Owner Name
-              </TableCell>
-              <TableCell align="center">22/May/2022
-              </TableCell>
-              <TableCell align="center">22/May/2022
-              </TableCell>
-              <TableCell align="center  ">
-                
-                <SelectPopover />
-              </TableCell>
-            </TableRow>
-
-            <TableRow>
-              <TableCell component="th" scope="row">
-                <p className="mb-0"> Name</p>
-                <p className="mb-0 text-slate-400">Clerk Name</p>
-              </TableCell>
-              <TableCell align="center">ABC 345</TableCell>
-              <TableCell align="center">Owner Name
-              </TableCell>
-              <TableCell align="center">22/May/2022
-              </TableCell>
-              <TableCell align="center">22/May/2022
-              </TableCell>
-              <TableCell align="center  ">
-                
-                <SelectPopover />
-              </TableCell>
-            </TableRow>
-
-            <TableRow>
-              <TableCell component="th" scope="row">
-                <p className="mb-0"> Name</p>
-                <p className="mb-0 text-slate-400">Clerk Name</p>
-              </TableCell>
-              <TableCell align="center">ABC 345</TableCell>
-              <TableCell align="center">Owner Name
-              </TableCell>
-              <TableCell align="center">22/May/2022
-              </TableCell>
-              <TableCell align="center">22/May/2022
-              </TableCell>
-              <TableCell align="center  ">
-                
-                <SelectPopover />
-              </TableCell>
-            </TableRow>
-            
-            
-
-            
+                      )
+            })
+          }
           </TableBody>
+                )}
         </Table>
       </TableContainer>
       <div className="mt-3 flex justify-end">
-      <Pagination count={10} variant="outlined" shape="rounded" />
+      <Pagination
+                  count={count}
+                  variant="outlined"
+                  shape="rounded"
+                  onChange={paginationHandler}
+                />
       </div>
     </div>
   );
