@@ -37,6 +37,7 @@ import Setting from "../Settings/Setting";
 import { Createcompany } from "../Company/Createcompany";
 import AuthUser from "../../Auth/AuthUser";
 import Login from "../Login/Login";
+import SettingsRoot from "../Settings/SettingsRoot";
 
 const drawerWidth = 250;
 
@@ -365,7 +366,7 @@ function Dashbaord(props) {
             <Addresses />
           </TabPanel>
           <TabPanel value={valueTab} index={6}>
-            <Setting />
+            <SettingsRoot />
           </TabPanel>
         </div>
       </Box>

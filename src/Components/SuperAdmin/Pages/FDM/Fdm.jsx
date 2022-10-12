@@ -24,6 +24,7 @@ import DialogContent from "@mui/material/DialogContent";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { TextField } from "@mui/material";
+import  CreateFdm  from "./CreateFDM";
 
 
 export default function Fdm() {
@@ -32,13 +33,17 @@ export default function Fdm() {
   const [fileList , setFileList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [itemId, setItemId] = useState();
+  const [fdmCheck, setFdmCheck] = useState(false)
 
   // Api Call Function Fetch File List
   const fetchFileList = async () => {
     setLoading(true);
     let res = await http.get("/file");
+    if(res.data.responseStatus === 200){
     setFileList(res.data.responseMessage);
-    setLoading(false);
+    }
+    setLoading(false)
+
   };
 
   // Api Call in useEffect
@@ -70,6 +75,7 @@ export default function Fdm() {
     .then((res) => {
       
     setFileList( fileList.filter((item) => item.id !== itemId) )
+    console.log("File List: ",fileList);
     setOpenDelete(false);
     })
     .catch(err =>   console.log(err.message))
@@ -84,19 +90,29 @@ export default function Fdm() {
   const count = Math.ceil(fileList.length / PER_PAGE);
   const _DATA = usePagination(fileList, PER_PAGE);
 
+  // console.log(typeof( _DATA.currentData()));
+
   const paginationHandler = (e, p) => {
     setPage(p);
     _DATA.jump(p);
   };
 
   return (
-    <div style={{ height: 400, width: "100%" }}>
+    <>
+    {
+      fdmCheck ? (
+        <CreateFdm />
+      ) : (
+        <>
+<div style={{ height: 400, width: "100%" }}>
       <Toolbar />
       <div className='flex justify-between'>
 
           <h1 className='text-base text-bold mb-0 ml-5'>Files</h1>
           <div className='mr-5'>
-          <CreateBtn name='Create New' icon={<AddIcon/>} />
+          <CreateBtn 
+          onClick = {() => setFdmCheck(!fdmCheck)}
+          name='Create New' icon={<AddIcon/>} />
           
           </div>
 
@@ -125,71 +141,74 @@ export default function Fdm() {
                   <Pageloader />
                 ) : (
           <TableBody>
-            {_DATA.currentData().map((data, index) => {
+            
+            {  fileList &&
+            _DATA.currentData().map((data, index) => {
                       return (
-            <TableRow>
-              <TableCell component="th" scope="row">
-                <p className="mb-0">{data.gd_expert_name}</p>
-                <p className="mb-0 text-slate-400">{data.gd_clerk_name}</p>
-              </TableCell>
-              <TableCell align="center">{data.gd_license_plate}</TableCell>
-              <TableCell align="center">{data.gd_owner_name}
-              </TableCell>
-              <TableCell align="center">{data.gd_order_date}
-              </TableCell>
-              <TableCell align="center">{data.gd_inspection_date}
-              </TableCell>
-              <TableCell align="center  ">
-                
-                        {/* Dropdown */}
-                      <Dropdown className="dropdown" >
-                          <Dropdown.Toggle id="dropdown-basic" >
-                          <img src={threedot} alt="threedot" />
-                          </Dropdown.Toggle>
+                      <TableRow>
+                        <TableCell component="th" scope="row">
+                          <p className="mb-0">{data.gd_expert_name}</p>
+                          <p className="mb-0 text-slate-400">{data.gd_clerk_name}</p>
+                        </TableCell>
+                        <TableCell align="center">{data.gd_license_plate}</TableCell>
+                        <TableCell align="center">{data.gd_owner_name}
+                        </TableCell>
+                        <TableCell align="center">{data.gd_order_date}
+                        </TableCell>
+                        <TableCell align="center">{data.gd_inspection_date}
+                        </TableCell>
+                        <TableCell align="center  ">
                           
-                            <Dropdown.Menu>
-                            <Dropdown.Item >Copy</Dropdown.Item>
-                            <Dropdown.Item >Edit</Dropdown.Item>
-                            <Dropdown.Item onClick={ () =>  handleClickOpenDelete(data.id)}>Delete</Dropdown.Item>
-                          </Dropdown.Menu>
-                        </Dropdown>
+                                  {/* Dropdown */}
+                                <Dropdown className="dropdown" >
+                                    <Dropdown.Toggle id="dropdown-basic" >
+                                    <img src={threedot} alt="threedot" />
+                                    </Dropdown.Toggle>
+                                    
+                                      <Dropdown.Menu>
+                                      <Dropdown.Item >Copy</Dropdown.Item>
+                                      <Dropdown.Item >Edit</Dropdown.Item>
+                                      <Dropdown.Item onClick={ () =>  handleClickOpenDelete(data.id)}>Delete</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                  </Dropdown>
 
-                        {/* Delete Modal */}
-                        <Dialog
-                    
-                            fullScreen={fullScreen}
-                            open={openDelete}
-                            onClose={handleCloseDelete}
-                            aria-labelledby="responsive-dialog-title"   
-                          >
-                            
-                            
-                            <DialogContent >
-                              <div className="lg:absolute lg:top-[-40px] lg:left-[40%] flex justify-center">
-                                <img src={delImg} alt="del" />   
-                              </div>
-                              <div className="bg-white p-4 mt-4">
-                                <h1 className="text-2xl">Are You Sure To Delete This Company?</h1>
-                              </div>
-                              <div className="flex justify-center">
-                              <Button autoFocus onClick={handleCloseDelete} className="text-black">
-                                Cancel
-                              </Button>
+                                  {/* Delete Modal */}
+                                  <Dialog
                               
-                              <CreateBtn
-                                onClick={handleDeleteAPI} 
-                                name="Delete"
-                                />
-                            
-                              </div>
-                            </DialogContent>
-                            
-                      </Dialog>
-              </TableCell>
-            </TableRow>
+                                      fullScreen={fullScreen}
+                                      open={openDelete}
+                                      onClose={handleCloseDelete}
+                                      aria-labelledby="responsive-dialog-title"   
+                                    >
+                                      
+                                      
+                                      <DialogContent >
+                                        <div className="lg:absolute lg:top-[-40px] lg:left-[40%] flex justify-center">
+                                          <img src={delImg} alt="del" />   
+                                        </div>
+                                        <div className="bg-white p-4 mt-4">
+                                          <h1 className="text-2xl">Are You Sure To Delete This Company?</h1>
+                                        </div>
+                                        <div className="flex justify-center">
+                                        <Button autoFocus onClick={handleCloseDelete} className="text-black">
+                                          Cancel
+                                        </Button>
+                                        
+                                        <CreateBtn
+                                          onClick={handleDeleteAPI} 
+                                          name="Delete"
+                                          />
+                                      
+                                        </div>
+                                      </DialogContent>
+                                      
+                                </Dialog>
+                        </TableCell>
+                      </TableRow>
                       )
             })
-          }
+            
+            }
           </TableBody>
                 )}
         </Table>
@@ -203,5 +222,10 @@ export default function Fdm() {
                 />
       </div>
     </div>
+        </>
+      )
+    }
+    </>
+    
   );
 }

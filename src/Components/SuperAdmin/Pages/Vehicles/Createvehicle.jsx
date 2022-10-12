@@ -108,7 +108,7 @@ export const Createvehicle = () => {
         >
           <Tab label="Creating vehicle" {...a11yProps(0)} />
           <Tab label=" Equipment  " {...a11yProps(1)} />
-          <Tab label="Tries" {...a11yProps(2)} />
+          <Tab label="Tires" {...a11yProps(2)} />
          
         </Tabs>
        
@@ -121,23 +121,692 @@ export const Createvehicle = () => {
         <TabPanel value={value} index={0} dir={theme.direction}>
 
           <div>
-        <div className="flex justify-between">
-            <h1 className="text-base text-bold mb-0 ml-5">Create Vehicle</h1>
             
-            <div className="flex">
-            <div class="mainSearchInput items-center justify-center flex mr-3 pl-4 w-150">
-          
-            <input
+        <div className="row mt-5">
+          <div className="col-lg-4">
+            <div className="company">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                License Plate              </p>
 
-              className=" bg-transparent "
-              type="text"
-              name="search"
-              placeholder="Search Vehicles"
-            />
+              <TextField fullWidth label="example text" id="0317258963" />
+            </div>
           </div>
-            <div className="mr-5">
+
+          <div className="col-lg-4">
+            <div className="managing">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Chassis Number              </p>
+
+              <TextField
+                fullWidth
+                label="example vin"
+                id="0317258963"
+              />
+            </div>
+          </div>
+
+
+          <div className="col-lg-4">
+            <div className="managing">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+
+                HSN/TSN
+              </p>
+
+              <div className="row">
+                <div className="col-lg-6">
+                  <TextField
+                    fullWidth
+                    label="example text"
+                    id="0317258963"
+                  />
+                </div>
+                <div className="col-lg-6  ">
+                  <TextField
+                    fullWidth
+                    label="example text"
+                    id="0317258963"
+                  />
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div className="row mt-3">
+          <div className="col-lg-4">
+            <div className="contact">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Vehicle Type              </p>
+
+              <TextField fullWidth label="example text" id="0317258963" />
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="Manufacturer">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Manufacturer              </p>
+
+              <TextField fullWidth label="example text" id="0317258963" />
+            </div>
+          </div>
+
+          <div className="col-lg-4 ">
+            <div className="Main Type">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Main Type              </p>
+
+              <TextField
+                fullWidth
+                label="example text"
+                id="0317258963"
+              />
+            </div>
+          </div>
+        </div>
+
+
+        <div className="row mt-3">
+          <div className="col-lg-4">
+            <div className="contact">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Subtype              </p>
+
+              <TextField fullWidth label="example text" id="0317258963" />
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="Commerical">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Structure              </p>
+
+              <TextField fullWidth label="example text" id="0317258963" />
+            </div>
+          </div>
+
+          <div className="col-lg-4 ">
+            <div className="Tax">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Wheel Base              </p>
+
+              <TextField
+                fullWidth
+                label="example text"
+                id="0317258963"
+              />
+            </div>
+          </div>
+        </div>
+
+
+        <div className="row mt-3">
+          <div className="col-lg-4">
+            <div className="contact">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Driven Type              </p>
+
+              <TextField fullWidth label="example text" id="0317258963" />
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="Commerical">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Drive’s Cabin              </p>
+
+              <TextField fullWidth label="example text" id="0317258963" />
+            </div>
+          </div>
+
+          <div className="col-lg-4 ">
+            <div className="Tax">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Seats              </p>
+
+              <TextField
+                fullWidth
+                label="example text"
+                id="0317258963"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="row mt-3">
+          <div className="col-lg-4">
+            <div className="contact">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Empty Mass            </p>
+
+              <TextField fullWidth label="example text" id="0317258963" />
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="Commerical">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Construction              </p>
+
+              <TextField fullWidth label="example text" id="0317258963" />
+            </div>
+          </div>
+
+          <div className="col-lg-4 ">
+            <div className="Tax">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Suspension Type            </p>
+
+              <TextField
+                fullWidth
+                label="example text"
+                id="0317258963"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="row mt-3">
+          <div className="col-lg-4">
+            <div className="contact">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Axes             </p>
+
+              <TextField fullWidth label="example text" id="0317258963" />
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="Commerical">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Equipment Line             </p>
+
+              <TextField fullWidth label="example text" id="0317258963" />
+            </div>
+          </div>
+
+          <div className="col-lg-4 ">
+            <div className="Tax">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Axle Load             </p>
+
+              <TextField
+                fullWidth
+                label="example text"
+                id="0317258963"
+              />
+            </div>
+          </div>
+        </div>
+
+
+
+        <div className="row mt-3">
+          <div className="col-lg-4">
+            <div className="contact">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Logo/Width/height
+              </p>
+
+              <div className="row ">
+                <div className="col-lg-4">
+                  <TextField
+                    fullWidth
+                    label="example text"
+                    id="0317258963"
+                  />
+                </div>
+                <div className="col-lg-4  ">
+                  <TextField
+                    fullWidth
+                    label="example text"
+                    id="0317258963"
+                  />
+                </div>
+
+                <div className="col-lg-4 ">
+                  <TextField
+                    fullWidth
+                    label="example text"
+                    id="0317258963"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="Commerical">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Engine              </p>
+
+              <TextField fullWidth label="example text" id="0317258963" />
+            </div>
+          </div>
+
+          <div className="col-lg-4 ">
+            <div className="Tax">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Power              </p>
+
+              <TextField
+                fullWidth
+                label="example number"
+                id="0317258963"
+              />
+            </div>
+          </div>
+        </div>
+
+
+        <div className="row mt-3">
+          <div className="col-lg-4">
+            <div className="contact">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Engine Displacement              </p>
+
+              <TextField fullWidth label="example number" id="0317258963" />
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="Commerical">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Fuel Gear              </p>
+
+              <TextField fullWidth label="example text" id="0317258963" />
+            </div>
+          </div>
+
+          <div className="col-lg-4 ">
+            <div className="Tax">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Emission Class              </p>
+
+              <TextField
+                fullWidth
+                label="example text"
+                id="0317258963"
+              />
+            </div>
+          </div>
+        </div>
+
+
+
+        <div className="row mt-3">
+          <div className="col-lg-6">
+            <div className="contact">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Fine Dust Stricker              </p>
+
+              <TextField fullWidth label="example text" id="0317258963" />
+            </div>
+          </div>
+
+
+          <div className="col-lg-6 mt-5">
+            <Button
+              // onClick={() => setCompanyCheck(!companyCheck)}
+              style={{
+                backgroundColor: "  #5A4A42",
+                color: "#fff",
+                padding: "6px 22px",
+                diplay: "flex",
+                alignItems: "center",
+              }}
+            >
+
+              Add New Field +
+            </Button>
+          </div>
+        </div>
+
+
+
+
+        {/* General */}
+        <div className="generl mt-5">
+          <p>General</p>
+        </div>
+
+        <div className="row mt-5">
+          <div className="col-lg-4">
+            <div className="ZIP / City">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                First Registeration             </p>
+
+              <TextField
+                fullWidth
+                id="date"
+                label="Enter Date"
+                type="date"
+                defaultValue=""
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="ZIP / City">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Last Admission             </p>
+
+              <TextField
+                fullWidth
+                id="date"
+                label="Enter Date"
+                type="date"
+                defaultValue=""
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="managing">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Approved in             </p>
+
+              <TextField
+                fullWidth
+                label="example"
+                id=""
+              />
+            </div>
+          </div>
+        </div>
+
+
+
+        <div className="row mt-4">
+          <div className="col-lg-4">
+            <div className="E-mail">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>Year of construction</p>
+
+              <TextField fullWidth label="example" id="0317258963" />
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="ZIP / City">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Next main inspection            </p>
+
+              <TextField
+                fullWidth
+                id="date"
+                label="Enter Date"
+                type="date"
+                defaultValue=""
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="ZIP / City">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Next Security check            </p>
+
+              <TextField
+                fullWidth
+                id="date"
+                label="Enter Date"
+                type="date"
+                defaultValue=""
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            </div>
+          </div>
+
+        </div>
+
+        <div className="row mt-4">
+          <div className="col-lg-4">
+            <div className="ZIP / City">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Last Gas Test           </p>
+
+              <TextField
+                fullWidth
+                id="date"
+                label="Enter Date"
+                type="date"
+                defaultValue=""
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="Homepage">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>Accident Prevention Regulations</p>
+
+              <TextField fullWidth label="http:/" id="0317258963" />
+            </div>
+          </div>
+
+          <div className="col-lg-4 mt-5">
+            <Button
+              // onClick={() => setCompanyCheck(!companyCheck)}
+              style={{
+                backgroundColor: "  #5A4A42",
+                color: "#fff",
+                padding: "6px 22px",
+                diplay: "flex",
+                alignItems: "center",
+              }}
+            >
+
+              Add New Field +
+            </Button>
+          </div>
+        </div>
+
+
+
+        <div className="generl mt-5">
+          <p>General</p>
+        </div>
+
+
+        <div className="row mt-5">
+          <div className="col-lg-4">
+            <div className="ZIP / City">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Read Off            </p>
+
+              <TextField
+                fullWidth
+                id="date"
+                label="Enter Date"
+                type="date"
+                defaultValue=""
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="ZIP / City">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Specified             </p>
+
+              <TextField
+                fullWidth
+                id="date"
+                label="Enter Date"
+                type="date"
+                defaultValue=""
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="managing">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Estimated            </p>
+
+              <TextField
+                fullWidth
+                label="example"
+                id=""
+              />
+            </div>
+          </div>
+        </div>
+
+
+
+        <div className="row mt-4">
+          <div className="col-lg-4">
+            <div className="STATUS d-flex mt-5">
+              <p>Mileage:</p>
+
+              <div class="form-check form-check-inline ps-5">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
+                <label class="form-check-label" for="inlineRadio1">Kilometers</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
+                <label class="form-check-label" for="inlineRadio2">Miles</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
+                <label class="form-check-label" for="inlineRadio2">Hours</label>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="ZIP / City">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Comment on mileage            </p>
+
+              <TextField
+                fullWidth
+                id="date"
+                label="Enter Date"
+                type="date"
+                defaultValue=""
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="col-lg-4 mt-5">
+            <Button
+              // onClick={() => setCompanyCheck(!companyCheck)}
+              style={{
+                backgroundColor: "  #5A4A42",
+                color: "#fff",
+                padding: "6px 22px",
+                diplay: "flex",
+                alignItems: "center",
+              }}
+            >
+
+              Add New Field +
+            </Button>
+          </div>
+
+        </div>
+
+
+
+        <div className="Address mt-5">
+          <p>Miscellaneous</p>
+        </div>
+
+        <div className="row mt-5">
+          <div className="col-lg-4">
+            <div className="country">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>Colours</p>
+              <TextField fullWidth label="Street No*" id="Street No*" />
+
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="ZIP / City">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Number of previous owners              </p>
+
+              <TextField
+                fullWidth
+                id="date"
+                label="Enter Date"
+                type="date"
+                defaultValue=""
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="ZIP / City">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Data Source              </p>
+
+              <TextField fullWidth label="Data Source" id="City" />
+            </div>
+          </div>
+        </div>
+
+
+        <div className="row mt-5">
+          <div className="col-lg-4">
+            <div className="country">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>Import Vehicle</p>
+              <TextField fullWidth label="Street No*" id="Street No*" />
+
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="ZIP / City">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                Steering wheel Position          </p>
+
+              <TextField
+                fullWidth
+                id="date"
+                label="Enter Date"
+                type="date"
+                defaultValue=""
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="ZIP / City h-100 items-center justify-center flex">
               <Button
-                onClick={() => setCompanyCheck(!companyCheck)}
+                // onClick={() => setCompanyCheck(!companyCheck)}
                 style={{
                   backgroundColor: "  #5A4A42",
                   color: "#fff",
@@ -145,11 +814,37 @@ export const Createvehicle = () => {
                   diplay: "flex",
                   alignItems: "center",
                 }}
-              >
-                Search
+              >Add New Item +
               </Button>
             </div>
-            </div>
+          </div>
+        </div>
+
+        <div className="flex justify-between my-6 mt-5">
+
+          <CreateBtn
+            // onClick={() => setCompanyCheck(!companyCheck)}
+            style={{
+              color: "gray",
+              padding: "6px 22px",
+              diplay: "flex",
+              alignItems: "center",
+            }}
+            name="Previous"
+          />
+          <div className="mr-5">
+            <CreateBtn
+              // onClick={() => setCompanyCheck(!companyCheck)}
+              style={{
+                color: "#000",
+                padding: "6px 22px",
+                diplay: "flex",
+                alignItems: "center",
+              }}
+              name="Next"
+            />
+          </div>
+        </div>
           </div>
 
           <hr />
@@ -799,123 +1494,277 @@ export const Createvehicle = () => {
           
 
           
-          </div>
+        
 
         </TabPanel>
 
 
         {/* Equipments */}
         <TabPanel value={value} index={1} dir={theme.direction}>
-        <div>
-          <hr />
-        <div className="flex justify-between">
-            <h1 className="text-base text-bold mb-0 ml-5">Equipments</h1>
-            
-            
+       <div>
+         <div className="Address mt-5">
+          <p>List of Equipments</p>
+        </div>
+
+        <div className="slct mt-5">
+
+          <select class="form-select form-select-lg mb-0 w-25" aria-label=".form-select-lg example">
+            <option selected></option>
+            <option value="1">Standard</option>
+            <option value="2">Extra</option>
+            <option value="3">Auxiliary</option>
+          </select>
+
+        </div>
+
+        <div className="row mt-5">
+          <div className="col-lg-4">
+            <div className="stand">
+              <p style={{ fontWeight: "bold" }}>Standard</p>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  33 of 38 seletced
+                </label>
+              </div>
+
+              <div class="form-check mt-5">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Airbag passenger side
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Airbag driver’s side
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Anti-Lock bracking system ABS
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Exterior mirrors electr. adjustable
+                  and heated
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Exterior mirrors body color
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Outdoor temperature display
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Flashing light integrated in exterior
+                  mirrors
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Seaborne computer
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Roof spoiler body color
+                </label>
+              </div>
+
+            </div>
           </div>
 
-          <hr />
 
-          
-          {/* Identification */}
-          <div className="generl">
-            <p>List of Equipments</p>
+
+          <div className="col-lg-4">
+            <div className="extr">
+              <p style={{ fontWeight: "bold" }}>Extra</p>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  10 selected from 59
+                </label>
+              </div>
+
+              <div class="form-check mt-5">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Trailer hitch (ball head removable)
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Audio package
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Audio package 2
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Audio system: Radio/CD player with
+                  multifunction display
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Audio system: Radio/CD player with
+                  multifunction display incl. on-board
+                  computer
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Exterior mirrors electr foldable cool
+                  & sound-paket
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Exterior mirrors electr foldable cool
+                  & sound-paket 2
+                </label>
+              </div>
+
+            </div>
           </div>
 
-          <input
-              className="w-full ps-5 p-3 h-full  bg-transparent rounded border-1 mt-5 w-50"
-              type="text"
-              name="search"
-              placeholder="Search Vehicles, Expert or File"
+
+          <div className="col-lg-4">
+            <div className="auxt">
+              <p style={{ fontWeight: "bold" }}>Auxiliary</p>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  0 of 14 seletced
+                </label>
+              </div>
+
+              <div class="form-check mt-5">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Trailer hitch
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Rear fog lamp
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Mud flap
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Sunroof
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Spoiler front
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Rear spoiler
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Fire extinguisher
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Speakers-Rear
+                </label>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div className="flex justify-between my-6 mt-5">
+
+          <CreateBtn
+            // onClick={() => setCompanyCheck(!companyCheck)}
+            style={{
+              color: "#gray",
+              padding: "6px 22px",
+              diplay: "flex",
+              alignItems: "center",
+            }}
+            name="Previous"
+          />
+          <div className="mr-5">
+            <CreateBtn
+              // onClick={() => setCompanyCheck(!companyCheck)}
+              style={{
+                color: "#000",
+                padding: "6px 22px",
+                diplay: "flex",
+                alignItems: "center",
+              }}
+              name="Next"
             />
-
-        < div className="row mt-5">
-            <div className="col-lg-4">
-              <div className="company">
-              <p >
-                  Standard Name
-                </p>
-                <p style={{fontSize: '14px'}}>
-                33 of 38 seletced
-                </p>
-                
-
-                <TextField fullWidth label="Company name" id="0317258963" />
-              </div>
-            </div>
-
-            <div className="col-lg-4">
-              <div className="managing">
-              <p >
-                  Extras
-                </p>
-                <p style={{fontSize: '14px'}}>
-                33 of 38 seletced
-                </p>
-
-                <TextField
-                  fullWidth
-                  label="Enter your position"
-                  id="0317258963"
-                />
-              </div>
-            </div>
-
-
-            <div className="col-lg-4">
-              <div className="managing">
-              <p >
-                  Auxillary
-                </p>
-                <p style={{fontSize: '14px'}}>
-                33 of 38 seletced
-                </p>
-
-                <TextField
-                  fullWidth
-                  label="Enter your position"
-                  id="0317258963"
-                />
-
-            
-              </div>
-            </div>
           </div>
-         
+        </div>
 
-          <div className="flex justify-between my-6">
-            
-                <CreateBtn
-                  onClick={() => setCompanyCheck(!companyCheck)}
-                  style={{
-                    color: "#000",
-                    padding: "6px 22px",
-                    diplay: "flex",
-                    alignItems: "center",
-                  }}
-                  name="Previous"
-                />
-                <div className="mr-5">
-                  <CreateBtn
-                    onClick={() => setCompanyCheck(!companyCheck)}
-                    style={{
-                      color: "#000",
-                      padding: "6px 22px",
-                      diplay: "flex",
-                      alignItems: "center",
-                    }}
-                    name="Next"
-                  />
-                </div>
-              </div>
-
-          
-
-          
-          </div>
+       </div>
         </TabPanel>
 
-        {/* Tries */}
+        {/* Tires */}
         <TabPanel value={value} index={2} dir={theme.direction}>
         <div>
           <hr />
@@ -944,11 +1793,11 @@ export const Createvehicle = () => {
               <div className="company">
              
                 <p style={{fontSize: '14px', fontWeight: 'bold'}}>
-                Company Name
+                Comment
                 </p>
                 
 
-                <TextField fullWidth label="Company name" id="0317258963" />
+                <TextField fullWidth label="Enter date" id="0317258963" />
               </div>
             </div>
 
@@ -983,23 +1832,23 @@ export const Createvehicle = () => {
             <div className="col-lg-4">
               <div className="company">
               <p style={{fontSize: '14px', fontWeight: 'bold'}}>
-                Company Name
+                Type
                 </p>
                 
 
-                <TextField fullWidth label="Company name" id="0317258963" />
+                <TextField fullWidth label="example" id="0317258963" />
               </div>
             </div>
 
             <div className="col-lg-4">
               <div className="managing">
               <p style={{fontSize: '14px', fontWeight: 'bold'}}>
-                Company Name
+                Rims
                 </p>
 
                 <TextField
                   fullWidth
-                  label="Enter your position"
+                  label="example"
                   id="0317258963"
                 />
               </div>
@@ -1009,7 +1858,7 @@ export const Createvehicle = () => {
             <div className="col-lg-4">
               <div className="managing">
               <p style={{fontSize: '14px', fontWeight: 'bold'}}>
-                Company Name
+                Tread depth
                 </p>
                 <TextField
                   fullWidth
@@ -1027,23 +1876,23 @@ export const Createvehicle = () => {
             <div className="col-lg-4">
               <div className="company">
               <p style={{fontSize: '14px', fontWeight: 'bold'}}>
-                Company Name
+                Manufacturer
                 </p>
                 
 
-                <TextField fullWidth label="Company name" id="0317258963" />
+                <TextField fullWidth label="example" id="0317258963" />
               </div>
             </div>
 
             <div className="col-lg-4">
               <div className="managing">
               <p style={{fontSize: '14px', fontWeight: 'bold'}}>
-                Company Name
+                Model
                 </p>
 
                 <TextField
                   fullWidth
-                  label="Enter your position"
+                  label="example"
                   id="0317258963"
                 />
               </div>
@@ -1053,11 +1902,11 @@ export const Createvehicle = () => {
             <div className="col-lg-4">
               <div className="managing">
               <p style={{fontSize: '14px', fontWeight: 'bold'}}>
-                Company Name
+              Dimensions
                 </p>
                 <TextField
                   fullWidth
-                  label="Enter your position"
+                  label="example"
                   id="0317258963"
                 />
 

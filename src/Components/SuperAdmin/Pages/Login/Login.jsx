@@ -24,6 +24,7 @@ const Login = () => {
     http
       .post("/login", { email: email, password: password })
       .then((res) => {
+        console.log(res.data);
         setLoading(false);
         setToken(res.data.success.token, res.data.success.user);
         if (res.data.success.user.myRole[0] === "super-admin") {

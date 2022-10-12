@@ -10,14 +10,15 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import SelectPopover from "../Address/SelectPopover";
-import { CreateBtn } from "../../../Buttons";
+import SelectPopover from "../../Address/SelectPopover";
+import { CreateBtn } from "../../../../Buttons";
 import { Createcompany } from "./Createcompany";
-import AuthUser from "../../Auth/AuthUser";
+
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
-import {Pageloader} from "../Page loader/Pageloader";
-import usePagination from "../Pagination/Pagination";
+import {Pageloader} from "../../Page loader/Pageloader";
+import usePagination from "../../Pagination/Pagination";
+import AuthUser from "../../../Auth/AuthUser";
 
 export function Company() {
   const { http } = AuthUser();
@@ -49,11 +50,11 @@ export function Company() {
   const fetchListCompany = async () => {
     // api call
     setLoading(true);
-    let res = await http.get("/company");
-    setCompanylist(res.data.responseMessage);
-    console.log(res);
-
-    setLoading(false);
+    let res = await http.get("/company-profile");
+    if(res.data.responseStatus === 200){
+    setCompanylist(res.data.responseMessage)
+  }
+       setLoading(false);
   };
 
   const handleEditCompany = (data) => {
@@ -203,7 +204,7 @@ export function Company() {
                   <Pageloader />
                 ) : (
                   <TableBody>
-                    {_DATA.currentData()  ?
+                    {companylist  &&
                     _DATA.currentData().map((data, index) => {
                       return (
                         <>
@@ -437,7 +438,7 @@ export function Company() {
                         </>
                       );
                     })
-                  : null
+                  
                   }
                   </TableBody>
                 )}
