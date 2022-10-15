@@ -49,7 +49,8 @@ function TabPanel(props) {
   }
   
 
-export const Createvehicle = () => {
+export const Createvehicle = (props) => {
+
 
   // Create Vehicle States
 
@@ -145,6 +146,8 @@ export const Createvehicle = () => {
     };
     
   const [companyCheck, setCompanyCheck] = useState(false);
+  console.log("Milage: ", mileage);
+
 
   return (
     <>
@@ -205,6 +208,7 @@ export const Createvehicle = () => {
                 License Plate              </p>
 
               <TextField
+              defaultValue={  props.editItem === undefined ? licPlate : props.editItem.license_plate  }
               onChange={(e) => setLicPlate(e.target.value)}
               fullWidth label="example text" id="0317258963" />
             </div>
@@ -217,7 +221,7 @@ export const Createvehicle = () => {
 
               <TextField
               onChange={(e) => setChassisNum(e.target.value)}
-
+              defaultValue={  props.editItem === undefined ? chassisNum : props.editItem.chassis_no  }
                 fullWidth
                 label="example vin"
                 id="0317258963"
@@ -236,6 +240,7 @@ export const Createvehicle = () => {
               <div className="row">
                 <div className="col-lg-6">
                   <TextField
+                  defaultValue={  props.editItem === undefined ? hsn : props.editItem.hsn  }
                     onChange={(e) => setHsn(e.target.value)}
                     fullWidth
                     label="HSN"
@@ -244,6 +249,7 @@ export const Createvehicle = () => {
                 </div>
                 <div className="col-lg-6  ">
                   <TextField
+                  defaultValue={  props.editItem === undefined ? tsn : props.editItem.tsn  }
                     onChange={(e) => setTsn(e.target.value)}
                     fullWidth
                     label="TSN"
@@ -263,6 +269,7 @@ export const Createvehicle = () => {
                 Vehicle Type              </p>
 
               <TextField
+              defaultValue={  props.editItem === undefined ? vehicleType : props.editItem.vehicle_type  }
               onChange={(e) => setVehicleType(e.target.value)}
                fullWidth label="example text" id="0317258963" />
             </div>
@@ -274,6 +281,7 @@ export const Createvehicle = () => {
                 Manufacturer              </p>
 
               <TextField
+              defaultValue={  props.editItem === undefined ? Manufacturer : props.editItem.manufacturer  }
               onChange={(e) => setManufacturer(e.target.value)}
               fullWidth label="example text" id="0317258963" />
             </div>
@@ -285,6 +293,7 @@ export const Createvehicle = () => {
                 Main Type              </p>
 
               <TextField
+              defaultValue={  props.editItem === undefined ? mainType : props.editItem.main_type  }
                 onChange={(e) => setMainType(e.target.value)}
                 fullWidth
                 label="example text"
@@ -302,6 +311,7 @@ export const Createvehicle = () => {
                 Subtype              </p>
 
               <TextField 
+              defaultValue={  props.editItem === undefined ? vehicleType : props.editItem.subtype  }
               onChange={(e) => setSubType(e.target.value)}
               fullWidth label="example text" id="0317258963" />
             </div>
@@ -313,6 +323,7 @@ export const Createvehicle = () => {
                 Structure              </p>
 
               <TextField 
+              defaultValue={  props.editItem === undefined ? vehicleType : props.editItem.structure  }
               onChange={(e) => setStructure(e.target.value)}
               fullWidth label="example text" id="0317258963" />
             </div>
@@ -324,6 +335,7 @@ export const Createvehicle = () => {
                 Wheel Base              </p>
 
               <TextField
+              defaultValue={  props.editItem === undefined ? vehicleType : props.editItem.wheel_base  }
               onChange={(e) => setWheelBase(e.target.value)}
                 fullWidth
                 label="example text"
@@ -341,6 +353,7 @@ export const Createvehicle = () => {
                 Driven Type              </p>
 
               <TextField 
+              defaultValue={  props.editItem === undefined ? drivenType : props.editItem.driven_type  }
               onChange={(e) => setDrivenType(e.target.value)}
               fullWidth label="example text" id="0317258963" />
             </div>
@@ -352,6 +365,7 @@ export const Createvehicle = () => {
                 Drive’s Cabin              </p>
 
               <TextField 
+              defaultValue={  props.editItem === undefined ? driveCabin : props.editItem.drive_cabin  }
               onChange={(e) => setDriveCabin(e.target.value)}
               fullWidth label="example text" id="0317258963" />
             </div>
@@ -363,6 +377,7 @@ export const Createvehicle = () => {
                 Seats              </p>
 
               <TextField
+              defaultValue={  props.editItem === undefined ? Seats : props.editItem.seats  }
               onChange={(e) => setSeats(e.target.value)}
                 fullWidth
                 label="example text"
@@ -379,6 +394,7 @@ export const Createvehicle = () => {
                 Empty Mass            </p>
 
               <TextField 
+              defaultValue={  props.editItem === undefined ? emptyMass : props.editItem.empty_mass  }
               onChange={(e) => setEmptyMass(e.target.value)}
               fullWidth label="example text" id="0317258963" />
             </div>
@@ -390,6 +406,7 @@ export const Createvehicle = () => {
                 Construction              </p>
 
               <TextField 
+              defaultValue={  props.editItem === undefined ? construction : props.editItem.construction  }
               onChange={(e) => setConstruction(e.target.value)}
               fullWidth label="example text" id="0317258963" />
             </div>
@@ -401,6 +418,7 @@ export const Createvehicle = () => {
                 Suspension Type            </p>
 
               <TextField
+              defaultValue={  props.editItem === undefined ? suspensionType : props.editItem.suspension_type  }
               onChange={(e) => setSuspensionType(e.target.value)}
                 fullWidth
                 label="example text"
@@ -417,6 +435,7 @@ export const Createvehicle = () => {
                 Axes             </p>
 
               <TextField 
+              defaultValue={  props.editItem === undefined ? Axes : props.editItem.axes  }
               onChange={(e) => setAxes(e.target.value)}
               fullWidth label="example text" id="0317258963" />
             </div>
@@ -428,6 +447,7 @@ export const Createvehicle = () => {
                 Equipment Line             </p>
 
               <TextField 
+              defaultValue={  props.editItem === undefined ? EquipmentLine : props.editItem.equipment_line  }
               onChange={(e) => setEquipmentLine(e.target.value)}
               fullWidth label="example text" id="0317258963" />
             </div>
@@ -439,6 +459,7 @@ export const Createvehicle = () => {
                 Axle Load             </p>
 
               <TextField
+              defaultValue={  props.editItem === undefined ? AxleLoad : props.editItem.axle_load  }
               onChange={(e) => setAxleLoad(e.target.value)}
                 fullWidth
                 label="example text"
@@ -460,6 +481,7 @@ export const Createvehicle = () => {
               <div className="row ">
                 <div className="col-lg-4">
                   <TextField
+                  defaultValue={  props.editItem === undefined ? long : props.editItem.long  }
                   onChange={(e) => setLong(e.target.value)}
                     fullWidth
                     label="example text"
@@ -468,6 +490,7 @@ export const Createvehicle = () => {
                 </div>
                 <div className="col-lg-4  ">
                   <TextField
+                  defaultValue={  props.editItem === undefined ? width : props.editItem.width  }
                   onChange={(e) => setWidth(e.target.value)}
                     fullWidth
                     label="example text"
@@ -477,6 +500,7 @@ export const Createvehicle = () => {
 
                 <div className="col-lg-4 ">
                   <TextField
+                  defaultValue={  props.editItem === undefined ? height : props.editItem.height  }
                   onChange={(e) => setHeight(e.target.value)}
                     fullWidth
                     label="example text"
@@ -493,6 +517,7 @@ export const Createvehicle = () => {
                 Engine              </p>
 
               <TextField 
+              defaultValue={  props.editItem === undefined ? engine : props.editItem.engine  }
               onChange={(e) => setEngine(e.target.value)}
               fullWidth label="example text" id="0317258963" />
             </div>
@@ -504,6 +529,7 @@ export const Createvehicle = () => {
                 Power              </p>
 
               <TextField
+              defaultValue={  props.editItem === undefined ? Power : props.editItem.power  }
               onChange={(e) => setPower(e.target.value)}
                 fullWidth
                 label="example number"
@@ -521,6 +547,7 @@ export const Createvehicle = () => {
                 Engine Displacement              </p>
 
               <TextField 
+              defaultValue={  props.editItem === undefined ? engineDisplacement : props.editItem.engine_displacement  }
               onChange={(e) => setengineDisplacement(e.target.value)}
               fullWidth label="example number" id="0317258963" />
             </div>
@@ -532,6 +559,7 @@ export const Createvehicle = () => {
                 Fuel Gear              </p>
 
               <TextField 
+              defaultValue={  props.editItem === undefined ? FuelGear : props.editItem.fuel_gear  }
               onChange={(e) => setFuelGear(e.target.value)}
               fullWidth label="example text" id="0317258963" />
             </div>
@@ -543,6 +571,7 @@ export const Createvehicle = () => {
                 Emission Class              </p>
 
               <TextField
+              defaultValue={  props.editItem === undefined ? emissionClass : props.editItem.emission_class  }
               onChange={(e) => setEmissionClass(e.target.value)}
                 fullWidth
                 label="example text"
@@ -561,6 +590,7 @@ export const Createvehicle = () => {
                 Fine Dust Stricker              </p>
 
               <TextField 
+              defaultValue={  props.editItem === undefined ? fine_dust_stricker : props.editItem.fine_dust_stricker  }
               onChange={(e) => setFine_dust_stricker(e.target.value)}
               fullWidth label="example text" id="0317258963" />
             </div>
@@ -599,12 +629,13 @@ export const Createvehicle = () => {
                 First Registeration             </p>
 
               <TextField
+               defaultValue={  props.editItem === undefined ? firstRegistration : props.editItem.first_registration  }
               onChange={(e) => setFirstRegistration(e.target.value)}
                 fullWidth
                 id="date"
                 label="Enter Date"
                 type="date"
-                defaultValue=""
+               
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -618,12 +649,13 @@ export const Createvehicle = () => {
                 Last Admission             </p>
 
               <TextField
+               defaultValue={  props.editItem === undefined ? lastAdmission : props.editItem.last_admission  }
               onChange={(e) => setlastAdmission(e.target.value)}
                 fullWidth
                 id="date"
                 label="Enter Date"
                 type="date"
-                defaultValue=""
+                
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -637,6 +669,7 @@ export const Createvehicle = () => {
                 Approved in             </p>
 
               <TextField
+               defaultValue={  props.editItem === undefined ? aprrovedIn : props.editItem.aprroved_in  }
               onChange={(e) => setAprrovedIn(e.target.value)}
                 fullWidth
                 label="example"
@@ -654,6 +687,7 @@ export const Createvehicle = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>Year of construction</p>
 
               <TextField 
+              defaultValue={  props.editItem === undefined ? constructionYear : props.editItem.construction_year  }
               onChange={(e) => setConstructionYear(e.target.value)}
               fullWidth label="example" id="0317258963" />
             </div>
@@ -665,12 +699,12 @@ export const Createvehicle = () => {
                 Next main inspection            </p>
 
               <TextField
+              defaultValue={  props.editItem === undefined ? nextMainInspection : props.editItem.next_main_inspection  }
               onChange={(e) => setnextMainInspection(e.target.value)}
                 fullWidth
                 id="date"
                 label="Enter Date"
                 type="date"
-                defaultValue=""
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -684,12 +718,12 @@ export const Createvehicle = () => {
                 Next Security check            </p>
 
               <TextField
+              defaultValue={  props.editItem === undefined ? nextSecurityCheck : props.editItem.next_security_check  }
               onChange={(e) => setNextSecurityCheck(e.target.value)}
                 fullWidth
                 id="date"
                 label="Enter Date"
                 type="date"
-                defaultValue=""
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -706,12 +740,13 @@ export const Createvehicle = () => {
                 Last Gas Test           </p>
 
               <TextField
+              defaultValue={  props.editItem === undefined ? lastGasTest : props.editItem.last_gas_test  }
               onChange={(e) => setlastGasTest(e.target.value)}
                 fullWidth
                 id="date"
                 label="Enter Date"
                 type="date"
-                defaultValue=""
+                
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -724,6 +759,7 @@ export const Createvehicle = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>Accident Prevention Regulations</p>
 
               <TextField 
+              defaultValue={  props.editItem === undefined ? accidentPreventionRegulation : props.editItem.accident_prevention_regulation  }
               onChange={(e) => setAccidentPreventionRegulation(e.target.value)}
               fullWidth label="http:/" id="0317258963" />
             </div>
@@ -761,12 +797,12 @@ export const Createvehicle = () => {
                 Read Off            </p>
 
               <TextField
+              defaultValue={  props.editItem === undefined ? readOff : props.editItem.read_off  }
               onChange={(e) => setReadOff(e.target.value)}
                 fullWidth
                 id="date"
                 label="Enter Date"
                 type="date"
-                defaultValue=""
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -780,12 +816,12 @@ export const Createvehicle = () => {
                 Specified             </p>
 
               <TextField
+              defaultValue={  props.editItem === undefined ? specified : props.editItem.specified  }
               onChange={(e) => setSpecified(e.target.value)}
                 fullWidth
                 id="date"
                 label="Enter Date"
                 type="date"
-                defaultValue=""
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -799,6 +835,7 @@ export const Createvehicle = () => {
                 Estimated            </p>
 
               <TextField
+              defaultValue={  props.editItem === undefined ? estimated : props.editItem.estimated  }
               onChange={(e) => setEstimated(e.target.value)}
                 fullWidth
                 label="example"
@@ -817,15 +854,29 @@ export const Createvehicle = () => {
              
 
               <div class="form-check form-check-inline ">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
+                <input class="form-check-input" 
+                type="radio" name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="Kilometers"
+                onChange={(e) => setMileage(e.target.value)}
+                />
                 <label class="form-check-label" for="inlineRadio1">Kilometers</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
+                <input class="form-check-input" 
+                type="radio" name="inlineRadioOptions" 
+                id="inlineRadio2" value="Miles"
+                onChange={(e) => setMileage(e.target.value)}
+                
+                />
                 <label class="form-check-label" for="inlineRadio2">Miles</label> <br />
               </div> 
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
+                <input class="form-check-input" 
+                type="radio" name="inlineRadioOptions" 
+                id="inlineRadio2" value="Hours"
+                onChange={(e) => setMileage(e.target.value)}
+                />
                 <label class="form-check-label" for="inlineRadio2">Hours</label>
               </div>
             </div>
@@ -880,6 +931,7 @@ export const Createvehicle = () => {
             <div className="country">
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>Colours</p>
               <TextField 
+              defaultValue={  props.editItem === undefined ? color : props.editItem.color  }
               onChange={(e) => setColor(e.target.value)}
               fullWidth label="Colours" id="Street No*" />
 
@@ -892,12 +944,13 @@ export const Createvehicle = () => {
                 Number of previous owners              </p>
 
               <TextField
+              defaultValue={  props.editItem === undefined ? previousOwnerCount : props.editItem.previous_owner_count  }
               onChange={(e) => setPreviousOwnerCount(e.target.value)}
                 fullWidth
                 id="date"
                 label="Previous Owners"
                 type="text"
-                defaultValue=""
+               
                 
               />
             </div>
@@ -909,6 +962,7 @@ export const Createvehicle = () => {
                 Data Source              </p>
 
               <TextField 
+              defaultValue={  props.editItem === undefined ? dataSource : props.editItem.data_source  }
               onChange={(e) => setDataSource(e.target.value)}
               fullWidth label="Data Source" id="City" />
             </div>
@@ -921,6 +975,7 @@ export const Createvehicle = () => {
             <div className="country">
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>Import Vehicle</p>
               <TextField 
+              defaultValue={  props.editItem === undefined ? importVehicle : props.editItem.import_vehicle  }
               onChange={(e) => setImportVehicle(e.target.value)}
               fullWidth label="Street No*" id="Street No*" />
 
@@ -933,12 +988,13 @@ export const Createvehicle = () => {
                 Steering wheel Position          </p>
 
               <TextField
+              defaultValue={  props.editItem === undefined ? steeringWheelPosition : props.editItem.steering_wheel_position  }
               onChange={(e) => setSteeringWheelPosition(e.target.value)}
                 fullWidth
                 id="date"
                 label="Enter Date"
                 type="text"
-                defaultValue=""
+                
                 
               />
             </div>
@@ -1010,14 +1066,17 @@ export const Createvehicle = () => {
             <div className="stand">
               <p style={{ fontWeight: "bold" }}>Standard</p>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <input class="form-check-input"
+                 type="checkbox" value="" id="flexCheckDefault" />
                 <label class="form-check-label" for="flexCheckDefault">
                   33 of 38 seletced
                 </label>
               </div>
 
               <div class="form-check mt-5">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <input class="form-check-input"
+                
+                type="checkbox" value="" id="flexCheckDefault" />
                 <label class="form-check-label" for="flexCheckDefault">
                   Airbag passenger side
                 </label>
@@ -1284,6 +1343,7 @@ export const Createvehicle = () => {
                 
 
                 <TextField 
+                defaultValue={  props.editItem === undefined ? tierComment : props.editItem.license_plate  }
                 onChange={(e) => setTier_comment(e.target.value)}
                 fullWidth label="Enter date" id="0317258963" />
               </div>
@@ -1474,6 +1534,7 @@ export const Createvehicle = () => {
                 
 
                 <TextField 
+                defaultValue={  props.editItem === undefined ? event_date : props.editItem.license_plate  }
                 onChange={(e) => setEventDate(e.target.value)}
                 fullWidth label="example" id="0317258963" />
               </div>
@@ -1486,6 +1547,7 @@ export const Createvehicle = () => {
                 </p>
 
                 <TextField
+                defaultValue={  props.editItem === undefined ? licPlate : props.editItem.license_plate  }
                 onChange={(e) => setEventCost(e.target.value)}
                   fullWidth
                   label="example"

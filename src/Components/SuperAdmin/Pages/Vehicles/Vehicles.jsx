@@ -37,6 +37,8 @@ export default function Vehicles() {
   const [loading, setLoading] = useState(false);
   const [itemId, setItemId] = useState();
   const [editIndex,setEditIndex] = useState(null)
+  const [editItem, setEditItem] = useState()
+
 
   // Api Call Function Fetch Vehicle List
   const fetchVehicleList = async () => {
@@ -98,8 +100,9 @@ export default function Vehicles() {
   return (
 
     <>
-     {compCheck ? (
-        <Createvehicle />
+     {compCheck || editIndex != null ? (
+      
+        <Createvehicle editIndex={editIndex}  editItem = {editItem} />
       ) : (
         <>
     <div style={{ height: 400, width: "100%" }}>
@@ -192,7 +195,10 @@ export default function Vehicles() {
 
                           <Dropdown.Menu>
                             <Dropdown.Item >Copy</Dropdown.Item>
-                            <Dropdown.Item onClick={ () =>  setEditIndex(index)}>Edit</Dropdown.Item>
+                            <Dropdown.Item onClick={ () =>  {
+                              setEditIndex(index)
+                              setEditItem(data)
+                              }}>Edit</Dropdown.Item>
                             <Dropdown.Item onClick={ () =>  handleClickOpenDelete(data.id)} >Delete</Dropdown.Item>
                           </Dropdown.Menu>
                         </Dropdown>

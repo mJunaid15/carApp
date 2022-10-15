@@ -9,7 +9,7 @@ const useAuth = () => {
 
   if (user) {
     var ParsedUser = JSON.parse(user);
-    console.log("user my", ParsedUser.myRole);
+    
   }
 
   if (ParsedUser) {
