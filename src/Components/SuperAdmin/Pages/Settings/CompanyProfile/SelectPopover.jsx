@@ -35,7 +35,7 @@ export default function SelectPopover(props) {
     // console.log('Junaid',props.data.id);
     const formData = new FormData();
     formData.append('_method', 'DELETE');
-    http.post(`/company/${props.data.id}`,formData)
+    http.post(`/company-profile/${props.data.id}`,formData)
     .then((res) => {
       console.log(res);
     props.setState( props.state.filter((item) => item.id != props.data.id) )

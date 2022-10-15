@@ -6,17 +6,10 @@ import Vehicles from "./Vehicles";
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import { useTheme } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import SearchIcon from "@mui/icons-material/Search";
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 import { CreateBtn } from "../../../Buttons";
 import Tires from '../../../img/Tires.png'
 
@@ -24,8 +17,7 @@ import Tires from '../../../img/Tires.png'
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
-   
-  
+
     return (
       <div
         role="tabpanel"
@@ -58,6 +50,79 @@ function TabPanel(props) {
   
 
 export const Createvehicle = () => {
+
+  // Create Vehicle States
+
+    // identification states
+    const [licPlate, setLicPlate] = useState()
+    const [chassisNum, setChassisNum] = useState()
+    const [hsn, setHsn] = useState()
+    const [tsn, setTsn] = useState()
+    const [vehicleType, setVehicleType] = useState()
+    const [Manufacturer, setManufacturer] = useState()
+    const [mainType, setMainType] = useState()
+    const [subType, setSubType] = useState()
+    const [Structure, setStructure] = useState()
+    const [wheelBase, setWheelBase] = useState()
+    const [drivenType, setDrivenType] = useState()
+    const [driveCabin, setDriveCabin] = useState()
+    const [Seats, setSeats] = useState()
+    const [emptyMass, setEmptyMass] = useState()
+    const [construction, setConstruction] = useState()
+    const [suspensionType, setSuspensionType] = useState()
+    const [Axes, setAxes] = useState()
+    const [EquipmentLine, setEquipmentLine] = useState()
+    const [AxleLoad, setAxleLoad] = useState()
+    const [long, setLong] = useState()
+    const [width, setWidth] = useState()
+    const [height, setHeight] = useState()
+    const [engine, setEngine] = useState()
+    const [Power, setPower] = useState()
+    const [engineDisplacement, setengineDisplacement] = useState()
+    const [FuelGear, setFuelGear] = useState()
+    const [emissionClass, setEmissionClass] = useState()
+    const [fine_dust_stricker, setFine_dust_stricker] = useState()
+
+    // general states
+    const [firstRegistration, setFirstRegistration] = useState()
+    const [lastAdmission, setlastAdmission] = useState()
+    const [aprrovedIn, setAprrovedIn] = useState()
+    const [constructionYear, setConstructionYear] = useState()
+    const [nextMainInspection, setnextMainInspection] = useState()
+    const [nextSecurityCheck, setNextSecurityCheck] = useState()
+    const [lastGasTest, setlastGasTest] = useState()
+    const [accidentPreventionRegulation, setAccidentPreventionRegulation] = useState()
+    
+    // milage states
+    const [readOff, setReadOff] = useState()
+    const [specified, setSpecified] = useState()
+    const [estimated, setEstimated] = useState()
+    const [mileage, setMileage] = useState()
+    const [mileageComment, setmileageComment] = useState()
+
+    // miscellenous states
+    const [color, setColor] = useState()
+    const [previousOwnerCount, setPreviousOwnerCount] = useState()
+    const [dataSource, setDataSource] = useState()
+    const [importVehicle, setImportVehicle] = useState()
+    const [steeringWheelPosition, setSteeringWheelPosition] = useState()
+
+    // Equipments
+
+    // Tries
+    const [tierComment, setTier_comment] = useState()
+    const [tierType, settierType] = useState()
+    const [tier_rims, settier_rims] = useState()
+    const [tier_tread_depth, settier_tread_depth] = useState()
+    const [tier_manufacturer, settier_manufacturer] = useState()
+    const [tier_model, settier_model] = useState()
+    const [tier_dimensions, settier_dimensions] = useState()
+
+    // Event
+    const [event_date, setEventDate] = useState()
+    const [eventComment, setEventComment] = useState()
+    const [eventCost, setEventCost] = useState()
+    const [eventEvent, setEventEvent] = useState()
 
   const [milage, setMilage] = React.useState()
 
@@ -109,6 +174,8 @@ export const Createvehicle = () => {
           <Tab label="Creating vehicle" {...a11yProps(0)} />
           <Tab label=" Equipment  " {...a11yProps(1)} />
           <Tab label="Tires" {...a11yProps(2)} />
+          <Tab label="Vehicle Events" {...a11yProps(3)} />
+
          
         </Tabs>
        
@@ -117,18 +184,29 @@ export const Createvehicle = () => {
         index={value}
         onChangeIndex={handleChangeIndex}
       >
+
         {/* Create Vehicles */}
         <TabPanel value={value} index={0} dir={theme.direction}>
 
           <div>
+          <div className="flex justify-between">
+            <h1 className="text-base text-bold mb-0 ml-5">Create Vehicle</h1>
+ 
+          </div> <br />
             
+            {/* Identification */}
+            <div className="generl ">
+          <p>Identification</p>
+        </div> 
         <div className="row mt-5">
           <div className="col-lg-4">
             <div className="company">
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 License Plate              </p>
 
-              <TextField fullWidth label="example text" id="0317258963" />
+              <TextField
+              onChange={(e) => setLicPlate(e.target.value)}
+              fullWidth label="example text" id="0317258963" />
             </div>
           </div>
 
@@ -138,6 +216,8 @@ export const Createvehicle = () => {
                 Chassis Number              </p>
 
               <TextField
+              onChange={(e) => setChassisNum(e.target.value)}
+
                 fullWidth
                 label="example vin"
                 id="0317258963"
@@ -156,15 +236,17 @@ export const Createvehicle = () => {
               <div className="row">
                 <div className="col-lg-6">
                   <TextField
+                    onChange={(e) => setHsn(e.target.value)}
                     fullWidth
-                    label="example text"
+                    label="HSN"
                     id="0317258963"
                   />
                 </div>
                 <div className="col-lg-6  ">
                   <TextField
+                    onChange={(e) => setTsn(e.target.value)}
                     fullWidth
-                    label="example text"
+                    label="TSN"
                     id="0317258963"
                   />
                 </div>
@@ -180,7 +262,9 @@ export const Createvehicle = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 Vehicle Type              </p>
 
-              <TextField fullWidth label="example text" id="0317258963" />
+              <TextField
+              onChange={(e) => setVehicleType(e.target.value)}
+               fullWidth label="example text" id="0317258963" />
             </div>
           </div>
 
@@ -189,7 +273,9 @@ export const Createvehicle = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 Manufacturer              </p>
 
-              <TextField fullWidth label="example text" id="0317258963" />
+              <TextField
+              onChange={(e) => setManufacturer(e.target.value)}
+              fullWidth label="example text" id="0317258963" />
             </div>
           </div>
 
@@ -199,6 +285,7 @@ export const Createvehicle = () => {
                 Main Type              </p>
 
               <TextField
+                onChange={(e) => setMainType(e.target.value)}
                 fullWidth
                 label="example text"
                 id="0317258963"
@@ -214,7 +301,9 @@ export const Createvehicle = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 Subtype              </p>
 
-              <TextField fullWidth label="example text" id="0317258963" />
+              <TextField 
+              onChange={(e) => setSubType(e.target.value)}
+              fullWidth label="example text" id="0317258963" />
             </div>
           </div>
 
@@ -223,7 +312,9 @@ export const Createvehicle = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 Structure              </p>
 
-              <TextField fullWidth label="example text" id="0317258963" />
+              <TextField 
+              onChange={(e) => setStructure(e.target.value)}
+              fullWidth label="example text" id="0317258963" />
             </div>
           </div>
 
@@ -233,6 +324,7 @@ export const Createvehicle = () => {
                 Wheel Base              </p>
 
               <TextField
+              onChange={(e) => setWheelBase(e.target.value)}
                 fullWidth
                 label="example text"
                 id="0317258963"
@@ -248,7 +340,9 @@ export const Createvehicle = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 Driven Type              </p>
 
-              <TextField fullWidth label="example text" id="0317258963" />
+              <TextField 
+              onChange={(e) => setDrivenType(e.target.value)}
+              fullWidth label="example text" id="0317258963" />
             </div>
           </div>
 
@@ -257,7 +351,9 @@ export const Createvehicle = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 Drive’s Cabin              </p>
 
-              <TextField fullWidth label="example text" id="0317258963" />
+              <TextField 
+              onChange={(e) => setDriveCabin(e.target.value)}
+              fullWidth label="example text" id="0317258963" />
             </div>
           </div>
 
@@ -267,6 +363,7 @@ export const Createvehicle = () => {
                 Seats              </p>
 
               <TextField
+              onChange={(e) => setSeats(e.target.value)}
                 fullWidth
                 label="example text"
                 id="0317258963"
@@ -281,7 +378,9 @@ export const Createvehicle = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 Empty Mass            </p>
 
-              <TextField fullWidth label="example text" id="0317258963" />
+              <TextField 
+              onChange={(e) => setEmptyMass(e.target.value)}
+              fullWidth label="example text" id="0317258963" />
             </div>
           </div>
 
@@ -290,7 +389,9 @@ export const Createvehicle = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 Construction              </p>
 
-              <TextField fullWidth label="example text" id="0317258963" />
+              <TextField 
+              onChange={(e) => setConstruction(e.target.value)}
+              fullWidth label="example text" id="0317258963" />
             </div>
           </div>
 
@@ -300,6 +401,7 @@ export const Createvehicle = () => {
                 Suspension Type            </p>
 
               <TextField
+              onChange={(e) => setSuspensionType(e.target.value)}
                 fullWidth
                 label="example text"
                 id="0317258963"
@@ -314,7 +416,9 @@ export const Createvehicle = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 Axes             </p>
 
-              <TextField fullWidth label="example text" id="0317258963" />
+              <TextField 
+              onChange={(e) => setAxes(e.target.value)}
+              fullWidth label="example text" id="0317258963" />
             </div>
           </div>
 
@@ -323,7 +427,9 @@ export const Createvehicle = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 Equipment Line             </p>
 
-              <TextField fullWidth label="example text" id="0317258963" />
+              <TextField 
+              onChange={(e) => setEquipmentLine(e.target.value)}
+              fullWidth label="example text" id="0317258963" />
             </div>
           </div>
 
@@ -333,6 +439,7 @@ export const Createvehicle = () => {
                 Axle Load             </p>
 
               <TextField
+              onChange={(e) => setAxleLoad(e.target.value)}
                 fullWidth
                 label="example text"
                 id="0317258963"
@@ -353,6 +460,7 @@ export const Createvehicle = () => {
               <div className="row ">
                 <div className="col-lg-4">
                   <TextField
+                  onChange={(e) => setLong(e.target.value)}
                     fullWidth
                     label="example text"
                     id="0317258963"
@@ -360,6 +468,7 @@ export const Createvehicle = () => {
                 </div>
                 <div className="col-lg-4  ">
                   <TextField
+                  onChange={(e) => setWidth(e.target.value)}
                     fullWidth
                     label="example text"
                     id="0317258963"
@@ -368,6 +477,7 @@ export const Createvehicle = () => {
 
                 <div className="col-lg-4 ">
                   <TextField
+                  onChange={(e) => setHeight(e.target.value)}
                     fullWidth
                     label="example text"
                     id="0317258963"
@@ -382,7 +492,9 @@ export const Createvehicle = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 Engine              </p>
 
-              <TextField fullWidth label="example text" id="0317258963" />
+              <TextField 
+              onChange={(e) => setEngine(e.target.value)}
+              fullWidth label="example text" id="0317258963" />
             </div>
           </div>
 
@@ -392,6 +504,7 @@ export const Createvehicle = () => {
                 Power              </p>
 
               <TextField
+              onChange={(e) => setPower(e.target.value)}
                 fullWidth
                 label="example number"
                 id="0317258963"
@@ -407,7 +520,9 @@ export const Createvehicle = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 Engine Displacement              </p>
 
-              <TextField fullWidth label="example number" id="0317258963" />
+              <TextField 
+              onChange={(e) => setengineDisplacement(e.target.value)}
+              fullWidth label="example number" id="0317258963" />
             </div>
           </div>
 
@@ -416,7 +531,9 @@ export const Createvehicle = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 Fuel Gear              </p>
 
-              <TextField fullWidth label="example text" id="0317258963" />
+              <TextField 
+              onChange={(e) => setFuelGear(e.target.value)}
+              fullWidth label="example text" id="0317258963" />
             </div>
           </div>
 
@@ -426,6 +543,7 @@ export const Createvehicle = () => {
                 Emission Class              </p>
 
               <TextField
+              onChange={(e) => setEmissionClass(e.target.value)}
                 fullWidth
                 label="example text"
                 id="0317258963"
@@ -442,7 +560,9 @@ export const Createvehicle = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 Fine Dust Stricker              </p>
 
-              <TextField fullWidth label="example text" id="0317258963" />
+              <TextField 
+              onChange={(e) => setFine_dust_stricker(e.target.value)}
+              fullWidth label="example text" id="0317258963" />
             </div>
           </div>
 
@@ -479,6 +599,7 @@ export const Createvehicle = () => {
                 First Registeration             </p>
 
               <TextField
+              onChange={(e) => setFirstRegistration(e.target.value)}
                 fullWidth
                 id="date"
                 label="Enter Date"
@@ -497,6 +618,7 @@ export const Createvehicle = () => {
                 Last Admission             </p>
 
               <TextField
+              onChange={(e) => setlastAdmission(e.target.value)}
                 fullWidth
                 id="date"
                 label="Enter Date"
@@ -515,6 +637,7 @@ export const Createvehicle = () => {
                 Approved in             </p>
 
               <TextField
+              onChange={(e) => setAprrovedIn(e.target.value)}
                 fullWidth
                 label="example"
                 id=""
@@ -530,7 +653,9 @@ export const Createvehicle = () => {
             <div className="E-mail">
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>Year of construction</p>
 
-              <TextField fullWidth label="example" id="0317258963" />
+              <TextField 
+              onChange={(e) => setConstructionYear(e.target.value)}
+              fullWidth label="example" id="0317258963" />
             </div>
           </div>
 
@@ -540,6 +665,7 @@ export const Createvehicle = () => {
                 Next main inspection            </p>
 
               <TextField
+              onChange={(e) => setnextMainInspection(e.target.value)}
                 fullWidth
                 id="date"
                 label="Enter Date"
@@ -558,6 +684,7 @@ export const Createvehicle = () => {
                 Next Security check            </p>
 
               <TextField
+              onChange={(e) => setNextSecurityCheck(e.target.value)}
                 fullWidth
                 id="date"
                 label="Enter Date"
@@ -579,6 +706,7 @@ export const Createvehicle = () => {
                 Last Gas Test           </p>
 
               <TextField
+              onChange={(e) => setlastGasTest(e.target.value)}
                 fullWidth
                 id="date"
                 label="Enter Date"
@@ -595,7 +723,9 @@ export const Createvehicle = () => {
             <div className="Homepage">
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>Accident Prevention Regulations</p>
 
-              <TextField fullWidth label="http:/" id="0317258963" />
+              <TextField 
+              onChange={(e) => setAccidentPreventionRegulation(e.target.value)}
+              fullWidth label="http:/" id="0317258963" />
             </div>
           </div>
 
@@ -618,8 +748,9 @@ export const Createvehicle = () => {
 
 
 
+              {/* Milage */}
         <div className="generl mt-5">
-          <p>General</p>
+          <p>Milage</p>
         </div>
 
 
@@ -630,6 +761,7 @@ export const Createvehicle = () => {
                 Read Off            </p>
 
               <TextField
+              onChange={(e) => setReadOff(e.target.value)}
                 fullWidth
                 id="date"
                 label="Enter Date"
@@ -648,6 +780,7 @@ export const Createvehicle = () => {
                 Specified             </p>
 
               <TextField
+              onChange={(e) => setSpecified(e.target.value)}
                 fullWidth
                 id="date"
                 label="Enter Date"
@@ -666,6 +799,7 @@ export const Createvehicle = () => {
                 Estimated            </p>
 
               <TextField
+              onChange={(e) => setEstimated(e.target.value)}
                 fullWidth
                 label="example"
                 id=""
@@ -678,17 +812,18 @@ export const Createvehicle = () => {
 
         <div className="row mt-4">
           <div className="col-lg-4">
-            <div className="STATUS d-flex mt-5">
-              <p>Mileage:</p>
+          <p>Mileage:</p> 
+            <div className="STATUS d-flex ">
+             
 
-              <div class="form-check form-check-inline ps-5">
+              <div class="form-check form-check-inline ">
                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
                 <label class="form-check-label" for="inlineRadio1">Kilometers</label>
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
-                <label class="form-check-label" for="inlineRadio2">Miles</label>
-              </div>
+                <label class="form-check-label" for="inlineRadio2">Miles</label> <br />
+              </div> 
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
                 <label class="form-check-label" for="inlineRadio2">Hours</label>
@@ -702,6 +837,7 @@ export const Createvehicle = () => {
                 Comment on mileage            </p>
 
               <TextField
+              onChange={(e) => setmileageComment(e.target.value)}
                 fullWidth
                 id="date"
                 label="Enter Date"
@@ -734,6 +870,7 @@ export const Createvehicle = () => {
 
 
 
+        {/* Miscellaneous */}
         <div className="Address mt-5">
           <p>Miscellaneous</p>
         </div>
@@ -742,7 +879,9 @@ export const Createvehicle = () => {
           <div className="col-lg-4">
             <div className="country">
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>Colours</p>
-              <TextField fullWidth label="Street No*" id="Street No*" />
+              <TextField 
+              onChange={(e) => setColor(e.target.value)}
+              fullWidth label="Colours" id="Street No*" />
 
             </div>
           </div>
@@ -753,14 +892,13 @@ export const Createvehicle = () => {
                 Number of previous owners              </p>
 
               <TextField
+              onChange={(e) => setPreviousOwnerCount(e.target.value)}
                 fullWidth
                 id="date"
-                label="Enter Date"
-                type="date"
+                label="Previous Owners"
+                type="text"
                 defaultValue=""
-                InputLabelProps={{
-                  shrink: true,
-                }}
+                
               />
             </div>
           </div>
@@ -770,7 +908,9 @@ export const Createvehicle = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 Data Source              </p>
 
-              <TextField fullWidth label="Data Source" id="City" />
+              <TextField 
+              onChange={(e) => setDataSource(e.target.value)}
+              fullWidth label="Data Source" id="City" />
             </div>
           </div>
         </div>
@@ -780,7 +920,9 @@ export const Createvehicle = () => {
           <div className="col-lg-4">
             <div className="country">
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>Import Vehicle</p>
-              <TextField fullWidth label="Street No*" id="Street No*" />
+              <TextField 
+              onChange={(e) => setImportVehicle(e.target.value)}
+              fullWidth label="Street No*" id="Street No*" />
 
             </div>
           </div>
@@ -791,14 +933,13 @@ export const Createvehicle = () => {
                 Steering wheel Position          </p>
 
               <TextField
+              onChange={(e) => setSteeringWheelPosition(e.target.value)}
                 fullWidth
                 id="date"
                 label="Enter Date"
-                type="date"
+                type="text"
                 defaultValue=""
-                InputLabelProps={{
-                  shrink: true,
-                }}
+                
               />
             </div>
           </div>
@@ -820,21 +961,12 @@ export const Createvehicle = () => {
           </div>
         </div>
 
-        <div className="flex justify-between my-6 mt-5">
+        <div className=" my-6 mt-5" style={{display: "flex", justifyContent:"right"}}>
 
-          <CreateBtn
-            // onClick={() => setCompanyCheck(!companyCheck)}
-            style={{
-              color: "gray",
-              padding: "6px 22px",
-              diplay: "flex",
-              alignItems: "center",
-            }}
-            name="Previous"
-          />
+         
           <div className="mr-5">
             <CreateBtn
-              // onClick={() => setCompanyCheck(!companyCheck)}
+              onClick={() => setValue(value + 1)}
               style={{
                 color: "#000",
                 padding: "6px 22px",
@@ -849,660 +981,16 @@ export const Createvehicle = () => {
 
           <hr />
 
-          
-          {/* Identification */}
-          <div className="generl">
-            <p>Identification</p>
-          </div>
-          <div className="row mt-5">
-            <div className="col-lg-4">
-              <div className="company">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Company Name
-                </p>
-
-                <TextField fullWidth label="Company name" id="0317258963" />
-              </div>
-            </div>
-
-            <div className="col-lg-4">
-              <div className="managing">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Managing Director
-                </p>
-
-                <TextField
-                  fullWidth
-                  label="Enter your position"
-                  id="0317258963"
-                />
-              </div>
-            </div>
-
-
-            <div className="col-lg-4">
-              <div className="managing">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Managing Director
-                </p>
-
-                <div className="row ">
-                  <div className="col-lg-6 ">
-                  <TextField
-                  fullWidth
-                  label="example text"
-                  id="0317258963"
-                />
-                  </div>
-                  <div className="col-lg-6  ">
-                  <TextField
-                  fullWidth
-                  label="example text"
-                  id="0317258963"
-                />
-                  </div>
-                </div>
-
-                
-              </div>
-            </div>
-          </div>
-
-          <div className="row mt-5">
-            <div className="col-lg-4">
-              <div className="contact">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Contact person
-                </p>
-
-                <TextField fullWidth label="Enter your name" id="0317258963" />
-              </div>
-            </div>
-
-            <div className="col-lg-4">
-              <div className="Commerical">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Commerical Register
-                </p>
-
-                <TextField fullWidth label="Enter your tax" id="0317258963" />
-              </div>
-            </div>
-
-            <div className="col-lg-4 ">
-              <div className="Tax">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Tax number
-                </p>
-
-                <TextField
-                  fullWidth
-                  label="Enter your company"
-                  id="0317258963"
-                />
-              </div>
-            </div>
-          </div>
-
-
-          <div className="row mt-5">
-            <div className="col-lg-4">
-              <div className="contact">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Contact person
-                </p>
-
-                <TextField fullWidth label="Enter your name" id="0317258963" />
-              </div>
-            </div>
-
-            <div className="col-lg-4">
-              <div className="Commerical">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Commerical Register
-                </p>
-
-                <TextField fullWidth label="Enter your tax" id="0317258963" />
-              </div>
-            </div>
-
-            <div className="col-lg-4 ">
-              <div className="Tax">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Tax number
-                </p>
-
-                <TextField
-                  fullWidth
-                  label="Enter your company"
-                  id="0317258963"
-                />
-              </div>
-            </div>
-          </div>
-
-
-          <div className="row mt-5">
-            <div className="col-lg-4">
-              <div className="contact">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Contact person
-                </p>
-
-                <TextField fullWidth label="Enter your name" id="0317258963" />
-              </div>
-            </div>
-
-            <div className="col-lg-4">
-              <div className="Commerical">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Commerical Register
-                </p>
-
-                <TextField fullWidth label="Enter your tax" id="0317258963" />
-              </div>
-            </div>
-
-            <div className="col-lg-4 ">
-              <div className="Tax">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Tax number
-                </p>
-
-                <TextField
-                  fullWidth
-                  label="Enter your company"
-                  id="0317258963"
-                />
-              </div>
-            </div>
-          </div>
-
-
-          <div className="row mt-5">
-            <div className="col-lg-4">
-              <div className="contact">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Logo/Width/height
-                </p>
-
-                <div className="row ">
-                  <div className="col-lg-4">
-                  <TextField
-                  fullWidth
-                  label="example text"
-                  id="0317258963"
-                />
-                  </div>
-                  <div className="col-lg-4  ">
-                  <TextField
-                  fullWidth
-                  label="example text"
-                  id="0317258963"
-                />
-                  </div>
-
-                  <div className="col-lg-4 ">
-                  <TextField
-                  fullWidth
-                  label="example text"
-                  id="0317258963"
-                />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-4">
-              <div className="Commerical">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Commerical Register
-                </p>
-
-                <TextField fullWidth label="Enter your tax" id="0317258963" />
-              </div>
-            </div>
-
-            <div className="col-lg-4 ">
-              <div className="Tax">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Tax number
-                </p>
-
-                <TextField
-                  fullWidth
-                  label="Enter your company"
-                  id="0317258963"
-                />
-              </div>
-            </div>
-          </div>
-
-
-          <div className="row mt-5">
-            <div className="col-lg-4">
-              <div className="contact">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Contact person
-                </p>
-
-                <TextField fullWidth label="Enter your name" id="0317258963" />
-              </div>
-            </div>
-
-            <div className="col-lg-4">
-              <div className="Commerical">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Commerical Register
-                </p>
-
-                <TextField fullWidth label="Enter your tax" id="0317258963" />
-              </div>
-            </div>
-
-            <div className="col-lg-4 ">
-              <div className="Tax">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Tax number
-                </p>
-
-                <TextField
-                  fullWidth
-                  label="Enter your company"
-                  id="0317258963"
-                />
-              </div>
-            </div>
-          </div>
-
-
-
-          <div className="row mt-5">
-            <div className="col-lg-4">
-              <div className="contact">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Contact person
-                </p>
-
-                <TextField fullWidth label="Enter your name" id="0317258963" />
-              </div>
-            </div>
-
-            <div className="col-lg-4">
-              <div className="Commerical">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Commerical Register
-                </p>
-
-                <TextField fullWidth label="Enter your tax" id="0317258963" />
-              </div>
-            </div>
-
-            <div className="col-lg-4 ">
-              <div className="Tax">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Tax number
-                </p>
-
-                <TextField
-                  fullWidth
-                  label="Enter your company"
-                  id="0317258963"
-                />
-              </div>
-
-                
-            </div>
-            <div className=" mt-5">
-              <Button
-                onClick={() => setCompanyCheck(!companyCheck)}
-                style={{
-                  backgroundColor: "  #5A4A42",
-                  color: "#fff",
-                  padding: "6px 22px",
-                  diplay: "flex",
-                  alignItems: "center",
-                }}
-              >
-                
-                Add New Field +
-              </Button>
-              </div>
-          </div>
-
-                  {/* General */}
-          <div className="Contactcent mt-5">
-            <p>General</p>
-          </div>
-
-          <div className="row mt-5">
-            <div className="col-lg-4">
-              <div className="E-mail">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>E-mail</p>
-
-                <TextField fullWidth label="exam@gmail.com" id="0317258963" />
-              </div>
-            </div>
-
-            <div className="col-lg-4">
-              <div className="Homepage">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Homepage</p>
-
-                <TextField fullWidth label="http:/" id="0317258963" />
-              </div>
-            </div>
-
-            <div className="col-lg-4">
-              <div className="Homepage">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Homepage</p>
-
-                <TextField fullWidth label="http:/" id="0317258963" />
-              </div>
-            </div>
-          </div>
-
-          <div className="row mt-5">
-            <div className="col-lg-4">
-              <div className="E-mail">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>E-mail</p>
-
-                <TextField fullWidth label="exam@gmail.com" id="0317258963" />
-              </div>
-            </div>
-
-            <div className="col-lg-4">
-              <div className="Homepage">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Homepage</p>
-
-                <TextField fullWidth label="http:/" id="0317258963" />
-              </div>
-            </div>
-
-            <div className="col-lg-4">
-              <div className="Homepage">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Homepage</p>
-
-                <TextField fullWidth label="http:/" id="0317258963" />
-              </div>
-            </div>
-          </div>
-
-          <div className="row mt-5">
-            <div className="col-lg-5">
-              <div className="E-mail">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>E-mail</p>
-
-                <TextField fullWidth label="exam@gmail.com" id="0317258963" />
-              </div>
-              <div className=" mt-5">
-              <Button
-                onClick={() => setCompanyCheck(!companyCheck)}
-                style={{
-                  backgroundColor: "  #5A4A42",
-                  color: "#fff",
-                  padding: "6px 22px",
-                  diplay: "flex",
-                  alignItems: "center",
-                }}
-              >
-                
-                Add New Field +
-              </Button>
-              </div>
-            </div>
-
-
-            <div className="col-lg-6">
-              <div className="Homepage">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Homepage</p>
-
-                <TextField fullWidth label="http:/" id="0317258963" />
-              </div>
-            </div>
-          </div>
-
-          <div className="Address mt-5">
-            <p>Milage</p>
-          </div>
-
-          <div className="row mt-5">
-            <div className="col-lg-4">
-              <div className="country">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Country</p>
-
-                <TextField
-                fullWidth
-        id="date"
-        label="Enter Date"
-        type="date"
-        defaultValue=""
-        InputLabelProps={{
-          shrink: true,
-        }}
-      />
-              </div>
-            </div>
-
-            <div className="col-lg-4">
-              <div className="ZIP / City">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  ZIP / City
-                </p>
-
-                <TextField
-                fullWidth
-        id="date"
-        label="Enter Date"
-        type="date"
-        defaultValue=""
-        InputLabelProps={{
-          shrink: true,
-        }}
-      />
-              </div>
-            </div>
-
-            <div className="col-lg-4">
-              <div className="ZIP / City">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  ZIP / City
-                </p>
-
-                <TextField fullWidth label="Data Source" id="City" />
-              </div>
-            </div>
-          </div>
-
-
-          <div className="row mt-5">
-            <div className="col-lg-4 ">
-              <div className="country flex justify-center items-center pt-4 ">
-                <span style={{ fontWeight: "bold", fontSize: "14px" }} className='mr-2'>Milege</span>
-
-                
-                <form className="flex items-center justify-center ">
-    <div className="radio  mr-2 p-2 ">
-      <label >
-        <input  className="mr-2"type="radio" value="Kilometer" checked={milage === 'Kilometer'} onChange={handleMilage} />  
-        Kilometer
-      </label>
-    </div>
-    <div className="radio mr-2">
-      <label  >
-      <input className="mr-2" type="radio" value="Miles" checked={milage === 'Miles'} onChange={handleMilage} />
-      Miles
-      </label>
-    </div>
-    <div className="radio">
-      <label >
-        <input className="mr-2 ml-2" type="radio" value="Hours" checked={milage === 'Hours'} onChange={handleMilage} />
-        Hours
-      </label>
-    </div>
-                </form>
-              </div>
-            </div>
-
-            <div className="col-lg-4">
-              <div className="ZIP / City">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  ZIP / City
-                </p>
-
-                <TextField fullWidth label="City" id="City" />
-              </div>
-            </div>
-
-            <div className="col-lg-4">
-              <div className="ZIP / City h-100 items-center justify-center flex">
-              <Button
-                onClick={() => setCompanyCheck(!companyCheck)}
-                style={{
-                  backgroundColor: "  #5A4A42",
-                  color: "#fff",
-                  padding: "6px 22px",
-                  diplay: "flex",
-                  alignItems: "center",
-                }}
-              >Add New Item +
-              </Button>
-              </div>
-            </div>
-          </div>
-
-
-         
-
-
-
-
-          <div className="Address mt-5">
-            <p>Miscellaneous</p>
-          </div>
-
-          <div className="row mt-5">
-            <div className="col-lg-4">
-              <div className="country">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Country</p>
-                <TextField fullWidth label="Street No*" id="Street No*" />
-               
-              </div>
-            </div>
-
-            <div className="col-lg-4">
-              <div className="ZIP / City">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  ZIP / City
-                </p>
-
-                <TextField
-                fullWidth
-        id="date"
-        label="Enter Date"
-        type="date"
-        defaultValue=""
-        InputLabelProps={{
-          shrink: true,
-        }}
-      />
-              </div>
-            </div>
-
-            <div className="col-lg-4">
-              <div className="ZIP / City">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  ZIP / City
-                </p>
-
-                <TextField fullWidth label="Data Source" id="City" />
-              </div>
-            </div>
-          </div>
-
-
-          <div className="row mt-5">
-            <div className="col-lg-4">
-              <div className="country">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Country</p>
-                <TextField fullWidth label="Street No*" id="Street No*" />
-               
-              </div>
-            </div>
-
-            <div className="col-lg-4">
-              <div className="ZIP / City">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  ZIP / City
-                </p>
-
-                <TextField
-                fullWidth
-        id="date"
-        label="Enter Date"
-        type="date"
-        defaultValue=""
-        InputLabelProps={{
-          shrink: true,
-        }}
-      />
-              </div>
-            </div>
-
-            <div className="col-lg-4">
-              <div className="ZIP / City h-100 items-center justify-center flex">
-              <Button
-                onClick={() => setCompanyCheck(!companyCheck)}
-                style={{
-                  backgroundColor: "  #5A4A42",
-                  color: "#fff",
-                  padding: "6px 22px",
-                  diplay: "flex",
-                  alignItems: "center",
-                }}
-              >Add New Item +
-              </Button>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex justify-between my-6">
-            
-                <CreateBtn
-                  onClick={() => setCompanyCheck(!companyCheck)}
-                  style={{
-                    color: "#000",
-                    padding: "6px 22px",
-                    diplay: "flex",
-                    alignItems: "center",
-                  }}
-                  name="Cancel"
-                />
-                <div className="mr-5">
-                  <CreateBtn
-                    onClick={() => setCompanyCheck(!companyCheck)}
-                    style={{
-                      color: "#000",
-                      padding: "6px 22px",
-                      diplay: "flex",
-                      alignItems: "center",
-                    }}
-                    name="Create"
-                  />
-                </div>
-              </div>
-
-          
-
-          
-        
-
         </TabPanel>
-
 
         {/* Equipments */}
         <TabPanel value={value} index={1} dir={theme.direction}>
+        <div className="flex justify-between">
+            <h1 className="text-base text-bold mb-0 ml-5">Equipments</h1>
+ 
+          </div> <br />
        <div>
-         <div className="Address mt-5">
+         <div className="Address ">
           <p>List of Equipments</p>
         </div>
 
@@ -1737,28 +1225,28 @@ export const Createvehicle = () => {
         </div>
         <div className="flex justify-between my-6 mt-5">
 
+        <CreateBtn
+          onClick={() => setValue(value - 1)}
+          style={{
+            color: "gray",
+            padding: "6px 22px",
+            diplay: "flex",
+            alignItems: "center",
+          }}
+          name="Previous"
+        />
+        <div className="mr-5">
           <CreateBtn
-            // onClick={() => setCompanyCheck(!companyCheck)}
+            onClick={() => setValue(value + 1)}
             style={{
-              color: "#gray",
+              color: "#000",
               padding: "6px 22px",
               diplay: "flex",
               alignItems: "center",
             }}
-            name="Previous"
+            name="Next"
           />
-          <div className="mr-5">
-            <CreateBtn
-              // onClick={() => setCompanyCheck(!companyCheck)}
-              style={{
-                color: "#000",
-                padding: "6px 22px",
-                diplay: "flex",
-                alignItems: "center",
-              }}
-              name="Next"
-            />
-          </div>
+        </div>
         </div>
 
        </div>
@@ -1767,15 +1255,13 @@ export const Createvehicle = () => {
         {/* Tires */}
         <TabPanel value={value} index={2} dir={theme.direction}>
         <div>
-          <hr />
+          
         <div className="flex justify-between">
             <h1 className="text-base text-bold mb-0 ml-5">Tires</h1>
-            
-            
-          </div>
+ 
+          </div> <br />
 
-          <hr />
-
+         
           
           
           <div className="generl">
@@ -1797,7 +1283,9 @@ export const Createvehicle = () => {
                 </p>
                 
 
-                <TextField fullWidth label="Enter date" id="0317258963" />
+                <TextField 
+                onChange={(e) => setTier_comment(e.target.value)}
+                fullWidth label="Enter date" id="0317258963" />
               </div>
             </div>
 
@@ -1836,7 +1324,9 @@ export const Createvehicle = () => {
                 </p>
                 
 
-                <TextField fullWidth label="example" id="0317258963" />
+                <TextField 
+                onChange={(e) => settierType(e.target.value)}
+                fullWidth label="example" id="0317258963" />
               </div>
             </div>
 
@@ -1847,6 +1337,7 @@ export const Createvehicle = () => {
                 </p>
 
                 <TextField
+                onChange={(e) => settier_rims(e.target.value)}
                   fullWidth
                   label="example"
                   id="0317258963"
@@ -1861,6 +1352,7 @@ export const Createvehicle = () => {
                 Tread depth
                 </p>
                 <TextField
+                onChange={(e) => settier_tread_depth(e.target.value)}
                   fullWidth
                   label="Enter your position"
                   id="0317258963"
@@ -1880,7 +1372,9 @@ export const Createvehicle = () => {
                 </p>
                 
 
-                <TextField fullWidth label="example" id="0317258963" />
+                <TextField 
+                onChange={(e) => settier_manufacturer(e.target.value)}
+                fullWidth label="example" id="0317258963" />
               </div>
             </div>
 
@@ -1891,6 +1385,7 @@ export const Createvehicle = () => {
                 </p>
 
                 <TextField
+                onChange={(e) => settier_model(e.target.value)}
                   fullWidth
                   label="example"
                   id="0317258963"
@@ -1905,6 +1400,7 @@ export const Createvehicle = () => {
               Dimensions
                 </p>
                 <TextField
+                onChange={(e) => settier_dimensions(e.target.value)}
                   fullWidth
                   label="example"
                   id="0317258963"
@@ -1917,12 +1413,12 @@ export const Createvehicle = () => {
          
          
 
-          <div className="flex justify-between my-6">
-            
+          <div className="flex justify-between my-6 mt-5">
+
                 <CreateBtn
-                  onClick={() => setCompanyCheck(!companyCheck)}
+                  onClick={() => setValue(value - 1)}
                   style={{
-                    color: "#000",
+                    color: "gray",
                     padding: "6px 22px",
                     diplay: "flex",
                     alignItems: "center",
@@ -1931,7 +1427,7 @@ export const Createvehicle = () => {
                 />
                 <div className="mr-5">
                   <CreateBtn
-                    onClick={() => setCompanyCheck(!companyCheck)}
+                    onClick={() => setValue(value + 1)}
                     style={{
                       color: "#000",
                       padding: "6px 22px",
@@ -1941,7 +1437,131 @@ export const Createvehicle = () => {
                     name="Next"
                   />
                 </div>
+                </div>
+
+                          
+
+          
+          </div>
+        </TabPanel>
+
+         {/* Veicle Events */}
+         <TabPanel value={value} index={3} dir={theme.direction}>
+        <div>
+        <div className="flex justify-between">
+            <h1 className="text-base text-bold mb-0 ml-5">Vehicle Events</h1>
+            
+            
+          </div> <br />
+
+
+          
+          
+          <div className="generl">
+            <p>Event Details</p>
+          </div>
+          <br />
+
+          
+       
+
+          < div className="row mt-5">
+            <div className="col-lg-6">
+              <div className="company">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Data
+                </p>
+                
+
+                <TextField 
+                onChange={(e) => setEventDate(e.target.value)}
+                fullWidth label="example" id="0317258963" />
               </div>
+            </div>
+
+            <div className="col-lg-6">
+              <div className="managing">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Cost
+                </p>
+
+                <TextField
+                onChange={(e) => setEventCost(e.target.value)}
+                  fullWidth
+                  label="example"
+                  id="0317258963"
+                />
+              </div>
+            </div>
+
+
+         
+          </div>
+
+          < div className="row mt-5">
+            <div className="col-lg-12">
+              <div className="company">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Event
+                </p>
+                
+
+                <TextField 
+                onChange={(e) => setEventEvent(e.target.value)}
+                fullWidth label="example" id="0317258963" />
+              </div>
+            </div>
+
+           
+          </div>
+
+          < div className="row mt-5">
+            <div className="col-lg-12">
+              <div className="company">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Comment
+                </p>
+                
+
+                <TextField 
+                onChange={(e) => setEventComment(e.target.value)}
+                fullWidth label="example" id="0317258963" />
+              </div>
+            </div>
+
+           
+          </div>
+         
+
+         
+         
+         
+
+          <div className="flex justify-between my-6 mt-5">
+
+          <CreateBtn
+            onClick={() => setValue(value - 1)}
+            style={{
+              color: "gray",
+              padding: "6px 22px",
+              diplay: "flex",
+              alignItems: "center",
+            }}
+            name="Previous"
+          />
+          <div className="mr-5">
+            <CreateBtn
+              onClick={() => console.log("Submit")}
+              style={{
+                color: "#000",
+                padding: "6px 22px",
+                diplay: "flex",
+                alignItems: "center",
+              }}
+              name="Submit"
+            />
+          </div>
+        </div>
 
           
 
@@ -1950,10 +1570,7 @@ export const Createvehicle = () => {
         </TabPanel>
         
       </SwipeableViews>
- 
-          
-
-        
+   
         </div>
       )}
     </>
