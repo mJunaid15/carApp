@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { CreateBtn } from "../../../Buttons";
 import Tires from '../../../img/Tires.png'
+import AuthUser from "../../Auth/AuthUser";
 
 
 
@@ -49,8 +50,102 @@ function TabPanel(props) {
   }
   
 
-export const Createvehicle = (props) => {
+export const Createvehicle = () => {
+  const { http } = AuthUser();
+  const handleSubmit = () =>{
+    console.log("licPlate : ",licPlate);
+    console.log("Date: ", event_date);
+    console.log("Milage: ", milage);
 
+    
+  const formData = new FormData();
+
+  formData.append("license_plate", licPlate)
+  formData.append("chassis_no", chassisNum)
+  formData.append("hsn", hsn)
+  formData.append("tsn", tsn)
+  formData.append("vehicle_type", vehicleType)
+  formData.append("manufacturer", Manufacturer)
+  formData.append("main_type", mainType)
+  formData.append("subtype", subType)
+  formData.append("structure", Structure)
+  formData.append("wheel_base", wheelBase)
+  formData.append("driven_type", drivenType)
+  formData.append("drive_cabin", driveCabin)
+  formData.append("seats", Seats)
+  formData.append("empty_mass", emptyMass)
+  formData.append("construction", construction)
+  formData.append("suspension_type", suspensionType)
+  formData.append("axes", Axes)
+  formData.append("equipment_line", EquipmentLine)
+  formData.append("axle_load", AxleLoad)
+  formData.append("long", long)
+  formData.append("width", width)
+  formData.append("height", height)
+  formData.append("engine", engine)
+  formData.append("power", Power)
+  formData.append("engine_displacement", engineDisplacement)
+  formData.append("fuel_gear", FuelGear)
+  formData.append("emission_class", emissionClass)
+  formData.append("fine_dust_stricker", fine_dust_stricker)
+  formData.append("id_dynamic", {'field name': 'field value', 'field name2':'field value2'})
+  formData.append("first_registration", firstRegistration)
+  formData.append("last_admission", lastAdmission)
+  formData.append("aprroved_in", aprrovedIn)
+  formData.append("construction_year", constructionYear)
+  formData.append("next_main_inspection", nextMainInspection)
+  formData.append("next_security_check", nextSecurityCheck)
+  formData.append("last_gas_test", lastGasTest)
+  formData.append("accident_prevention_regulation", accidentPreventionRegulation)
+  formData.append("gen_dynamic", {'field name': 'field value', 'field name2':'field value2'})
+  formData.append("read_off", readOff)
+  formData.append("ro_option", 'ro_option_000')
+  formData.append("specified", specified)
+  formData.append("sp_option", 'sp_option_000')
+  formData.append("estimated", estimated)
+  formData.append("est_option", 'est_option_000')
+  formData.append("mileage", mileage)
+  formData.append("mileage_comment", mileageComment)
+  formData.append("mil_dynamic", {'field name': 'field value', 'field name2':'field value2'})
+  formData.append("color", color)
+  formData.append("previous_owner_count", previousOwnerCount)
+  formData.append("data_source", dataSource)
+  formData.append("import_vehicle", importVehicle)
+  formData.append("steering_wheel_position", steeringWheelPosition)
+  formData.append("misc_dynamic", {'field name': 'field value', 'field name2':'field value2'})
+  formData.append("equipements", {'equipement_type': 'option'})
+  formData.append("tier_layout", 'tier_layout_000')
+  formData.append("event_date[0]", event_date)
+  formData.append("event_event[0]", eventEvent)
+  formData.append("event_cost[0]", eventCost)
+  formData.append("event_comment[0]", eventComment)
+  formData.append("vl_position[0]", 'vl_position_000')
+  formData.append("vl_measurement[0]", 'vl_measurement_000')
+  formData.append("vl_description[0]", 'vl_description_000')
+  formData.append("tier_layout_id", 1)
+  formData.append("company_id", 12)
+  formData.append("tier_set_id[0]", 1)
+  formData.append("tier_comment[0]", tierComment)
+  formData.append("tier_type[0]", tierType)
+  formData.append("tier_rims[0]", tier_rims)
+  formData.append("tier_tread_depth[0]", tier_tread_depth)
+  formData.append("tier_manufacturer[0]", tier_manufacturer)
+  formData.append("tier_model[0]", tier_model)
+  formData.append("tier_dimensions[0]", tier_dimensions)
+  formData.append("array[]", [])
+  formData.append("event_date[1]", '2022-06-25 09:11:10')
+ 
+
+  
+
+  http.post(`/vehicle`, formData)
+  .then((res) => {
+    console.log(res)
+    setCompanyCheck(!companyCheck)
+    // setusermanagementCheck(!usermanagementCheck)
+  }).catch(err => console.log(err.message))
+
+  }
 
   // Create Vehicle States
 
@@ -1533,10 +1628,17 @@ export const Createvehicle = (props) => {
                 </p>
                 
 
-                <TextField 
-                defaultValue={  props.editItem === undefined ? event_date : props.editItem.license_plate  }
+                <TextField
+                id="date"
+                label="Enter Date"
+                type="date"
+                defaultValue=""
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                fullWidth
                 onChange={(e) => setEventDate(e.target.value)}
-                fullWidth label="example" id="0317258963" />
+                 />
               </div>
             </div>
 
@@ -1613,7 +1715,7 @@ export const Createvehicle = (props) => {
           />
           <div className="mr-5">
             <CreateBtn
-              onClick={() => console.log("Submit")}
+              onClick={handleSubmit}
               style={{
                 color: "#000",
                 padding: "6px 22px",
