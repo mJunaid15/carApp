@@ -24,6 +24,7 @@ import { useTheme } from "@mui/material/styles";
 import { TextField } from "@mui/material";
 import Dropdown from 'react-bootstrap/Dropdown';
 import '../All.css'
+import SelectPopover from "../SelectPopover";
 
 
 export default function Addresses() {
@@ -64,36 +65,7 @@ export default function Addresses() {
     fetchAddressList();
   }, []);
 
-  // Popover Code
-  const [openDelete, setOpenDelete] = React.useState(false);
 
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
-
-
-  const handleClickOpenDelete = (id) => {
-    setItemId(id)
-    setOpenDelete(true);
-    
-  };
-  const handleCloseDelete = () => {
-    setOpenDelete(false);
-  };
-
-  // Delete Api Function
-  const handleDeleteAPI = () => {
-
-    const formData = new FormData();
-    formData.append('_method', 'DELETE');
-    http.post(`/address/${itemId}`,formData)
-    .then((res) => {
-      
-    setAddressList( addressList.filter((item) => item.id != itemId) )
-    setOpenDelete(false);
-    })
-    .catch(err =>   console.log(err.message))
-    
-  }
 
   // Handle Edit Api
   const handleEditAddress = (data) => {
@@ -540,56 +512,18 @@ export default function Addresses() {
                           <TableCell align="center">
                             {data.street_no}
                           </TableCell>
-                          <TableCell align="center  ">
-                         
-                          <Dropdown className="dropdown" >
-                          <Dropdown.Toggle id="dropdown-basic" >
-                          <img src={threedot} alt="threedot" />
-                          </Dropdown.Toggle>
-
-                          <Dropdown.Menu>
-                            <Dropdown.Item >Copy</Dropdown.Item>
-                            <Dropdown.Item onClick={ () =>  setEditIndex(index)}>Edit</Dropdown.Item>
-                            <Dropdown.Item onClick={ () =>  handleClickOpenDelete(data.id)} >Delete</Dropdown.Item>
-                          </Dropdown.Menu>
-                        </Dropdown>
-
-                      
-                      
-                        {/* Delete Modal  */}
-                      <Dialog
-                    
-                            fullScreen={fullScreen}
-                            open={openDelete}
-                            onClose={handleCloseDelete}
-                            aria-labelledby="responsive-dialog-title"   
-                          >
-                            
-                            
-                            <DialogContent >
-                              <div className="lg:absolute lg:top-[-40px] lg:left-[40%] flex justify-center">
-                                <img src={delImg} alt="del" />   
-                              </div>
-                              <div className="bg-white p-4 mt-4">
-                                <h1 className="text-2xl">Are You Sure To Delete This Company?</h1>
-                              </div>
-                              <div className="flex justify-center">
-                              <Button autoFocus onClick={handleCloseDelete} className="text-black">
-                                Cancel
-                              </Button>
-                              
-                              <CreateBtn
-                                onClick={handleDeleteAPI} 
-                                name="Delete"
-                                />
-                            
-                              </div>
-                            </DialogContent>
-                            
-                      </Dialog>
-                           
-
+                          <TableCell align="center">
+                            <SelectPopover
+                              {...data}
+                              apiName="address"
+                              SetState={setAddressList}
+                              state={addressList}
+                              setEditIndex={setEditIndex}
+                              index={index}
+                              // setEditItem ={setEditItem}
+                            />
                           </TableCell>
+                         
                         </TableRow>
                         )}
                         </>

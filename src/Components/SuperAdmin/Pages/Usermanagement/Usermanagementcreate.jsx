@@ -114,7 +114,7 @@ const handleSave = (data) => {
 
   http.post(`/user/${props.editItem.id}`, formData)
   .then((res) => {
-    console.log(res)
+    // console.log(res)
     setusermanagementCheck(!usermanagementCheck)
 
   }).catch(err => console.log(err.message))
@@ -152,7 +152,7 @@ const handleCreateUser = () => {
 
   http.post(`/user`, formData)
   .then((res) => {
-    console.log(res)
+    // console.log(res)
     setusermanagementCheck(!usermanagementCheck)
   }).catch(err => console.log(err.message))
 

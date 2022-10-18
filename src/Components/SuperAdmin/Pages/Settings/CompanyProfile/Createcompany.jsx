@@ -4,9 +4,11 @@ import { Button } from "@mui/material";
 import {Company} from "./Company";
 import { Toolbar } from "@mui/material";
 import AuthUser from "../../../Auth/AuthUser";
-import axios from 'axios'
 
-export const Createcompany = () => {
+
+export const Createcompany = (props) => {
+
+  console.log("Props Edir company profile: ", props);
 
   const { http } = AuthUser();
 
@@ -14,21 +16,22 @@ export const Createcompany = () => {
   
 
   // Fields States
-  const [name, setName] = useState("");
-  const [director, setDirector] = useState("");
-  const [person, setPerson] = useState("");
-  const [taxNumber, setTaxNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [mobile, setMobile] = useState("");
-  const [fax, setFax] = useState("");
-  const [country, setCountry] = useState("");
-  const [zipCity, setZipCity] = useState("");
-  const [streetNo, setStreetNo] = useState("");
-  const [mailbox, setMailbox] = useState("");
+  const [cp_name, setName] = useState();
+  const [cp_location, setcp_location] = useState();
+  const [cp_letterhead, setcp_letterhead] = useState();
+  const [cp_letterfoot, setcp_letterfoot] = useState();
+  const [cp_sender_address, setcp_sender_address] = useState();
+  const [cp_contact_details, setcp_contact_details] = useState();
+  const [cp_signature, setcp_signature] = useState();
+  const [cp_rubber_stamp, setcp_rubber_stamp] = useState();
+  const [cp_stmp_server, setcp_stmp_server] = useState();
+  const [cp_stmp_port, setcp_stmp_port] = useState();
+  const [cp_user_name, setcp_user_name] = useState();
+  const [cp_password, setcp_password] = useState();
+  const [cp_signature_imprint, setcp_signature_imprint] = useState();
+  const [company_id, setcompany_id] = useState();
+  const [cp_sender_name, setcp_sender_name] = useState();
 
-  const [register, setRegister] = useState("");
-  const [homepage, setHomepage] = useState("");
 
 
 
@@ -36,42 +39,138 @@ export const Createcompany = () => {
   // Handle Cancel Button
 
   const handleCancel = () => {
-    console.log("Button Clicked");
+    setCompanyCheck(!companyCheck)
   }
 
 
-  // Handle Save 
-  const handleSave = (data) => {
+  // Handle Save Create Company Profile 
+  const handleSave = () => {
 
   
 
     const formData = new FormData();
 
-    formData.append("name", name)
-    formData.append("director", director)
-    formData.append("person", person)
-    formData.append("tax_number", taxNumber)
-    formData.append("email", email)
-    formData.append("phone", phone)
-    formData.append("mobile", mobile)
-    formData.append("fax", fax)
-    formData.append("country", country)
-    formData.append("city", zipCity)
-    formData.append("street_no", streetNo)
-    formData.append("mailbox", mailbox)
-    formData.append("register", register)
-    formData.append("homepage", homepage)
+    formData.append("cp_name", cp_name)
+    formData.append("cp_location", cp_location)
+    formData.append("cp_letterhead", cp_letterhead)
+    formData.append("cp_letterfoot", cp_letterfoot)
+    formData.append("cp_sender_address", cp_sender_address)
+    formData.append("cp_contact_details", cp_contact_details)
+    formData.append("cp_signature", cp_signature)
+    formData.append("cp_rubber_stamp", cp_rubber_stamp)
+    formData.append("cp_stmp_server", cp_stmp_server)
+    formData.append("cp_stmp_port", cp_stmp_port)
+    formData.append("cp_user_name", cp_user_name)
+    formData.append("cp_password", cp_password)
+    formData.append("cp_signature_imprint", cp_signature_imprint)
+    formData.append("company_id", company_id)
+    formData.append("cp_sender_name", cp_sender_name)
 
-    
 
-    http.post(`/company`, formData)
+    http.post(`/company-profile`, formData)
     .then((res) => {
-      console.log(res)
       setCompanyCheck(!companyCheck)
     }).catch(err => console.log(err.message))
   
     
   };
+
+  // Handle Edit Company Profile
+   const handleEditCompany = () => {
+
+    const formData = new FormData();
+    
+    {
+      cp_name != "" ? formData.append("cp_name", cp_name) :
+       formData.append("cp_name", props.editItem.cp_name);
+    }
+    {
+      cp_location != "" ? formData.append("cp_location", cp_location)
+        : formData.append("cp_location", props.editItem.cp_location);
+    }
+    {
+      cp_letterhead != ""
+        ? formData.append("cp_letterhead", cp_letterhead)
+        : formData.append("cp_letterhead", props.editItem.cp_letterhead);
+    }
+
+    {
+      cp_letterfoot != ""
+        ? formData.append("cp_letterfoot", cp_letterfoot)
+        : formData.append("cp_letterfoot", props.editItem.cp_letterfoot);
+    }
+
+    {
+      cp_sender_address != ""
+        ? formData.append("cp_sender_address", cp_sender_address)
+        : formData.append("cp_sender_address", props.editItem.cp_sender_address);
+    }
+
+    {
+      cp_contact_details != ""
+        ? formData.append("cp_contact_details", cp_contact_details)
+        : formData.append("cp_contact_details", props.editItem.cp_contact_details);
+    }
+
+    {
+      cp_signature != ""
+        ? formData.append("cp_signature", cp_signature)
+        : formData.append("cp_signature", props.editItem.cp_signature);
+    }
+
+    {
+      cp_rubber_stamp != ""
+        ? formData.append("cp_rubber_stamp", cp_rubber_stamp)
+        : formData.append("cp_rubber_stamp", props.editItem.cp_rubber_stamp);
+    }
+
+    {
+      cp_stmp_server != ""
+        ? formData.append("cp_stmp_server", cp_stmp_server)
+        : formData.append("cp_stmp_server", props.editItem.cp_stmp_server);
+    }
+
+    {
+      cp_stmp_port != ""
+        ? formData.append("cp_stmp_port", cp_stmp_port)
+        : formData.append("cp_stmp_port", props.editItem.cp_stmp_port);
+    }
+
+    {
+      cp_user_name != ""
+        ? formData.append("cp_user_name", cp_user_name)
+        : formData.append("cp_user_name", props.editItem.cp_user_name);
+    }
+    {
+      cp_password != ""
+        ? formData.append("cp_password", cp_password)
+        : formData.append("cp_password", props.editItem.cp_password);
+    }
+
+
+    {
+      cp_signature_imprint != ""
+        ? formData.append("cp_signature_imprint", cp_signature_imprint)
+        : formData.append("cp_signature_imprint", props.editItem.cp_signature_imprint);
+    }
+
+   
+
+    {
+      cp_sender_name != ""
+        ? formData.append("cp_sender_name", cp_sender_name)
+        : formData.append("cp_sender_name", props.editItem.cp_sender_name);
+    }
+    formData.append("_method", "PUT");
+
+    http
+      .post(`company-profile/${props.editItem.id}`, formData)
+      .then((res) => {
+        setCompanyCheck(!companyCheck)
+      })
+      .catch((err) => console.log(err.message));
+  };
+
 
 
 
@@ -84,7 +183,8 @@ export const Createcompany = () => {
         <div>
           <Toolbar />
           <div className="flex justify-between">
-            <h1 className="text-base text-bold mb-0 ml-5">Create Company</h1>
+          { props && props.editItem ? (<h1 className="text-base text-bold mb-0 ml-5">Edit Company Profile</h1>) :(
+            <h1 className="text-base text-bold mb-0 ml-5">Create Company Profile</h1>) }
             <div className="mr-5">
               <Button
                 onClick={() => setCompanyCheck(!companyCheck)}
@@ -103,41 +203,34 @@ export const Createcompany = () => {
 
           <hr />
 
-          <div className="company">
-            <p>Create Company</p>
-          </div>
+          
 
-          <div className="generl">
-            <p>General</p>
-          </div>
-
+          
           <div className="row mt-5">
             <div className="col-lg-6">
               <div className="company">
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Company Name
+                   Name
                 </p>
 
                 <TextField
-                
-                
-                value={name}
+                defaultValue={  props.editItem == undefined ? cp_name : props.editItem.cp_name  }
                 onChange={(e) => setName(e.target.value)}
-                fullWidth label="Company name" id="0317258963" />
+                fullWidth label="Enter Name" id="0317258963" />
               </div>
             </div>
 
             <div className="col-lg-6">
               <div className="managing">
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Managing Director
+                 Location
                 </p>
 
                 <TextField
-                 value={director}
-                 onChange={(e) => setDirector(e.target.value)}
+                defaultValue={  props.editItem == undefined ? cp_location : props.editItem.cp_location  }
+                 onChange={(e) => setcp_location(e.target.value)}
                   fullWidth
-                  label="Enter your position"
+                  label="Enter location"
                   id="0317258963"
                 />
               </div>
@@ -148,172 +241,198 @@ export const Createcompany = () => {
             <div className="col-lg-6">
               <div className="contact">
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Contact person
+                  Leterhead
                 </p>
 
-                <TextField
-                 value={person}
-                 onChange={(e) => setPerson(e.target.value)}
-                fullWidth label="Enter your name" id="0317258963" />
+                <input type="file"
+                
+                onChange={(event) => setcp_letterhead(event.target.files[0])}/>
+
+                
               </div>
             </div>
 
             <div className="col-lg-6">
               <div className="Commerical">
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Commerical Register
+                  Letterfoot
                 </p>
 
-                <TextField
-                 value={register}
-                 onChange={(e) => setRegister(e.target.value)}
-                fullWidth label="Enter your text" id="0317258963" />
+                <input type="file" onChange={(event) => setcp_letterfoot(event.target.files[0])}/>
+
               </div>
             </div>
 
-            <div className="col-lg-6 mt-5">
-              <div className="Tax">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Tax number
-                </p>
-
-                <TextField
-                 value={taxNumber}
-                 onChange={(e) => setTaxNumber(e.target.value)}
-                  fullWidth
-                  label="Enter your tax"
-                  id="0317258963"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="Contactcent mt-5">
-            <p>Contact</p>
+          
           </div>
 
           <div className="row mt-5">
             <div className="col-lg-6">
-              <div className="E-mail">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>E-mail</p>
+              <div className="contact">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                  Sender Address
+                </p>
 
                 <TextField
-                 value={email}
-                 onChange={(e) => setEmail(e.target.value)}
-                fullWidth label="Enter email" id="0317258963" />
+                defaultValue={  props.editItem == undefined ? cp_sender_address : props.editItem.cp_sender_address  }
+                 onChange={(e) => setcp_sender_address(e.target.value)}
+                fullWidth label="Enter sender address" id="0317258963" />
               </div>
             </div>
 
             <div className="col-lg-6">
-              <div className="Homepage">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Homepage</p>
+              <div className="Commerical">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                  Contact
+                </p>
 
-                <TextField 
-                 value={homepage}
-                 onChange={(e) => setHomepage(e.target.value)}
-                fullWidth label="http:/" id="0317258963" />
+                <TextField
+                defaultValue={  props.editItem == undefined ? cp_contact_details : props.editItem.cp_contact_details  }
+                 onChange={(e) => setcp_contact_details(e.target.value)}
+                fullWidth label="Enter contact" id="0317258963" />
               </div>
             </div>
+
+          
           </div>
 
           <div className="row mt-5">
             <div className="col-lg-6">
-              <div className="Telephone">
+              <div className="contact">
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Telephone
+                  Signature
                 </p>
+                <input type="file" onChange={(event) => setcp_signature(event.target.files[0])}/>
 
-                <TextField
-                 value={phone}
-                 onChange={(e) => setPhone(e.target.value)}
-                fullWidth label="0317258963" id="0317258963" />
-              </div>
+                </div>
             </div>
 
             <div className="col-lg-6">
-              <div className="Homepage">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Mobile</p>
+              <div className="Commerical">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                  Rubber Stamp
+                </p>
+                <input type="file" onChange={(event) => setcp_rubber_stamp(event.target.files[0])}/>
 
-                <TextField
-                 value={mobile}
-                 onChange={(e) => setMobile(e.target.value)}
-                 fullWidth label="Enter Mobile number" id="0317258963" />
               </div>
             </div>
 
-
-            <div className="col-lg-6 mt-5">
-              <div className="Homepage">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Fax</p>
-
-                <TextField
-                 value={fax}
-                 onChange={(e) => setFax(e.target.value)}
-                 fullWidth label="Enter Fax" id="0317258963" />
-              </div>
-            </div>
-          </div>
-
-          <div className="Address mt-5">
-            <p>Address</p>
+          
           </div>
 
           <div className="row mt-5">
             <div className="col-lg-6">
-              <div className="country">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Country</p>
+              <div className="contact">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                  Stmp server
+                </p>
 
-                <TextField 
-                 value={country}
-                 onChange={(e) => setCountry(e.target.value)}
-                fullWidth label="Country name" id="Country name" />
+                <TextField
+                defaultValue={  props.editItem == undefined ? cp_stmp_server : props.editItem.cp_stmp_server  }
+                 onChange={(e) => setcp_stmp_server(e.target.value)}
+                fullWidth label="Enter stmp server" id="0317258963" />
               </div>
             </div>
 
             <div className="col-lg-6">
-              <div className="ZIP / City">
+              <div className="Commerical">
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  ZIP / City
+                  Stmp port
                 </p>
 
                 <TextField
-                 value={zipCity}
-                 onChange={(e) => setZipCity(e.target.value)}
-                fullWidth label="City" id="City" />
+                defaultValue={  props.editItem == undefined ? cp_stmp_port : props.editItem.cp_stmp_port  }
+                 onChange={(e) => setcp_stmp_port(e.target.value)}
+                fullWidth label="Enter stmp port" id="0317258963" />
               </div>
             </div>
+
+          
           </div>
 
           <div className="row mt-5">
             <div className="col-lg-6">
-              <div className="Street Number">
+              <div className="contact">
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Street Number
+                  User name
                 </p>
 
-                <TextField 
-               
-                 value={streetNo}
-                 onChange={(e) => setStreetNo(e.target.value)}
-                fullWidth label="Street No*" id="Street No*" />
+                <TextField
+                defaultValue={  props.editItem == undefined ? cp_user_name : props.editItem.cp_user_name  }
+                 onChange={(e) => setcp_user_name(e.target.value)}
+                fullWidth label="Enter user name" id="0317258963" />
               </div>
             </div>
 
             <div className="col-lg-6">
-              <div className="Mail">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Mailbox</p>
+              <div className="Commerical">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                  Password
+                </p>
 
                 <TextField
-                
-                 value={mailbox}
-                 onChange={(e) => setMailbox(e.target.value)}
-                  fullWidth
-                  label="Enter your mail box"
-                  id="Enter your mail box"
-                />
+                defaultValue={  props.editItem == undefined ? cp_password : props.editItem.cp_password  }
+                 onChange={(e) => setcp_password(e.target.value)}
+                fullWidth label="Enter password" id="0317258963" />
               </div>
             </div>
+
+          
           </div>
+
+          <div className="row mt-5">
+            <div className="col-lg-6">
+              <div className="contact">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                  Signature imprint
+                </p>
+
+                <TextField
+                defaultValue={  props.editItem == undefined ? cp_signature_imprint : props.editItem.cp_signature_imprint  }
+                 onChange={(e) => setcp_signature_imprint(e.target.value)}
+                fullWidth label="Enter Signature imprint" id="0317258963" />
+              </div>
+            </div>
+
+            <div className="col-lg-6">
+              <div className="Commerical">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                  Company id
+                </p>
+
+                <TextField
+                defaultValue={  props.editItem == undefined ? company_id : props.editItem.company_id  }
+                 onChange={(e) => setcompany_id(e.target.value)}
+                fullWidth label="Enter company id" id="0317258963" />
+              </div>
+            </div>
+
+           
+          
+          </div>
+
+
+
+          <div className="row mt-5">
+            <div className="col-lg-6">
+              <div className="contact">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                  Sender Name
+                </p>
+
+                <TextField
+                defaultValue={  props.editItem == undefined ? cp_sender_name : props.editItem.cp_sender_name  }
+                 onChange={(e) => setcp_sender_name(e.target.value)}
+                fullWidth label="Enter sender name" id="0317258963" />
+              </div>
+            </div>
+
+           
+
+          
+          </div>
+         
+         
 
           <div className="flex justify-between mt-5 mb -5">
                                 <Button
@@ -326,7 +445,13 @@ export const Createcompany = () => {
                                 <Button
                                   className="text-white"
                                   style={{ backgroundColor: "#5A4A42" }}
-                                  onClick={handleSave}
+                                  onClick={() => {
+                                    if(props.editItem !== undefined){
+                                      handleEditCompany()
+                                    }
+                                    handleSave()
+                                  }
+                                  }
                                   >
                                   Save
                                 </Button>

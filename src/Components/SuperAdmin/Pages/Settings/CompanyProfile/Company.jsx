@@ -10,7 +10,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import SelectPopover from "../../Address/SelectPopover";
+import SelectPopover from "../../SelectPopover";
 import { CreateBtn } from "../../../../Buttons";
 import { Createcompany } from "./Createcompany";
 import { TextField } from "@mui/material";
@@ -24,22 +24,12 @@ export function Company() {
   const [companylist, setCompanylist] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [editItem, setEditItem] = useState()
+
   // const [currentPage, setCurrentPage] = useState(1);
   // const [listPerpage, SetListperPage] = useState(5);
 
-  // Fields States
-  const [name, setName] = useState("");
-  const [director, setDirector] = useState("");
-  const [person, setPerson] = useState("");
-  const [taxNumber, setTaxNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [mobile, setMobile] = useState("");
-  const [fax, setFax] = useState("");
-  const [country, setCountry] = useState("");
-  const [city, setCity] = useState("");
-  const [streetNo, setStreetNo] = useState("");
-  const [mailbox, setMailbox] = useState("");
+ 
 
   React.useEffect(() => {
     fetchListCompany();
@@ -56,100 +46,100 @@ export function Company() {
        setLoading(false);
   };
 
-  const handleEditCompany = (data) => {
-    const formData = new FormData();
-    {
-      name != ""
-        ? formData.append("name", name)
-        : formData.append("name", data.name);
-    }
-    {
-      director != ""
-        ? formData.append("director", director)
-        : formData.append("director", data.director);
-    }
-    {
-      person != ""
-        ? formData.append("person", person)
-        : formData.append("person", data.person);
-    }
+  // const handleEditCompany = (data) => {
+  //   const formData = new FormData();
+  //   {
+  //     name != ""
+  //       ? formData.append("name", name)
+  //       : formData.append("name", data.name);
+  //   }
+  //   {
+  //     director != ""
+  //       ? formData.append("director", director)
+  //       : formData.append("director", data.director);
+  //   }
+  //   {
+  //     person != ""
+  //       ? formData.append("person", person)
+  //       : formData.append("person", data.person);
+  //   }
 
-    {
-      taxNumber != ""
-        ? formData.append("tax_number", taxNumber)
-        : formData.append("tax_number", data.tax_number);
-    }
+  //   {
+  //     taxNumber != ""
+  //       ? formData.append("tax_number", taxNumber)
+  //       : formData.append("tax_number", data.tax_number);
+  //   }
 
-    {
-      email != ""
-        ? formData.append("email", email)
-        : formData.append("email", data.email);
-    }
+  //   {
+  //     email != ""
+  //       ? formData.append("email", email)
+  //       : formData.append("email", data.email);
+  //   }
 
-    {
-      phone != ""
-        ? formData.append("phone", phone)
-        : formData.append("phone", data.phone);
-    }
+  //   {
+  //     phone != ""
+  //       ? formData.append("phone", phone)
+  //       : formData.append("phone", data.phone);
+  //   }
 
-    {
-      mobile != ""
-        ? formData.append("mobile", mobile)
-        : formData.append("mobile", data.mobile);
-    }
+  //   {
+  //     mobile != ""
+  //       ? formData.append("mobile", mobile)
+  //       : formData.append("mobile", data.mobile);
+  //   }
 
-    {
-      fax != ""
-        ? formData.append("fax", fax)
-        : formData.append("fax", data.fax);
-    }
+  //   {
+  //     fax != ""
+  //       ? formData.append("fax", fax)
+  //       : formData.append("fax", data.fax);
+  //   }
 
-    {
-      country != ""
-        ? formData.append("country", country)
-        : formData.append("country", data.country);
-    }
+  //   {
+  //     country != ""
+  //       ? formData.append("country", country)
+  //       : formData.append("country", data.country);
+  //   }
 
-    {
-      city != ""
-        ? formData.append("city", city)
-        : formData.append("city", data.city);
-    }
+  //   {
+  //     city != ""
+  //       ? formData.append("city", city)
+  //       : formData.append("city", data.city);
+  //   }
 
-    {
-      streetNo != ""
-        ? formData.append("street_no", streetNo)
-        : formData.append("street_no", data.street_no);
-    }
+  //   {
+  //     streetNo != ""
+  //       ? formData.append("street_no", streetNo)
+  //       : formData.append("street_no", data.street_no);
+  //   }
 
-    {
-      mailbox != ""
-        ? formData.append("mailbox", mailbox)
-        : formData.append("mailbox", data.mailbox);
-    }
+  //   {
+  //     mailbox != ""
+  //       ? formData.append("mailbox", mailbox)
+  //       : formData.append("mailbox", data.mailbox);
+  //   }
 
-    formData.append("_method", "PUT");
-    formData.append("register", data.register);
+  //   formData.append("_method", "PUT");
+  //   formData.append("register", data.register);
 
-    http
-      .post(`company/${data.id}`, formData)
-      .then((res) => {
-        setName("");
-        setDirector("");
-        setPerson("");
-        setTaxNumber("");
-        setEmail("");
-        setPhone("");
-        setMobile("");
-        setFax("");
-        setCountry("");
-        setCity("");
-        setStreetNo("");
-        setMailbox("");
-        fetchListCompany();
-      })
-      .catch((err) => console.log(err.message));
-  };
+  //   http
+  //     .post(`company/${data.id}`, formData)
+  //     .then((res) => {
+  //       setName("");
+  //       setDirector("");
+  //       setPerson("");
+  //       setTaxNumber("");
+  //       setEmail("");
+  //       setPhone("");
+  //       setMobile("");
+  //       setFax("");
+  //       setCountry("");
+  //       setCity("");
+  //       setStreetNo("");
+  //       setMailbox("");
+  //       fetchListCompany();
+  //     })
+  //     .catch((err) => console.log(err.message));
+  // };
 
   // pagination
   let [page, setPage] = useState(1);
@@ -166,8 +156,8 @@ export function Company() {
 
   return (
     <>
-      {compCheck ? (
-        <Createcompany />
+      {compCheck || editIndex != null ? (
+        <Createcompany editIndex={editIndex}  editItem = {editItem} />
       ) : (
         <>
           <div style={{ height: 400, width: "100%" }}>
@@ -175,7 +165,7 @@ export function Company() {
             {editIndex != null ? null : (
               <div className="flex justify-between">
                 <h1 className="text-base text-bold mb-0 ml-5">
-                  List of Company
+                  List of Company Profiles
                 </h1>
                 <div className="mr-5">
                   <CreateBtn
@@ -206,201 +196,7 @@ export function Company() {
                     {companylist  &&
                     _DATA.currentData().map((data, index) => {
                       return (
-                        <>
-                          {editIndex == index ? (
-                            <div style={{ padding: "25px" }}>
-                              <div className="company">
-                                <p>Edit Company</p>
-                              </div>
-
-                              <div className="row mt-5">
-                                <div className="col-lg-4">
-                                  <div className="company">
-                                    <TextField
-                                      fullWidth
-                                      label="Name"
-                                      defaultValue={data.name}
-                                      onChange={(e) => setName(e.target.value)}
-                                    />
-                                  </div>
-                                </div>
-
-                                <div className="col-lg-4">
-                                  <div className="managing">
-                                    <TextField
-                                      onChange={(e) =>
-                                        setDirector(e.target.value)
-                                      }
-                                      defaultValue={data.director}
-                                      fullWidth
-                                      label="Director"
-                                      id="0317258963"
-                                    />
-                                  </div>
-                                </div>
-
-                                <div className="col-lg-4">
-                                  <div className="managing">
-                                    <TextField
-                                      onChange={(e) =>
-                                        setPerson(e.target.value)
-                                      }
-                                      defaultValue={data.person}
-                                      fullWidth
-                                      label="Person"
-                                      id="0317258963"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div className="row mt-5">
-                                <div className="col-lg-4">
-                                  <div className="company">
-                                    <TextField
-                                      onChange={(e) =>
-                                        setTaxNumber(e.target.value)
-                                      }
-                                      defaultValue={data.tax_number}
-                                      fullWidth
-                                      label="Tax Number"
-                                      id="0317258963"
-                                    />
-                                  </div>
-                                </div>
-
-                                <div className="col-lg-4">
-                                  <div className="managing">
-                                    <TextField
-                                      onChange={(e) => setEmail(e.target.value)}
-                                      defaultValue={data.email}
-                                      fullWidth
-                                      label="Email"
-                                      id="0317258963"
-                                    />
-                                  </div>
-                                </div>
-
-                                <div className="col-lg-4">
-                                  <div className="managing">
-                                    <TextField
-                                      onChange={(e) => setPhone(e.target.value)}
-                                      defaultValue={data.phone}
-                                      fullWidth
-                                      label="Phone"
-                                      id="0317258963"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div className="row mt-5">
-                                <div className="col-lg-4">
-                                  <div className="company">
-                                    <TextField
-                                      onChange={(e) =>
-                                        setMobile(e.target.value)
-                                      }
-                                      defaultValue={data.mobile}
-                                      fullWidth
-                                      label="Mobile"
-                                      id="0317258963"
-                                    />
-                                  </div>
-                                </div>
-
-                                <div className="col-lg-4">
-                                  <div className="managing">
-                                    <TextField
-                                      onChange={(e) => setFax(e.target.value)}
-                                      defaultValue={data.fax}
-                                      fullWidth
-                                      label="Fax"
-                                      id="0317258963"
-                                    />
-                                  </div>
-                                </div>
-
-                                <div className="col-lg-4">
-                                  <div className="managing">
-                                    <TextField
-                                      onChange={(e) =>
-                                        setCountry(e.target.value)
-                                      }
-                                      defaultValue={data.country}
-                                      fullWidth
-                                      label="Country"
-                                      id="0317258963"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div className="row mt-5">
-                                <div className="col-lg-4">
-                                  <div className="company">
-                                    <TextField
-                                      onChange={(e) => setCity(e.target.value)}
-                                      defaultValue={data.city}
-                                      fullWidth
-                                      label="City"
-                                      id="0317258963"
-                                    />
-                                  </div>
-                                </div>
-
-                                <div className="col-lg-4">
-                                  <div className="managing">
-                                    <TextField
-                                      onChange={(e) =>
-                                        setStreetNo(e.target.value)
-                                      }
-                                      defaultValue={data.street_no}
-                                      fullWidth
-                                      label="Street No."
-                                      id="0317258963"
-                                    />
-                                  </div>
-                                </div>
-
-                                <div className="col-lg-4">
-                                  <div className="managing">
-                                    <TextField
-                                      onChange={(e) =>
-                                        setMailbox(e.target.value)
-                                      }
-                                      defaultValue={data.mailbox}
-                                      fullWidth
-                                      label="Mailbox"
-                                      id="0317258963"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div className="flex justify-between mt-5 mb-5 ">
-                                <Button
-                                  className="text-black"
-                                  onClick={() => setEditIndex(null)}
-                                >
-                                  Cancel
-                                </Button>
-
-                                <Button
-                                  className="text-white"
-                                  style={{ backgroundColor: "#5A4A42" }}
-                                  onClick={() => {
-                                    handleEditCompany(data);
-                                    setEditIndex(null);
-                                  }}
-                                >
-                                  Save
-                                </Button>
-                              </div>
-                            </div>
-                          ) : (
-                            <>
-                              {editIndex != null ? null : (
+                      
                                 <TableRow
                                   key={data.id}
                                   sx={{
@@ -410,31 +206,28 @@ export function Company() {
                                   }}
                                 >
                                   <TableCell component="th" scope="row">
-                                    <p className="mb-0">{data.name}</p>
-                                    <p className="mb-0 text-slate-400">
-                                      {data.email}
-                                    </p>
+                                    <p className="mb-0">{data.cp_name}</p>
+                                    
                                   </TableCell>
                                   <TableCell align="center">
-                                    {data.mobile}
+                                    {data.cp_contact_details}
                                   </TableCell>
                                   <TableCell align="center">
-                                    {data.city}
+                                    {data.cp_location}
                                   </TableCell>
                                   <TableCell align="center">
                                     <SelectPopover
-                                      data={data}
+                                      {...data}
+                                      apiName="company-profile"
                                       setState={setCompanylist}
                                       setEditIndex={setEditIndex}
                                       index={index}
                                       state={companylist}
+                                      setEditItem ={setEditItem}
                                     />
                                   </TableCell>
                                 </TableRow>
-                              )}
-                            </>
-                          )}
-                        </>
+                              
                       );
                     })
                   

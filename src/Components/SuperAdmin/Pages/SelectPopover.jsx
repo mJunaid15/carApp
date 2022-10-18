@@ -1,16 +1,17 @@
 import * as React from "react";
 import Popover from "@mui/material/Popover";
 import Button from "@mui/material/Button";
-import threedot from "../../../img/3dot.png";
+import threedot from "../../img/3dot.png";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-import delImg from "../../../img/del.png";
-import { CreateBtn } from "../../../Buttons";
-import AuthUser from "../../Auth/AuthUser";
+import delImg from "../../img/del.png";
+import { CreateBtn } from "../../Buttons";
+import AuthUser from "../Auth/AuthUser";
 
 export default function SelectPopover(props) {
+
   const { http } = AuthUser();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -19,19 +20,25 @@ export default function SelectPopover(props) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
+  const HandlerEdit = () => {
+    console.log("Edit id: ", props);
+    props.setEditIndex(props.id);
+    props.setEditItem(props);
+  
+  };
   const handleClickOpenDelete = () => {
     setOpenDelete(true);
+    console.log("hello");
   };
 
   const handleDeleteAPI = () => {
-    // console.log('Junaid',props.data.id);
     const formData = new FormData();
     formData.append("_method", "DELETE");
     http
-      .post(`/company/${props.data.id}`, formData)
+      .post(`/${props.apiName}/${props.id}`, formData)
       .then((res) => {
-        console.log(res);
-        props.setState(props.state.filter((item) => item.id != props.data.id));
+        // console.log(res);
+        props.SetState(props.state.filter((data) => data.id != props.id));
         setOpenDelete(false);
       })
       .catch((err) => console.log(err.message));
@@ -69,11 +76,7 @@ export default function SelectPopover(props) {
         <div className="w-[100px]">
           <Button style={{ width: "100%", color: "black" }}>Copy</Button>
           <Button
-            onClick={() =>
-              props.setEditIndex((editIndex) =>
-                editIndex === props.index ? null : props.index
-              )
-            }
+            onClick={HandlerEdit}
             style={{ width: "100%", color: "black" }}
           >
             Edit

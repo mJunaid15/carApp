@@ -77,8 +77,6 @@ function Dashbaord(props) {
   const handleChangeLanguage = (event) => {
     setChecked(event.target.checked);
   };
-  console.log("checked language switcher : ", checked);
-
 
 
   // tabs
@@ -118,7 +116,6 @@ function Dashbaord(props) {
 
   const handleChangeTabs = (event, newValue) => {
     setValueTab(newValue);
-    console.log(valueTab);
   };
 
   // side bar

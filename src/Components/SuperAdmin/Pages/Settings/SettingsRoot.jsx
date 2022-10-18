@@ -1,25 +1,11 @@
 import * as React from "react";
-import { TextField, Toolbar } from "@mui/material";
-import Pagination from "@mui/material/Pagination";
-import AddIcon from "@mui/icons-material/Add";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import SelectPopover from "./SelectPopover";
-import { CreateBtn } from "../../../Buttons";
+import {  Toolbar } from "@mui/material";
 import PropTypes from "prop-types";
-import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@mui/material/styles";
-import AppBar from "@mui/material/AppBar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Createsetting } from "./Createsetting";
 import Setting from "./Setting";
 
 function TabPanel(props) {
