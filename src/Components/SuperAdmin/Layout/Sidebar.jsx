@@ -29,7 +29,7 @@ const Sidebar = () => {
           <button>File/dossier Management</button>
         </div>
         <div className="sidebarButtons">
-          <button>Address Management</button>
+          <button>Create mandatory</button>
         </div>
         <div className="sidebarButtons">
           <button>Settings</button>

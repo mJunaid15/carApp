@@ -38,6 +38,7 @@ import { Createcompany } from "../Company/Createcompany";
 import AuthUser from "../../Auth/AuthUser";
 import Login from "../Login/Login";
 import SettingsRoot from "../Settings/SettingsRoot";
+import Mandatory from "../Mandatory/Mandatory";
 
 const drawerWidth = 250;
 
@@ -176,7 +177,7 @@ function Dashbaord(props) {
             style={{ display: "flex", alignItems: "start" }}
           />
           <Tab
-            label="Address Management"
+            label="Create Mandatory"
             {...a11yProps(5)}
             style={{ display: "flex", alignItems: "start" }}
           />
@@ -363,7 +364,7 @@ function Dashbaord(props) {
             <Fdm />
           </TabPanel>
           <TabPanel value={valueTab} index={5}>
-            <Addresses />
+            <Mandatory />
           </TabPanel>
           <TabPanel value={valueTab} index={6}>
             <SettingsRoot />

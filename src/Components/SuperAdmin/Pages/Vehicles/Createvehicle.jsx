@@ -50,7 +50,7 @@ function TabPanel(props) {
   }
   
 
-export const Createvehicle = () => {
+export const Createvehicle = (props) => {
   const { http } = AuthUser();
   const handleSubmit = () =>{
     console.log("licPlate : ",licPlate);
