@@ -68,7 +68,6 @@ function Dashbaord(props) {
 
   function handleClick(event) {
     event.preventDefault();
-    console.info("You clicked a breadcrumb.");
   }
 
   // language switcher
@@ -78,7 +77,6 @@ function Dashbaord(props) {
   const handleChangeLanguage = (event) => {
     setChecked(event.target.checked);
   };
-  console.log("checked language switcher : ", checked);
 
 
 
@@ -119,7 +117,6 @@ function Dashbaord(props) {
 
   const handleChangeTabs = (event, newValue) => {
     setValueTab(newValue);
-    console.log(valueTab);
   };
 
   // side bar
@@ -177,7 +174,7 @@ function Dashbaord(props) {
             style={{ display: "flex", alignItems: "start" }}
           />
           <Tab
-            label="Create Mandatory"
+            label="Address Management"
             {...a11yProps(5)}
             style={{ display: "flex", alignItems: "start" }}
           />
@@ -364,7 +361,7 @@ function Dashbaord(props) {
             <Fdm />
           </TabPanel>
           <TabPanel value={valueTab} index={5}>
-            <Mandatory />
+            <Addresses/>
           </TabPanel>
           <TabPanel value={valueTab} index={6}>
             <SettingsRoot />
