@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
@@ -38,6 +39,7 @@ import { Createcompany } from "../Company/Createcompany";
 import AuthUser from "../../Auth/AuthUser";
 import Login from "../Login/Login";
 import SettingsRoot from "../Settings/SettingsRoot";
+import Mandatory from "../Mandatory/Mandatory";
 
 const drawerWidth = 250;
 
@@ -67,7 +69,6 @@ function Dashbaord(props) {
 
   function handleClick(event) {
     event.preventDefault();
-    console.info("You clicked a breadcrumb.");
   }
 
   // language switcher
@@ -77,6 +78,7 @@ function Dashbaord(props) {
   const handleChangeLanguage = (event) => {
     setChecked(event.target.checked);
   };
+
 
 
   // tabs
@@ -360,7 +362,7 @@ function Dashbaord(props) {
             <Fdm />
           </TabPanel>
           <TabPanel value={valueTab} index={5}>
-            <Addresses />
+            <Addresses/>
           </TabPanel>
           <TabPanel value={valueTab} index={6}>
             <SettingsRoot />
@@ -380,3 +382,4 @@ Dashbaord.propTypes = {
 };
 
 export default Dashbaord;
+

@@ -1,3 +1,4 @@
+
 import { Button } from "@mui/material";
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
@@ -29,7 +30,7 @@ const Sidebar = () => {
           <button>File/dossier Management</button>
         </div>
         <div className="sidebarButtons">
-          <button>Address Management</button>
+          <button>Create mandatory</button>
         </div>
         <div className="sidebarButtons">
           <button>Settings</button>

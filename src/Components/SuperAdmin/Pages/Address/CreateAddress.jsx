@@ -191,6 +191,7 @@ export const CreateAddress = (props) => {
   return (
     <>
       {addressCheck ? (
+
         <Addresses />
       ) : (
         <div>
@@ -481,10 +482,12 @@ export const CreateAddress = (props) => {
                 defaultValue={  props.editItem == undefined ? addComment : props.editItem.add_comment  }
                 onChange={(e) => setAddComment(e.target.value)}
                 fullWidth label="Enter Comment" id="0317258963" />
+
               </div>
             </div>
 
             <div className="col-lg-6">
+
               <div className="managing">
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                  VAT ID
@@ -527,8 +530,11 @@ export const CreateAddress = (props) => {
                                   Save
                                 </Button>
                               </div>
+
         </div>
       )}
     </>
   );
 };
+
+
