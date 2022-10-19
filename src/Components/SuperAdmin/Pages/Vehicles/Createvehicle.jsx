@@ -51,101 +51,10 @@ function TabPanel(props) {
   
 
 export const Createvehicle = (props) => {
-  const { http } = AuthUser();
-  const handleSubmit = () =>{
-    console.log("licPlate : ",licPlate);
-    console.log("Date: ", event_date);
-    console.log("Milage: ", milage);
-
-    
-  const formData = new FormData();
-
-  formData.append("license_plate", licPlate)
-  formData.append("chassis_no", chassisNum)
-  formData.append("hsn", hsn)
-  formData.append("tsn", tsn)
-  formData.append("vehicle_type", vehicleType)
-  formData.append("manufacturer", Manufacturer)
-  formData.append("main_type", mainType)
-  formData.append("subtype", subType)
-  formData.append("structure", Structure)
-  formData.append("wheel_base", wheelBase)
-  formData.append("driven_type", drivenType)
-  formData.append("drive_cabin", driveCabin)
-  formData.append("seats", Seats)
-  formData.append("empty_mass", emptyMass)
-  formData.append("construction", construction)
-  formData.append("suspension_type", suspensionType)
-  formData.append("axes", Axes)
-  formData.append("equipment_line", EquipmentLine)
-  formData.append("axle_load", AxleLoad)
-  formData.append("long", long)
-  formData.append("width", width)
-  formData.append("height", height)
-  formData.append("engine", engine)
-  formData.append("power", Power)
-  formData.append("engine_displacement", engineDisplacement)
-  formData.append("fuel_gear", FuelGear)
-  formData.append("emission_class", emissionClass)
-  formData.append("fine_dust_stricker", fine_dust_stricker)
-  formData.append("id_dynamic", {'field name': 'field value', 'field name2':'field value2'})
-  formData.append("first_registration", firstRegistration)
-  formData.append("last_admission", lastAdmission)
-  formData.append("aprroved_in", aprrovedIn)
-  formData.append("construction_year", constructionYear)
-  formData.append("next_main_inspection", nextMainInspection)
-  formData.append("next_security_check", nextSecurityCheck)
-  formData.append("last_gas_test", lastGasTest)
-  formData.append("accident_prevention_regulation", accidentPreventionRegulation)
-  formData.append("gen_dynamic", {'field name': 'field value', 'field name2':'field value2'})
-  formData.append("read_off", readOff)
-  formData.append("ro_option", 'ro_option_000')
-  formData.append("specified", specified)
-  formData.append("sp_option", 'sp_option_000')
-  formData.append("estimated", estimated)
-  formData.append("est_option", 'est_option_000')
-  formData.append("mileage", mileage)
-  formData.append("mileage_comment", mileageComment)
-  formData.append("mil_dynamic", {'field name': 'field value', 'field name2':'field value2'})
-  formData.append("color", color)
-  formData.append("previous_owner_count", previousOwnerCount)
-  formData.append("data_source", dataSource)
-  formData.append("import_vehicle", importVehicle)
-  formData.append("steering_wheel_position", steeringWheelPosition)
-  formData.append("misc_dynamic", {'field name': 'field value', 'field name2':'field value2'})
-  formData.append("equipements", {'equipement_type': 'option'})
-  formData.append("tier_layout", 'tier_layout_000')
-  formData.append("event_date[0]", event_date)
-  formData.append("event_event[0]", eventEvent)
-  formData.append("event_cost[0]", eventCost)
-  formData.append("event_comment[0]", eventComment)
-  formData.append("vl_position[0]", 'vl_position_000')
-  formData.append("vl_measurement[0]", 'vl_measurement_000')
-  formData.append("vl_description[0]", 'vl_description_000')
-  formData.append("tier_layout_id", 1)
-  formData.append("company_id", 12)
-  formData.append("tier_set_id[0]", 1)
-  formData.append("tier_comment[0]", tierComment)
-  formData.append("tier_type[0]", tierType)
-  formData.append("tier_rims[0]", tier_rims)
-  formData.append("tier_tread_depth[0]", tier_tread_depth)
-  formData.append("tier_manufacturer[0]", tier_manufacturer)
-  formData.append("tier_model[0]", tier_model)
-  formData.append("tier_dimensions[0]", tier_dimensions)
-  formData.append("array[]", [])
-  formData.append("event_date[1]", '2022-06-25 09:11:10')
- 
 
   
-
-  http.post(`/vehicle`, formData)
-  .then((res) => {
-    console.log(res)
-    setCompanyCheck(!companyCheck)
-    // setusermanagementCheck(!usermanagementCheck)
-  }).catch(err => console.log(err.message))
-
-  }
+  const { http } = AuthUser();
+  
 
   // Create Vehicle States
 
@@ -241,7 +150,323 @@ export const Createvehicle = (props) => {
     };
     
   const [companyCheck, setCompanyCheck] = useState(false);
-  console.log("Milage: ", mileage);
+  
+
+
+    // Handle Save (Create Vehicle)
+  const handleSubmit = () =>{
+  
+    
+  const formData = new FormData();
+
+  formData.append("license_plate", licPlate)
+  formData.append("chassis_no", chassisNum)
+  formData.append("hsn", hsn)
+  formData.append("tsn", tsn)
+  formData.append("vehicle_type", vehicleType)
+  formData.append("manufacturer", Manufacturer)
+  formData.append("main_type", mainType)
+  formData.append("subtype", subType)
+  formData.append("structure", Structure)
+  formData.append("wheel_base", wheelBase)
+  formData.append("driven_type", drivenType)
+  formData.append("drive_cabin", driveCabin)
+  formData.append("seats", Seats)
+  formData.append("empty_mass", emptyMass)
+  formData.append("construction", construction)
+  formData.append("suspension_type", suspensionType)
+  formData.append("axes", Axes)
+  formData.append("equipment_line", EquipmentLine)
+  formData.append("axle_load", AxleLoad)
+  formData.append("long", long)
+  formData.append("width", width)
+  formData.append("height", height)
+  formData.append("engine", engine)
+  formData.append("power", Power)
+  formData.append("engine_displacement", engineDisplacement)
+  formData.append("fuel_gear", FuelGear)
+  formData.append("emission_class", emissionClass)
+  formData.append("fine_dust_stricker", fine_dust_stricker)
+  formData.append("id_dynamic", {'field name': 'field value', 'field name2':'field value2'})
+  formData.append("first_registration", firstRegistration)
+  formData.append("last_admission", lastAdmission)
+  formData.append("aprroved_in", aprrovedIn)
+  formData.append("construction_year", constructionYear)
+  formData.append("next_main_inspection", nextMainInspection)
+  formData.append("next_security_check", nextSecurityCheck)
+  formData.append("last_gas_test", lastGasTest)
+  formData.append("accident_prevention_regulation", accidentPreventionRegulation)
+  formData.append("gen_dynamic", {'field name': 'field value', 'field name2':'field value2'})
+  formData.append("read_off", readOff)
+  formData.append("ro_option", 'ro_option_000')
+  formData.append("specified", specified)
+  formData.append("sp_option", 'sp_option_000')
+  formData.append("estimated", estimated)
+  formData.append("est_option", 'est_option_000')
+  formData.append("mileage", mileage)
+  formData.append("mileage_comment", mileageComment)
+  formData.append("mil_dynamic", {'field name': 'field value', 'field name2':'field value2'})
+  formData.append("color", color)
+  formData.append("previous_owner_count", previousOwnerCount)
+  formData.append("data_source", dataSource)
+  formData.append("import_vehicle", importVehicle)
+  formData.append("steering_wheel_position", steeringWheelPosition)
+  formData.append("misc_dynamic", {'field name': 'field value', 'field name2':'field value2'})
+  formData.append("equipements", {'equipement_type': 'option'})
+  formData.append("tier_layout", 'tier_layout_000')
+  formData.append("event_date[0]", event_date)
+  formData.append("event_event[0]", eventEvent)
+  formData.append("event_cost[0]", eventCost)
+  formData.append("event_comment[0]", eventComment)
+  formData.append("vl_position[0]", 'vl_position_000')
+  formData.append("vl_measurement[0]", 'vl_measurement_000')
+  formData.append("vl_description[0]", 'vl_description_000')
+  formData.append("tier_layout_id", 1)
+  formData.append("company_id", 12)
+  formData.append("tier_set_id[0]", 1)
+  formData.append("tier_comment[0]", tierComment)
+  formData.append("tier_type[0]", tierType)
+  formData.append("tier_rims[0]", tier_rims)
+  formData.append("tier_tread_depth[0]", tier_tread_depth)
+  formData.append("tier_manufacturer[0]", tier_manufacturer)
+  formData.append("tier_model[0]", tier_model)
+  formData.append("tier_dimensions[0]", tier_dimensions)
+  formData.append("array[]", [])
+  formData.append("event_date[1]", '2022-06-25 09:11:10')
+ 
+
+  
+
+  http.post(`/vehicle`, formData)
+  .then((res) => {
+    console.log(res)
+    setCompanyCheck(!companyCheck)
+    // setusermanagementCheck(!usermanagementCheck)
+  }).catch(err => console.log(err.message))
+
+  }
+
+
+  // Handle Edit Vehicle (Edit Vehicle)
+  const handleEdit = () =>{
+
+ 
+    const formData = new FormData();
+
+    { licPlate !== undefined ? formData.append("license_plate", licPlate) :
+    formData.append("license_plate", props.editItem.license_plate) }
+
+    { chassisNum !== undefined ? formData.append("chassis_no", chassisNum) :
+    formData.append("chassis_no", props.editItem.chassis_no) }
+
+    { hsn !== undefined ? formData.append("hsn", hsn) :
+    formData.append("hsn", props.editItem.hsn) }
+
+    { tsn !== undefined ? formData.append("tsn", tsn) :
+    formData.append("tsn", props.editItem.tsn) }
+
+    { vehicleType !== undefined ? formData.append("vehicle_type", vehicleType) :
+    formData.append("vehicle_type", props.editItem.vehicle_type) }
+
+    { Manufacturer !== undefined ? formData.append("manufacturer", Manufacturer) :
+    formData.append("manufacturer", props.editItem.manufacturer) }
+
+    { mainType !== undefined ? formData.append("main_type", mainType) :
+    formData.append("main_type", props.editItem.main_type) }
+
+
+    { subType !== undefined ? formData.append("subtype", subType) :
+    formData.append("subtype", props.editItem.subtype) }
+
+
+    { Structure !== undefined ? formData.append("structure", Structure) :
+    formData.append("structure", props.editItem.structure) }
+
+    { wheelBase !== undefined ? formData.append("wheel_base", wheelBase) :
+    formData.append("wheel_base", props.editItem.wheel_base) }
+
+    { drivenType !== undefined ? formData.append("driven_type", drivenType) :
+    formData.append("driven_type", props.editItem.driven_type) }
+
+    { driveCabin !== undefined ? formData.append("drive_cabin", driveCabin) :
+    formData.append("drive_cabin", props.editItem.drive_cabin) }
+
+    { Seats !== undefined ? formData.append("seats", Seats) :
+    formData.append("seats", props.editItem.seats) }
+
+
+    { emptyMass !== undefined ? formData.append("empty_mass", emptyMass) :
+    formData.append("empty_mass", props.editItem.empty_mass) }
+
+    { construction !== undefined ? formData.append("construction", construction) :
+    formData.append("construction", props.editItem.construction) }
+
+    { suspensionType !== undefined ? formData.append("suspension_type", suspensionType) :
+    formData.append("suspension_type", props.editItem.suspension_type) }
+
+    { Axes !== undefined ? formData.append("axes", Axes) :
+    formData.append("axes", props.editItem.axes) }
+
+    { EquipmentLine !== undefined ? formData.append("equipment_line", EquipmentLine) :
+    formData.append("equipment_line", props.editItem.equipment_line) }
+
+    { AxleLoad !== undefined ? formData.append("axle_load", AxleLoad) :
+    formData.append("axle_load", props.editItem.axle_load) }
+
+
+    { long !== undefined ? formData.append("long", long) :
+    formData.append("long", props.editItem.long) }
+
+    { width !== undefined ? formData.append("width", width) :
+    formData.append("width", props.editItem.width) }
+
+    { height !== undefined ? formData.append("height", height) :
+    formData.append("height", props.editItem.height) }
+
+    { engine !== undefined ? formData.append("engine", engine) :
+    formData.append("engine", props.editItem.engine) }
+
+    { Power !== undefined ? formData.append("power", Power) :
+    formData.append("power", props.editItem.power) }
+
+    { engineDisplacement !== undefined ? formData.append("engine_displacement", engineDisplacement) :
+    formData.append("engine_displacement", props.editItem.engine_displacement) }
+
+    { FuelGear !== undefined ? formData.append("fuel_gear", FuelGear) :
+    formData.append("fuel_gear", props.editItem.fuel_gear) }
+
+    { emissionClass !== undefined ? formData.append("emission_class", emissionClass) :
+    formData.append("emission_class", props.editItem.emission_class) }
+
+    { fine_dust_stricker !== undefined ? formData.append("fine_dust_stricker", fine_dust_stricker) :
+    formData.append("fine_dust_stricker", props.editItem.fine_dust_stricker) }
+
+    formData.append("id_dynamic", {'field name': 'field value', 'field name2':'field value2'})
+
+    { firstRegistration !== undefined ? formData.append("first_registration", firstRegistration) :
+    formData.append("first_registration", props.editItem.first_registration) }
+
+    { lastAdmission !== undefined ? formData.append("last_admission", lastAdmission) :
+    formData.append("last_admission", props.editItem.last_admission) }
+
+    { aprrovedIn !== undefined ? formData.append("aprroved_in", aprrovedIn) :
+    formData.append("aprroved_in", props.editItem.aprroved_in) }
+
+    { constructionYear !== undefined ? formData.append("construction_year", constructionYear) :
+    formData.append("construction_year", props.editItem.construction_year) }
+
+    { nextMainInspection !== undefined ? formData.append("next_main_inspection", nextMainInspection) :
+    formData.append("next_main_inspection", props.editItem.next_main_inspection) }
+
+    { nextSecurityCheck !== undefined ? formData.append("next_security_check", nextSecurityCheck) :
+    formData.append("next_security_check", props.editItem.next_security_check) }
+
+    { lastGasTest !== undefined ? formData.append("last_gas_test", lastGasTest) :
+    formData.append("last_gas_test", props.editItem.last_gas_test) }
+
+    { accidentPreventionRegulation !== undefined ? formData.append("accident_prevention_regulation", accidentPreventionRegulation) :
+    formData.append("accident_prevention_regulation", props.editItem.accident_prevention_regulation) }
+
+    formData.append("gen_dynamic", {'field name': 'field value', 'field name2':'field value2'})
+
+    { readOff !== undefined ? formData.append("read_off", readOff) :
+    formData.append("read_off", props.editItem.read_off) }
+
+    formData.append("ro_option", 'ro_option_000')
+
+    { specified !== undefined ? formData.append("specified", specified) :
+    formData.append("specified", props.editItem.specified) }
+    
+    formData.append("sp_option", 'sp_option_000')
+
+    { estimated !== undefined ? formData.append("estimated", estimated) :
+    formData.append("estimated", props.editItem.estimated) }
+
+    formData.append("est_option", 'est_option_000')
+
+    { mileage !== undefined ? formData.append("mileage", mileage) :
+    formData.append("mileage", props.editItem.mileage) }
+
+    { mileageComment !== undefined ? formData.append("mileage_comment", mileageComment) :
+    formData.append("mileage_comment", props.editItem.mileage_comment) }
+
+    formData.append("mil_dynamic", {'field name': 'field value', 'field name2':'field value2'})
+
+    { color !== undefined ? formData.append("color", color) :
+    formData.append("color", props.editItem.color) }
+
+    { previousOwnerCount !== undefined ? formData.append("previous_owner_count", previousOwnerCount) :
+    formData.append("previous_owner_count", props.editItem.previous_owner_count) }
+
+    { dataSource !== undefined ? formData.append("data_source", dataSource) :
+    formData.append("data_source", props.editItem.data_source) }
+
+    { importVehicle !== undefined ? formData.append("import_vehicle", importVehicle) :
+    formData.append("import_vehicle", props.editItem.import_vehicle) }
+
+    { steeringWheelPosition !== undefined ? formData.append("steering_wheel_position", steeringWheelPosition) :
+    formData.append("steering_wheel_position", props.editItem.steering_wheel_position) }
+
+    formData.append("misc_dynamic", {'field name': 'field value', 'field name2':'field value2'})
+    formData.append("equipements", {'equipement_type': 'option'})
+    formData.append("tier_layout", 'tier_layout_000')
+
+    { event_date !== undefined ? formData.append("event_date[0]", event_date) :
+    formData.append("event_date[0]", props.editItem.event_date) }
+
+    { eventEvent !== undefined ? formData.append("event_event[0]", eventEvent) :
+    formData.append("event_event[0]", props.editItem.event_event) }
+
+    { eventCost !== undefined ? formData.append("event_cost[0]", Manufacturer) :
+    formData.append("event_cost[0]", props.editItem.event_cost) }
+
+    { eventComment !== undefined ? formData.append("event_comment[0]", eventComment) :
+    formData.append("event_comment[0]", props.editItem.event_comment) }
+
+
+ 
+  formData.append("vl_position[0]", 'vl_position_000')
+  formData.append("vl_measurement[0]", 'vl_measurement_000')
+  formData.append("vl_description[0]", 'vl_description_000')
+  formData.append("tier_layout_id", 1)
+  formData.append("company_id", 12)
+  formData.append("tier_set_id[0]", 1)
+
+  { tierComment !== undefined ? formData.append("tier_comment[0]", tierComment) :
+    formData.append("tier_comment[0]", props.editItem.tier_comment) }
+
+    { tierType !== undefined ? formData.append("tier_type[0]", tierType) :
+    formData.append("tier_type[0]", props.editItem.tier_type) }
+
+    { tier_rims !== undefined ? formData.append("tier_rims[0]", tier_rims) :
+    formData.append("tier_rims[0]", props.editItem.tier_rims) }
+
+    { tier_tread_depth !== undefined ? formData.append("tier_tread_depth[0]", tier_tread_depth) :
+    formData.append("tier_tread_depth[0]", props.editItem.tier_tread_depth) }
+
+    { tier_manufacturer !== undefined ? formData.append("tier_manufacturer[0]", tier_manufacturer) :
+    formData.append("tier_manufacturer[0]", props.editItem.tier_manufacturer) }
+
+    { tier_model !== undefined ? formData.append("tier_model[0]", tier_model) :
+    formData.append("tier_model[0]", props.editItem.tier_model) }
+
+    { tier_dimensions !== undefined ? formData.append("tier_dimensions[0]", tier_dimensions) :
+    formData.append("tier_dimensions[0]", props.editItem.tier_dimensions) }
+
+  formData.append("array[]", [])
+  formData.append("event_date[1]", '2022-06-25 09:11:10')
+  formData.append("_method", "PUT")
+
+  
+
+  http.post(`/vehicle/${props.editItem.id}`, formData)
+  .then((res) => {
+    
+    setCompanyCheck(!companyCheck)
+    
+  }).catch(err => console.log(err.message))
+
+  }
 
 
   return (
@@ -250,7 +475,7 @@ export const Createvehicle = (props) => {
         <Vehicles />
       ) : (
         <div>
-          {/* <Toolbar /> */}
+          <Toolbar />
        
       
         <Tabs
@@ -273,6 +498,8 @@ export const Createvehicle = (props) => {
           <Tab label=" Equipment  " {...a11yProps(1)} />
           <Tab label="Tires" {...a11yProps(2)} />
           <Tab label="Vehicle Events" {...a11yProps(3)} />
+          <Tab label="Varnish Layer" {...a11yProps(4)} />
+
 
          
         </Tabs>
@@ -1632,12 +1859,12 @@ export const Createvehicle = (props) => {
                 id="date"
                 label="Enter Date"
                 type="date"
-                defaultValue=""
                 InputLabelProps={{
                   shrink: true,
                 }}
                 fullWidth
                 onChange={(e) => setEventDate(e.target.value)}
+                defaultValue={  props.editItem === undefined ? event_date : props.editItem.event_date  }
                  />
               </div>
             </div>
@@ -1649,7 +1876,7 @@ export const Createvehicle = (props) => {
                 </p>
 
                 <TextField
-                defaultValue={  props.editItem === undefined ? licPlate : props.editItem.license_plate  }
+                defaultValue={  props.editItem === undefined ? eventCost : props.editItem.event_cost  }
                 onChange={(e) => setEventCost(e.target.value)}
                   fullWidth
                   label="example"
@@ -1671,6 +1898,7 @@ export const Createvehicle = (props) => {
                 
 
                 <TextField 
+                defaultValue={  props.editItem === undefined ? eventEvent : props.editItem.event_event  }
                 onChange={(e) => setEventEvent(e.target.value)}
                 fullWidth label="example" id="0317258963" />
               </div>
@@ -1688,6 +1916,7 @@ export const Createvehicle = (props) => {
                 
 
                 <TextField 
+                defaultValue={  props.editItem === undefined ? eventComment : props.editItem.event_comment  }
                 onChange={(e) => setEventComment(e.target.value)}
                 fullWidth label="example" id="0317258963" />
               </div>
@@ -1715,7 +1944,171 @@ export const Createvehicle = (props) => {
           />
           <div className="mr-5">
             <CreateBtn
-              onClick={handleSubmit}
+              onClick={() => {
+                if(props.editItem == undefined){
+                  handleSubmit()
+                }
+                handleEdit()
+              }}
+              style={{
+                color: "#000",
+                padding: "6px 22px",
+                diplay: "flex",
+                alignItems: "center",
+              }}
+              name="Submit"
+            />
+          </div>
+        </div>
+
+          
+
+          
+          </div>
+        </TabPanel>
+
+         {/* Varnish Layer */}
+         <TabPanel value={value} index={4} dir={theme.direction}>
+        <div>
+        <div className="flex justify-between">
+            <h1 className="text-base text-bold mb-0 ml-5">Varnish Layer</h1>
+            
+            
+          </div> <br />
+
+
+          
+          
+          <div className="generl">
+            <p>Layer Details</p>
+          </div>
+          <br />
+
+          
+       
+
+          < div className="row mt-5">
+            <div className="col-lg-4">
+              <div className="company">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Position
+                </p>
+                
+
+                <TextField
+                id="date"
+                label="Enter postion"
+                type="text"
+                
+                onChange={(e) => setEventDate(e.target.value)}
+                defaultValue={  props.editItem === undefined ? event_date : props.editItem.event_date  }
+                 />
+              </div>
+            </div>
+
+            <div className="col-lg-4">
+              <div className="company">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Position
+                </p>
+                
+
+                <TextField
+                id="date"
+                label="Enter postion"
+                type="text"
+                
+                onChange={(e) => setEventDate(e.target.value)}
+                defaultValue={  props.editItem === undefined ? event_date : props.editItem.event_date  }
+                 />
+              </div>
+            </div>
+
+            <div className="col-lg-4">
+              <div className="company">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Position
+                </p>
+                
+
+                <TextField
+                id="date"
+                label="Enter postion"
+                type="text"
+                
+                onChange={(e) => setEventDate(e.target.value)}
+                defaultValue={  props.editItem === undefined ? event_date : props.editItem.event_date  }
+                 />
+              </div>
+            </div>
+
+            
+
+
+         
+          </div>
+
+          < div className="row mt-5">
+            <div className="col-lg-12">
+              <div className="company">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Event
+                </p>
+                
+
+                <TextField 
+                defaultValue={  props.editItem === undefined ? eventEvent : props.editItem.event_event  }
+                onChange={(e) => setEventEvent(e.target.value)}
+                fullWidth label="example" id="0317258963" />
+              </div>
+            </div>
+
+           
+          </div>
+
+          < div className="row mt-5">
+            <div className="col-lg-12">
+              <div className="company">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Comment
+                </p>
+                
+
+                <TextField 
+                defaultValue={  props.editItem === undefined ? eventComment : props.editItem.event_comment  }
+                onChange={(e) => setEventComment(e.target.value)}
+                fullWidth label="example" id="0317258963" />
+              </div>
+            </div>
+
+           
+          </div>
+         
+
+         
+         
+         
+
+          <div className="flex justify-between my-6 mt-5">
+
+          <CreateBtn
+            onClick={() => setValue(value - 1)}
+            style={{
+              color: "gray",
+              padding: "6px 22px",
+              diplay: "flex",
+              alignItems: "center",
+            }}
+            name="Previous"
+          />
+          <div className="mr-5">
+            <CreateBtn
+              onClick={() => {
+                if(props.editItem == undefined){
+                  handleSubmit()
+                }
+                handleEdit()
+              }}
               style={{
                 color: "#000",
                 padding: "6px 22px",
@@ -1740,3 +2133,4 @@ export const Createvehicle = (props) => {
     </>
   );
 };
+

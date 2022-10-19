@@ -1,28 +1,47 @@
 import * as React from "react";
 import Popover from "@mui/material/Popover";
 import Button from "@mui/material/Button";
-import threedot from "../img/3dot.png";
+import threedot from "../../img/3dot.png";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-import delImg from "../img/del.png";
-import { CreateBtn } from "../Buttons";
+import delImg from "../../img/del.png";
+import { CreateBtn } from "../../Buttons";
+import AuthUser from "../Auth/AuthUser";
 
 export default function SelectPopover(props) {
+
+  const { http } = AuthUser();
+
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const [openDelete, setOpenDelete] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
+  const HandlerEdit = () => {
+    props.setEditIndex(props.id);
+    props.setEditItem(props);
+  
+  };
   const handleClickOpenDelete = () => {
     setOpenDelete(true);
+    console.log("hello");
   };
 
+  const handleDeleteAPI = () => {
+    const formData = new FormData();
+    formData.append("_method", "DELETE");
+    http
+      .post(`/${props.apiName}/${props.id}`, formData)
+      .then((res) => {
+        // console.log(res);
+        props.SetState(props.state.filter((data) => data.id != props.id));
+        setOpenDelete(false);
+      })
+      .catch((err) => console.log(err.message));
+  };
   const handleCloseDelete = () => {
     setOpenDelete(false);
   };
@@ -54,8 +73,13 @@ export default function SelectPopover(props) {
         }}
       >
         <div className="w-[100px]">
-          <Button style={{ width: "100%", color: "black" }} >Copy</Button>
-          <Button style={{ width: "100%", color: "black" }}>Edit</Button>
+          <Button style={{ width: "100%", color: "black" }}>Copy</Button>
+          <Button
+            onClick={HandlerEdit}
+            style={{ width: "100%", color: "black" }}
+          >
+            Edit
+          </Button>
           <Button
             style={{ width: "100%", color: "black" }}
             onClick={handleClickOpenDelete}
@@ -71,33 +95,26 @@ export default function SelectPopover(props) {
         open={openDelete}
         onClose={handleCloseDelete}
         aria-labelledby="responsive-dialog-title"
-         
-      
       >
-        <DialogContent 
-
-       
-        >
-          <div className="flex justify-center "
-           className="lg:absolute lg:top-[-40px] lg:left-[40%] flex justify-center"
-           >
-            <img src={delImg} alt="del" />   
+        <DialogContent>
+          <div className="lg:absolute lg:top-[-40px] lg:left-[40%] flex justify-center">
+            <img src={delImg} alt="del" />
           </div>
           <div className="bg-white p-4 mt-4">
             <h1 className="text-2xl">Are You Sure To Delete This Company?</h1>
           </div>
           <div className="flex justify-center">
-          <Button autoFocus onClick={handleCloseDelete} className="text-black">
-            Cancel
-          </Button>
-          
-          <CreateBtn
-          onClick={handleCloseDelete} 
-          name="Delete"
-          />
+            <Button
+              autoFocus
+              onClick={handleCloseDelete}
+              className="text-black"
+            >
+              Cancel
+            </Button>
+
+            <CreateBtn onClick={handleDeleteAPI} name="Delete" />
           </div>
         </DialogContent>
-        
       </Dialog>
     </div>
   );

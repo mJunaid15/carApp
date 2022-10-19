@@ -6,7 +6,9 @@ import { Toolbar } from "@mui/material";
 import AuthUser from "../../Auth/AuthUser";
 import axios from 'axios'
 
-export const Createcompany = () => {
+export const Createcompany = (props) => {
+
+  
 
   const { http } = AuthUser();
 
@@ -36,14 +38,12 @@ export const Createcompany = () => {
   // Handle Cancel Button
 
   const handleCancel = () => {
-    console.log("Button Clicked");
+    setCompanyCheck(!companyCheck)
   }
 
 
-  // Handle Save 
-  const handleSave = (data) => {
-
-  
+  // Handle Create company
+  const handleSave = () => {
 
     const formData = new FormData();
 
@@ -66,11 +66,97 @@ export const Createcompany = () => {
 
     http.post(`/company`, formData)
     .then((res) => {
-      console.log(res)
       setCompanyCheck(!companyCheck)
     }).catch(err => console.log(err.message))
   
     
+  };
+
+  // Handle Edit Company
+  const handleEditCompany = () => {
+
+    console.log( "Props: ", props.editItem);
+    const formData = new FormData();
+    {
+      name != ""
+        ? formData.append("name", name)
+        : formData.append("name", props.editItem.name);
+    }
+    {
+      director != ""
+        ? formData.append("director", director)
+        : formData.append("director", props.editItem.director);
+    }
+    {
+      person != ""
+        ? formData.append("person", person)
+        : formData.append("person", props.editItem.person);
+    }
+
+    {
+      taxNumber != ""
+        ? formData.append("tax_number", taxNumber)
+        : formData.append("tax_number", props.editItem.tax_number);
+    }
+
+    {
+      email != ""
+        ? formData.append("email", email)
+        : formData.append("email", props.editItem.email);
+    }
+
+    {
+      phone != ""
+        ? formData.append("phone", phone)
+        : formData.append("phone", props.editItem.phone);
+    }
+
+    {
+      mobile != ""
+        ? formData.append("mobile", mobile)
+        : formData.append("mobile", props.editItem.mobile);
+    }
+
+    {
+      fax != ""
+        ? formData.append("fax", fax)
+        : formData.append("fax", props.editItem.fax);
+    }
+
+    {
+      country != ""
+        ? formData.append("country", country)
+        : formData.append("country", props.editItem.country);
+    }
+
+    {
+      zipCity != ""
+        ? formData.append("city", zipCity)
+        : formData.append("city", props.editItem.city);
+    }
+
+    {
+      streetNo != ""
+        ? formData.append("street_no", streetNo)
+        : formData.append("street_no", props.editItem.street_no);
+    }
+
+    {
+      mailbox != ""
+        ? formData.append("mailbox", mailbox)
+        : formData.append("mailbox", props.editItem.mailbox);
+    }
+
+    formData.append("_method", "PUT");
+    formData.append("register", props.editItem.register);
+
+    http
+      .post(`company/${props.editItem.id}`, formData)
+      .then((res) => {
+        console.log(res);
+        setCompanyCheck(!companyCheck)
+      })
+      .catch((err) => console.log(err.message));
   };
 
 
@@ -84,7 +170,9 @@ export const Createcompany = () => {
         <div>
           <Toolbar />
           <div className="flex justify-between">
-            <h1 className="text-base text-bold mb-0 ml-5">Create Company</h1>
+          { props && props.editItem ? (<h1 className="text-base text-bold mb-0 ml-5">Edit Company</h1>) :(
+            <h1 className="text-base text-bold mb-0 ml-5">Create Company</h1>) }
+            
             <div className="mr-5">
               <Button
                 onClick={() => setCompanyCheck(!companyCheck)}
@@ -104,7 +192,8 @@ export const Createcompany = () => {
           <hr />
 
           <div className="company">
-            <p>Create Company</p>
+            { props && props.editItem ? (<p>Edit Company</p>) :(
+            <p>Create Company</p>) }
           </div>
 
           <div className="generl">
@@ -119,9 +208,7 @@ export const Createcompany = () => {
                 </p>
 
                 <TextField
-                
-                
-                value={name}
+                defaultValue={  props.editItem == undefined ? name : props.editItem.name  }
                 onChange={(e) => setName(e.target.value)}
                 fullWidth label="Company name" id="0317258963" />
               </div>
@@ -134,7 +221,7 @@ export const Createcompany = () => {
                 </p>
 
                 <TextField
-                 value={director}
+                defaultValue={  props.editItem == undefined ? director : props.editItem.director  }
                  onChange={(e) => setDirector(e.target.value)}
                   fullWidth
                   label="Enter your position"
@@ -152,7 +239,7 @@ export const Createcompany = () => {
                 </p>
 
                 <TextField
-                 value={person}
+                defaultValue={  props.editItem == undefined ? person : props.editItem.person  }
                  onChange={(e) => setPerson(e.target.value)}
                 fullWidth label="Enter your name" id="0317258963" />
               </div>
@@ -165,7 +252,7 @@ export const Createcompany = () => {
                 </p>
 
                 <TextField
-                 value={register}
+                defaultValue={  props.editItem == undefined ? register : props.editItem.register  }
                  onChange={(e) => setRegister(e.target.value)}
                 fullWidth label="Enter your text" id="0317258963" />
               </div>
@@ -178,7 +265,7 @@ export const Createcompany = () => {
                 </p>
 
                 <TextField
-                 value={taxNumber}
+                defaultValue={  props.editItem == undefined ? taxNumber : props.editItem.tax_number  }
                  onChange={(e) => setTaxNumber(e.target.value)}
                   fullWidth
                   label="Enter your tax"
@@ -198,7 +285,7 @@ export const Createcompany = () => {
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>E-mail</p>
 
                 <TextField
-                 value={email}
+                defaultValue={  props.editItem == undefined ? email : props.editItem.email  }
                  onChange={(e) => setEmail(e.target.value)}
                 fullWidth label="Enter email" id="0317258963" />
               </div>
@@ -209,7 +296,7 @@ export const Createcompany = () => {
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>Homepage</p>
 
                 <TextField 
-                 value={homepage}
+                 defaultValue={  props.editItem == undefined ? homepage : props.editItem.homepage  }
                  onChange={(e) => setHomepage(e.target.value)}
                 fullWidth label="http:/" id="0317258963" />
               </div>
@@ -224,7 +311,7 @@ export const Createcompany = () => {
                 </p>
 
                 <TextField
-                 value={phone}
+                defaultValue={  props.editItem == undefined ? phone : props.editItem.phone  }
                  onChange={(e) => setPhone(e.target.value)}
                 fullWidth label="0317258963" id="0317258963" />
               </div>
@@ -235,7 +322,7 @@ export const Createcompany = () => {
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>Mobile</p>
 
                 <TextField
-                 value={mobile}
+                defaultValue={  props.editItem == undefined ? mobile : props.editItem.mobile  }
                  onChange={(e) => setMobile(e.target.value)}
                  fullWidth label="Enter Mobile number" id="0317258963" />
               </div>
@@ -247,7 +334,7 @@ export const Createcompany = () => {
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>Fax</p>
 
                 <TextField
-                 value={fax}
+                defaultValue={  props.editItem == undefined ? fax : props.editItem.fax  }
                  onChange={(e) => setFax(e.target.value)}
                  fullWidth label="Enter Fax" id="0317258963" />
               </div>
@@ -264,7 +351,7 @@ export const Createcompany = () => {
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>Country</p>
 
                 <TextField 
-                 value={country}
+                defaultValue={  props.editItem == undefined ? country : props.editItem.country  }
                  onChange={(e) => setCountry(e.target.value)}
                 fullWidth label="Country name" id="Country name" />
               </div>
@@ -277,7 +364,7 @@ export const Createcompany = () => {
                 </p>
 
                 <TextField
-                 value={zipCity}
+                defaultValue={  props.editItem == undefined ? zipCity : props.editItem.city  }
                  onChange={(e) => setZipCity(e.target.value)}
                 fullWidth label="City" id="City" />
               </div>
@@ -292,8 +379,7 @@ export const Createcompany = () => {
                 </p>
 
                 <TextField 
-               
-                 value={streetNo}
+               defaultValue={  props.editItem == undefined ? streetNo : props.editItem.street_no  }
                  onChange={(e) => setStreetNo(e.target.value)}
                 fullWidth label="Street No*" id="Street No*" />
               </div>
@@ -304,8 +390,7 @@ export const Createcompany = () => {
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>Mailbox</p>
 
                 <TextField
-                
-                 value={mailbox}
+                defaultValue={  props.editItem == undefined ? mailbox : props.editItem.mailbox  }
                  onChange={(e) => setMailbox(e.target.value)}
                   fullWidth
                   label="Enter your mail box"
@@ -326,7 +411,12 @@ export const Createcompany = () => {
                                 <Button
                                   className="text-white"
                                   style={{ backgroundColor: "#5A4A42" }}
-                                  onClick={handleSave}
+                                  onClick={ () => {
+                                    if(props.editItem !== undefined){
+                                      handleEditCompany()
+                                    }
+                                    handleSave()
+                                  } }
                                   >
                                   Save
                                 </Button>

@@ -7,7 +7,8 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { Createsetting } from "./Createsetting";
-import { Company } from "./CompanyProfile/Company";
+import {  CompanyProfile } from "./CompanyProfile/CompanyProfile";
+import { Company } from "../Company/Company";
 import AddressLocRoot from "./AddressLocRoot";
 
 function TabPanel(props) {
@@ -90,6 +91,8 @@ export default function Setting() {
               <Tab label="Company" {...a11yProps(0)} />
               <Tab label=" Address Location  " {...a11yProps(1)} />
               <Tab label="Users" {...a11yProps(2)} />
+              <Tab label="Profile" {...a11yProps(3)} />
+
               
             </Tabs>
 
@@ -717,6 +720,11 @@ export default function Setting() {
                     </div>
                   </div>
                 </div>
+              </TabPanel>
+
+               {/* Profile */}
+               <TabPanel value={value} index={3} dir={theme.direction}>
+                < CompanyProfile />
               </TabPanel>
            
             

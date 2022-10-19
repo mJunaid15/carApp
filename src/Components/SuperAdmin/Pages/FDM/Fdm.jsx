@@ -25,6 +25,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { TextField } from "@mui/material";
 import  CreateFdm  from "./CreateFDM";
+import SelectPopover from "../SelectPopover";
+
 
 
 export default function Fdm() {
@@ -34,6 +36,8 @@ export default function Fdm() {
   const [loading, setLoading] = useState(false);
   const [itemId, setItemId] = useState();
   const [fdmCheck, setFdmCheck] = useState(false)
+  const [editIndex,setEditIndex] = useState(null)
+  const [editItem, setEditItem] = useState()
 
   // Api Call Function Fetch File List
   const fetchFileList = async () => {
@@ -51,37 +55,7 @@ export default function Fdm() {
     fetchFileList();
   }, []);
 
-   // Popover Code
-   const [openDelete, setOpenDelete] = React.useState(false);
-
-   const theme = useTheme();
-   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
  
- 
-   const handleClickOpenDelete = (id) => {
-     setItemId(id)
-     setOpenDelete(true);
-     
-   };
-   const handleCloseDelete = () => {
-     setOpenDelete(false);
-   };
-
-  // Delete Api Function
-  const handleDeleteAPI = () => {
-    const formData = new FormData();
-    formData.append('_method', 'DELETE');
-    http.post(`/file/${itemId}`,formData)
-    .then((res) => {
-      
-    setFileList( fileList.filter((item) => item.id !== itemId) )
-    console.log("File List: ",fileList);
-    setOpenDelete(false);
-    })
-    .catch(err =>   console.log(err.message))
-    
-    
-  }
 
   // Pagination
   let [page, setPage] = useState(1);
@@ -146,7 +120,7 @@ export default function Fdm() {
             _DATA.currentData().map((data, index) => {
                       return (
                       <TableRow>
-                        <TableCell component="th" scope="row">
+                        <TableCell align="center" component="th" scope="row">
                           <p className="mb-0">{data.gd_expert_name}</p>
                           <p className="mb-0 text-slate-400">{data.gd_clerk_name}</p>
                         </TableCell>
@@ -157,53 +131,17 @@ export default function Fdm() {
                         </TableCell>
                         <TableCell align="center">{data.gd_inspection_date}
                         </TableCell>
-                        <TableCell align="center  ">
-                          
-                                  {/* Dropdown */}
-                                <Dropdown className="dropdown" >
-                                    <Dropdown.Toggle id="dropdown-basic" >
-                                    <img src={threedot} alt="threedot" />
-                                    </Dropdown.Toggle>
-                                    
-                                      <Dropdown.Menu>
-                                      <Dropdown.Item >Copy</Dropdown.Item>
-                                      <Dropdown.Item >Edit</Dropdown.Item>
-                                      <Dropdown.Item onClick={ () =>  handleClickOpenDelete(data.id)}>Delete</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                  </Dropdown>
-
-                                  {/* Delete Modal */}
-                                  <Dialog
-                              
-                                      fullScreen={fullScreen}
-                                      open={openDelete}
-                                      onClose={handleCloseDelete}
-                                      aria-labelledby="responsive-dialog-title"   
-                                    >
-                                      
-                                      
-                                      <DialogContent >
-                                        <div className="lg:absolute lg:top-[-40px] lg:left-[40%] flex justify-center">
-                                          <img src={delImg} alt="del" />   
-                                        </div>
-                                        <div className="bg-white p-4 mt-4">
-                                          <h1 className="text-2xl">Are You Sure To Delete This Company?</h1>
-                                        </div>
-                                        <div className="flex justify-center">
-                                        <Button autoFocus onClick={handleCloseDelete} className="text-black">
-                                          Cancel
-                                        </Button>
-                                        
-                                        <CreateBtn
-                                          onClick={handleDeleteAPI} 
-                                          name="Delete"
-                                          />
-                                      
-                                        </div>
-                                      </DialogContent>
-                                      
-                                </Dialog>
-                        </TableCell>
+                        <TableCell align="center">
+                            <SelectPopover
+                              {...data}
+                              apiName="file"
+                              SetState={setFileList}
+                              state={fileList}
+                              setEditIndex={setEditIndex}
+                              index={index}
+                              setEditItem ={setEditItem}
+                            />
+                          </TableCell>
                       </TableRow>
                       )
             })

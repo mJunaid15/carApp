@@ -10,7 +10,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import SelectPopover from "./SelectPopover";
+import SelectPopover from "../SelectPopover";
 import { CreateBtn } from "../../../Buttons";
 import { Usermanagementcreate } from "./Usermanagementcreate";
 import AuthUser from "../../Auth/AuthUser";
@@ -47,7 +47,7 @@ export default function Usermanagment() {
     setPage(p);
     _DATA.jump(p);
   };
-  console.log("edit index :",editIndex);
+  // console.log("edit index :",editIndex);
   return (
     <>
       {UserCheck || editIndex != null ? (
@@ -88,7 +88,8 @@ export default function Usermanagment() {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {_DATA.currentData().map((data, index) => {
+                    { Userlist &&
+                    _DATA.currentData().map((data, index) => {
                       return (
                         <TableRow key={data.id}>
                           <TableCell component="th" scope="row">
@@ -107,6 +108,7 @@ export default function Usermanagment() {
                           <TableCell align="center  ">
                             <SelectPopover
                               {...data}
+                              apiName="user"
                               SetState={setUserlist}
                               state={Userlist}
                               setEditIndex={setEditIndex}

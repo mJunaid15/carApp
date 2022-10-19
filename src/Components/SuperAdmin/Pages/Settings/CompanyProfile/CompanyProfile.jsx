@@ -10,21 +10,24 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { CreateBtn } from "../../../Buttons";
+import SelectPopover from "../../SelectPopover";
+import { CreateBtn } from "../../../../Buttons";
 import { Createcompany } from "./Createcompany";
-import AuthUser from "../../Auth/AuthUser";
-import {Pageloader} from "../Page loader/Pageloader";
-import usePagination from "../Pagination/Pagination";
-import SelectPopover from "../SelectPopover";
+import { TextField } from "@mui/material";
+import Button from "@mui/material/Button";
+import {Pageloader} from "../../Page loader/Pageloader";
+import usePagination from "../../Pagination/Pagination";
+import AuthUser from "../../../Auth/AuthUser";
 
-
-
-export function Company() {
+export function CompanyProfile() {
   const { http } = AuthUser();
   const [companylist, setCompanylist] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [loading, setLoading] = useState(false);
   const [editItem, setEditItem] = useState()
+
+
+ 
 
   React.useEffect(() => {
     fetchListCompany();
@@ -34,14 +37,13 @@ export function Company() {
   const fetchListCompany = async () => {
     // api call
     setLoading(true);
-    let res = await http.get("/company");
-    setCompanylist(res.data.responseMessage);
-    console.log(res);
-
-    setLoading(false);
+    let res = await http.get("/company-profile");
+    if(res.data.responseStatus === 200){
+    setCompanylist(res.data.responseMessage)
+  }
+       setLoading(false);
   };
 
- 
 
   // pagination
   let [page, setPage] = useState(1);
@@ -64,10 +66,10 @@ export function Company() {
         <>
           <div style={{ height: 400, width: "100%" }}>
             <Toolbar />
-          
+            {editIndex != null ? null : (
               <div className="flex justify-between">
                 <h1 className="text-base text-bold mb-0 ml-5">
-                  List of Company
+                  Profile
                 </h1>
                 <div className="mr-5">
                   <CreateBtn
@@ -77,27 +79,29 @@ export function Company() {
                   />
                 </div>
               </div>
-            
+            )}
 
             <TableContainer component={Paper}>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
-               
+                {editIndex != null ? null : (
                   <TableHead>
                     <TableRow>
-                      <TableCell>Title</TableCell>
-                      <TableCell align="center">Contact</TableCell>
-                      <TableCell align="center">Address</TableCell>
+                      <TableCell>Profile Name</TableCell>
+                      <TableCell align="center">Location</TableCell>
                       <TableCell align="center">Action</TableCell>
+
+                      
                     </TableRow>
                   </TableHead>
-                
+                )}
                 {loading ? (
                   <Pageloader />
                 ) : (
                   <TableBody>
-                    {companylist &&
+                    {companylist  &&
                     _DATA.currentData().map((data, index) => {
                       return (
+                      
                                 <TableRow
                                   key={data.id}
                                   sx={{
@@ -107,34 +111,27 @@ export function Company() {
                                   }}
                                 >
                                   <TableCell component="th" scope="row">
-                                    <p className="mb-0">{data.name}</p>
-                                    <p className="mb-0 text-slate-400">
-                                      {data.email}
-                                    </p>
+                                    <p className="mb-0">{data.cp_name}</p>
+                                    
                                   </TableCell>
                                   <TableCell align="center">
-                                    {data.mobile}
+                                    {data.cp_location}
                                   </TableCell>
-                                  <TableCell align="center">
-                                    {data.city}
-                                  </TableCell>
-                                  <TableCell align="center">
-                                 
-                                    <SelectPopover
-                                    {...data}
-                                    apiName="company"
-                                    SetState={setCompanylist}
-                                    state={companylist}
-                                    setEditIndex={setEditIndex}
-                                    index={index}
-                                    setEditItem ={setEditItem}
-                                  />
                                   
+                                  <TableCell align="center">
+                                    <SelectPopover
+                                      {...data}
+                                      apiName="company-profile"
+                                      setState={setCompanylist}
+                                      setEditIndex={setEditIndex}
+                                      index={index}
+                                      state={companylist}
+                                      setEditItem ={setEditItem}
+                                    />
                                   </TableCell>
-
                                 </TableRow>
-                             
-                      )
+                              
+                      );
                     })
                   
                   }
