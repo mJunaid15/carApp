@@ -7,6 +7,9 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Setting from "./Setting";
+import { QsAns } from "./Questions/QsAns";
+import kuhl from '../../../img/kuhl.png'
+import QuestionAnswers from "./Questions/QuestionAnswers";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -89,7 +92,7 @@ export default function SettingsRoot() {
 
               {/* Question Settings */}
               <TabPanel value={value} index={1} dir={theme.direction}>
-                
+                <QuestionAnswers />
               </TabPanel>
              
             

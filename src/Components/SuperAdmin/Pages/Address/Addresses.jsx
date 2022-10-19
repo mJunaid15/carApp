@@ -25,15 +25,19 @@ import { TextField } from "@mui/material";
 import Dropdown from 'react-bootstrap/Dropdown';
 import '../All.css'
 import SelectPopover from "../SelectPopover";
+import { CreateAddress } from "./CreateAddress";
 
 
 export default function Addresses() {
+  const [addressCheck, serAddressCheck] = useState(false);
 
   const { http } = AuthUser();
   const [addressList , setAddressList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [itemId, setItemId] = useState();
   const [editIndex,setEditIndex] = useState(null)
+  const [editItem,setEditItem] = useState(null)
+
 
     // Fields States
     const [title, setTitle] = useState("");
@@ -65,134 +69,6 @@ export default function Addresses() {
     fetchAddressList();
   }, []);
 
-
-
-  // Handle Edit Api
-  const handleEditAddress = (data) => {
-  
-    const formData = new FormData();
-    {
-      title != ""
-      ? formData.append("title", title)
-      : formData.append("title", data.title)
-    }
-    {
-      firstName != ""
-        ? formData.append("first_name", firstName)
-        : formData.append("first_name", data.first_name);
-    }
-    {
-      lastName != ""
-        ? formData.append("last_name", lastName)
-        : formData.append("last_name", data.last_name);
-    }
-    {
-      email != ""
-        ? formData.append("email", email)
-        : formData.append("email", data.email);
-    }
-    {
-      mobile != ""
-        ? formData.append("mobile", mobile)
-        : formData.append("mobile", data.mobile);
-    }
-
-    {
-      fax != ""
-        ? formData.append("fax", fax)
-        : formData.append("fax", data.fax);
-    }
-
-    {
-      country != ""
-        ? formData.append("country", country)
-        : formData.append("country", data.country);
-    }
-
-    {
-      city != ""
-        ? formData.append("city", city)
-        : formData.append("city", data.city);
-    }
-
-    {
-      streetNo != ""
-        ? formData.append("street_no", streetNo)
-        : formData.append("street_no", data.street_no);
-    }
-
-    {
-      mailbox != ""
-        ? formData.append("mailbox", mailbox)
-        : formData.append("mailbox", data.mailbox);
-    }
-    {
-      companyId != ""
-        ? formData.append("company_id", companyId)
-        : formData.append("company_id", data.company_id);
-    }
-
-    {
-      salutaion != ""
-        ? formData.append("salutaion", salutaion)
-        : formData.append("salutaion", data.salutaion);
-    }
-
-    
-
-    {
-      homepage != ""
-        ? formData.append("homepage", homepage)
-        : formData.append("homepage", data.homepage);
-    }
-
-    {
-      telephone != ""
-        ? formData.append("telephone", telephone)
-        : formData.append("telephone", data.telephone);
-    }
-
-
-    {
-      addComment != ""
-        ? formData.append("add_comment", addComment)
-        : formData.append("add_comment", data.add_comment);
-    }
-
-
-
-    formData.append("_method", "PUT");
-    formData.append("vat_id", data.vat_id);
-    
-    
-    
-    http
-      .post(`address/${data.id}`, formData)
-      .then((res) => {
-        if(res.status == 200){
-          setTitle()
-          setFirstName()
-          setLastName()
-          setEmail()
-          setMobile()
-          setFax()
-          setCountry()
-          setCity()
-          setStreetNo()
-          setMailbox()
-          setSalutaion()
-          setHomepage()
-          setTelephone()
-          setAddComment()
-          fetchAddressList()
-        }
-      })
-      .catch((err) => console.log(err.response.data.errors));
-
-  }
-
-  
-
     // Pagination
     let [page, setPage] = useState(1);
     const PER_PAGE = 5;
@@ -206,292 +82,44 @@ export default function Addresses() {
     };
 
   return (
+    <>
+      {addressCheck || editIndex != null ? (
+        <CreateAddress editIndex={editIndex} editItem ={editItem} />
+      ) : (
+        <>
     <div style={{ height: 400, width: "100%" }}>
       <Toolbar />
-      {editIndex != null ? null : (
+     
       <div className='flex justify-between'>
 
           <h1 className='text-base text-bold mb-0 ml-5'>List of Address</h1>
           <div className='mr-5'>
-          <CreateBtn name='Create ' icon={<AddIcon/>} />
+          <CreateBtn
+          onClick ={ () => serAddressCheck(!addressCheck)}
+          name='Create ' icon={<AddIcon/>} />
           
           </div>
 
-        </div>)}
+        </div>
 
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              {editIndex != null ? null : (
+             
                  <TableHead>
                     <TableRow>
-                      <TableCell>Country</TableCell>
-                      <TableCell align="center">City</TableCell>
-                      <TableCell align="center">Area</TableCell>
+                      <TableCell>Title</TableCell>
+                      <TableCell align="center">Company</TableCell>
+                      <TableCell align="center">Address</TableCell>
                       <TableCell align="center">Action</TableCell>
                     </TableRow>
-                  </TableHead>) }
+                  </TableHead>
                 {loading ? (
                   <Pageloader />
                 ) : (
                   <TableBody>
                     {_DATA.currentData().map((data, index) => {
                       return (
-                        <>
-                        {editIndex == index ? (
-                          <div style={{ padding: "25px" }}>
-                          <div className="company">
-                            <p>Edit Address</p>
-                          </div>
-                          
-                          <div className="row mt-5">
-                            <div className="col-lg-4">
-                              <div className="company">
-                                <TextField
-                                  fullWidth
-                                  label="Title"
-                                  defaultValue={data.title}
-                                  onChange={(e) => setTitle(e.target.value)}
-                                />
-                              </div>
-                            </div>
-                          
-                            <div className="col-lg-4">
-                              <div className="managing">
-                                <TextField
-                                  onChange={(e) =>
-                                    setFirstName(e.target.value)
-                                  }
-                                  defaultValue={data.first_name}
-                                  fullWidth
-                                  label="First Name"
-                                  id="0317258963"
-                                />
-                              </div>
-                            </div>
-                          
-                            <div className="col-lg-4">
-                              <div className="managing">
-                                <TextField
-                                  onChange={(e) =>
-                                    setLastName(e.target.value)
-                                  }
-                                  defaultValue={data.last_name}
-                                  fullWidth
-                                  label="Last Name"
-                                  id="0317258963"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                          
-                          <div className="row mt-5">
-                            <div className="col-lg-4">
-                              <div className="company">
-                                <TextField
-                                  onChange={(e) =>
-                                    setEmail(e.target.value)
-                                  }
-                                  defaultValue={data.email}
-                                  fullWidth
-                                  label="Email"
-                                  id="0317258963"
-                                />
-                              </div>
-                            </div>
-                          
-                            <div className="col-lg-4">
-                              <div className="managing">
-                                <TextField
-                                  onChange={(e) => setMobile(e.target.value)}
-                                  defaultValue={data.mobile}
-                                  fullWidth
-                                  label="Mobile Number"
-                                  id="0317258963"
-                                />
-                              </div>
-                            </div>
-                          
-                            <div className="col-lg-4">
-                              <div className="managing">
-                                <TextField
-                                  onChange={(e) => setFax(e.target.value)}
-                                  defaultValue={data.fax}
-                                  fullWidth
-                                  label="Fax Number"
-                                  id="0317258963"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                          
-                          <div className="row mt-5">
-                           
-                            <div className="col-lg-4">
-                              <div className="managing">
-                                <TextField
-                                  onChange={(e) =>
-                                    setCountry(e.target.value)
-                                  }
-                                  defaultValue={data.country}
-                                  fullWidth
-                                  label="Country"
-                                  id="0317258963"
-                                />
-                              </div>
-                            </div>
-                          
-                            <div className="col-lg-4">
-                              <div className="company">
-                                <TextField
-                                  onChange={(e) => setCity(e.target.value)}
-                                  defaultValue={data.city}
-                                  fullWidth
-                                  label="City"
-                                  id="0317258963"
-                                />
-                              </div>
-                            </div>
-                          
-                            <div className="col-lg-4">
-                              <div className="managing">
-                                <TextField
-                                  onChange={(e) =>
-                                    setStreetNo(e.target.value)
-                                  }
-                                  defaultValue={data.street_no}
-                                  fullWidth
-                                  label="Street No."
-                                  id="0317258963"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                          
-                          <div className="row mt-5">
-                           
-                          
-                            <div className="col-lg-4">
-                              <div className="managing">
-                                <TextField
-                                  onChange={(e) =>
-                                    setMailbox(e.target.value)
-                                  }
-                                  defaultValue={data.mailbox}
-                                  fullWidth
-                                  label="Mailbox"
-                                  id="0317258963"
-                                />
-                              </div>
-                            </div>
-                          
-                            <div className="col-lg-4">
-                              <div className="managing">
-                                <TextField
-                                disabled= {true}
-                                  // onChange={(e) =>
-                                  //   setCompanyId(e.target.value)
-                                  // }
-                                  defaultValue={data.company_id}
-                                  fullWidth
-                                  label="Company ID"
-                                  id="0317258963"
-                                />
-                              </div>
-                            </div>
-                          
-                          
-                            <div className="col-lg-4">
-                              <div className="managing">
-                                <TextField
-                                  onChange={(e) =>
-                                    setSalutaion(e.target.value)
-                                  }
-                                  defaultValue={data.salutaion}
-                                  fullWidth
-                                  label="Salutaion"
-                                  id="0317258963"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                          
-                          
-                          <div className="row mt-5">
-                           
-                          
-                            <div className="col-lg-4">
-                              <div className="managing">
-                                <TextField
-                                  onChange={(e) =>
-                                    setHomepage(e.target.value)
-                                  }
-                                  defaultValue={data.homepage}
-                                  fullWidth
-                                  label="Homepage"
-                                  id="0317258963"
-                                />
-                              </div>
-                            </div>
-                          
-                            <div className="col-lg-4">
-                              <div className="managing">
-                                <TextField
-                                  onChange={(e) =>
-                                    setTelephone(e.target.value)
-                                  }
-                                  defaultValue={data.telephone}
-                                  fullWidth
-                                  label="Telephone"
-                                  id="0317258963"
-                                />
-                              </div>
-                            </div>
-                          
-                          
-                            <div className="col-lg-4">
-                              <div className="managing">
-                                <TextField
-                                  onChange={(e) =>
-                                    setAddComment(e.target.value)
-                                  }
-                                  defaultValue={data.add_comment}
-                                  fullWidth
-                                  label="Add Comment"
-                                  id="0317258963"
-                                />
-                              </div>
-                            </div>
-                          
-                            
-                          </div> 
-                          
-                          <div className="flex justify-between mt-5 mb -5">
-                            <Button
-                              className="text-black"
-                              onClick={() => {
-                                setEditIndex(null)
-                              }}
-                              
-                            >
-                              Cancel
-                            </Button>
-                          
-                            <Button
-                              className="text-white"
-                              style={{ backgroundColor: "#5A4A42" }}
-                              onClick={() => {
-                                handleEditAddress(data);
-                                setEditIndex(null);
-                                
-                              }}
-                            >
-                              Save
-                            </Button>
-                          </div>
-                          </div>
-                        ): (
-                          <>
-                          {editIndex != null ? null : (
+                       
                           <TableRow
                           key={data.id}
                           sx={{
@@ -501,16 +129,14 @@ export default function Addresses() {
                           }}
                         >
                           <TableCell component="th" scope="row">
-                            <p className="mb-0">{data.country}</p>
-                            {/* <p className="mb-0 text-slate-400">
-                              {data.country}
-                            </p> */}
+                            <p className="mb-0">{data.title}</p>
+                            
+                          </TableCell>
+                          <TableCell align="center">
+                            {data.title}
                           </TableCell>
                           <TableCell align="center">
                             {data.city}
-                          </TableCell>
-                          <TableCell align="center">
-                            {data.street_no}
                           </TableCell>
                           <TableCell align="center">
                             <SelectPopover
@@ -520,23 +146,19 @@ export default function Addresses() {
                               state={addressList}
                               setEditIndex={setEditIndex}
                               index={index}
-                              // setEditItem ={setEditItem}
+                              setEditItem ={setEditItem}
                             />
                           </TableCell>
                          
                         </TableRow>
-                        )}
-                        </>
-                        )}
-                        </>
-                        
+                      
                       );
                     })}
                   </TableBody>
                 )}
               </Table>
       </TableContainer>
-      {editIndex != null ? null : (
+      
       <div className="mt-3 flex justify-end">
        <Pagination
                   count={count}
@@ -544,7 +166,11 @@ export default function Addresses() {
                   shape="rounded"
                   onChange={paginationHandler}
                 />
-      </div>)}
+      </div>
     </div>
+    </>)
+    }
+    </>
+      
   );
 }

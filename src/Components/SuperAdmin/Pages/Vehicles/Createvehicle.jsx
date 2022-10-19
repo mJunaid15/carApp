@@ -498,6 +498,8 @@ export const Createvehicle = (props) => {
           <Tab label=" Equipment  " {...a11yProps(1)} />
           <Tab label="Tires" {...a11yProps(2)} />
           <Tab label="Vehicle Events" {...a11yProps(3)} />
+          <Tab label="Varnish Layer" {...a11yProps(4)} />
+
 
          
         </Tabs>
@@ -1882,6 +1884,165 @@ export const Createvehicle = (props) => {
                 />
               </div>
             </div>
+
+
+         
+          </div>
+
+          < div className="row mt-5">
+            <div className="col-lg-12">
+              <div className="company">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Event
+                </p>
+                
+
+                <TextField 
+                defaultValue={  props.editItem === undefined ? eventEvent : props.editItem.event_event  }
+                onChange={(e) => setEventEvent(e.target.value)}
+                fullWidth label="example" id="0317258963" />
+              </div>
+            </div>
+
+           
+          </div>
+
+          < div className="row mt-5">
+            <div className="col-lg-12">
+              <div className="company">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Comment
+                </p>
+                
+
+                <TextField 
+                defaultValue={  props.editItem === undefined ? eventComment : props.editItem.event_comment  }
+                onChange={(e) => setEventComment(e.target.value)}
+                fullWidth label="example" id="0317258963" />
+              </div>
+            </div>
+
+           
+          </div>
+         
+
+         
+         
+         
+
+          <div className="flex justify-between my-6 mt-5">
+
+          <CreateBtn
+            onClick={() => setValue(value - 1)}
+            style={{
+              color: "gray",
+              padding: "6px 22px",
+              diplay: "flex",
+              alignItems: "center",
+            }}
+            name="Previous"
+          />
+          <div className="mr-5">
+            <CreateBtn
+              onClick={() => {
+                if(props.editItem == undefined){
+                  handleSubmit()
+                }
+                handleEdit()
+              }}
+              style={{
+                color: "#000",
+                padding: "6px 22px",
+                diplay: "flex",
+                alignItems: "center",
+              }}
+              name="Submit"
+            />
+          </div>
+        </div>
+
+          
+
+          
+          </div>
+        </TabPanel>
+
+         {/* Varnish Layer */}
+         <TabPanel value={value} index={4} dir={theme.direction}>
+        <div>
+        <div className="flex justify-between">
+            <h1 className="text-base text-bold mb-0 ml-5">Varnish Layer</h1>
+            
+            
+          </div> <br />
+
+
+          
+          
+          <div className="generl">
+            <p>Layer Details</p>
+          </div>
+          <br />
+
+          
+       
+
+          < div className="row mt-5">
+            <div className="col-lg-4">
+              <div className="company">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Position
+                </p>
+                
+
+                <TextField
+                id="date"
+                label="Enter postion"
+                type="text"
+                
+                onChange={(e) => setEventDate(e.target.value)}
+                defaultValue={  props.editItem === undefined ? event_date : props.editItem.event_date  }
+                 />
+              </div>
+            </div>
+
+            <div className="col-lg-4">
+              <div className="company">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Position
+                </p>
+                
+
+                <TextField
+                id="date"
+                label="Enter postion"
+                type="text"
+                
+                onChange={(e) => setEventDate(e.target.value)}
+                defaultValue={  props.editItem === undefined ? event_date : props.editItem.event_date  }
+                 />
+              </div>
+            </div>
+
+            <div className="col-lg-4">
+              <div className="company">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Position
+                </p>
+                
+
+                <TextField
+                id="date"
+                label="Enter postion"
+                type="text"
+                
+                onChange={(e) => setEventDate(e.target.value)}
+                defaultValue={  props.editItem === undefined ? event_date : props.editItem.event_date  }
+                 />
+              </div>
+            </div>
+
+            
 
 
          

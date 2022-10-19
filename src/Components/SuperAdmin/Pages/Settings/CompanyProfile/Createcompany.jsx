@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import React, { useState } from "react";
 import { Button } from "@mui/material";
-import {Company} from "./Company";
+import {CompanyProfile} from "./CompanyProfile";
 import { Toolbar } from "@mui/material";
 import AuthUser from "../../../Auth/AuthUser";
 
@@ -178,7 +178,7 @@ export const Createcompany = (props) => {
   return (
     <>
       {companyCheck ? (
-        <Company />
+        <CompanyProfile />
       ) : (
         <div>
           <Toolbar />
@@ -196,27 +196,31 @@ export const Createcompany = (props) => {
                   alignItems: "center",
                 }}
               >
-                COMPANIES
+                Profiles
               </Button>
             </div>
           </div>
 
-          <hr />
+          {/* <hr /> */}
 
           
-
+              {/* General */}
+          <div className="generl mt-3">
+            <p>General</p>
+          </div>
+          <div className="row mt-3">
           
-          <div className="row mt-5">
             <div className="col-lg-6">
+              
               <div className="company">
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                   Name
+                   Profile Name
                 </p>
 
                 <TextField
                 defaultValue={  props.editItem == undefined ? cp_name : props.editItem.cp_name  }
                 onChange={(e) => setName(e.target.value)}
-                fullWidth label="Enter Name" id="0317258963" />
+                fullWidth label="Enter Profile Name" id="0317258963" />
               </div>
             </div>
 
@@ -235,8 +239,14 @@ export const Createcompany = (props) => {
                 />
               </div>
             </div>
+          </div> <br />
+
+                {/* Design */}
+          <div className="generl mt-3">
+            <p>Design</p>
           </div>
 
+                {/* Sender */}
           <div className="row mt-5">
             <div className="col-lg-6">
               <div className="contact">
@@ -264,8 +274,32 @@ export const Createcompany = (props) => {
             </div>
 
           
-          </div>
+          </div><br />
 
+          <div className="row mt-5">
+            <div className="col-lg-6">
+              <div className="contact">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                  Sender Name
+                </p>
+
+                <TextField
+                defaultValue={  props.editItem == undefined ? cp_sender_name : props.editItem.cp_sender_name  }
+                 onChange={(e) => setcp_sender_name(e.target.value)}
+                fullWidth label="Enter sender name" id="0317258963" />
+              </div>
+            </div>
+
+           
+
+          
+          </div>
+         
+
+                {/* Signature */}
+          <div className="generl mt-3">
+            <p>Sender</p>
+          </div>
           <div className="row mt-5">
             <div className="col-lg-6">
               <div className="contact">
@@ -294,8 +328,13 @@ export const Createcompany = (props) => {
             </div>
 
           
-          </div>
+          </div><br />
 
+
+                {/* Email */}
+          <div className="generl mt-3">
+            <p>Signature</p>
+          </div>
           <div className="row mt-5">
             <div className="col-lg-6">
               <div className="contact">
@@ -318,8 +357,12 @@ export const Createcompany = (props) => {
             </div>
 
           
-          </div>
+          </div><br />
 
+
+          <div className="generl mt-3">
+            <p>Email</p>
+          </div>
           <div className="row mt-5">
             <div className="col-lg-6">
               <div className="contact">
@@ -413,25 +456,7 @@ export const Createcompany = (props) => {
 
 
 
-          <div className="row mt-5">
-            <div className="col-lg-6">
-              <div className="contact">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Sender Name
-                </p>
-
-                <TextField
-                defaultValue={  props.editItem == undefined ? cp_sender_name : props.editItem.cp_sender_name  }
-                 onChange={(e) => setcp_sender_name(e.target.value)}
-                fullWidth label="Enter sender name" id="0317258963" />
-              </div>
-            </div>
-
-           
-
           
-          </div>
-         
          
 
           <div className="flex justify-between mt-5 mb -5">

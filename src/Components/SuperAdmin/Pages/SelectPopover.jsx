@@ -21,7 +21,6 @@ export default function SelectPopover(props) {
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   const HandlerEdit = () => {
-    console.log("Edit id: ", props);
     props.setEditIndex(props.id);
     props.setEditItem(props);
   
