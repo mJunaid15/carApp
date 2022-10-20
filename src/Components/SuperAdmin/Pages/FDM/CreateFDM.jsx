@@ -23,6 +23,9 @@ import PropTypes from "prop-types";
 import GeneralData from "./GeneralData";
 import Involed from "./Involed";
 import Question from "./Question";
+import VehicleInspection from "./VehicleInspection";
+import Documents from "./Documents";
+import Photos from "./Photos";
 // import Tabs from '@mui/material/Tabs';
 // import Tab from '@mui/material/Tab';
 // import Typography from '@mui/material/Typography';
@@ -71,7 +74,7 @@ const CreateFdm = () => {
   return (
     <>
       <Toolbar />
-      <h5 className="my-3">Creating File</h5>
+      <h5 className="py-3 border-b">Creating File</h5>
       <Box sx={{ bgcolor: "background.paper", display: "flex" }}>
         <Tabs
           orientation="vertical"
@@ -148,12 +151,15 @@ const CreateFdm = () => {
             <Question/>
           </TabPanel>
           <TabPanel value={value} index={4}>
-            Item Five
+            <VehicleInspection/>
           </TabPanel>
           <TabPanel value={value} index={5}>
-            Item Six
+           <Documents/>
           </TabPanel>
           <TabPanel value={value} index={6}>
+            <Photos/>
+          </TabPanel>
+          <TabPanel value={value} index={7}>
             Item Seven
           </TabPanel>
         </div>
