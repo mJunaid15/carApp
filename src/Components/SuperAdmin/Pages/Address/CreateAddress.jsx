@@ -26,7 +26,7 @@ export const CreateAddress = (props) => {
  const [streetNo, setStreetNo] = useState("");
  const [mailbox, setMailbox] = useState("");
  const [companyId, setCompanyId] = useState("");
- const [salutaion, setSalutaion] = useState("");
+ const [salution, setSalutaion] = useState("");
  const[ homepage, setHomepage] = useState("");
  const [telephone, setTelephone] = useState("");
  const [ addComment, setAddComment] = useState("");
@@ -58,7 +58,7 @@ export const CreateAddress = (props) => {
     formData.append("street_no", streetNo)
     formData.append("mailbox", mailbox)
     formData.append("company_id", companyId)
-    formData.append("salutaion", salutaion)
+    formData.append("salution", salution)
     formData.append("homepage", homepage)
     formData.append("telephone", telephone)
     formData.append("add_comment", addComment)
@@ -138,9 +138,9 @@ export const CreateAddress = (props) => {
     }
 
     {
-      salutaion != ""
-        ? formData.append("salutaion", salutaion)
-        : formData.append("salutaion", props.editItem.salutaion);
+      salution != ""
+        ? formData.append("salution", salution)
+        : formData.append("salution", props.editItem.salution);
     }
 
     
@@ -224,7 +224,7 @@ export const CreateAddress = (props) => {
                 </p>
 
                 <TextField
-                defaultValue={  props.editItem == undefined ? salutaion : props.editItem.salution  }
+                defaultValue={  props.editItem == undefined ? salution : props.editItem.salution  }
                 onChange={(e) => setSalutaion(e.target.value)}
                 fullWidth label="Enter Salutation" id="0317258963" />
               </div>
@@ -502,6 +502,26 @@ export const CreateAddress = (props) => {
               </div>
             </div>
           </div> 
+
+          <div className="row mt-3">
+          
+          <div className="col-lg-6">
+            
+            <div className="company">
+              <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                 Comment
+              </p>
+
+              <TextField
+              defaultValue={  props.editItem == undefined ? companyId : props.editItem.company_id  }
+              onChange={(e) => setCompanyId(e.target.value)}
+              fullWidth label="Enter Comment" id="0317258963" />
+
+            </div>
+          </div>
+
+       
+        </div> 
 
           
           

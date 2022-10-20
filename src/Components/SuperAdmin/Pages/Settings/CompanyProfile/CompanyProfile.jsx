@@ -122,12 +122,14 @@ export function CompanyProfile() {
                                     <SelectPopover
                                       {...data}
                                       apiName="company-profile"
-                                      setState={setCompanylist}
+                                      SetState={setCompanylist}
                                       setEditIndex={setEditIndex}
                                       index={index}
                                       state={companylist}
                                       setEditItem ={setEditItem}
                                     />
+
+                                
                                   </TableCell>
                                 </TableRow>
                               
