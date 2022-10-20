@@ -73,3 +73,14 @@
 input{
   outline: none !important;
 }
+
+
+/* file upload css  */
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  display: inline-block;
+  cursor: pointer;
+}
+/* file upload css  */
