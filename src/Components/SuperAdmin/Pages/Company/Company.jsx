@@ -36,7 +36,6 @@ export function Company() {
     setLoading(true);
     let res = await http.get("/company");
     setCompanylist(res.data.responseMessage);
-    console.log(res);
 
     setLoading(false);
   };

@@ -5,6 +5,8 @@ import {Company} from "./Company";
 import { Toolbar } from "@mui/material";
 import AuthUser from "../../Auth/AuthUser";
 import axios from 'axios'
+import WestIcon from '@mui/icons-material/West';
+import '../All.css'
 
 export const Createcompany = (props) => {
 
@@ -169,25 +171,14 @@ export const Createcompany = (props) => {
       ) : (
         <div>
           <Toolbar />
-          <div className="flex justify-between">
-          { props && props.editItem ? (<h1 className="text-base text-bold mb-0 ml-5">Edit Company</h1>) :(
+          
+
+          <div className="flex border-slate-400 " >
+        <WestIcon onClick={() => setCompanyCheck(!companyCheck)} className="backButton"/>
+        { props && props.editItem ? (<h1 className="text-base text-bold mb-0 ml-5">{props.editItem.name}</h1>) :(
             <h1 className="text-base text-bold mb-0 ml-5">Create Company</h1>) }
-            
-            <div className="mr-5">
-              <Button
-                onClick={() => setCompanyCheck(!companyCheck)}
-                style={{
-                  backgroundColor: "  #5A4A42",
-                  color: "#fff",
-                  padding: "6px 22px",
-                  diplay: "flex",
-                  alignItems: "center",
-                }}
-              >
-                COMPANIES
-              </Button>
-            </div>
-          </div>
+          
+        </div>
 
           <hr />
 

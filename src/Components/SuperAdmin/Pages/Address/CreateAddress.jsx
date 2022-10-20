@@ -9,7 +9,6 @@ import '../All.css'
 
 export const CreateAddress = (props) => {
 
-  console.log("Props: ", props);
 
   const { http } = AuthUser();
 

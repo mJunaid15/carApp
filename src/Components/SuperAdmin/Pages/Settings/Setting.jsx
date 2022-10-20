@@ -9,9 +9,14 @@ import Box from "@mui/material/Box";
 import { Createsetting } from "./Createsetting";
 import {  CompanyProfile } from "./CompanyProfile/CompanyProfile";
 import { Company } from "../Company/Company";
-import AddressLocRoot from "./AddressLocRoot";
+import AddressLocRoot from "./AddressLocation/AddressLocRoot";
+import AddressLocationList from "./AddressLocation/AddressLocationList";
+import '../All.css'
+import UserRoot from "./Users/UserRoot";
+
 
 function TabPanel(props) {
+
   const { children, value, index, ...other } = props;
 
   return (
@@ -52,19 +57,12 @@ export default function Setting() {
     setValue(newValue);
   };
 
-  const handleChangeIndex = (index) => {
-    setValue(index);
-  };
+ 
 
-
-  const [compCheck, setCompCheck] = React.useState(false);
+  
 
   return (
-    <>
-      {compCheck ? (
-        <Createsetting />
-      ) : (
-        <>
+  
           <div style={{ height: 400, width: "100%" }}>
             {/* <Toolbar /> */}
 
@@ -99,17 +97,20 @@ export default function Setting() {
             
               {/* Company Tab */}
               <TabPanel value={value} index={0} dir={theme.direction}>
-                <Company />
+                <Company  />
               </TabPanel>
 
               {/* Address Location tab */}
               <TabPanel value={value} index={1} dir={theme.direction}>
-               <AddressLocRoot />
+               <AddressLocationList />
               </TabPanel>
 
               {/* Users */}
               <TabPanel value={value} index={2} dir={theme.direction}>
-                <div>
+                
+               <UserRoot />
+
+                {/* <div>
                   <div className="flex justify-between">
                     <h1 className="text-base text-bold mb-0 ml-5">
                       List Of Users
@@ -397,329 +398,9 @@ export default function Setting() {
                     </div>
                   </div>
 
-                  <div className="flex justify-between mt-5">
-                    <h1 className="text-base text-bold mb-0 ml-5">
-                      Permissions
-                    </h1>
-                    <div className="mr-5"></div>
-                  </div>
+                
+                </div> */}
 
-                  <div className="row mt-5">
-                    <div className="col-lg-6">
-                      <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                        Company
-                      </p>
-                      <div className="slct">
-                        <select
-                          class="form-select form-select-lg mb-0 w-100"
-                          aria-label=".form-select-lg example"
-                        >
-                          <option selected>Select your option</option>
-                          <option value="1">Experts</option>
-                          <option value="2">Clerks</option>
-                          <option value="3">Company Admin</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div className="col-lg-6">
-                      <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                        Role
-                      </p>
-                      <div className="slct">
-                        <select
-                          class="form-select form-select-lg mb-0 w-100"
-                          aria-label=".form-select-lg example"
-                        >
-                          <option selected>Select your option</option>
-                          <option value="1">Experts</option>
-                          <option value="2">Clerks</option>
-                          <option value="3">Company Admin</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="generl mt-5">
-                    <p>General</p>
-                  </div>
-
-                  <div className="row">
-                    <div className="col-lg-3">
-                      <div class="form-check mt-4">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Administrator
-                        </label>
-                      </div>
-                    </div>
-
-                    <div className="col-lg-3">
-                      <div class="form-check mt-4">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Sachverstandiger
-                        </label>
-                      </div>
-                    </div>
-
-                    <div className="col-lg-3">
-                      <div class="form-check mt-4">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Sachbearbeiter
-                        </label>
-                      </div>
-                    </div>
-
-                    <div className="col-lg-3">
-                      <div class="form-check mt-4">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Change Location
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="generl mt-5">
-                    <p>Vehicle Management</p>
-                  </div>
-
-                  <div className="row">
-                    <div className="col-lg-3">
-                      <div class="form-check mt-4">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Read
-                        </label>
-                      </div>
-                    </div>
-
-                    <div className="col-lg-3">
-                      <div class="form-check mt-4">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Create
-                        </label>
-                      </div>
-                    </div>
-
-                    <div className="col-lg-3">
-                      <div class="form-check mt-4">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Edit
-                        </label>
-                      </div>
-                    </div>
-
-                    <div className="col-lg-3">
-                      <div class="form-check mt-4">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Delete
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="generl mt-5">
-                    <p>Manage Addresses</p>
-                  </div>
-
-                  <div className="row">
-                    <div className="col-lg-3">
-                      <div class="form-check mt-4">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Read
-                        </label>
-                      </div>
-                    </div>
-
-                    <div className="col-lg-3">
-                      <div class="form-check mt-4">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Create
-                        </label>
-                      </div>
-                    </div>
-
-                    <div className="col-lg-3">
-                      <div class="form-check mt-4">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Edit
-                        </label>
-                      </div>
-                    </div>
-
-                    <div className="col-lg-3">
-                      <div class="form-check mt-4">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Delete
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="generl mt-5">
-                    <p>Dossier</p>
-                  </div>
-
-                  <div className="row">
-                    <div className="col-lg-3">
-                      <div class="form-check mt-4">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Read
-                        </label>
-                      </div>
-                    </div>
-
-                    <div className="col-lg-3">
-                      <div class="form-check mt-4">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Create
-                        </label>
-                      </div>
-                    </div>
-
-                    <div className="col-lg-3">
-                      <div class="form-check mt-4">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Edit
-                        </label>
-                      </div>
-                    </div>
-
-                    <div className="col-lg-3">
-                      <div class="form-check mt-4">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Delete
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="generl mt-5">
-                    <p>Protocol / Logging</p>
-                  </div>
-
-                  <div className="col-lg-3">
-                    <div class="form-check mt-4">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="flexCheckDefault"
-                      />
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Read
-                      </label>
-                    </div>
-                  </div>
-
-                  <div className="row mt-5">
-                    <div className="col-lg-8">
-                      <div className="previ">
-                        <button>Previous</button>
-                      </div>
-                    </div>
-
-                    <div className="col-lg-4">
-                      <div className="nextbtn">
-                        <button> Next </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </TabPanel>
 
                {/* Profile */}
@@ -729,8 +410,7 @@ export default function Setting() {
            
             
           </div>
-        </>
-      )}
-    </>
+       
+    
   );
 }

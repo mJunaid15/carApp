@@ -4,11 +4,11 @@ import { Button } from "@mui/material";
 import {CompanyProfile} from "./CompanyProfile";
 import { Toolbar } from "@mui/material";
 import AuthUser from "../../../Auth/AuthUser";
+import WestIcon from '@mui/icons-material/West';
 
 
 export const Createcompany = (props) => {
 
-  console.log("Props Edir company profile: ", props);
 
   const { http } = AuthUser();
 
@@ -181,24 +181,13 @@ export const Createcompany = (props) => {
         <CompanyProfile />
       ) : (
         <div>
-          <Toolbar />
-          <div className="flex justify-between">
-          { props && props.editItem ? (<h1 className="text-base text-bold mb-0 ml-5">Edit Company Profile</h1>) :(
+          {/* <Toolbar /> */}
+          <div className="flex">
+          <WestIcon className="backButton" onClick={() => setCompanyCheck(!companyCheck)} />
+
+          { props && props.editItem ? (<h1 className="text-base text-bold mb-0 ml-5">{props.editItem.cp_name}</h1>) :(
             <h1 className="text-base text-bold mb-0 ml-5">Create Company Profile</h1>) }
-            <div className="mr-5">
-              <Button
-                onClick={() => setCompanyCheck(!companyCheck)}
-                style={{
-                  backgroundColor: "  #5A4A42",
-                  color: "#fff",
-                  padding: "6px 22px",
-                  diplay: "flex",
-                  alignItems: "center",
-                }}
-              >
-                Profiles
-              </Button>
-            </div>
+            
           </div>
 
           {/* <hr /> */}
