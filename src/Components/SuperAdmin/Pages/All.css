@@ -44,3 +44,9 @@
     background-size: 100%;
     transition: background 0s;
   }
+
+
+  /* Add Question Modal */
+  .questionAnswer{
+    /* width: 600px; */
+  }

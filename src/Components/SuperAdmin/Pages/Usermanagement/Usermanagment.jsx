@@ -78,14 +78,11 @@ export default function Usermanagment() {
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <TableHead>
                     <TableRow>
-                      <TableCell>id</TableCell>
-                      <TableCell>Name</TableCell>
-                      <TableCell align="center">Mobile</TableCell>
-                      <TableCell align="center">Birthday</TableCell>
-                      <TableCell align="center">Country</TableCell>
-                      <TableCell align="center">City</TableCell>
-                      <TableCell align="center">Email</TableCell>
-                      <TableCell align="center">Role</TableCell>
+                      
+                      <TableCell align="">Name</TableCell>
+                      <TableCell align="center">Contact</TableCell>
+                      <TableCell align="center">Address</TableCell>
+                     
                       <TableCell align="center">Action</TableCell>
                     </TableRow>
                   </TableHead>
@@ -94,20 +91,16 @@ export default function Usermanagment() {
                     _DATA.currentData().map((data, index) => {
                       return (
                         <TableRow key={data.id}>
-                          <TableCell component="th" scope="row">
-                            {data.id}
+                       
+                          <TableCell  component="th" scope="row" >
+                              <p className="mb-0">{data.first_name} {data.last_name}</p>
+                              <p className="mb-0 text-slate-400">{data.myRole}</p>
                           </TableCell>
-                          <TableCell>
-                            {data.first_name} {data.last_name}
-                          </TableCell>
-                          <TableCell align="center">{data.birthday}</TableCell>
                           <TableCell align="center">{data.mobile}</TableCell>
-                          <TableCell align="center">{data.country}</TableCell>
-                          <TableCell align="center">{data.city}</TableCell>
-                          <TableCell align="center">{data.email}</TableCell>
-                          <TableCell align="center">{data.myRole}</TableCell>
+                          <TableCell align="center">{data.street_no}, {data.city}, {data.country}</TableCell>
+                          
 
-                          <TableCell align="center  ">
+                          <TableCell align="center">
                             <SelectPopover
                               {...data}
                               apiName="user"
