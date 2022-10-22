@@ -64,6 +64,8 @@ export const QsAns = (props) => {
 
   // Handle Create question Api on create quesiton button
   const handleCreateQuestion = () => {
+
+    
     const formData = new FormData()
     formData.append("qt_id", qsId)
     formData.append("question", question)
@@ -78,7 +80,7 @@ export const QsAns = (props) => {
 
   }
 
-   // Handle Create question Api on create quesiton button
+   // Handle Edit question Api on create quesiton button
    const handleEditQuestion = () => {
     const formData = new FormData()
 
@@ -268,7 +270,7 @@ export const QsAns = (props) => {
           <div className="questionAnswer">
           <TextField
               onChange={(e) => setQuestion(e.target.value)}
-              defaultValue={editItem && editItem.question}
+              defaultValue={editItem && editItem.question ? editItem.question : "" }
               id="outlined-multiline-static"
               label="Enter your question"
               fullWidth
@@ -276,7 +278,7 @@ export const QsAns = (props) => {
             />
             <br /> <br />
             <TextField
-              defaultValue={editItem && editItem.answer}
+              defaultValue={editItem && editItem.answer ? editItem.answer : "" }
               onChange={(e) => setAnswer(e.target.value)}
               id="outlined-multiline-static"
               label="Enter Answer"

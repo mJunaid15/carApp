@@ -4,7 +4,6 @@ import { Button } from "@mui/material";
 import {Company} from "./Company";
 import { Toolbar } from "@mui/material";
 import AuthUser from "../../Auth/AuthUser";
-import axios from 'axios'
 import WestIcon from '@mui/icons-material/West';
 import '../All.css'
 
@@ -411,7 +410,8 @@ export const Createcompany = (props) => {
                                   >
                                   Save
                                 </Button>
-                              </div>
+          </div>
+
         </div>
       )}
     </>

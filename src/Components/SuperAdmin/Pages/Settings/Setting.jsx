@@ -107,11 +107,7 @@ export default function Setting() {
 
               {/* Users */}
               <TabPanel value={value} index={2} dir={theme.direction}>
-                
                <UserRoot />
-
-             
-
               </TabPanel>
 
                {/* Profile */}

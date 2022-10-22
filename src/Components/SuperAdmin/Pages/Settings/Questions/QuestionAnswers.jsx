@@ -4,7 +4,6 @@ import AuthUser from '../../../Auth/AuthUser'
 import Grid from '@mui/material/Grid';
 import './QuestionButton.css'
 import { QsAns } from './QsAns';
-import { Button } from "@mui/material";
 
 
 
@@ -56,6 +55,7 @@ const QuestionAnswers = () => {
   </div>
   <br />
         <Grid container spacing={{ xs: 2, md: 5 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+          { loading ? null : <>
         {qsList?.map((data, index) => (
 
       
@@ -79,6 +79,7 @@ const QuestionAnswers = () => {
     
 
         ))}
+        </> }
       </Grid>
       </>
 )
