@@ -1,191 +1,148 @@
-import { TextField } from "@mui/material";
-import React, { useState } from "react";
+import * as React from "react";
+import {useState} from "react";
+import { TextField, Toolbar } from "@mui/material";
+import PropTypes from "prop-types";
+import { useTheme } from "@mui/material/styles";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
-import {Company} from "./Company";
-import { Toolbar } from "@mui/material";
-import AuthUser from "../../Auth/AuthUser";
+import AuthUser from "../../../Auth/AuthUser";
+import AddressLocationList from "./AddressLocationList";
 import WestIcon from '@mui/icons-material/West';
-import '../All.css'
 
-export const Createcompany = (props) => {
 
-  
+
+
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`full-width-tabpanel-${index}`}
+      aria-labelledby={`full-width-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `full-width-tab-${index}`,
+    "aria-controls": `full-width-tabpanel-${index}`,
+  };
+}
+
+export default function AddressLocRoot() {
 
   const { http } = AuthUser();
 
-  const [companyCheck, setCompanyCheck] = useState(false);
-  
+  const theme = useTheme();
+  const [value, setValue] = React.useState(0);
+  const [addressCheck, setAddressCheck] = useState(false)
 
-  // Fields States
-  const [name, setName] = useState("");
-  const [director, setDirector] = useState("");
-  const [person, setPerson] = useState("");
-  const [taxNumber, setTaxNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [mobile, setMobile] = useState("");
-  const [fax, setFax] = useState("");
-  const [country, setCountry] = useState("");
-  const [zipCity, setZipCity] = useState("");
-  const [streetNo, setStreetNo] = useState("");
-  const [mailbox, setMailbox] = useState("");
+   // Fields States
+   const [name, setName] = useState("");
+   const [director, setDirector] = useState("");
+   const [person, setPerson] = useState("");
+   const [taxNumber, setTaxNumber] = useState("");
+   const [email, setEmail] = useState("");
+   const [phone, setPhone] = useState("");
+   const [mobile, setMobile] = useState("");
+   const [fax, setFax] = useState("");
+   const [country, setCountry] = useState("");
+   const [zipCity, setZipCity] = useState("");
+   const [streetNo, setStreetNo] = useState("");
+   const [mailbox, setMailbox] = useState("");
+ 
+   const [register, setRegister] = useState("");
+   const [homepage, setHomepage] = useState("");
 
-  const [register, setRegister] = useState("");
-  const [homepage, setHomepage] = useState("");
-
-
-
-
-  // Handle Cancel Button
-
-  const handleCancel = () => {
-    setCompanyCheck(!companyCheck)
-  }
-
-
-  // Handle Create company
-  const handleSave = () => {
-
-    const formData = new FormData();
-
-    formData.append("name", name)
-    formData.append("director", director)
-    formData.append("person", person)
-    formData.append("tax_number", taxNumber)
-    formData.append("email", email)
-    formData.append("phone", phone)
-    formData.append("mobile", mobile)
-    formData.append("fax", fax)
-    formData.append("country", country)
-    formData.append("city", zipCity)
-    formData.append("street_no", streetNo)
-    formData.append("mailbox", mailbox)
-    formData.append("register", register)
-    formData.append("homepage", homepage)
-
-    
-
-    http.post(`/company`, formData)
-    .then((res) => {
-      setCompanyCheck(!companyCheck)
-    }).catch(err => console.log(err.message))
-  
-    
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
 
-  // Handle Edit Company
-  const handleEditCompany = () => {
-
-    console.log( "Props: ", props.editItem);
-    const formData = new FormData();
-    {
-      name != ""
-        ? formData.append("name", name)
-        : formData.append("name", props.editItem.name);
-    }
-    {
-      director != ""
-        ? formData.append("director", director)
-        : formData.append("director", props.editItem.director);
-    }
-    {
-      person != ""
-        ? formData.append("person", person)
-        : formData.append("person", props.editItem.person);
-    }
-
-    {
-      taxNumber != ""
-        ? formData.append("tax_number", taxNumber)
-        : formData.append("tax_number", props.editItem.tax_number);
-    }
-
-    {
-      email != ""
-        ? formData.append("email", email)
-        : formData.append("email", props.editItem.email);
-    }
-
-    {
-      phone != ""
-        ? formData.append("phone", phone)
-        : formData.append("phone", props.editItem.phone);
-    }
-
-    {
-      mobile != ""
-        ? formData.append("mobile", mobile)
-        : formData.append("mobile", props.editItem.mobile);
-    }
-
-    {
-      fax != ""
-        ? formData.append("fax", fax)
-        : formData.append("fax", props.editItem.fax);
-    }
-
-    {
-      country != ""
-        ? formData.append("country", country)
-        : formData.append("country", props.editItem.country);
-    }
-
-    {
-      zipCity != ""
-        ? formData.append("city", zipCity)
-        : formData.append("city", props.editItem.city);
-    }
-
-    {
-      streetNo != ""
-        ? formData.append("street_no", streetNo)
-        : formData.append("street_no", props.editItem.street_no);
-    }
-
-    {
-      mailbox != ""
-        ? formData.append("mailbox", mailbox)
-        : formData.append("mailbox", props.editItem.mailbox);
-    }
-
-    formData.append("_method", "PUT");
-    formData.append("register", props.editItem.register);
-
-    http
-      .post(`company/${props.editItem.id}`, formData)
-      .then((res) => {
-        console.log(res);
-        setCompanyCheck(!companyCheck)
-      })
-      .catch((err) => console.log(err.message));
-  };
+ const handleCancel = () => {
+  setAddressCheck(!addressCheck)
+ }
 
 
+ 
+ const handleSave = () => {
+  const formData = new FormData();
 
+  formData.append("name", name)
+  formData.append("director", director)
+  formData.append("person", person)
+  formData.append("tax_number", taxNumber)
+  formData.append("email", email)
+  formData.append("phone", phone)
+  formData.append("mobile", mobile)
+  formData.append("fax", fax)
+  formData.append("country", country)
+  formData.append("city", zipCity)
+  formData.append("street_no", streetNo)
+  formData.append("mailbox", mailbox)
+  formData.append("register", register)
+  formData.append("homepage", homepage)
 
+  
+
+  http.post(`/company`, formData)
+  .then((res) => {
+    setAddressCheck(!addressCheck)
+  }).catch(err => console.log(err.message))
+ }
   return (
     <>
-      {companyCheck ? (
-        <Company />
-      ) : (
-        <div>
-          <Toolbar />
-          
+   
+          { addressCheck ? <AddressLocationList /> :
+          <div style={{ height: 400, width: "100%" }}>
+            {/* <Toolbar /> */}
 
-          <div className="flex border-slate-400 " >
-        <WestIcon onClick={() => setCompanyCheck(!companyCheck)} className="backButton"/>
-        { props && props.editItem ? (<h1 className="text-base text-bold mb-0 ml-5">{props.editItem.name}</h1>) :(
-            <h1 className="text-base text-bold mb-0 ml-5">Create Company</h1>) }
-          
-        </div>
+            
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              indicatorColor=""
+              textColor="inherit"
+              variant=""
+              aria-label="full width tabs example"
+              sx={{
+                "& button:hover": { background: "#fff" },
+                "& button.Mui-selected": {
+                  background: "#fff",
+                  color: "#000",
+                },
+              }}
+            >
+              <Tab label="Location" {...a11yProps(0)} />
+              <Tab label="Number Range" {...a11yProps(1)} />
+              
+            </Tabs>
 
-          <hr />
-
-          <div className="company">
-            { props && props.editItem ? (<p>Edit Company</p>) :(
-            <p>Create Company</p>) }
-          </div>
-
+            
+              {/* Address Tab */}
+              <TabPanel value={value} index={0} dir={theme.direction}>
+              <div>
+                 
+                  
           <div className="generl">
             <p>General</p>
           </div>
@@ -198,7 +155,6 @@ export const Createcompany = (props) => {
                 </p>
 
                 <TextField
-                defaultValue={  props.editItem == undefined ? name : props.editItem.name  }
                 onChange={(e) => setName(e.target.value)}
                 fullWidth label="Company name" id="0317258963" />
               </div>
@@ -211,7 +167,6 @@ export const Createcompany = (props) => {
                 </p>
 
                 <TextField
-                defaultValue={  props.editItem == undefined ? director : props.editItem.director  }
                  onChange={(e) => setDirector(e.target.value)}
                   fullWidth
                   label="Enter your position"
@@ -229,7 +184,6 @@ export const Createcompany = (props) => {
                 </p>
 
                 <TextField
-                defaultValue={  props.editItem == undefined ? person : props.editItem.person  }
                  onChange={(e) => setPerson(e.target.value)}
                 fullWidth label="Enter your name" id="0317258963" />
               </div>
@@ -242,7 +196,6 @@ export const Createcompany = (props) => {
                 </p>
 
                 <TextField
-                defaultValue={  props.editItem == undefined ? register : props.editItem.register  }
                  onChange={(e) => setRegister(e.target.value)}
                 fullWidth label="Enter your text" id="0317258963" />
               </div>
@@ -255,7 +208,6 @@ export const Createcompany = (props) => {
                 </p>
 
                 <TextField
-                defaultValue={  props.editItem == undefined ? taxNumber : props.editItem.tax_number  }
                  onChange={(e) => setTaxNumber(e.target.value)}
                   fullWidth
                   label="Enter your tax"
@@ -275,7 +227,6 @@ export const Createcompany = (props) => {
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>E-mail</p>
 
                 <TextField
-                defaultValue={  props.editItem == undefined ? email : props.editItem.email  }
                  onChange={(e) => setEmail(e.target.value)}
                 fullWidth label="Enter email" id="0317258963" />
               </div>
@@ -286,7 +237,6 @@ export const Createcompany = (props) => {
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>Homepage</p>
 
                 <TextField 
-                 defaultValue={  props.editItem == undefined ? homepage : props.editItem.homepage  }
                  onChange={(e) => setHomepage(e.target.value)}
                 fullWidth label="http:/" id="0317258963" />
               </div>
@@ -301,7 +251,6 @@ export const Createcompany = (props) => {
                 </p>
 
                 <TextField
-                defaultValue={  props.editItem == undefined ? phone : props.editItem.phone  }
                  onChange={(e) => setPhone(e.target.value)}
                 fullWidth label="0317258963" id="0317258963" />
               </div>
@@ -312,7 +261,6 @@ export const Createcompany = (props) => {
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>Mobile</p>
 
                 <TextField
-                defaultValue={  props.editItem == undefined ? mobile : props.editItem.mobile  }
                  onChange={(e) => setMobile(e.target.value)}
                  fullWidth label="Enter Mobile number" id="0317258963" />
               </div>
@@ -324,7 +272,6 @@ export const Createcompany = (props) => {
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>Fax</p>
 
                 <TextField
-                defaultValue={  props.editItem == undefined ? fax : props.editItem.fax  }
                  onChange={(e) => setFax(e.target.value)}
                  fullWidth label="Enter Fax" id="0317258963" />
               </div>
@@ -341,7 +288,6 @@ export const Createcompany = (props) => {
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>Country</p>
 
                 <TextField 
-                defaultValue={  props.editItem == undefined ? country : props.editItem.country  }
                  onChange={(e) => setCountry(e.target.value)}
                 fullWidth label="Country name" id="Country name" />
               </div>
@@ -354,7 +300,6 @@ export const Createcompany = (props) => {
                 </p>
 
                 <TextField
-                defaultValue={  props.editItem == undefined ? zipCity : props.editItem.city  }
                  onChange={(e) => setZipCity(e.target.value)}
                 fullWidth label="City" id="City" />
               </div>
@@ -369,7 +314,6 @@ export const Createcompany = (props) => {
                 </p>
 
                 <TextField 
-               defaultValue={  props.editItem == undefined ? streetNo : props.editItem.street_no  }
                  onChange={(e) => setStreetNo(e.target.value)}
                 fullWidth label="Street No*" id="Street No*" />
               </div>
@@ -380,7 +324,6 @@ export const Createcompany = (props) => {
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>Mailbox</p>
 
                 <TextField
-                defaultValue={  props.editItem == undefined ? mailbox : props.editItem.mailbox  }
                  onChange={(e) => setMailbox(e.target.value)}
                   fullWidth
                   label="Enter your mail box"
@@ -401,19 +344,24 @@ export const Createcompany = (props) => {
                                 <Button
                                   className="text-white"
                                   style={{ backgroundColor: "#5A4A42" }}
-                                  onClick={ () => {
-                                    if(props.editItem !== undefined){
-                                      handleEditCompany()
-                                    }
-                                    handleSave()
-                                  } }
+                                  onClick={handleSave}
                                   >
                                   Save
                                 </Button>
           </div>
 
-        </div>
-      )}
-    </>
+                </div>
+              </TabPanel>
+
+              {/* Address Location tab */}
+              <TabPanel value={value} index={1} dir={theme.direction}>
+               
+              </TabPanel>
+
+           
+            
+          </div>
+            }
+       </>
   );
-};
+}

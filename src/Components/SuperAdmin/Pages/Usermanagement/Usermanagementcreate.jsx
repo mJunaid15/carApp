@@ -4,7 +4,8 @@ import { Button } from "@mui/material";
 import Usermanagment from "./Usermanagment";
 import { Toolbar } from "@mui/material";
 import AuthUser from "../../Auth/AuthUser";
-import axios from 'axios'
+import WestIcon from '@mui/icons-material/West';
+import '../All.css'
 
 export const Usermanagementcreate = (props) => {
   const { http } = AuthUser();
@@ -99,8 +100,8 @@ const handleSave = (data) => {
   { companyid !== '' ? formData.append("company_id", companyid) 
   : formData.append("company_id", props.editItem.company_id) }
 
-  // { salutation !== '' ? formData.append("salutation", salutation) 
-  // : formData.append("salutation", props.editItem.salutation) }
+  { salutation !== '' ? formData.append("salutation", salutation) 
+  : formData.append("salutation", props.editItem.salutation) }
   
   { title !== '' ? formData.append("title", title) 
   : formData.append("title", props.editItem.title) }
@@ -129,6 +130,7 @@ const handleCreateUser = () => {
 
   const formData = new FormData();
 
+  formData.append("salutation", salutation)
   formData.append("first_name", fname)
   formData.append("last_name", lname)
   formData.append("birthday", birthday)
@@ -168,26 +170,46 @@ const handleCreateUser = () => {
       ) : (
         <div>
           <Toolbar />
-          <div className="flex justify-between">
-            <div className="mr-5">
-              <Button
-                onClick={() => setusermanagementCheck(!usermanagementCheck)}
-                style={{
-                  color: "#000",
-                  padding: "6px 22px",
-                  diplay: "flex",
-                  alignItems: "center",
-                }}
-              >
-                Back to expert
-              </Button>
-            </div>
-          </div>
+        
+
+          <div className="flex border-slate-400 " >
+        <WestIcon onClick={() => setusermanagementCheck(!usermanagementCheck)} className="backButton"/>
+        { props && props.editItem ? (<h1 className="text-base text-bold mb-0 ml-5">{props.editItem.first_name} {props.editItem.last_name}</h1>) :(
+            <h1 className="text-base text-bold mb-0 ml-5">Create Company</h1>) }
+          
+        </div>
 
           <hr />
 
+          {/* General */}
+
+          <section>
           <div className="generl">
             <p>General</p>
+          </div>
+
+          <div className="row mt-5">
+            <div className="col-lg-6">
+              <div className="managing">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                  Salution
+                </p>
+
+                
+                <TextField fullWidth label="Enter salution" id="fname"  defaultValue={  props.editItem == undefined ? salutation : props.editItem.salutation  }
+                onChange={(e) => setSalutation(e.target.value)} />
+              </div>
+            </div>
+            <div className="col-lg-6">
+              <div className="company">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                  Title
+                </p>
+
+                <TextField fullWidth label="Enter Title" id="0317258963"  defaultValue = {props.editItem == undefined ? title : props.editItem.title}
+                onChange={(e) => setTitle(e.target.value)} />
+              </div>
+            </div>
           </div>
 
           <div className="row mt-5">
@@ -233,7 +255,7 @@ const handleCreateUser = () => {
               </div>
             </div>
 
-            <div className="col-lg-6 mt-5">
+            {/* <div className="col-lg-6 mt-5">
               <div className="Tax">
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                   Password Confirmation
@@ -242,10 +264,44 @@ const handleCreateUser = () => {
                 <TextField fullWidth label="confirm password" id="0317258963"  defaultValue = {props.editItem == undefined ? passwordConfirm : props.editItem.password_confirmation}
                 onChange={(e) => setPasswordConfirm(e.target.value)} />
               </div>
-            </div>
-          </div>
+            </div> */}
+            <div className="STATUS d-flex mt-5">
+                    <p>Status: </p>
 
-          <div className="Contactcent mt-5">
+                    <div class="form-check form-check-inline ps-5">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="inlineRadioOptions"
+                        id="inlineRadio1"
+                        value="option1"
+                      />
+                      <label class="form-check-label" for="inlineRadio1">
+                        Active
+                      </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="inlineRadioOptions"
+                        id="inlineRadio2"
+                        value="option2"
+                      />
+                      <label class="form-check-label" for="inlineRadio2">
+                        Not Active
+                      </label>
+                    </div>
+                  </div>
+          </div>
+          </section>
+
+       
+
+            {/* Contact */}
+
+            <section>
+            <div className="Contactcent mt-5">
             <p>Contact</p>
           </div>
 
@@ -256,121 +312,6 @@ const handleCreateUser = () => {
 
                 <TextField fullWidth label="exam@gmail.com" id="email"  defaultValue = {props.editItem == undefined ? email : props.editItem.email}
                 onChange={(e) => setEmail(e.target.value)} />
-              </div>
-            </div>
-
-            <div className="col-lg-6">
-              <div className="Homepage">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Mobile</p>
-
-                <TextField fullWidth label="mobile" id="mobile"  defaultValue = {props.editItem == undefined ? mobile :  props.editItem.mobile}
-                onChange={(e) => setMobile(e.target.value)} />
-              </div>
-            </div>
-          </div>
-
-          <div className="row mt-5">
-            <div className="col-lg-6">
-              <div className="Telephone">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Fax</p>
-
-                <TextField fullWidth label="Fax" id="fax"  defaultValue = {props.editItem == undefined ? fax : props.editItem.fax}
-                onChange={(e) => setFax(e.target.value)} />
-              </div>
-            </div>
-
-            <div className="col-lg-6">
-              <div className="Homepage">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Country</p>
-
-                <TextField fullWidth label="Country" id="country"  defaultValue = {props.editItem == undefined ? country :props.editItem.country}
-                onChange={(e) => setCountry(e.target.value)} />
-              </div>
-            </div>
-          </div>
-
-          <div className="Address mt-5">
-            <p>Address</p>
-          </div>
-
-          <div className="row mt-5">
-            <div className="col-lg-6">
-              <div className="country">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>City</p>
-
-                <TextField fullWidth label="city" id="Country name"  defaultValue = {props.editItem == undefined ? city :props.editItem.city}
-                onChange={(e) => setCity(e.target.value)} />
-              </div>
-            </div>
-
-            <div className="col-lg-6">
-              <div className="ZIP / City">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Street No
-                </p>
-
-                <TextField fullWidth label="street no." id="City"  defaultValue = {props.editItem == undefined ? street :props.editItem.street_no}
-                onChange={(e) => setStreet(e.target.value)} />
-              </div>
-            </div>
-          </div>
-
-          <div className="row mt-5">
-            <div className="col-lg-6">
-              <div className="Street Number">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Mailbox</p>
-
-                <TextField fullWidth label="mailbox" id="Street No*"  defaultValue = {props.editItem == undefined ? mailbox :props.editItem.mailbox}
-                onChange={(e) => setMailbox(e.target.value)} />
-              </div>
-            </div>
-
-            <div className="col-lg-6">
-              <div className="Mail">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Role</p>
-
-                <TextField fullWidth label="role" id="Enter your mail box"  defaultValue = {props.editItem == undefined ? role :props.editItem.myRole[0]}
-                onChange={(e) => setRole(e.target.value)}/>
-              </div>
-            </div>
-          </div>
-
-          <div className="row mt-5">
-            <div className="col-lg-6">
-              <div className="Street Number">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Company id
-                </p>
-
-                <TextField fullWidth label="company id" id="Street No*"   defaultValue = {props.editItem == undefined ? companyid :props.editItem.company_id}
-                onChange={(e) => setCompanyid(e.target.value)}/>
-              </div>
-            </div>
-
-            {/* <div className="col-lg-6">
-              <div className="Mail">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Salutation
-                </p>
-
-                <TextField
-                  fullWidth
-                  label="salutation"
-                  id="Enter your mail box"
-                  defaultValue = {props.editItem.salutation}
-                  onChange={(e) => setSalutation(e.target.value)}
-                />
-              </div>
-            </div> */}
-          </div>
-
-          <div className="row mt-5">
-            <div className="col-lg-6">
-              <div className="Street Number">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Title</p>
-
-                <TextField fullWidth label="title" id="Street No*"  defaultValue = {props.editItem == undefined ? title :props.editItem.title}
-                onChange={(e) => setTitle(e.target.value)} />
               </div>
             </div>
 
@@ -387,21 +328,134 @@ const handleCreateUser = () => {
                 />
               </div>
             </div>
+
+            
           </div>
 
           <div className="row mt-5">
-            <div className="col-lg-12">
-              <div className="Street Number">
-                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                  Telephone
-                </p>
+            <div className="col-lg-6">
+              <div className="Telephone">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Telephone</p>
 
-                <TextField fullWidth label="telephone" id="Street No*"  defaultValue = {props.editItem == undefined ? telephone :props.editItem.telephone}
+                <TextField fullWidth label="Enter telephone" id="fax"  defaultValue = {props.editItem == undefined ? telephone : props.editItem.telephone}
                 onChange={(e) => setTelephone(e.target.value)} />
+              </div>
+            </div>
+
+            <div className="col-lg-6">
+              <div className="Homepage">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Mobile</p>
+
+                <TextField fullWidth label="Enter mobile" id="country"  defaultValue = {props.editItem == undefined ? mobile :props.editItem.mobile}
+                onChange={(e) => setMobile(e.target.value)} />
               </div>
             </div>
           </div>
 
+          
+          <div className="row mt-5">
+            <div className="col-lg-6">
+              <div className="Telephone">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Fax</p>
+
+                <TextField fullWidth label="Enter Fax" id="fax"  defaultValue = {props.editItem == undefined ? fax : props.editItem.fax}
+                onChange={(e) => setFax(e.target.value)} />
+              </div>
+            </div>
+
+            
+          </div>
+            </section>
+          
+          {/* Address */}
+
+          <section>
+          <div className="Address mt-5">
+            <p>Address</p>
+          </div>
+
+          <div className="row mt-5">
+          <div className="col-lg-6">
+              <div className="Mail">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Country</p>
+
+                <TextField fullWidth label="role" id="Enter your country"  defaultValue = {props.editItem == undefined ? country :props.editItem.country}
+                onChange={(e) => setCountry(e.target.value)}/>
+              </div>
+            </div>
+            <div className="col-lg-6">
+              <div className="country">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>City</p>
+
+                <TextField fullWidth label="city" id="Country name"  defaultValue = {props.editItem == undefined ? city :props.editItem.city}
+                onChange={(e) => setCity(e.target.value)} />
+              </div>
+            </div>
+
+            
+          </div>
+
+          <div className="row mt-5">
+          <div className="col-lg-6">
+              <div className="ZIP / City">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                  Street No
+                </p>
+
+                <TextField fullWidth label="street no." id="City"  defaultValue = {props.editItem == undefined ? street :props.editItem.street_no}
+                onChange={(e) => setStreet(e.target.value)} />
+              </div>
+            </div>
+            <div className="col-lg-6">
+              <div className="Street Number">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Mailbox</p>
+
+                <TextField fullWidth label="mailbox" id="Street No*"  defaultValue = {props.editItem == undefined ? mailbox :props.editItem.mailbox}
+                onChange={(e) => setMailbox(e.target.value)} />
+              </div>
+            </div>
+
+            
+            {/* <div className="col-lg-6">
+              <div className="Mail">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Role</p>
+
+                <TextField fullWidth label="role" id="Enter your mail box"  defaultValue = {props.editItem == undefined ? role :props.editItem.myRole[0]}
+                onChange={(e) => setRole(e.target.value)}/>
+              </div>
+            </div> */}
+          </div>
+
+          {/* <div className="row mt-5">
+            <div className="col-lg-6">
+              <div className="Street Number">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                  Company id
+                </p>
+
+                <TextField fullWidth label="company id" id="Street No*"   defaultValue = {props.editItem == undefined ? companyid :props.editItem.company_id}
+                onChange={(e) => setCompanyid(e.target.value)}/>
+              </div>
+            </div>
+
+            <div className="col-lg-6">
+              <div className="Mail">
+                <p style={{ fontWeight: "bold", fontSize: "12px" }}>Role</p>
+
+                <TextField fullWidth label="role" id="Enter your mail box"  defaultValue = {props.editItem == undefined ? role :props.editItem.myRole[0]}
+                onChange={(e) => setRole(e.target.value)}/>
+              </div>
+            </div>
+
+        
+          </div> */}
+          
+          </section>
+
+         
+
+          
+          
 
 
           <div className="flex justify-between mt-5 mb -5">

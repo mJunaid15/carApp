@@ -65,8 +65,8 @@ export function CompanyProfile() {
       ) : (
         <>
           <div style={{ height: 400, width: "100%" }}>
-            <Toolbar />
-            {editIndex != null ? null : (
+            {/* <Toolbar /> */}
+           
               <div className="flex justify-between">
                 <h1 className="text-base text-bold mb-0 ml-5">
                   Profile
@@ -79,11 +79,11 @@ export function CompanyProfile() {
                   />
                 </div>
               </div>
-            )}
+            
 
             <TableContainer component={Paper}>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                {editIndex != null ? null : (
+               
                   <TableHead>
                     <TableRow>
                       <TableCell>Profile Name</TableCell>
@@ -93,7 +93,7 @@ export function CompanyProfile() {
                       
                     </TableRow>
                   </TableHead>
-                )}
+                
                 {loading ? (
                   <Pageloader />
                 ) : (
@@ -122,12 +122,14 @@ export function CompanyProfile() {
                                     <SelectPopover
                                       {...data}
                                       apiName="company-profile"
-                                      setState={setCompanylist}
+                                      SetState={setCompanylist}
                                       setEditIndex={setEditIndex}
                                       index={index}
                                       state={companylist}
                                       setEditItem ={setEditItem}
                                     />
+
+                                
                                   </TableCell>
                                 </TableRow>
                               

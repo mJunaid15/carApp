@@ -27,7 +27,7 @@ export default function SelectPopover(props) {
   };
   const handleClickOpenDelete = () => {
     setOpenDelete(true);
-    console.log("hello");
+    // console.log("hello");
   };
 
   const handleDeleteAPI = () => {
@@ -36,8 +36,7 @@ export default function SelectPopover(props) {
     http
       .post(`/${props.apiName}/${props.id}`, formData)
       .then((res) => {
-        // console.log(res);
-        props.SetState(props.state.filter((data) => data.id != props.id));
+props.SetState(props.state.filter((data) => data.id != props.id));
         setOpenDelete(false);
       })
       .catch((err) => console.log(err.message));

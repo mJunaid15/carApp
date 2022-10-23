@@ -13,7 +13,7 @@ import Box from '@mui/material/Box';
 import { CreateBtn } from "../../../Buttons";
 import Tires from '../../../img/Tires.png'
 import AuthUser from "../../Auth/AuthUser";
-
+import TrashSimple from '../../../img/TrashSimple.png'
 
 
 function TabPanel(props) {
@@ -1996,6 +1996,7 @@ export const Createvehicle = (props) => {
                 
 
                 <TextField
+                fullWidth
                 id="date"
                 label="Enter postion"
                 type="text"
@@ -2009,11 +2010,31 @@ export const Createvehicle = (props) => {
             <div className="col-lg-4">
               <div className="company">
               <p style={{fontSize: '14px', fontWeight: 'bold'}}>
-                Position
+                Measurment
                 </p>
                 
 
                 <TextField
+                fullWidth
+                id="date"
+                label="Enter measurment"
+                type="text"
+                
+                onChange={(e) => setEventDate(e.target.value)}
+                defaultValue={  props.editItem === undefined ? event_date : props.editItem.event_date  }
+                 />
+              </div>
+            </div>
+
+            <div className="col-lg-3">
+              <div className="company">
+              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
+                Description
+                </p>
+                
+
+                <TextField
+                fullWidth
                 id="date"
                 label="Enter postion"
                 type="text"
@@ -2024,22 +2045,13 @@ export const Createvehicle = (props) => {
               </div>
             </div>
 
-            <div className="col-lg-4">
-              <div className="company">
-              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
-                Position
-                </p>
-                
-
-                <TextField
-                id="date"
-                label="Enter postion"
-                type="text"
-                
-                onChange={(e) => setEventDate(e.target.value)}
-                defaultValue={  props.editItem === undefined ? event_date : props.editItem.event_date  }
-                 />
-              </div>
+            <div className="col-1 " style={{
+              display: "flex",
+              flexDirection: 'column',
+                alignItems: "center",
+                justifyContent:"center"
+             }}>
+              <img src={TrashSimple} alt="trash"  />
             </div>
 
             
@@ -2048,41 +2060,7 @@ export const Createvehicle = (props) => {
          
           </div>
 
-          < div className="row mt-5">
-            <div className="col-lg-12">
-              <div className="company">
-              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
-                Event
-                </p>
-                
-
-                <TextField 
-                defaultValue={  props.editItem === undefined ? eventEvent : props.editItem.event_event  }
-                onChange={(e) => setEventEvent(e.target.value)}
-                fullWidth label="example" id="0317258963" />
-              </div>
-            </div>
-
-           
-          </div>
-
-          < div className="row mt-5">
-            <div className="col-lg-12">
-              <div className="company">
-              <p style={{fontSize: '14px', fontWeight: 'bold'}}>
-                Comment
-                </p>
-                
-
-                <TextField 
-                defaultValue={  props.editItem === undefined ? eventComment : props.editItem.event_comment  }
-                onChange={(e) => setEventComment(e.target.value)}
-                fullWidth label="example" id="0317258963" />
-              </div>
-            </div>
-
-           
-          </div>
+         
          
 
          

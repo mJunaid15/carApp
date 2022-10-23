@@ -4,11 +4,11 @@ import { Button } from "@mui/material";
 import {CompanyProfile} from "./CompanyProfile";
 import { Toolbar } from "@mui/material";
 import AuthUser from "../../../Auth/AuthUser";
+import WestIcon from '@mui/icons-material/West';
 
 
 export const Createcompany = (props) => {
 
-  console.log("Props Edir company profile: ", props);
 
   const { http } = AuthUser();
 
@@ -76,95 +76,97 @@ export const Createcompany = (props) => {
   };
 
   // Handle Edit Company Profile
-   const handleEditCompany = () => {
+   const handleEditCompany = (data) => {
+
+    console.log(data);
 
     const formData = new FormData();
     
     {
-      cp_name != "" ? formData.append("cp_name", cp_name) :
-       formData.append("cp_name", props.editItem.cp_name);
+      cp_name != undefined ? formData.append("cp_name", cp_name) :
+       formData.append("cp_name", data.cp_name);
     }
     {
-      cp_location != "" ? formData.append("cp_location", cp_location)
-        : formData.append("cp_location", props.editItem.cp_location);
+      cp_location != undefined ? formData.append("cp_location", cp_location)
+        : formData.append("cp_location", data.cp_location);
     }
     {
-      cp_letterhead != ""
+      cp_letterhead != undefined
         ? formData.append("cp_letterhead", cp_letterhead)
-        : formData.append("cp_letterhead", props.editItem.cp_letterhead);
+        : formData.append("cp_letterhead", data.cp_letterhead);
     }
 
     {
-      cp_letterfoot != ""
+      cp_letterfoot != undefined
         ? formData.append("cp_letterfoot", cp_letterfoot)
-        : formData.append("cp_letterfoot", props.editItem.cp_letterfoot);
+        : formData.append("cp_letterfoot", data.cp_letterfoot);
     }
 
     {
-      cp_sender_address != ""
+      cp_sender_address != undefined
         ? formData.append("cp_sender_address", cp_sender_address)
-        : formData.append("cp_sender_address", props.editItem.cp_sender_address);
+        : formData.append("cp_sender_address", data.cp_sender_address);
     }
 
     {
-      cp_contact_details != ""
+      cp_contact_details != undefined
         ? formData.append("cp_contact_details", cp_contact_details)
-        : formData.append("cp_contact_details", props.editItem.cp_contact_details);
+        : formData.append("cp_contact_details", data.cp_contact_details);
     }
 
     {
-      cp_signature != ""
+      cp_signature != undefined
         ? formData.append("cp_signature", cp_signature)
-        : formData.append("cp_signature", props.editItem.cp_signature);
+        : formData.append("cp_signature", data.cp_signature);
     }
 
     {
-      cp_rubber_stamp != ""
+      cp_rubber_stamp != undefined
         ? formData.append("cp_rubber_stamp", cp_rubber_stamp)
-        : formData.append("cp_rubber_stamp", props.editItem.cp_rubber_stamp);
+        : formData.append("cp_rubber_stamp", data.cp_rubber_stamp);
     }
 
     {
-      cp_stmp_server != ""
+      cp_stmp_server != undefined
         ? formData.append("cp_stmp_server", cp_stmp_server)
-        : formData.append("cp_stmp_server", props.editItem.cp_stmp_server);
+        : formData.append("cp_stmp_server", data.cp_stmp_server);
     }
 
     {
-      cp_stmp_port != ""
+      cp_stmp_port != undefined
         ? formData.append("cp_stmp_port", cp_stmp_port)
-        : formData.append("cp_stmp_port", props.editItem.cp_stmp_port);
+        : formData.append("cp_stmp_port", data.cp_stmp_port);
     }
 
     {
-      cp_user_name != ""
+      cp_user_name != undefined
         ? formData.append("cp_user_name", cp_user_name)
-        : formData.append("cp_user_name", props.editItem.cp_user_name);
+        : formData.append("cp_user_name", data.cp_user_name);
     }
     {
-      cp_password != ""
+      cp_password != undefined
         ? formData.append("cp_password", cp_password)
-        : formData.append("cp_password", props.editItem.cp_password);
+        : formData.append("cp_password", data.cp_password);
     }
 
 
     {
-      cp_signature_imprint != ""
+      cp_signature_imprint != undefined
         ? formData.append("cp_signature_imprint", cp_signature_imprint)
-        : formData.append("cp_signature_imprint", props.editItem.cp_signature_imprint);
+        : formData.append("cp_signature_imprint", data.cp_signature_imprint);
     }
 
    
 
     {
-      cp_sender_name != ""
+      cp_sender_name != undefined
         ? formData.append("cp_sender_name", cp_sender_name)
-        : formData.append("cp_sender_name", props.editItem.cp_sender_name);
+        : formData.append("cp_sender_name", data.cp_sender_name);
     }
     formData.append("_method", "PUT");
 
     http
-      .post(`company-profile/${props.editItem.id}`, formData)
+      .post(`/company-profile/${data.id}`, formData)
       .then((res) => {
         setCompanyCheck(!companyCheck)
       })
@@ -181,24 +183,13 @@ export const Createcompany = (props) => {
         <CompanyProfile />
       ) : (
         <div>
-          <Toolbar />
-          <div className="flex justify-between">
-          { props && props.editItem ? (<h1 className="text-base text-bold mb-0 ml-5">Edit Company Profile</h1>) :(
+          {/* <Toolbar /> */}
+          <div className="flex">
+          <WestIcon className="backButton" onClick={() => setCompanyCheck(!companyCheck)} />
+
+          { props && props.editItem ? (<h1 className="text-base text-bold mb-0 ml-5">{props.editItem.cp_name}</h1>) :(
             <h1 className="text-base text-bold mb-0 ml-5">Create Company Profile</h1>) }
-            <div className="mr-5">
-              <Button
-                onClick={() => setCompanyCheck(!companyCheck)}
-                style={{
-                  backgroundColor: "  #5A4A42",
-                  color: "#fff",
-                  padding: "6px 22px",
-                  diplay: "flex",
-                  alignItems: "center",
-                }}
-              >
-                Profiles
-              </Button>
-            </div>
+            
           </div>
 
           {/* <hr /> */}
@@ -471,10 +462,11 @@ export const Createcompany = (props) => {
                                   className="text-white"
                                   style={{ backgroundColor: "#5A4A42" }}
                                   onClick={() => {
-                                    if(props.editItem !== undefined){
-                                      handleEditCompany()
+                                    if(props.editItem === undefined){
+                                      
+                                      handleSave()
                                     }
-                                    handleSave()
+                                    handleEditCompany(props.editItem)
                                   }
                                   }
                                   >
