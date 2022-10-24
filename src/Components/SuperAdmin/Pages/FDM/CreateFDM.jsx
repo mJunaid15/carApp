@@ -26,6 +26,8 @@ import Question from "./Question";
 import VehicleInspection from "./VehicleInspection";
 import Documents from "./Documents";
 import Photos from "./Photos";
+import QuestionAnswers from "../Settings/Questions/QuestionAnswers";
+import Protocol from "./Protocol";
 // import Tabs from '@mui/material/Tabs';
 // import Tab from '@mui/material/Tab';
 // import Typography from '@mui/material/Typography';
@@ -145,10 +147,12 @@ const CreateFdm = () => {
             <Involed/>
           </TabPanel>
           <TabPanel value={value} index={2}>
+            <div className="mt-[-90px]">
            <Createvehicle/>
+           </div>
           </TabPanel>
           <TabPanel value={value} index={3}>
-            <Question/>
+            <QuestionAnswers/>
           </TabPanel>
           <TabPanel value={value} index={4}>
             <VehicleInspection/>
@@ -160,7 +164,7 @@ const CreateFdm = () => {
             <Photos/>
           </TabPanel>
           <TabPanel value={value} index={7}>
-            Item Seven
+            <Protocol/>
           </TabPanel>
         </div>
       </Box>

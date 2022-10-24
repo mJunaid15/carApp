@@ -95,7 +95,7 @@ export default function Setting() {
   
         <div className="flex  p-3     border-inherit cursor-pointer">
           <h1 className="mb-0 text-sm text-black font-semibold me-3">
-            Company Settings
+            Company Settings jkbdaskj
           </h1>
         </div>
         <Tabs

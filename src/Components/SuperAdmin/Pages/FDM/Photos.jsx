@@ -21,6 +21,39 @@ const Photos = () => {
       <div className="generl ">
         <p>Upload photos</p>
       </div>
+
+      <div className="grid grid-cols-5">
+        <div className="mt-2 w-[100px] h-[100px]">
+          <img
+            src="https://www.fillmurray.com/640/360"
+            alt="dummy" className="w-full h-full"
+          />
+        </div>
+        <div className="mt-2 w-[100px] h-[100px]">
+          <img
+            src="https://www.fillmurray.com/640/360"
+            alt="dummy" className="w-full h-full"
+          />
+        </div>
+        <div className="mt-2 w-[100px] h-[100px]">
+          <img
+            src="https://www.fillmurray.com/640/360"
+            alt="dummy" className="w-full h-full"
+          />
+        </div>
+        <div className="mt-2 w-[100px] h-[100px]">
+          <img
+            src="https://www.fillmurray.com/640/360"
+            alt="dummy" className="w-full h-full"
+          />
+        </div>
+        <div className="mt-2 w-[100px] h-[100px]">
+          <img
+            src="https://www.fillmurray.com/640/360"
+            alt="dummy" className="w-full h-full"
+          />
+        </div>
+      </div>
       <div className="flex justify-center items-center mt-5">
         <div
           className="flex justify-center items-center w-[60%] h-[60%]"
@@ -32,11 +65,10 @@ const Photos = () => {
             </div>
             <p>Drag and Drop here</p>
             <button style={style.button}>
-                
-            <label for="file-upload" class="custom-file-upload">
-    <i class="fa fa-cloud-upload"></i> Custom Upload
-</label>
-<input id="file-upload" type="file" className="none"/>
+              <label for="file-upload" class="custom-file-upload">
+                <i class="fa fa-cloud-upload"></i> Custom Upload
+              </label>
+              <input id="file-upload" type="file" className="none" />
             </button>
           </div>
         </div>

@@ -63,7 +63,7 @@ export default function Setting() {
 
   return (
   
-          <div style={{ height: 400, width: "100%" }}>
+          <div style={{ height: 400, width: "100%" }} className='mt-[-30px] '>
             {/* <Toolbar /> */}
 
             <div className="flex  p-3     border-inherit cursor-pointer">
@@ -97,7 +97,9 @@ export default function Setting() {
             
               {/* Company Tab */}
               <TabPanel value={value} index={0} dir={theme.direction}>
+                <div className="mt-[-80px]">
                 <Company  />
+                </div>
               </TabPanel>
 
               {/* Address Location tab */}

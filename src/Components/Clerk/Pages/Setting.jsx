@@ -93,7 +93,7 @@ export default function Setting() {
         <div style={{ height: 400, width: "100%" }}>
         <Toolbar />
   
-        <div className="flex  p-3     border-inherit cursor-pointer">
+        <div className="flex  p-3  border-inherit cursor-pointer">
           <h1 className="mb-0 text-sm text-black font-semibold me-3">
             Company Settings
           </h1>
