@@ -14,6 +14,7 @@ import { CreateBtn } from "../../../Buttons";
 import Tires from "../../../img/Tires.png";
 import AuthUser from "../../Auth/AuthUser";
 import TrashSimple from "../../../img/TrashSimple.png";
+import Checkbox from "../../Checkbox";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -676,6 +677,97 @@ export const Createvehicle = (props) => {
       })
       .catch((err) => console.log(err.message));
   };
+
+
+ 
+  const [isCheckAll, setIsCheckAll] = useState(false);
+  const [isCheck, setIsCheck] = useState([]);
+  const [list, setList] = useState([
+    {
+      id: "01",
+      name: "Chicken",
+    },
+    {
+      id: "02",
+      name: "Beef",
+    },
+    {
+      id: "03",
+      name: "Lamb",
+    },
+    {
+      id: "04",
+      name: "Pork",
+    },
+    {
+      id: "05",
+      name: "Seafood",
+    },
+    {
+      id: "06",
+      name: "Dairy",
+    },
+    {
+      id: "07",
+      name: "Tofu",
+    },
+    {
+      id: "08",
+      name: "Vegan",
+    },
+  ]);
+  const [dynamicfeilds, setDynamicfeilds] = useState([]);
+
+
+
+  const handleSelectAll = (e) => {
+    setIsCheckAll(!isCheckAll);
+    setIsCheck(list.map((li) => li.id));
+    if (isCheckAll) {
+      setIsCheck([]);
+    }
+  };
+  const handleClick = (e) => {
+    const { id, checked } = e.target;
+    setIsCheck([...isCheck, id]);
+    if (!checked) {
+      setIsCheck(isCheck.filter((item) => item !== id));
+    }
+  };
+  const addFieldsHandler = () => {
+    
+    setList(oldArray => [...oldArray,{id:"222",name:"junaid"}] );
+    console.log("list", list);
+  };
+  const dynamicsInputHandler = (e) =>{
+    setDynamicfeilds(e.target.value)
+    console.log("dynamics feilds", dynamicfeilds);
+
+  }
+
+
+  const catalog = list.map(({ id, name }) => {
+    return (
+      <>
+      <div className="">
+      
+        <Checkbox
+          key={id}
+          type="checkbox"
+          name={name}
+          id={id}
+          handleClick={handleClick}
+          isChecked={isCheck.includes(id)}
+        />
+         <label class="form-check-label mx-2" for={id}>
+         {name}
+        </label>
+        
+        
+        </div>
+      </>
+    );
+  });
 
   return (
     <>
@@ -1826,168 +1918,41 @@ export const Createvehicle = (props) => {
                   </select>
                 </div>
 
+             
+
                 <div className="row mt-5">
                   <div className="col-lg-4">
                     <div className="stand ">
-                      <p style={{ fontWeight: "bold" }}>Standard</p>
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          33 of 38 seletced
-                        </label>
-                      </div>
+                      <p style={{ fontWeight: "bold" }}>Standard</p>                 
 
                       <div className="bg-gray-50 py-1 px-1 mt-3 max-h-[300px] overflow-y-auto">
-                        <div class="form-check ">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault1"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefault1"
-                          >
-                            Airbag passenger side
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefault"
-                          >
-                            Airbag driver’s side
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefault"
-                          >
-                            Anti-Lock bracking system ABS
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefault"
-                          >
-                            Exterior mirrors electr. adjustable and heated
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefault"
-                          >
-                            Exterior mirrors body color
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefault"
-                          >
-                            Outdoor temperature display
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefault"
-                          >
-                            Flashing light integrated in exterior mirrors
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefault"
-                          >
-                            Seaborne computer
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefault"
-                          >
-                            Roof spoiler body color
-                          </label>
-                        </div>
-                    
+                      <div>
+                      <Checkbox
+                        type="checkbox"
+                        name="selectAll"
+                        id="selectAll"
+                        handleClick={handleSelectAll}
+                        isChecked={isCheckAll}
+                      />
+                        &nbsp; {isCheck.length} of {list.length} selected
+                      {catalog}
+                    </div>
                       </div>
                       <div class="flex items-center">
-                          <input class="" type="text" className="w-[80%] border-3" />
-                    
-                          <CreateBtn
-                            name="+"
-                            // icon={<AddIcon />}
-                            // onClick={() => setCompCheck(!compCheck)}
-                          />
-                        </div>
+                        <input
+                       id="id"
+                          type="text"
+                          className="w-[80%] border-3"
+                          value={dynamicfeilds.name}
+                         onChange={dynamicsInputHandler}
+                        />
+
+                        <CreateBtn
+                          name="+"
+                          // icon={<AddIcon />}
+                          onClick={addFieldsHandler}
+                        />
+                      </div>
                     </div>
                   </div>
 
@@ -2115,15 +2080,19 @@ export const Createvehicle = (props) => {
                           </label>
                         </div>
                       </div>
-                          <div class="flex items-center">
-                          <input class="" type="text" className="w-[80%] border-3" />
-                    
-                          <CreateBtn
-                            name="+"
-                            // icon={<AddIcon />}
-                            // onClick={() => setCompCheck(!compCheck)}
-                          />
-                        </div>
+                      <div class="flex items-center">
+                        <input
+                          class=""
+                          type="text"
+                          className="w-[80%] border-3"
+                        />
+
+                        <CreateBtn
+                          name="+"
+                          // icon={<AddIcon />}
+                          // onClick={() => setCompCheck(!compCheck)}
+                        />
+                      </div>
                     </div>
                   </div>
 
@@ -2264,14 +2233,18 @@ export const Createvehicle = (props) => {
                         </div>
                       </div>
                       <div class="flex items-center">
-                          <input class="" type="text" className="w-[80%] border-3" />
-                    
-                          <CreateBtn
-                            name="+"
-                            // icon={<AddIcon />}
-                            // onClick={() => setCompCheck(!compCheck)}
-                          />
-                        </div>
+                        <input
+                          class=""
+                          type="text"
+                          className="w-[80%] border-3"
+                        />
+
+                        <CreateBtn
+                          name="+"
+                          // icon={<AddIcon />}
+                          // onClick={() => setCompCheck(!compCheck)}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
