@@ -716,7 +716,7 @@ export const Createvehicle = (props) => {
       name: "Vegan",
     },
   ]);
-  const [dynamicfeilds, setDynamicfeilds] = useState([]);
+  const [dynamicfeildsStandard, setDynamicfeildsStandard] = useState({id:"",name:""});
 
 
 
@@ -729,20 +729,28 @@ export const Createvehicle = (props) => {
   };
   const handleClick = (e) => {
     const { id, checked } = e.target;
+
     setIsCheck([...isCheck, id]);
     if (!checked) {
       setIsCheck(isCheck.filter((item) => item !== id));
     }
   };
-  const addFieldsHandler = () => {
-    
-    setList(oldArray => [...oldArray,{id:"222",name:"junaid"}] );
-    console.log("list", list);
-  };
-  const dynamicsInputHandler = (e) =>{
-    setDynamicfeilds(e.target.value)
-    console.log("dynamics feilds", dynamicfeilds);
+  const addFieldsHandlerStandard = () => {
 
+    if(Object.keys(dynamicfeildsStandard.id).length == 0){
+     alert("cannot add empty fields");
+      return
+    }else{
+      setList(oldArray => [...oldArray,dynamicfeildsStandard] );
+      setDynamicfeildsStandard({id:"",name:""})
+    }
+  };
+
+  const dynamicsInputHandlerStandard = (e) =>{
+    let name = e.target.value;
+    let fId = list.length + 1;
+    let id = fId.toString();
+    setDynamicfeildsStandard({id,name})
   }
 
 
@@ -1943,14 +1951,14 @@ export const Createvehicle = (props) => {
                        id="id"
                           type="text"
                           className="w-[80%] border-3"
-                          value={dynamicfeilds.name}
-                         onChange={dynamicsInputHandler}
+                          value={dynamicfeildsStandard.name}
+                         onChange={dynamicsInputHandlerStandard}
                         />
 
                         <CreateBtn
                           name="+"
                           // icon={<AddIcon />}
-                          onClick={addFieldsHandler}
+                          onClick={addFieldsHandlerStandard}
                         />
                       </div>
                     </div>
