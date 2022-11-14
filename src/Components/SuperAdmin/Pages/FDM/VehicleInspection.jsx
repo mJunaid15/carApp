@@ -1,8 +1,14 @@
 import { TextField } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { CreateBtn } from "../../../Buttons";
 
 const VehicleInspection = () => {
+  const [vi_ort_firma, setvi_ort_firma] = useState('')
+  const [vi_address, setvi_address] = useState('')
+  const [vi_from, setvi_from] = useState('')
+  const [vi_to, setvi_to] = useState('')
+  const [vi_expert, setvi_expert] = useState('')
+  const [vi_participator, setvi_participator] = useState('')
   return (
     <div>
       <div className="generl ">
@@ -14,7 +20,9 @@ const VehicleInspection = () => {
           <div className="Street Number">
             <p style={{ fontWeight: "bold", fontSize: "12px" }}>Ort/Firma </p>
 
-            <TextField fullWidth label="Ort/Firma" id="0317258963" />
+            <TextField
+            onChange={(e) => setvi_ort_firma(e.target.value)}
+            fullWidth label="Ort/Firma" id="0317258963" />
           </div>
         </div>
 
@@ -22,7 +30,9 @@ const VehicleInspection = () => {
           <div className="managing">
             <p style={{ fontWeight: "bold", fontSize: "12px" }}>Address </p>
 
-            <TextField fullWidth label="Address" id="" />
+            <TextField 
+            onChange={(e) => setvi_address(e.target.value)}
+            fullWidth label="Address" id="" />
           </div>
         </div>
       </div>
@@ -32,7 +42,9 @@ const VehicleInspection = () => {
           <div className="Street Number">
             <p style={{ fontWeight: "bold", fontSize: "12px" }}>From </p>
 
-            <TextField fullWidth  type="date" />
+            <TextField 
+            onChange={(e) => setvi_from(e.target.value)}
+            fullWidth  type="date" />
           </div>
         </div>
 
@@ -40,7 +52,9 @@ const VehicleInspection = () => {
           <div className="managing">
             <p style={{ fontWeight: "bold", fontSize: "12px" }}>To </p>
 
-            <TextField fullWidth  type="date" />
+            <TextField 
+            onChange={(e) => setvi_to(e.target.value)}
+            fullWidth  type="date" />
           </div>
         </div>
       </div>
@@ -50,7 +64,9 @@ const VehicleInspection = () => {
           <div className="Street Number">
             <p style={{ fontWeight: "bold", fontSize: "12px" }}>Expert </p>
 
-            <TextField fullWidth label="Expert" />
+            <TextField 
+            onChange={(e) => setvi_expert(e.target.value)}
+            fullWidth label="Expert" />
           </div>
         </div>
 
@@ -60,7 +76,9 @@ const VehicleInspection = () => {
               Participator{" "}
             </p>
 
-            <TextField fullWidth label="Participator" />
+            <TextField 
+            onChange={(e) => setvi_participator(e.target.value)}
+            fullWidth label="Participator" />
           </div>
         </div>
       </div>

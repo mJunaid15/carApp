@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { CreateBtn } from "../../../Buttons";
 
 const Involed = () => {
+
+  const [inv_participation, setinv_participation] = useState('')
+  const [inv_designation, setinv_designation] = useState('')
+
   const style = {
     addFromContact: {
         padding: "12px 102px",

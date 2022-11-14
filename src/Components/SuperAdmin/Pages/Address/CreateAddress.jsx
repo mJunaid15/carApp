@@ -1,11 +1,13 @@
 import { TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Button } from "@mui/material";
 import { Toolbar } from "@mui/material";
 import AuthUser from "../../Auth/AuthUser";
 import Addresses from "./Addresses";
 import WestIcon from '@mui/icons-material/West';
 import '../All.css'
+import { MuiTelInput } from 'mui-tel-input'
+import countryList from 'react-select-country-list'
 
 export const CreateAddress = (props) => {
 
@@ -20,20 +22,20 @@ export const CreateAddress = (props) => {
  const [lastName, setLastName] = useState("");
  const [email, setEmail] = useState("");
  const [mobile, setMobile] = useState("");
+ const [company, setCompany] = useState("");
  const [fax, setFax] = useState("");
- const [country, setCountry] = useState("");
+ const [country, setCountry] = useState("Germany");
  const [city, setCity] = useState("");
  const [streetNo, setStreetNo] = useState("");
- const [mailbox, setMailbox] = useState("");
+ const [mailbox, setMailbox] = useState();
  const [companyId, setCompanyId] = useState("");
- const [salution, setSalutaion] = useState("");
- const[ homepage, setHomepage] = useState("");
- const [telephone, setTelephone] = useState("");
+ const [salution, setSalutaion] = useState("Select Salutation");
+ const[ homepage, setHomepage] = useState();
+ const [telephone, setTelephone] = useState();
  const [ addComment, setAddComment] = useState("");
  const [vatId, setVatId] = useState("");
-  
 
-
+ const options = useMemo(() => countryList().getData(), [])
 
   // Handle Cancel Button
 
@@ -127,8 +129,8 @@ export const CreateAddress = (props) => {
     }
 
     {
-      mailbox != ""
-        ? formData.append("mailbox", mailbox)
+      mailbox != undefined ?
+        formData.append("mailbox", mailbox)
         : formData.append("mailbox", props.editItem.mailbox);
     }
     {
@@ -146,13 +148,13 @@ export const CreateAddress = (props) => {
     
 
     {
-      homepage != ""
+      homepage != undefined
         ? formData.append("homepage", homepage)
         : formData.append("homepage", props.editItem.homepage);
     }
 
     {
-      telephone != ""
+      telephone != undefined
         ? formData.append("telephone", telephone)
         : formData.append("telephone", props.editItem.telephone);
     }
@@ -184,9 +186,6 @@ export const CreateAddress = (props) => {
     setAddressCheck(!addressCheck) 
  }
 
-
-
-
   return (
     <>
       {addressCheck ? (
@@ -195,8 +194,8 @@ export const CreateAddress = (props) => {
       ) : (
         <div>
           <Toolbar />
-          <div className="flex border-slate-400 backButton" onClick={handleBack}>
-        <WestIcon />
+          <div className="flex border-slate-400 " >
+        <WestIcon className="backButton"  onClick={handleBack}/>
         { props && props.editItem ? (<h1 className="text-base text-bold mb-0 ml-5">{props.editItem.title}</h1>) :(
             <h1 className="text-base text-bold mb-0 ml-5">Create Address</h1>) }
           
@@ -222,11 +221,23 @@ export const CreateAddress = (props) => {
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                    Salutation
                 </p>
+                <select
+                          class="form-select form-select-lg mb-0 w-100"
+                          aria-label=".form-select-lg example"
+                          onChange={(e) => {
+                            console.log(e.target.value);
+                            setSalutaion(e.target.value)}}
+                        >
+                          <option selected>{  props.editItem == undefined ? salution : props.editItem.salution  }</option>
+                          <option value="Mr.">Mr.</option>
+                          <option value="Mrs.">Mrs.</option>
+                          <option value="Company">Company</option>
+                        </select>
 
-                <TextField
+                {/* <TextField
                 defaultValue={  props.editItem == undefined ? salution : props.editItem.salution  }
                 onChange={(e) => setSalutaion(e.target.value)}
-                fullWidth label="Enter Salutation" id="0317258963" />
+                fullWidth label="Enter Salutation" id="0317258963" /> */}
               </div>
             </div>
 
@@ -290,8 +301,8 @@ export const CreateAddress = (props) => {
                 </p>
 
                 <TextField
-                defaultValue={  props.editItem == undefined ? companyId : props.editItem.company_id  }
-                onChange={(e) => setSalutaion(e.target.value)}
+                defaultValue={  props.editItem == undefined ? company : props.editItem.company  }
+                onChange={(e) => setCompany(e.target.value)}
                 fullWidth label="Enter Company" id="0317258963" />
               </div>
             </div>
@@ -314,7 +325,7 @@ export const CreateAddress = (props) => {
                 </p>
 
                 <TextField
-                defaultValue={  props.editItem == undefined ? email : props.editItem.title  }
+                defaultValue={  props.editItem == undefined ? email : props.editItem.email  }
                 onChange={(e) => setEmail(e.target.value)}
                 fullWidth label="Enter E-mail" id="0317258963" />
               </div>
@@ -345,11 +356,13 @@ export const CreateAddress = (props) => {
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                    Telephone
                 </p>
-
-                <TextField
-                defaultValue={  props.editItem == undefined ? telephone : props.editItem.telephone  }
-                onChange={(e) => setTelephone(e.target.value)}
-                fullWidth label="+9212232323" id="0317258963" />
+                <MuiTelInput 
+                defaultCountry="DE" 
+                value={telephone ? telephone : props.editItem && props.editItem.telephone}
+                onChange={(value) => setTelephone(value)} 
+                fullWidth
+                />
+                
               </div>
             </div>
 
@@ -358,14 +371,13 @@ export const CreateAddress = (props) => {
                 <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                  Mobile
                 </p>
-
-                <TextField
-                defaultValue={  props.editItem == undefined ? mobile : props.editItem.mobile  }
-                onChange={(e) => setMobile(e.target.value)}
-                  fullWidth
-                  label="+92312232323"
-                  id="0317258963"
+                <MuiTelInput 
+                defaultCountry="DE" 
+                value={mobile ? mobile : props.editItem && props.editItem.mobile}
+                onChange={(value) => setMobile(value)} 
+                fullWidth
                 />
+                
               </div>
             </div>
           </div> 
@@ -379,10 +391,17 @@ export const CreateAddress = (props) => {
                    Fax
                 </p>
 
-                <TextField
+                <MuiTelInput 
+                defaultCountry="DE" 
+                value={fax ? fax : props.editItem && props.editItem.fax}
+                onChange={(value) => setFax(value)} 
+                fullWidth
+                />
+
+                {/* <TextField
                 defaultValue={  props.editItem == undefined ? fax : props.editItem.fax  }
                 onChange={(e) => setFax(e.target.value)}
-                fullWidth label="Enter Fax" id="0317258963" />
+                fullWidth label="Enter Fax" id="0317258963" /> */}
               </div>
             </div>
 
@@ -404,10 +423,23 @@ export const CreateAddress = (props) => {
                    Country
                 </p>
 
-                <TextField
+                <select
+                    class="form-select form-select-lg mb-0 w-100"
+                    aria-label=".form-select-lg example"
+                    onChange={(e) => {
+                        console.log(e.target.value);
+                        setCountry(e.target.value)
+                    }}
+                >
+                          <option selected value='Germany'>{ props.editItem == undefined ? country : props.editItem.country }</option>
+                          {options.map( (items,id) => {
+                            return <option value={items.label}>{items.label}</option>
+                          })}
+                </select>
+                {/* <TextField
                 defaultValue={  props.editItem == undefined ? country : props.editItem.country  }
                 onChange={(e) => setCountry(e.target.value)}
-                fullWidth label="Enter Country" id="0317258963" />
+                fullWidth label="Enter Country" id="0317258963" /> */}
               </div>
             </div>
 
@@ -509,13 +541,13 @@ export const CreateAddress = (props) => {
             
             <div className="company">
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
-                 Comment
+                 Company Id
               </p>
 
               <TextField
               defaultValue={  props.editItem == undefined ? companyId : props.editItem.company_id  }
               onChange={(e) => setCompanyId(e.target.value)}
-              fullWidth label="Enter Comment" id="0317258963" />
+              fullWidth label="Enter Company Id" id="0317258963" />
 
             </div>
           </div>

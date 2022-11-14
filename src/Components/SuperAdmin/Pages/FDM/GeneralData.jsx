@@ -1,8 +1,30 @@
 import { TextField } from '@mui/material'
-import React from 'react'
+import React, { useState } from "react";
 import { CreateBtn } from '../../../Buttons'
 
 const GeneralData = () => {
+
+  const [gd_license_plate, setgd_license_plate] = useState('')
+  const [gd_vehicle_manufacturer, setgd_vehicle_manufacturer] = useState('')
+  const [gd_vehicle_mode, setgd_vehicle_mode] = useState('')
+  const [gd_owner_name, setgd_owner_name] = useState('')
+  const [gd_owner_city, setgd_owner_city] = useState('')
+  const [gd_owner_country, setgd_owner_country] = useState('')
+  const [gd_email, setgd_email] = useState('')
+  const [gd_contact_no, setgd_contact_no] = useState('')
+  const [gd_order_date, setgd_order_date] = useState('')
+  const [gd_inspection_date, setgd_inspection_date] = useState('')
+  const [gd_expert_name, setgd_expert_name] = useState('')
+  const [gd_clerk, setgd_clerk] = useState('')
+  const [gd_order_placement, setgd_order_placement] = useState('')
+  const [gd_vat_rate, setgd_vat_rate] = useState('')
+  const [gd_address_city, setgd_address_city] = useState('')
+  const [gd_address_country, setgd_address_country] = useState('')
+  const [gd_street_no, setgd_street_no] = useState('')
+  const [gd_mailbox, setgd_mailbox] = useState('')
+
+  
+
   return (
     <div>
         
@@ -19,7 +41,9 @@ const GeneralData = () => {
                 License plate
               </p>
 
-              <TextField fullWidth label="Enter license plate no" id="0317258963" />
+              <TextField
+               onChange={(e) => setgd_license_plate(e.target.value)}
+              fullWidth label="Enter license plate no" id="0317258963" />
             </div>
           </div>
 
@@ -33,6 +57,7 @@ const GeneralData = () => {
                 fullWidth
                 label="Enter your position"
                 id=""
+                onChange={(e) => setgd_vehicle_manufacturer(e.target.value)}
               />
             </div>
           </div>
@@ -45,6 +70,7 @@ const GeneralData = () => {
             </p>
 
             <TextField
+             onChange={(e) => setgd_vehicle_mode(e.target.value)}
               fullWidth
               label="Enter Vehicle Model"
               id=""
@@ -63,7 +89,9 @@ const GeneralData = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 Owner Name              </p>
 
-              <TextField fullWidth label="Country name" id="0317258963" />
+              <TextField 
+               onChange={(e) => setgd_owner_name(e.target.value)}
+              fullWidth label="Country name" id="0317258963" />
             </div>
           </div>
 
@@ -73,6 +101,7 @@ const GeneralData = () => {
                 State / City              </p>
 
               <TextField
+               onChange={(e) => setgd_owner_city(e.target.value)}
                 fullWidth
                 label="Enter your state with city "
                 id=""
@@ -88,7 +117,9 @@ const GeneralData = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 Country               </p>
 
-              <TextField fullWidth label="Select Country" id="0317258963" />
+              <TextField 
+               onChange={(e) => setgd_owner_country(e.target.value)}
+              fullWidth label="Select Country" id="0317258963" />
             </div>
           </div>
 
@@ -98,6 +129,7 @@ const GeneralData = () => {
                 Email              </p>
 
               <TextField
+               onChange={(e) => setgd_email(e.target.value)}
                 fullWidth
                 label="Enter your email address"
                 id=""
@@ -112,6 +144,7 @@ const GeneralData = () => {
               Contact No            </p>
 
             <TextField
+             onChange={(e) => setgd_contact_no(e.target.value)}
               fullWidth
               label="Contact no"
               id=""
@@ -131,6 +164,7 @@ const GeneralData = () => {
                 Order date              </p>
 
               <TextField
+               onChange={(e) => setgd_order_date(e.target.value)}
                 fullWidth
                 id="date"
                 label="Enter Date"
@@ -149,6 +183,7 @@ const GeneralData = () => {
                 Inspection date              </p>
 
               <TextField
+               onChange={(e) => setgd_inspection_date(e.target.value)}
                 fullWidth
                 id="date"
                 label="Enter Date"
@@ -167,6 +202,7 @@ const GeneralData = () => {
                 Name of the expert              </p>
 
               <TextField
+               onChange={(e) => setgd_expert_name(e.target.value)}
                 fullWidth
                 label="example"
                 id=""
@@ -183,6 +219,7 @@ const GeneralData = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 Clerk              </p>
               <TextField
+               onChange={(e) => setgd_clerk(e.target.value)}
                 fullWidth
                 label="example"
                 id=""
@@ -196,6 +233,7 @@ const GeneralData = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 order placement              </p>
               <TextField
+               onChange={(e) => setgd_order_placement(e.target.value)}
                 fullWidth
                 label="Enter date"
                 id=""
@@ -209,6 +247,7 @@ const GeneralData = () => {
                 VAT rate              </p>
 
               <TextField
+               onChange={(e) => setgd_vat_rate(e.target.value)}
                 fullWidth
                 label="Enter date"
                 id=""
@@ -258,7 +297,9 @@ const GeneralData = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 Street no               </p>
 
-              <TextField fullWidth label="Select Country" id="0317258963" />
+              <TextField 
+               onChange={(e) => setgd_street_no(e.target.value)}
+              fullWidth label="Select Country" id="0317258963" />
             </div>
           </div>
 
@@ -268,6 +309,7 @@ const GeneralData = () => {
                 Mailbox              </p>
 
               <TextField
+               onChange={(e) => setgd_mailbox(e.target.value)}
                 fullWidth
                 label="Enter your mail box"
                 id=""
@@ -291,7 +333,9 @@ const GeneralData = () => {
           />
           <div className="mr-5">
             <CreateBtn
-              // onClick={() => setCompanyCheck(!companyCheck)}
+              onClick={() => {
+                
+              }}
               style={{
                 color: "#000",
                 padding: "6px 22px",
