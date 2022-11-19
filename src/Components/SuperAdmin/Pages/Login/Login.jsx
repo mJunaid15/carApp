@@ -27,13 +27,15 @@ const Login = () => {
         console.log(res.data);
         setLoading(false);
         setToken(res.data.success.token, res.data.success.user);
-        if (res.data.success.user.myRole[0] === "super-admin") {
-          navigate(`/dashboard`);
-          setMsg("");
-          console.log(res.data.success.user.myRole[0]);
-        } else if (res.data.success.user.myRole[0] === "company-admin") {
-          navigate(`/company`);
-        }
+        navigate(`/dashboard`);
+
+        // if (res.data.success.user.myRole[0] === "super-admin") {
+        //   navigate(`/dashboard`);
+        //   setMsg("");
+        //   console.log(res.data.success.user.myRole[0]);
+        // } else if (res.data.success.user.myRole[0] === "company-admin") {
+        //   navigate(`/company`);
+        // }
       })
       .catch((err) => {
         // console.log('error',err);
@@ -76,9 +78,9 @@ const Login = () => {
                     <b>LOGIN</b>
                   </h2>
 
-                  <div class="login-form">
+                  <div className="login-form">
                     <form>
-                      <div class="form-group">
+                      <div className="form-group">
                         <input
                           className={`${
                             msgErr
@@ -90,14 +92,14 @@ const Login = () => {
                           placeholder="Email"
                           onChange={(e) => setEmail(e.target.value)}
                         />
-                        <span class="input-icon">
+                        <span className="input-icon">
                           <EmailIcon
                             className={`${msgErr ? "text-red-500 " : ""}`}
                           />
                         </span>
                       </div>
 
-                      <div class="form-group">
+                      <div className="form-group">
                         <input
                           className={`${
                             msgErr
@@ -109,7 +111,7 @@ const Login = () => {
                           placeholder="Password"
                           onChange={(e) => setPass(e.target.value)}
                         />
-                        <span class="input-icon">
+                        <span className="input-icon">
                           <LockIcon
                             className={`${msgErr ? "text-red-500 " : ""}`}
                           />
@@ -129,7 +131,7 @@ const Login = () => {
                 </div>
                 
 
-                <button class="login-btn" onClick={submitForm}>
+                <button className="login-btn" onClick={submitForm}>
                   {loading ? "Loading..." : "Login"}
                 </button>
                 {loading ? (
@@ -144,7 +146,7 @@ const Login = () => {
                   </Backdrop>
                 ) : null}
                 {/* <button
-                    class="m-3"
+                    className="m-3"
                     onClick={() => {
                         navigate(`/dashboard/company`);
                     }}
@@ -152,7 +154,7 @@ const Login = () => {
                     Company routes
                   </button>
                   <button
-                    class="m-3"
+                    className="m-3"
                     onClick={() => {
                         navigate(`/dashboard/expert`);
                     }}
@@ -160,7 +162,7 @@ const Login = () => {
                     Expert routes
                   </button>
                   <button
-                    class="m-3"
+                    className="m-3"
                     onClick={() => {
                         navigate(`/dashboard/clerk`);
                     }}

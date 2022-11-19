@@ -22,7 +22,7 @@ const Notifications = (props) => {
                       </p>
                       <div className="slct">
                         <select
-                          class="form-select form-select-lg mb-0 w-100"
+                          className="form-select form-select-lg mb-0 w-100"
                           aria-label=".form-select-lg example"
                         >
                           <option selected>Select your option</option>
@@ -41,70 +41,70 @@ const Notifications = (props) => {
 
                   <div className="row">
                     <div className="col-lg-2">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value=""
                           id="flexCheckDefault"
                         />
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <label className="form-check-label" for="flexCheckDefault">
                           File Assigned
                         </label>
                       </div>
                     </div>
 
                     <div className="col-lg-3">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value=""
                           id="flexCheckDefault"
                         />
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <label className="form-check-label" for="flexCheckDefault">
                           Appointment Reminder
                         </label>
                       </div>
                     </div>
 
                     <div className="col-lg-3">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value=""
                           id="flexCheckDefault"
                         />
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <label className="form-check-label" for="flexCheckDefault">
                           Notes In File
                         </label>
                       </div>
                     </div>
 
                     <div className="col-lg-2">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value=""
                           id="flexCheckDefault"
                         />
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <label className="form-check-label" for="flexCheckDefault">
                           Message Received
                         </label>
                       </div>
                     </div>
 
                     <div className="col-lg-2">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value=""
                           id="flexCheckDefault"
                         />
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <label className="form-check-label" for="flexCheckDefault">
                           Task Assigned
                         </label>
                       </div>
@@ -117,70 +117,70 @@ const Notifications = (props) => {
 
                   <div className="row">
                     <div className="col-lg-2">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value=""
                           id="flexCheckDefault"
                         />
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <label className="form-check-label" for="flexCheckDefault">
                           File Assigned
                         </label>
                       </div>
                     </div>
 
                     <div className="col-lg-3">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value=""
                           id="flexCheckDefault"
                         />
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <label className="form-check-label" for="flexCheckDefault">
                           Appointment Reminder
                         </label>
                       </div>
                     </div>
 
                     <div className="col-lg-3">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value=""
                           id="flexCheckDefault"
                         />
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <label className="form-check-label" for="flexCheckDefault">
                           Notes In File
                         </label>
                       </div>
                     </div>
 
                     <div className="col-lg-2">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value=""
                           id="flexCheckDefault"
                         />
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <label className="form-check-label" for="flexCheckDefault">
                           Message Received
                         </label>
                       </div>
                     </div>
 
                     <div className="col-lg-2">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value=""
                           id="flexCheckDefault"
                         />
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <label className="form-check-label" for="flexCheckDefault">
                           Task Assigned
                         </label>
                       </div>

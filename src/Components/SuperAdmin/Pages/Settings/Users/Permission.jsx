@@ -58,7 +58,7 @@ const Permission = (props) => {
                       </p>
                       <div className="slct">
                         <select
-                          class="form-select form-select-lg mb-0 w-100"
+                          className="form-select form-select-lg mb-0 w-100"
                           aria-label=".form-select-lg example"
                         >
                           <option selected>Select your option</option>
@@ -75,7 +75,7 @@ const Permission = (props) => {
                       </p>
                       <div className="slct">
                         <select
-                          class="form-select form-select-lg mb-0 w-100"
+                          className="form-select form-select-lg mb-0 w-100"
                           aria-label=".form-select-lg example"
                           onChange={(e) => setRole(e.target.value)}
                         >
@@ -94,63 +94,63 @@ const Permission = (props) => {
 
                   <div className="row">
                     <div className="col-lg-3">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value="Administrator"
                           onChange={handleChange}
                           id="Administrator"
                         />
-                        <label class="form-check-label" for="Administrator">
+                        <label className="form-check-label" for="Administrator">
                           Administrator
                         </label>
                       </div>
                     </div>
 
                     <div className="col-lg-3">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value="Sachverstandiger"
                           id="Sachverstandiger"
                           onChange={handleChange}
                           
                         />
-                        <label class="form-check-label" for="Sachverstandiger">
+                        <label className="form-check-label" for="Sachverstandiger">
                           Sachverstandiger
                         </label>
                       </div>
                     </div>
 
                     <div className="col-lg-3">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value="Sachbearbeitera"
                           id="Sachbearbeitera"
                           onChange={handleChange}
 
                         />
-                        <label class="form-check-label" for="Sachbearbeitera">
+                        <label className="form-check-label" for="Sachbearbeitera">
                           Sachbearbeiter
                         </label>
                       </div>
                     </div>
 
                     <div className="col-lg-3">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value="change-location"
                           id="Change Location"
                           onChange={handleChange}
 
                         />
-                        <label class="form-check-label" for="Change Location">
+                        <label className="form-check-label" for="Change Location">
                           Change Location
                         </label>
                       </div>
@@ -163,63 +163,63 @@ const Permission = (props) => {
 
                   <div className="row">
                     <div className="col-lg-3">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value="list-vehicle"
                           id="list-vehicle"
                           onChange={handleChange}
 
                         />
-                        <label class="form-check-label" for="list-vehicle">
+                        <label className="form-check-label" for="list-vehicle">
                           Read
                         </label>
                       </div>
                     </div>
 
                     <div className="col-lg-3">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value="create-vehivcle"
                           id="create-vehivcle"
                           onChange={handleChange}
 
                         />
-                        <label class="form-check-label" for="create-vehivcle">
+                        <label className="form-check-label" for="create-vehivcle">
                           Create
                         </label>
                       </div>
                     </div>
 
                     <div className="col-lg-3">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value="edit-vehicle"
                           id="edit-vehicle"
                           onChange={handleChange}
                         />
-                        <label class="form-check-label" for="edit-vehicle">
+                        <label className="form-check-label" for="edit-vehicle">
                           Edit
                         </label>
                       </div>
                     </div>
 
                     <div className="col-lg-3">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value="delete-vehicle"
                           id="delete-vehicle"
                           onChange={handleChange}
 
                         />
-                        <label class="form-check-label" for="delete-vehicle">
+                        <label className="form-check-label" for="delete-vehicle">
                           Delete
                         </label>
                       </div>
@@ -232,64 +232,64 @@ const Permission = (props) => {
 
                   <div className="row">
                     <div className="col-lg-3">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value="list-address"
                           id="read-address"
                           onChange={handleChange}
 
                         />
-                        <label class="form-check-label" for="read-address">
+                        <label className="form-check-label" for="read-address">
                           Read
                         </label>
                       </div>
                     </div>
 
                     <div className="col-lg-3">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value="create-address"
                           id="create-address"
                           onChange={handleChange}
 
                         />
-                        <label class="form-check-label" for="create-address">
+                        <label className="form-check-label" for="create-address">
                           Create
                         </label>
                       </div>
                     </div>
 
                     <div className="col-lg-3">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value="edit-address"
                           id="edit-address"
                           onChange={handleChange}
 
                         />
-                        <label class="form-check-label" for="edit-address">
+                        <label className="form-check-label" for="edit-address">
                           Edit
                         </label>
                       </div>
                     </div>
 
                     <div className="col-lg-3">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value="delete-address"
                           id="delete-address"
                           onChange={handleChange}
 
                         />
-                        <label class="form-check-label" for="delete-address">
+                        <label className="form-check-label" for="delete-address">
                           Delete
                         </label>
                       </div>
@@ -302,64 +302,64 @@ const Permission = (props) => {
 
                   <div className="row">
                     <div className="col-lg-3">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value="list-file"
                           id="read-dossier"
                           onChange={handleChange}
 
                         />
-                        <label class="form-check-label" for="read-dossier">
+                        <label className="form-check-label" for="read-dossier">
                           Read
                         </label>
                       </div>
                     </div>
 
                     <div className="col-lg-3">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value="create-file"
                           id="create-dossier"
                           onChange={handleChange}
 
                         />
-                        <label class="form-check-label" for="create-dossier">
+                        <label className="form-check-label" for="create-dossier">
                           Create
                         </label>
                       </div>
                     </div>
 
                     <div className="col-lg-3">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value="edit-file"
                           id="edit-dossier"
                           onChange={handleChange}
 
                         />
-                        <label class="form-check-label" for="edit-dossier">
+                        <label className="form-check-label" for="edit-dossier">
                           Edit
                         </label>
                       </div>
                     </div>
 
                     <div className="col-lg-3">
-                      <div class="form-check mt-4">
+                      <div className="form-check mt-4">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value="delete-file"
                           id="delete-dossier"
                           onChange={handleChange}
 
                         />
-                        <label class="form-check-label" for="delete-dossier">
+                        <label className="form-check-label" for="delete-dossier">
                           Delete
                         </label>
                       </div>
@@ -371,16 +371,16 @@ const Permission = (props) => {
                   </div>
 
                   <div className="col-lg-3">
-                    <div class="form-check mt-4">
+                    <div className="form-check mt-4">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="checkbox"
                         value="read-protocol"
                         id="read-protocol"
                         onChange={handleChange}
 
                       />
-                      <label class="form-check-label" for="read-protocol">
+                      <label className="form-check-label" for="read-protocol">
                         Read
                       </label>
                     </div>

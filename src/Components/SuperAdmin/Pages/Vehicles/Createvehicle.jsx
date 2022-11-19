@@ -8,7 +8,6 @@ import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@mui/material/styles";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { CreateBtn } from "../../../Buttons";
 import Tires from "../../../img/Tires.png";
@@ -29,7 +28,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <span>{children}</span>
         </Box>
       )}
     </div>
@@ -757,7 +756,7 @@ export const Createvehicle = (props) => {
   const catalog = list.map(({ id, name }) => {
     return (
       <>
-      <div className="">
+      <div >
       
         <Checkbox
           key={id}
@@ -767,7 +766,7 @@ export const Createvehicle = (props) => {
           handleClick={handleClick}
           isChecked={isCheck.includes(id)}
         />
-         <label class="form-check-label mx-2" for={id}>
+         <label className="form-check-label mx-2" for={id}>
          {name}
         </label>
         
@@ -1678,43 +1677,43 @@ export const Createvehicle = (props) => {
                   <div className="col-lg-4">
                     <p>Mileage:</p>
                     <div className="STATUS d-flex ">
-                      <div class="form-check form-check-inline ">
+                      <div className="form-check form-check-inline ">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="radio"
                           name="inlineRadioOptions"
                           id="inlineRadio1"
                           value="Kilometers"
                           onChange={(e) => setMileage(e.target.value)}
                         />
-                        <label class="form-check-label" for="inlineRadio1">
+                        <label className="form-check-label" for="inlineRadio1">
                           Kilometers
                         </label>
                       </div>
-                      <div class="form-check form-check-inline">
+                      <div className="form-check form-check-inline">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="radio"
                           name="inlineRadioOptions"
                           id="inlineRadio2"
                           value="Miles"
                           onChange={(e) => setMileage(e.target.value)}
                         />
-                        <label class="form-check-label" for="inlineRadio2">
+                        <label className="form-check-label" for="inlineRadio2">
                           Miles
                         </label>{" "}
                         <br />
                       </div>
-                      <div class="form-check form-check-inline">
+                      <div className="form-check form-check-inline">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="radio"
                           name="inlineRadioOptions"
                           id="inlineRadio2"
                           value="Hours"
                           onChange={(e) => setMileage(e.target.value)}
                         />
-                        <label class="form-check-label" for="inlineRadio2">
+                        <label className="form-check-label" for="inlineRadio2">
                           Hours
                         </label>
                       </div>
@@ -1916,7 +1915,7 @@ export const Createvehicle = (props) => {
 
                 <div className="slct mt-5">
                   <select
-                    class="form-select form-select-lg mb-0 w-25"
+                    className="form-select form-select-lg mb-0 w-25"
                     aria-label=".form-select-lg example"
                   >
                     <option selected>Standard</option>
@@ -1946,7 +1945,7 @@ export const Createvehicle = (props) => {
                       {catalog}
                     </div>
                       </div>
-                      <div class="flex items-center">
+                      <div className="flex items-center">
                         <input
                        id="id"
                           type="text"
@@ -1967,73 +1966,73 @@ export const Createvehicle = (props) => {
                   <div className="col-lg-4">
                     <div className="extr">
                       <p style={{ fontWeight: "bold" }}>Extra</p>
-                      <div class="form-check">
+                      <div className="form-check">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value=""
                           id="flexCheckDefault"
                         />
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <label className="form-check-label" for="flexCheckDefault">
                           10 selected from 59
                         </label>
                       </div>
 
                       <div className="bg-gray-50 py-1 px-1 mt-3 max-h-[300px] overflow-y-auto">
-                        <div class="form-check">
+                        <div className="form-check">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
                           />
                           <label
-                            class="form-check-label"
+                            className="form-check-label"
                             for="flexCheckDefault"
                           >
                             Trailer hitch (ball head removable)
                           </label>
                         </div>
 
-                        <div class="form-check">
+                        <div className="form-check">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
                           />
                           <label
-                            class="form-check-label"
+                            className="form-check-label"
                             for="flexCheckDefault"
                           >
                             Audio package
                           </label>
                         </div>
 
-                        <div class="form-check">
+                        <div className="form-check">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
                           />
                           <label
-                            class="form-check-label"
+                            className="form-check-label"
                             for="flexCheckDefault"
                           >
                             Audio package 2
                           </label>
                         </div>
 
-                        <div class="form-check">
+                        <div className="form-check">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
                           />
                           <label
-                            class="form-check-label"
+                            className="form-check-label"
                             for="flexCheckDefault"
                           >
                             Audio system: Radio/CD player with multifunction
@@ -2041,15 +2040,15 @@ export const Createvehicle = (props) => {
                           </label>
                         </div>
 
-                        <div class="form-check">
+                        <div className="form-check">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
                           />
                           <label
-                            class="form-check-label"
+                            className="form-check-label"
                             for="flexCheckDefault"
                           >
                             Audio system: Radio/CD player with multifunction
@@ -2057,30 +2056,30 @@ export const Createvehicle = (props) => {
                           </label>
                         </div>
 
-                        <div class="form-check">
+                        <div className="form-check">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
                           />
                           <label
-                            class="form-check-label"
+                            className="form-check-label"
                             for="flexCheckDefault"
                           >
                             Exterior mirrors electr foldable cool & sound-paket
                           </label>
                         </div>
 
-                        <div class="form-check">
+                        <div className="form-check">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
                           />
                           <label
-                            class="form-check-label"
+                            className="form-check-label"
                             for="flexCheckDefault"
                           >
                             Exterior mirrors electr foldable cool & sound-paket
@@ -2088,9 +2087,8 @@ export const Createvehicle = (props) => {
                           </label>
                         </div>
                       </div>
-                      <div class="flex items-center">
-                        <input
-                          class=""
+                      <div className="flex items-center">
+                        <input                        
                           type="text"
                           className="w-[80%] border-3"
                         />
@@ -2107,142 +2105,142 @@ export const Createvehicle = (props) => {
                   <div className="col-lg-4">
                     <div className="auxt">
                       <p style={{ fontWeight: "bold" }}>Auxiliary</p>
-                      <div class="form-check">
+                      <div className="form-check">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value=""
                           id="flexCheckDefault"
                         />
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <label className="form-check-label" for="flexCheckDefault">
                           0 of 14 seletced
                         </label>
                       </div>
 
                       <div className="bg-gray-50 py-1 px-1 mt-3 max-h-[300px] overflow-y-auto">
-                        <div class="form-check ">
+                        <div className="form-check ">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
                           />
                           <label
-                            class="form-check-label"
+                            className="form-check-label"
                             for="flexCheckDefault"
                           >
                             Trailer hitch
                           </label>
                         </div>
 
-                        <div class="form-check">
+                        <div className="form-check">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
                           />
                           <label
-                            class="form-check-label"
+                            className="form-check-label"
                             for="flexCheckDefault"
                           >
                             Rear fog lamp
                           </label>
                         </div>
 
-                        <div class="form-check">
+                        <div className="form-check">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
                           />
                           <label
-                            class="form-check-label"
+                            className="form-check-label"
                             for="flexCheckDefault"
                           >
                             Mud flap
                           </label>
                         </div>
 
-                        <div class="form-check">
+                        <div className="form-check">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
                           />
                           <label
-                            class="form-check-label"
+                            className="form-check-label"
                             for="flexCheckDefault"
                           >
                             Sunroof
                           </label>
                         </div>
 
-                        <div class="form-check">
+                        <div className="form-check">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
                           />
                           <label
-                            class="form-check-label"
+                            className="form-check-label"
                             for="flexCheckDefault"
                           >
                             Spoiler front
                           </label>
                         </div>
 
-                        <div class="form-check">
+                        <div className="form-check">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
                           />
                           <label
-                            class="form-check-label"
+                            className="form-check-label"
                             for="flexCheckDefault"
                           >
                             Rear spoiler
                           </label>
                         </div>
 
-                        <div class="form-check">
+                        <div className="form-check">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
                           />
                           <label
-                            class="form-check-label"
+                            className="form-check-label"
                             for="flexCheckDefault"
                           >
                             Fire extinguisher
                           </label>
                         </div>
 
-                        <div class="form-check">
+                        <div className="form-check">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
                           />
                           <label
-                            class="form-check-label"
+                            className="form-check-label"
                             for="flexCheckDefault"
                           >
                             Speakers-Rear
                           </label>
                         </div>
                       </div>
-                      <div class="flex items-center">
+                      <div className="flex items-center">
                         <input
-                          class=""
+                          
                           type="text"
                           className="w-[80%] border-3"
                         />

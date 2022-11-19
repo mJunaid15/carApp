@@ -9,10 +9,10 @@ const MainDashboard = () => {
     <>
       <Toolbar />
 
-      <div class="grid lg:grid-cols-3 grid-cols-1 gap-3">
+      <div className="grid lg:grid-cols-3 grid-cols-1 gap-3">
         <div className="col-span-1  lg:col-span-2">
-          <div class="mainSearchInput relative ">
-            <span class="absolute left-4 translate-y-[12px]   ">
+          <div className="mainSearchInput relative ">
+            <span className="absolute left-4 translate-y-[12px]   ">
               <SearchIcon />
             </span>
             <input
@@ -54,8 +54,8 @@ const MainDashboard = () => {
             </div>
 
             <div>
-              <div class="mainSearchInput relative ">
-                <span class="absolute left-1 translate-y-[5px]   ">
+              <div className="mainSearchInput relative ">
+                <span className="absolute left-1 translate-y-[5px]   ">
                   <SearchIcon />
                 </span>
                 <input

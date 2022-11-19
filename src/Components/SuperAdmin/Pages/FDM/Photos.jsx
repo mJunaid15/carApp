@@ -65,8 +65,8 @@ const Photos = () => {
             </div>
             <p>Drag and Drop here</p>
             <button style={style.button}>
-              <label for="file-upload" class="custom-file-upload">
-                <i class="fa fa-cloud-upload"></i> Custom Upload
+              <label for="file-upload" className="custom-file-upload">
+                <i className="fa fa-cloud-upload"></i> Custom Upload
               </label>
               <input id="file-upload" type="file" className="none" />
             </button>

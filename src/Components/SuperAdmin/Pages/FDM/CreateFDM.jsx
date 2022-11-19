@@ -3,35 +3,18 @@ import { Drawer, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { Button } from "@mui/material";
 import { Toolbar } from "@mui/material";
-import Vehicles from "../Vehicles/Vehicles";
-import SwipeableViews from "react-swipeable-views";
-import { useTheme } from "@mui/material/styles";
-import AppBar from "@mui/material/AppBar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Fdm from "./Fdm";
-import { CreateBtn } from "../../../Buttons";
 import { Createvehicle } from "../Vehicles/Createvehicle";
-// import "./QuestionButton.css"
-import kuhl from "../../../img/kuhl.png";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-// import { QsAns } from "./QsAns";
-
 import PropTypes from "prop-types";
 import GeneralData from "./GeneralData";
 import Involed from "./Involed";
-import Question from "./Question";
 import VehicleInspection from "./VehicleInspection";
 import Documents from "./Documents";
 import Photos from "./Photos";
 import QuestionAnswers from "../Settings/Questions/QuestionAnswers";
 import Protocol from "./Protocol";
-// import Tabs from '@mui/material/Tabs';
-// import Tab from '@mui/material/Tab';
-// import Typography from '@mui/material/Typography';
-// import Box from '@mui/material/Box';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -46,7 +29,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <p>{children}</p>
         </Box>
       )}
     </div>

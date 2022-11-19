@@ -266,7 +266,7 @@ const GeneralData = () => {
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 Country               </p>
 
-              <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" style={{ color: "darkgray", }}>
+              <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example" style={{ color: "darkgray", }}>
                 <option selected>Select Country</option>
                 <option value="1">Pakistan</option>
                 <option value="2">Iran</option>
@@ -279,7 +279,7 @@ const GeneralData = () => {
             <div className="managing">
               <p style={{ fontWeight: "bold", fontSize: "12px" }}>
                 ZIP / City              </p>
-              <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" style={{ color: "darkgray", }}>
+              <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example" style={{ color: "darkgray", }}>
                 <option selected>Select City</option>
                 <option value="1">Pakistan</option>
                 <option value="2">Iran</option>

@@ -31,15 +31,15 @@ const Forgotpas = () => {
                       <b>Forgot Password</b>
                     </h2>
 
-                    <div class="login-form">
+                    <div className="login-form">
                       <form>
-                        <div class="form-group">
+                        <div className="form-group">
                           <input
                             type="email"
                             name="email"
                             placeholder="Email"
                           />
-                          <span class="input-icon">
+                          <span className="input-icon">
                             <EmailIcon />
                           </span>
                         </div>
@@ -47,7 +47,7 @@ const Forgotpas = () => {
                     </div>
                   </div>
                   <button
-                    class="login-btn mt-3"
+                    className="login-btn mt-3"
                     onClick={() => {
                         navigate(`/email`);
                     }}
