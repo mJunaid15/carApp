@@ -52,7 +52,10 @@ export default function AddressLocationList() {
   const fetchAddressList = async () => {
     setLoading(true);
     let res = await http.get("/address");
-    setAddressList(res.data.responseMessage);
+    if (res.data.responseStatus === 200) {
+      setAddressList(res.data.responseMessage);
+        
+      }
     setLoading(false);
   };
 
@@ -109,7 +112,7 @@ export default function AddressLocationList() {
                   <Pageloader />
                 ) : (
                   <TableBody>
-                    {_DATA.currentData().map((data, index) => {
+                    {addressList && _DATA.currentData().map((data, index) => {
                       return (
                        
                           <TableRow
