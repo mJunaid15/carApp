@@ -13,6 +13,7 @@ import { CreateBtn } from "../../../Buttons";
 import Tires from "../../../img/Tires.png";
 import AuthUser from "../../Auth/AuthUser";
 import TrashSimple from "../../../img/TrashSimple.png";
+import {toast} from 'react-toastify';
 import Checkbox from "../../Checkbox";
 
 function TabPanel(props) {
@@ -241,11 +242,11 @@ export const Createvehicle = (props) => {
     http
       .post(`/vehicle`, formData)
       .then((res) => {
-        console.log(res);
+        toast.success('create sucessfully')
         setCompanyCheck(!companyCheck);
         // setusermanagementCheck(!usermanagementCheck)
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.error(err.message));
   };
 
   // Handle Edit Vehicle (Edit Vehicle)
@@ -672,9 +673,10 @@ export const Createvehicle = (props) => {
     http
       .post(`/vehicle/${props.editItem.id}`, formData)
       .then((res) => {
+        toast.success('update sucessfully')
         setCompanyCheck(!companyCheck);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.error(err.message));
   };
 
 

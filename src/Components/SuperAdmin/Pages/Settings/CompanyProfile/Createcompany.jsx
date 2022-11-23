@@ -5,6 +5,7 @@ import {CompanyProfile} from "./CompanyProfile";
 import { Toolbar } from "@mui/material";
 import AuthUser from "../../../Auth/AuthUser";
 import WestIcon from '@mui/icons-material/West';
+import {toast} from 'react-toastify';
 
 
 export const Createcompany = (props) => {
@@ -69,8 +70,9 @@ export const Createcompany = (props) => {
 
     http.post(`/company-profile`, formData)
     .then((res) => {
+      toast.success('create successfully')
       setCompanyCheck(!companyCheck)
-    }).catch(err => console.log(err.message))
+    }).catch(err => toast.error(err.message))
   
     
   };
@@ -168,6 +170,7 @@ export const Createcompany = (props) => {
     http
       .post(`/company-profile/${data.id}`, formData)
       .then((res) => {
+        toast.success('update successfully')
         setCompanyCheck(!companyCheck)
       })
       .catch((err) => console.log(err.message));

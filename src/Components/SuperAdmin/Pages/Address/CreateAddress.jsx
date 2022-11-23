@@ -7,6 +7,7 @@ import Addresses from "./Addresses";
 import WestIcon from "@mui/icons-material/West";
 import "../All.css";
 import { MuiTelInput } from "mui-tel-input";
+import {toast} from 'react-toastify';
 import countryList from "react-select-country-list";
 
 export const CreateAddress = (props) => {
@@ -49,7 +50,6 @@ export const CreateAddress = (props) => {
       formRef.current.reportValidity()
 
     }
-    console.log(formRef.current);
     const formData = new FormData();
 
     formData.append("title", title);
@@ -72,9 +72,10 @@ export const CreateAddress = (props) => {
     http
       .post(`/address`, formData)
       .then((res) => {
+        toast.success('create sucessfully')
         setAddressCheck(!addressCheck);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.error(err.message));
   };
 
   // Handle Edit Company
@@ -171,9 +172,10 @@ export const CreateAddress = (props) => {
     http
       .post(`address/${props.editItem.id}`, formData)
       .then((res) => {
+        toast.success('update sucessfully')
         setAddressCheck(!addressCheck);
       })
-      .catch((err) => console.log(err.response.data.errors));
+      .catch((err) => toast.error(err.response.data.errors));
   };
 
   //   Handle Back

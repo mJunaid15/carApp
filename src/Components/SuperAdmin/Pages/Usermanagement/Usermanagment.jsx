@@ -29,6 +29,7 @@ export default function Usermanagment() {
     // api call
     setLoading(true);
     let res = await http.get("/user");
+
     setUserlist(res.data.responseMessage);
     setLoading(false);
   };

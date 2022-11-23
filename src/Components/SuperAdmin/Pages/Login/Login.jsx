@@ -6,7 +6,8 @@ import LockIcon from "@mui/icons-material/Lock";
 import EmailIcon from "@mui/icons-material/Email";
 import { useNavigate, Link } from "react-router-dom";
 import AuthUser from "../../Auth/AuthUser";
-import { Alert, Backdrop, CircularProgress } from "@mui/material";
+import { Backdrop, CircularProgress } from "@mui/material";
+import {toast} from 'react-toastify';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const Login = () => {
     http
       .post("/login", { email: email, password: password })
       .then((res) => {
-        console.log(res.data);
+        toast.success('login successfully')
         setLoading(false);
         setToken(res.data.success.token, res.data.success.user);
         navigate(`/dashboard`);
@@ -38,7 +39,7 @@ const Login = () => {
         // }
       })
       .catch((err) => {
-        // console.log('error',err);
+        toast.error('Invalid email or password')
         if (err.response.status === 401) {
           setMsg("Unauthorized");
         setLoading(false);
