@@ -29,8 +29,11 @@ export default function Usermanagment() {
     // api call
     setLoading(true);
     let res = await http.get("/user");
-
-    setUserlist(res.data.responseMessage);
+    
+    if (res.data.responseStatus === 200) {
+      setUserlist(res.data.responseMessage);
+        
+      }
     setLoading(false);
   };
   // console.log("Userlist:", Userlist[0].first_name);

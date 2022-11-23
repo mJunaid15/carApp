@@ -46,7 +46,11 @@ export default function Vehicles() {
   const fetchVehicleList = async () => {
     setLoading(true);
     let res = await http.get("/vehicle");
-    setVehicleList(res.data.responseMessage);
+    if (res.data.responseStatus === 200) {
+      setVehicleList(res.data.responseMessage);
+        
+      }
+    
     setLoading(false);
   };
 
@@ -106,7 +110,8 @@ export default function Vehicles() {
                   <Pageloader />
                 ) : (
                   <TableBody>
-                    {_DATA.currentData().map((data, index) => {
+                    { vehicleList && 
+                    _DATA.currentData().map((data, index) => {
                       return (
                         <>
                         {editIndex === index ? (

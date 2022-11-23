@@ -232,7 +232,7 @@ export const Usermanagementcreate = (props) => {
           <Toolbar />
 
           <div className="flex justify-between items-center border-slate-400 ">
-            <div>
+            <div className="flex items-center justify-center"> 
               <WestIcon
                 onClick={() => setusermanagementCheck(!usermanagementCheck)}
                 className="backButton"
