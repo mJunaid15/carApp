@@ -84,3 +84,8 @@ input[type="file"] {
   cursor: pointer;
 }
 /* file upload css  */
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+
+  overflow-y: unset !important;
+  
+}

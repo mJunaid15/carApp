@@ -12,6 +12,7 @@ import AuthUser from "../../../Auth/AuthUser";
 import AddressLocationList from "./AddressLocationList";
 import WestIcon from '@mui/icons-material/West';
 
+import {toast} from 'react-toastify';
 
 
 
@@ -106,8 +107,9 @@ export default function AddressLocRoot() {
 
   http.post(`/company`, formData)
   .then((res) => {
+    toast.success('create successfully')
     setAddressCheck(!addressCheck)
-  }).catch(err => console.log(err.message))
+  }).catch(err => toast.error(err.message))
  }
   return (
     <>

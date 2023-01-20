@@ -13,6 +13,7 @@ import AuthUser from "../../Auth/AuthUser";
 import WestIcon from "@mui/icons-material/West";
 import "../All.css";
 import { MuiTelInput } from "mui-tel-input";
+import {toast} from 'react-toastify';
 
 export const Usermanagementcreate = (props) => {
   const { http } = AuthUser();
@@ -170,10 +171,11 @@ export const Usermanagementcreate = (props) => {
     http
       .post(`/user/${props.editItem.id}`, formData)
       .then((res) => {
-        // console.log(res)
+        console.log(res)
+        toast.success("update succesfully")
         setusermanagementCheck(!usermanagementCheck);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.error(err.message));
   };
 
   // Handle Create New Uuser
@@ -204,10 +206,11 @@ export const Usermanagementcreate = (props) => {
     http
       .post(`/user`, formData)
       .then((res) => {
-        // console.log(res)
+        toast.success("create succesfully")
+
         setusermanagementCheck(!usermanagementCheck);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.error(err.message));
   };
   const [companylist, setCompanylist] = useState([]);
   const fetchListCompany = async () => {
